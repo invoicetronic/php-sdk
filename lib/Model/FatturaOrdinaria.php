@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * FatturaOrdinaria Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,8 +59,8 @@ class FatturaOrdinaria implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'sistema_emittente' => 'string',
-        'fattura_elettronica_header' => '\InvoicetronicInvoiceSdk\Model\FatturaElettronicaHeader',
-        'fattura_elettronica_body' => '\InvoicetronicInvoiceSdk\Model\FatturaElettronicaBody[]'
+        'fattura_elettronica_header' => '\Invoicetronic\Model\FatturaElettronicaHeader',
+        'fattura_elettronica_body' => '\Invoicetronic\Model\FatturaElettronicaBody[]'
     ];
 
     /**
@@ -341,7 +341,7 @@ class FatturaOrdinaria implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fattura_elettronica_header
      *
-     * @return \InvoicetronicInvoiceSdk\Model\FatturaElettronicaHeader|null
+     * @return \Invoicetronic\Model\FatturaElettronicaHeader|null
      */
     public function getFatturaElettronicaHeader()
     {
@@ -351,7 +351,7 @@ class FatturaOrdinaria implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fattura_elettronica_header
      *
-     * @param \InvoicetronicInvoiceSdk\Model\FatturaElettronicaHeader|null $fattura_elettronica_header fattura_elettronica_header
+     * @param \Invoicetronic\Model\FatturaElettronicaHeader|null $fattura_elettronica_header fattura_elettronica_header
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class FatturaOrdinaria implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fattura_elettronica_body
      *
-     * @return \InvoicetronicInvoiceSdk\Model\FatturaElettronicaBody[]|null
+     * @return \Invoicetronic\Model\FatturaElettronicaBody[]|null
      */
     public function getFatturaElettronicaBody()
     {
@@ -378,7 +378,7 @@ class FatturaOrdinaria implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fattura_elettronica_body
      *
-     * @param \InvoicetronicInvoiceSdk\Model\FatturaElettronicaBody[]|null $fattura_elettronica_body fattura_elettronica_body
+     * @param \Invoicetronic\Model\FatturaElettronicaBody[]|null $fattura_elettronica_body fattura_elettronica_body
      *
      * @return self
      */

@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * DatiBeniServizi Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,8 +58,8 @@ class DatiBeniServizi implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dettaglio_linee' => '\InvoicetronicInvoiceSdk\Model\DettaglioLinee[]',
-        'dati_riepilogo' => '\InvoicetronicInvoiceSdk\Model\DatiRiepilogo[]'
+        'dettaglio_linee' => '\Invoicetronic\Model\DettaglioLinee[]',
+        'dati_riepilogo' => '\Invoicetronic\Model\DatiRiepilogo[]'
     ];
 
     /**
@@ -300,7 +300,7 @@ class DatiBeniServizi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dettaglio_linee
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DettaglioLinee[]|null
+     * @return \Invoicetronic\Model\DettaglioLinee[]|null
      */
     public function getDettaglioLinee()
     {
@@ -310,7 +310,7 @@ class DatiBeniServizi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dettaglio_linee
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DettaglioLinee[]|null $dettaglio_linee dettaglio_linee
+     * @param \Invoicetronic\Model\DettaglioLinee[]|null $dettaglio_linee dettaglio_linee
      *
      * @return self
      */
@@ -334,7 +334,7 @@ class DatiBeniServizi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_riepilogo
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiRiepilogo[]|null
+     * @return \Invoicetronic\Model\DatiRiepilogo[]|null
      */
     public function getDatiRiepilogo()
     {
@@ -344,7 +344,7 @@ class DatiBeniServizi implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_riepilogo
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiRiepilogo[]|null $dati_riepilogo dati_riepilogo
+     * @param \Invoicetronic\Model\DatiRiepilogo[]|null $dati_riepilogo dati_riepilogo
      *
      * @return self
      */

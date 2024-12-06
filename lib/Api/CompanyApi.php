@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Api;
+namespace Invoicetronic\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use InvoicetronicInvoiceSdk\ApiException;
-use InvoicetronicInvoiceSdk\Configuration;
-use InvoicetronicInvoiceSdk\HeaderSelector;
-use InvoicetronicInvoiceSdk\ObjectSerializer;
+use Invoicetronic\ApiException;
+use Invoicetronic\Configuration;
+use Invoicetronic\HeaderSelector;
+use Invoicetronic\ObjectSerializer;
 
 /**
  * CompanyApi Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -144,9 +144,9 @@ class CompanyApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Company[]
+     * @return \Invoicetronic\Model\Company[]
      */
     public function invoiceV1CompanyGet($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1CompanyGet'][0])
     {
@@ -163,9 +163,9 @@ class CompanyApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Company[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Company[], HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1CompanyGetWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1CompanyGet'][0])
     {
@@ -196,11 +196,11 @@ class CompanyApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Company[]' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Company[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Company[]' !== 'string') {
+                        if ('\Invoicetronic\Model\Company[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -218,7 +218,7 @@ class CompanyApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Company[]', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Company[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -237,7 +237,7 @@ class CompanyApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Company[]';
+            $returnType = '\Invoicetronic\Model\Company[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -270,7 +270,7 @@ class CompanyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Company[]',
+                        '\Invoicetronic\Model\Company[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -316,7 +316,7 @@ class CompanyApi
      */
     public function invoiceV1CompanyGetAsyncWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1CompanyGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Company[]';
+        $returnType = '\Invoicetronic\Model\Company[]';
         $request = $this->invoiceV1CompanyGetRequest($page, $page_size, $contentType);
 
         return $this->client
@@ -465,9 +465,9 @@ class CompanyApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdDelete'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Company
+     * @return \Invoicetronic\Model\Company
      */
     public function invoiceV1CompanyIdDelete($id, string $contentType = self::contentTypes['invoiceV1CompanyIdDelete'][0])
     {
@@ -483,9 +483,9 @@ class CompanyApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdDelete'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Company, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Company, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1CompanyIdDeleteWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1CompanyIdDelete'][0])
     {
@@ -516,11 +516,11 @@ class CompanyApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Company' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Company' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Company' !== 'string') {
+                        if ('\Invoicetronic\Model\Company' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -538,7 +538,7 @@ class CompanyApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Company', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Company', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -557,7 +557,7 @@ class CompanyApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Company';
+            $returnType = '\Invoicetronic\Model\Company';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -590,7 +590,7 @@ class CompanyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Company',
+                        '\Invoicetronic\Model\Company',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -634,7 +634,7 @@ class CompanyApi
      */
     public function invoiceV1CompanyIdDeleteAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1CompanyIdDelete'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Company';
+        $returnType = '\Invoicetronic\Model\Company';
         $request = $this->invoiceV1CompanyIdDeleteRequest($id, $contentType);
 
         return $this->client
@@ -777,9 +777,9 @@ class CompanyApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Company
+     * @return \Invoicetronic\Model\Company
      */
     public function invoiceV1CompanyIdGet($id, string $contentType = self::contentTypes['invoiceV1CompanyIdGet'][0])
     {
@@ -795,9 +795,9 @@ class CompanyApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Company, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Company, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1CompanyIdGetWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1CompanyIdGet'][0])
     {
@@ -828,11 +828,11 @@ class CompanyApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Company' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Company' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Company' !== 'string') {
+                        if ('\Invoicetronic\Model\Company' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -850,7 +850,7 @@ class CompanyApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Company', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Company', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -869,7 +869,7 @@ class CompanyApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Company';
+            $returnType = '\Invoicetronic\Model\Company';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -902,7 +902,7 @@ class CompanyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Company',
+                        '\Invoicetronic\Model\Company',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -946,7 +946,7 @@ class CompanyApi
      */
     public function invoiceV1CompanyIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1CompanyIdGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Company';
+        $returnType = '\Invoicetronic\Model\Company';
         $request = $this->invoiceV1CompanyIdGetRequest($id, $contentType);
 
         return $this->client
@@ -1086,12 +1086,12 @@ class CompanyApi
      *
      * Add a company
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company company (required)
+     * @param  \Invoicetronic\Model\Company $company company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Company
+     * @return \Invoicetronic\Model\Company
      */
     public function invoiceV1CompanyPost($company, string $contentType = self::contentTypes['invoiceV1CompanyPost'][0])
     {
@@ -1104,12 +1104,12 @@ class CompanyApi
      *
      * Add a company
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company (required)
+     * @param  \Invoicetronic\Model\Company $company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Company, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Company, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1CompanyPostWithHttpInfo($company, string $contentType = self::contentTypes['invoiceV1CompanyPost'][0])
     {
@@ -1140,11 +1140,11 @@ class CompanyApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\InvoicetronicInvoiceSdk\Model\Company' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Company' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Company' !== 'string') {
+                        if ('\Invoicetronic\Model\Company' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1162,7 +1162,7 @@ class CompanyApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Company', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Company', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1181,7 +1181,7 @@ class CompanyApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Company';
+            $returnType = '\Invoicetronic\Model\Company';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1214,7 +1214,7 @@ class CompanyApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Company',
+                        '\Invoicetronic\Model\Company',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1229,7 +1229,7 @@ class CompanyApi
      *
      * Add a company
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company (required)
+     * @param  \Invoicetronic\Model\Company $company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1250,7 +1250,7 @@ class CompanyApi
      *
      * Add a company
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company (required)
+     * @param  \Invoicetronic\Model\Company $company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1258,7 +1258,7 @@ class CompanyApi
      */
     public function invoiceV1CompanyPostAsyncWithHttpInfo($company, string $contentType = self::contentTypes['invoiceV1CompanyPost'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Company';
+        $returnType = '\Invoicetronic\Model\Company';
         $request = $this->invoiceV1CompanyPostRequest($company, $contentType);
 
         return $this->client
@@ -1300,7 +1300,7 @@ class CompanyApi
     /**
      * Create request for operation 'invoiceV1CompanyPost'
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company (required)
+     * @param  \Invoicetronic\Model\Company $company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1397,12 +1397,12 @@ class CompanyApi
      *
      * Update a company
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company company (required)
+     * @param  \Invoicetronic\Model\Company $company company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPut'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Company
+     * @return \Invoicetronic\Model\Company
      */
     public function invoiceV1CompanyPut($company, string $contentType = self::contentTypes['invoiceV1CompanyPut'][0])
     {
@@ -1415,12 +1415,12 @@ class CompanyApi
      *
      * Update a company
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company (required)
+     * @param  \Invoicetronic\Model\Company $company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPut'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Company, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Company, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1CompanyPutWithHttpInfo($company, string $contentType = self::contentTypes['invoiceV1CompanyPut'][0])
     {
@@ -1451,11 +1451,11 @@ class CompanyApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Company' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Company' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Company' !== 'string') {
+                        if ('\Invoicetronic\Model\Company' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1473,7 +1473,7 @@ class CompanyApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Company', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Company', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1492,7 +1492,7 @@ class CompanyApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Company';
+            $returnType = '\Invoicetronic\Model\Company';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1525,7 +1525,7 @@ class CompanyApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Company',
+                        '\Invoicetronic\Model\Company',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1540,7 +1540,7 @@ class CompanyApi
      *
      * Update a company
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company (required)
+     * @param  \Invoicetronic\Model\Company $company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1561,7 +1561,7 @@ class CompanyApi
      *
      * Update a company
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company (required)
+     * @param  \Invoicetronic\Model\Company $company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1569,7 +1569,7 @@ class CompanyApi
      */
     public function invoiceV1CompanyPutAsyncWithHttpInfo($company, string $contentType = self::contentTypes['invoiceV1CompanyPut'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Company';
+        $returnType = '\Invoicetronic\Model\Company';
         $request = $this->invoiceV1CompanyPutRequest($company, $contentType);
 
         return $this->client
@@ -1611,7 +1611,7 @@ class CompanyApi
     /**
      * Create request for operation 'invoiceV1CompanyPut'
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Company $company (required)
+     * @param  \Invoicetronic\Model\Company $company (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

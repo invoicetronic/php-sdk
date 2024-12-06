@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * DatiGenerali Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,16 +58,16 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dati_generali_documento' => '\InvoicetronicInvoiceSdk\Model\DatiGeneraliDocumento',
-        'dati_ordine_acquisto' => '\InvoicetronicInvoiceSdk\Model\DatiOrdineAcquisto[]',
-        'dati_contratto' => '\InvoicetronicInvoiceSdk\Model\DatiContratto[]',
-        'dati_convenzione' => '\InvoicetronicInvoiceSdk\Model\DatiConvenzione[]',
-        'dati_ricezione' => '\InvoicetronicInvoiceSdk\Model\DatiRicezione[]',
-        'dati_fatture_collegate' => '\InvoicetronicInvoiceSdk\Model\DatiFattureCollegate[]',
-        'dati_sal' => '\InvoicetronicInvoiceSdk\Model\DatiSAL[]',
-        'dati_ddt' => '\InvoicetronicInvoiceSdk\Model\DatiDDT[]',
-        'dati_trasporto' => '\InvoicetronicInvoiceSdk\Model\DatiTrasporto',
-        'fattura_principale' => '\InvoicetronicInvoiceSdk\Model\FatturaPrincipale'
+        'dati_generali_documento' => '\Invoicetronic\Model\DatiGeneraliDocumento',
+        'dati_ordine_acquisto' => '\Invoicetronic\Model\DatiOrdineAcquisto[]',
+        'dati_contratto' => '\Invoicetronic\Model\DatiContratto[]',
+        'dati_convenzione' => '\Invoicetronic\Model\DatiConvenzione[]',
+        'dati_ricezione' => '\Invoicetronic\Model\DatiRicezione[]',
+        'dati_fatture_collegate' => '\Invoicetronic\Model\DatiFattureCollegate[]',
+        'dati_sal' => '\Invoicetronic\Model\DatiSAL[]',
+        'dati_ddt' => '\Invoicetronic\Model\DatiDDT[]',
+        'dati_trasporto' => '\Invoicetronic\Model\DatiTrasporto',
+        'fattura_principale' => '\Invoicetronic\Model\FatturaPrincipale'
     ];
 
     /**
@@ -356,7 +356,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_generali_documento
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiGeneraliDocumento|null
+     * @return \Invoicetronic\Model\DatiGeneraliDocumento|null
      */
     public function getDatiGeneraliDocumento()
     {
@@ -366,7 +366,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_generali_documento
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiGeneraliDocumento|null $dati_generali_documento dati_generali_documento
+     * @param \Invoicetronic\Model\DatiGeneraliDocumento|null $dati_generali_documento dati_generali_documento
      *
      * @return self
      */
@@ -383,7 +383,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_ordine_acquisto
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiOrdineAcquisto[]|null
+     * @return \Invoicetronic\Model\DatiOrdineAcquisto[]|null
      */
     public function getDatiOrdineAcquisto()
     {
@@ -393,7 +393,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_ordine_acquisto
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiOrdineAcquisto[]|null $dati_ordine_acquisto dati_ordine_acquisto
+     * @param \Invoicetronic\Model\DatiOrdineAcquisto[]|null $dati_ordine_acquisto dati_ordine_acquisto
      *
      * @return self
      */
@@ -417,7 +417,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_contratto
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiContratto[]|null
+     * @return \Invoicetronic\Model\DatiContratto[]|null
      */
     public function getDatiContratto()
     {
@@ -427,7 +427,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_contratto
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiContratto[]|null $dati_contratto dati_contratto
+     * @param \Invoicetronic\Model\DatiContratto[]|null $dati_contratto dati_contratto
      *
      * @return self
      */
@@ -451,7 +451,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_convenzione
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiConvenzione[]|null
+     * @return \Invoicetronic\Model\DatiConvenzione[]|null
      */
     public function getDatiConvenzione()
     {
@@ -461,7 +461,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_convenzione
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiConvenzione[]|null $dati_convenzione dati_convenzione
+     * @param \Invoicetronic\Model\DatiConvenzione[]|null $dati_convenzione dati_convenzione
      *
      * @return self
      */
@@ -485,7 +485,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_ricezione
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiRicezione[]|null
+     * @return \Invoicetronic\Model\DatiRicezione[]|null
      */
     public function getDatiRicezione()
     {
@@ -495,7 +495,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_ricezione
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiRicezione[]|null $dati_ricezione dati_ricezione
+     * @param \Invoicetronic\Model\DatiRicezione[]|null $dati_ricezione dati_ricezione
      *
      * @return self
      */
@@ -519,7 +519,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_fatture_collegate
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiFattureCollegate[]|null
+     * @return \Invoicetronic\Model\DatiFattureCollegate[]|null
      */
     public function getDatiFattureCollegate()
     {
@@ -529,7 +529,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_fatture_collegate
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiFattureCollegate[]|null $dati_fatture_collegate dati_fatture_collegate
+     * @param \Invoicetronic\Model\DatiFattureCollegate[]|null $dati_fatture_collegate dati_fatture_collegate
      *
      * @return self
      */
@@ -553,7 +553,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_sal
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiSAL[]|null
+     * @return \Invoicetronic\Model\DatiSAL[]|null
      */
     public function getDatiSal()
     {
@@ -563,7 +563,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_sal
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiSAL[]|null $dati_sal dati_sal
+     * @param \Invoicetronic\Model\DatiSAL[]|null $dati_sal dati_sal
      *
      * @return self
      */
@@ -587,7 +587,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_ddt
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiDDT[]|null
+     * @return \Invoicetronic\Model\DatiDDT[]|null
      */
     public function getDatiDdt()
     {
@@ -597,7 +597,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_ddt
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiDDT[]|null $dati_ddt dati_ddt
+     * @param \Invoicetronic\Model\DatiDDT[]|null $dati_ddt dati_ddt
      *
      * @return self
      */
@@ -621,7 +621,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_trasporto
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiTrasporto|null
+     * @return \Invoicetronic\Model\DatiTrasporto|null
      */
     public function getDatiTrasporto()
     {
@@ -631,7 +631,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_trasporto
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiTrasporto|null $dati_trasporto dati_trasporto
+     * @param \Invoicetronic\Model\DatiTrasporto|null $dati_trasporto dati_trasporto
      *
      * @return self
      */
@@ -648,7 +648,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets fattura_principale
      *
-     * @return \InvoicetronicInvoiceSdk\Model\FatturaPrincipale|null
+     * @return \Invoicetronic\Model\FatturaPrincipale|null
      */
     public function getFatturaPrincipale()
     {
@@ -658,7 +658,7 @@ class DatiGenerali implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets fattura_principale
      *
-     * @param \InvoicetronicInvoiceSdk\Model\FatturaPrincipale|null $fattura_principale fattura_principale
+     * @param \Invoicetronic\Model\FatturaPrincipale|null $fattura_principale fattura_principale
      *
      * @return self
      */

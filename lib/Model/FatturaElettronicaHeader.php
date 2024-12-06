@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * FatturaElettronicaHeader Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,11 +58,11 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dati_trasmissione' => '\InvoicetronicInvoiceSdk\Model\DatiTrasmissione',
-        'cedente_prestatore' => '\InvoicetronicInvoiceSdk\Model\CedentePrestatore',
-        'rappresentante_fiscale' => '\InvoicetronicInvoiceSdk\Model\RappresentanteFiscale',
-        'cessionario_committente' => '\InvoicetronicInvoiceSdk\Model\CessionarioCommittente',
-        'terzo_intermediario_o_soggetto_emittente' => '\InvoicetronicInvoiceSdk\Model\TerzoIntermediarioOSoggettoEmittente',
+        'dati_trasmissione' => '\Invoicetronic\Model\DatiTrasmissione',
+        'cedente_prestatore' => '\Invoicetronic\Model\CedentePrestatore',
+        'rappresentante_fiscale' => '\Invoicetronic\Model\RappresentanteFiscale',
+        'cessionario_committente' => '\Invoicetronic\Model\CessionarioCommittente',
+        'terzo_intermediario_o_soggetto_emittente' => '\Invoicetronic\Model\TerzoIntermediarioOSoggettoEmittente',
         'soggetto_emittente' => 'string'
     ];
 
@@ -328,7 +328,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets dati_trasmissione
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiTrasmissione|null
+     * @return \Invoicetronic\Model\DatiTrasmissione|null
      */
     public function getDatiTrasmissione()
     {
@@ -338,7 +338,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets dati_trasmissione
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiTrasmissione|null $dati_trasmissione dati_trasmissione
+     * @param \Invoicetronic\Model\DatiTrasmissione|null $dati_trasmissione dati_trasmissione
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets cedente_prestatore
      *
-     * @return \InvoicetronicInvoiceSdk\Model\CedentePrestatore|null
+     * @return \Invoicetronic\Model\CedentePrestatore|null
      */
     public function getCedentePrestatore()
     {
@@ -365,7 +365,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets cedente_prestatore
      *
-     * @param \InvoicetronicInvoiceSdk\Model\CedentePrestatore|null $cedente_prestatore cedente_prestatore
+     * @param \Invoicetronic\Model\CedentePrestatore|null $cedente_prestatore cedente_prestatore
      *
      * @return self
      */
@@ -382,7 +382,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets rappresentante_fiscale
      *
-     * @return \InvoicetronicInvoiceSdk\Model\RappresentanteFiscale|null
+     * @return \Invoicetronic\Model\RappresentanteFiscale|null
      */
     public function getRappresentanteFiscale()
     {
@@ -392,7 +392,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets rappresentante_fiscale
      *
-     * @param \InvoicetronicInvoiceSdk\Model\RappresentanteFiscale|null $rappresentante_fiscale rappresentante_fiscale
+     * @param \Invoicetronic\Model\RappresentanteFiscale|null $rappresentante_fiscale rappresentante_fiscale
      *
      * @return self
      */
@@ -409,7 +409,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets cessionario_committente
      *
-     * @return \InvoicetronicInvoiceSdk\Model\CessionarioCommittente|null
+     * @return \Invoicetronic\Model\CessionarioCommittente|null
      */
     public function getCessionarioCommittente()
     {
@@ -419,7 +419,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets cessionario_committente
      *
-     * @param \InvoicetronicInvoiceSdk\Model\CessionarioCommittente|null $cessionario_committente cessionario_committente
+     * @param \Invoicetronic\Model\CessionarioCommittente|null $cessionario_committente cessionario_committente
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Gets terzo_intermediario_o_soggetto_emittente
      *
-     * @return \InvoicetronicInvoiceSdk\Model\TerzoIntermediarioOSoggettoEmittente|null
+     * @return \Invoicetronic\Model\TerzoIntermediarioOSoggettoEmittente|null
      */
     public function getTerzoIntermediarioOSoggettoEmittente()
     {
@@ -446,7 +446,7 @@ class FatturaElettronicaHeader implements ModelInterface, ArrayAccess, \JsonSeri
     /**
      * Sets terzo_intermediario_o_soggetto_emittente
      *
-     * @param \InvoicetronicInvoiceSdk\Model\TerzoIntermediarioOSoggettoEmittente|null $terzo_intermediario_o_soggetto_emittente terzo_intermediario_o_soggetto_emittente
+     * @param \Invoicetronic\Model\TerzoIntermediarioOSoggettoEmittente|null $terzo_intermediario_o_soggetto_emittente terzo_intermediario_o_soggetto_emittente
      *
      * @return self
      */

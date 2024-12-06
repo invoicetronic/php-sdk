@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * DatiTrasmissione Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,11 +58,11 @@ class DatiTrasmissione implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id_trasmittente' => '\InvoicetronicInvoiceSdk\Model\IdTrasmittente',
+        'id_trasmittente' => '\Invoicetronic\Model\IdTrasmittente',
         'progressivo_invio' => 'string',
         'formato_trasmissione' => 'string',
         'codice_destinatario' => 'string',
-        'contatti_trasmittente' => '\InvoicetronicInvoiceSdk\Model\ContattiTrasmittente',
+        'contatti_trasmittente' => '\Invoicetronic\Model\ContattiTrasmittente',
         'pec_destinatario' => 'string'
     ];
 
@@ -328,7 +328,7 @@ class DatiTrasmissione implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets id_trasmittente
      *
-     * @return \InvoicetronicInvoiceSdk\Model\IdTrasmittente|null
+     * @return \Invoicetronic\Model\IdTrasmittente|null
      */
     public function getIdTrasmittente()
     {
@@ -338,7 +338,7 @@ class DatiTrasmissione implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets id_trasmittente
      *
-     * @param \InvoicetronicInvoiceSdk\Model\IdTrasmittente|null $id_trasmittente id_trasmittente
+     * @param \Invoicetronic\Model\IdTrasmittente|null $id_trasmittente id_trasmittente
      *
      * @return self
      */
@@ -457,7 +457,7 @@ class DatiTrasmissione implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets contatti_trasmittente
      *
-     * @return \InvoicetronicInvoiceSdk\Model\ContattiTrasmittente|null
+     * @return \Invoicetronic\Model\ContattiTrasmittente|null
      */
     public function getContattiTrasmittente()
     {
@@ -467,7 +467,7 @@ class DatiTrasmissione implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets contatti_trasmittente
      *
-     * @param \InvoicetronicInvoiceSdk\Model\ContattiTrasmittente|null $contatti_trasmittente contatti_trasmittente
+     * @param \Invoicetronic\Model\ContattiTrasmittente|null $contatti_trasmittente contatti_trasmittente
      *
      * @return self
      */

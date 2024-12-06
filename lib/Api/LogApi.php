@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Api;
+namespace Invoicetronic\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use InvoicetronicInvoiceSdk\ApiException;
-use InvoicetronicInvoiceSdk\Configuration;
-use InvoicetronicInvoiceSdk\HeaderSelector;
-use InvoicetronicInvoiceSdk\ObjectSerializer;
+use Invoicetronic\ApiException;
+use Invoicetronic\Configuration;
+use Invoicetronic\HeaderSelector;
+use Invoicetronic\ObjectSerializer;
 
 /**
  * LogApi Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -135,9 +135,9 @@ class LogApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Event[]
+     * @return \Invoicetronic\Model\Event[]
      */
     public function invoiceV1LogGet($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
     {
@@ -154,9 +154,9 @@ class LogApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Event[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Event[], HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1LogGetWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
     {
@@ -187,11 +187,11 @@ class LogApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Event[]' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Event[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Event[]' !== 'string') {
+                        if ('\Invoicetronic\Model\Event[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -209,7 +209,7 @@ class LogApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Event[]', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Event[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -228,7 +228,7 @@ class LogApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Event[]';
+            $returnType = '\Invoicetronic\Model\Event[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -261,7 +261,7 @@ class LogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Event[]',
+                        '\Invoicetronic\Model\Event[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -307,7 +307,7 @@ class LogApi
      */
     public function invoiceV1LogGetAsyncWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Event[]';
+        $returnType = '\Invoicetronic\Model\Event[]';
         $request = $this->invoiceV1LogGetRequest($page, $page_size, $contentType);
 
         return $this->client
@@ -456,9 +456,9 @@ class LogApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Event
+     * @return \Invoicetronic\Model\Event
      */
     public function invoiceV1LogIdGet($id, string $contentType = self::contentTypes['invoiceV1LogIdGet'][0])
     {
@@ -474,9 +474,9 @@ class LogApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Event, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Event, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1LogIdGetWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1LogIdGet'][0])
     {
@@ -507,11 +507,11 @@ class LogApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Event' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Event' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Event' !== 'string') {
+                        if ('\Invoicetronic\Model\Event' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -529,7 +529,7 @@ class LogApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Event', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Event', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -548,7 +548,7 @@ class LogApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Event';
+            $returnType = '\Invoicetronic\Model\Event';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -581,7 +581,7 @@ class LogApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Event',
+                        '\Invoicetronic\Model\Event',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -625,7 +625,7 @@ class LogApi
      */
     public function invoiceV1LogIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1LogIdGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Event';
+        $returnType = '\Invoicetronic\Model\Event';
         $request = $this->invoiceV1LogIdGetRequest($id, $contentType);
 
         return $this->client

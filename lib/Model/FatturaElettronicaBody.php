@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * FatturaElettronicaBody Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,11 +58,11 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dati_generali' => '\InvoicetronicInvoiceSdk\Model\DatiGenerali',
-        'dati_beni_servizi' => '\InvoicetronicInvoiceSdk\Model\DatiBeniServizi',
-        'dati_veicoli' => '\InvoicetronicInvoiceSdk\Model\DatiVeicoli',
-        'dati_pagamento' => '\InvoicetronicInvoiceSdk\Model\DatiPagamento[]',
-        'allegati' => '\InvoicetronicInvoiceSdk\Model\Allegati[]'
+        'dati_generali' => '\Invoicetronic\Model\DatiGenerali',
+        'dati_beni_servizi' => '\Invoicetronic\Model\DatiBeniServizi',
+        'dati_veicoli' => '\Invoicetronic\Model\DatiVeicoli',
+        'dati_pagamento' => '\Invoicetronic\Model\DatiPagamento[]',
+        'allegati' => '\Invoicetronic\Model\Allegati[]'
     ];
 
     /**
@@ -321,7 +321,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets dati_generali
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiGenerali|null
+     * @return \Invoicetronic\Model\DatiGenerali|null
      */
     public function getDatiGenerali()
     {
@@ -331,7 +331,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets dati_generali
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiGenerali|null $dati_generali dati_generali
+     * @param \Invoicetronic\Model\DatiGenerali|null $dati_generali dati_generali
      *
      * @return self
      */
@@ -348,7 +348,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets dati_beni_servizi
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiBeniServizi|null
+     * @return \Invoicetronic\Model\DatiBeniServizi|null
      */
     public function getDatiBeniServizi()
     {
@@ -358,7 +358,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets dati_beni_servizi
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiBeniServizi|null $dati_beni_servizi dati_beni_servizi
+     * @param \Invoicetronic\Model\DatiBeniServizi|null $dati_beni_servizi dati_beni_servizi
      *
      * @return self
      */
@@ -375,7 +375,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets dati_veicoli
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiVeicoli|null
+     * @return \Invoicetronic\Model\DatiVeicoli|null
      */
     public function getDatiVeicoli()
     {
@@ -385,7 +385,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets dati_veicoli
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiVeicoli|null $dati_veicoli dati_veicoli
+     * @param \Invoicetronic\Model\DatiVeicoli|null $dati_veicoli dati_veicoli
      *
      * @return self
      */
@@ -402,7 +402,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets dati_pagamento
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiPagamento[]|null
+     * @return \Invoicetronic\Model\DatiPagamento[]|null
      */
     public function getDatiPagamento()
     {
@@ -412,7 +412,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets dati_pagamento
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiPagamento[]|null $dati_pagamento dati_pagamento
+     * @param \Invoicetronic\Model\DatiPagamento[]|null $dati_pagamento dati_pagamento
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets allegati
      *
-     * @return \InvoicetronicInvoiceSdk\Model\Allegati[]|null
+     * @return \Invoicetronic\Model\Allegati[]|null
      */
     public function getAllegati()
     {
@@ -446,7 +446,7 @@ class FatturaElettronicaBody implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets allegati
      *
-     * @param \InvoicetronicInvoiceSdk\Model\Allegati[]|null $allegati allegati
+     * @param \Invoicetronic\Model\Allegati[]|null $allegati allegati
      *
      * @return self
      */

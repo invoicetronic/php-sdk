@@ -1,4 +1,4 @@
-# InvoicetronicInvoiceSdk\CompanyApi
+# Invoicetronic\CompanyApi
 
 All URIs are relative to https://api.invoicetronic.com, except if the operation defines another base path.
 
@@ -14,7 +14,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `invoiceV1CompanyGet()`
 
 ```php
-invoiceV1CompanyGet($page, $page_size): \InvoicetronicInvoiceSdk\Model\Company[]
+invoiceV1CompanyGet($page, $page_size): \Invoicetronic\Model\Company[]
 ```
 
 List companies
@@ -29,12 +29,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\CompanyApi(
+$apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -60,7 +60,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Company[]**](../Model/Company.md)
+[**\Invoicetronic\Model\Company[]**](../Model/Company.md)
 
 ### Authorization
 
@@ -78,7 +78,7 @@ try {
 ## `invoiceV1CompanyIdDelete()`
 
 ```php
-invoiceV1CompanyIdDelete($id): \InvoicetronicInvoiceSdk\Model\Company
+invoiceV1CompanyIdDelete($id): \Invoicetronic\Model\Company
 ```
 
 Delete a company
@@ -93,12 +93,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\CompanyApi(
+$apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -122,7 +122,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Company**](../Model/Company.md)
+[**\Invoicetronic\Model\Company**](../Model/Company.md)
 
 ### Authorization
 
@@ -140,7 +140,7 @@ try {
 ## `invoiceV1CompanyIdGet()`
 
 ```php
-invoiceV1CompanyIdGet($id): \InvoicetronicInvoiceSdk\Model\Company
+invoiceV1CompanyIdGet($id): \Invoicetronic\Model\Company
 ```
 
 Get a company by id
@@ -155,12 +155,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\CompanyApi(
+$apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -184,7 +184,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Company**](../Model/Company.md)
+[**\Invoicetronic\Model\Company**](../Model/Company.md)
 
 ### Authorization
 
@@ -202,7 +202,7 @@ try {
 ## `invoiceV1CompanyPost()`
 
 ```php
-invoiceV1CompanyPost($company): \InvoicetronicInvoiceSdk\Model\Company
+invoiceV1CompanyPost($company): \Invoicetronic\Model\Company
 ```
 
 Add a company
@@ -217,18 +217,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\CompanyApi(
+$apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$company = new \InvoicetronicInvoiceSdk\Model\Company(); // \InvoicetronicInvoiceSdk\Model\Company
+$company = new \Invoicetronic\Model\Company(); // \Invoicetronic\Model\Company
 
 try {
     $result = $apiInstance->invoiceV1CompanyPost($company);
@@ -242,11 +242,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **company** | [**\InvoicetronicInvoiceSdk\Model\Company**](../Model/Company.md)|  | |
+| **company** | [**\Invoicetronic\Model\Company**](../Model/Company.md)|  | |
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Company**](../Model/Company.md)
+[**\Invoicetronic\Model\Company**](../Model/Company.md)
 
 ### Authorization
 
@@ -264,7 +264,7 @@ try {
 ## `invoiceV1CompanyPut()`
 
 ```php
-invoiceV1CompanyPut($company): \InvoicetronicInvoiceSdk\Model\Company
+invoiceV1CompanyPut($company): \Invoicetronic\Model\Company
 ```
 
 Update a company
@@ -279,18 +279,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\CompanyApi(
+$apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$company = new \InvoicetronicInvoiceSdk\Model\Company(); // \InvoicetronicInvoiceSdk\Model\Company
+$company = new \Invoicetronic\Model\Company(); // \Invoicetronic\Model\Company
 
 try {
     $result = $apiInstance->invoiceV1CompanyPut($company);
@@ -304,11 +304,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **company** | [**\InvoicetronicInvoiceSdk\Model\Company**](../Model/Company.md)|  | |
+| **company** | [**\Invoicetronic\Model\Company**](../Model/Company.md)|  | |
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Company**](../Model/Company.md)
+[**\Invoicetronic\Model\Company**](../Model/Company.md)
 
 ### Authorization
 

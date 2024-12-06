@@ -1,4 +1,4 @@
-# InvoicetronicInvoiceSdk\LogApi
+# Invoicetronic\LogApi
 
 All URIs are relative to https://api.invoicetronic.com, except if the operation defines another base path.
 
@@ -11,7 +11,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `invoiceV1LogGet()`
 
 ```php
-invoiceV1LogGet($page, $page_size): \InvoicetronicInvoiceSdk\Model\Event[]
+invoiceV1LogGet($page, $page_size): \Invoicetronic\Model\Event[]
 ```
 
 List events
@@ -26,12 +26,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\LogApi(
+$apiInstance = new Invoicetronic\Api\LogApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -57,7 +57,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Event[]**](../Model/Event.md)
+[**\Invoicetronic\Model\Event[]**](../Model/Event.md)
 
 ### Authorization
 
@@ -75,7 +75,7 @@ try {
 ## `invoiceV1LogIdGet()`
 
 ```php
-invoiceV1LogIdGet($id): \InvoicetronicInvoiceSdk\Model\Event
+invoiceV1LogIdGet($id): \Invoicetronic\Model\Event
 ```
 
 Get an event by id
@@ -90,12 +90,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\LogApi(
+$apiInstance = new Invoicetronic\Api\LogApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -119,7 +119,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Event**](../Model/Event.md)
+[**\Invoicetronic\Model\Event**](../Model/Event.md)
 
 ### Authorization
 

@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **state** | **string** | State of the document. Theses are the possible values, as per the SDI documentation: | [optional]
 **description** | **string** | Description for the state. | [optional]
 **message_id** | **string** | SDI message id. | [optional]
-**errors** | [**\InvoicetronicInvoiceSdk\Model\Error[]**](Error.md) | SDI errors, if any. | [optional]
+**errors** | [**\Invoicetronic\Model\Error[]**](Error.md) | SDI errors, if any. | [optional]
 **is_read** | **bool** | Wether the item has been read at least once. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

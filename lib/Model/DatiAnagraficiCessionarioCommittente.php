@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * DatiAnagraficiCessionarioCommittente Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,9 +58,9 @@ class DatiAnagraficiCessionarioCommittente implements ModelInterface, ArrayAcces
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id_fiscale_iva' => '\InvoicetronicInvoiceSdk\Model\IdFiscaleIVA',
+        'id_fiscale_iva' => '\Invoicetronic\Model\IdFiscaleIVA',
         'codice_fiscale' => 'string',
-        'anagrafica' => '\InvoicetronicInvoiceSdk\Model\Anagrafica'
+        'anagrafica' => '\Invoicetronic\Model\Anagrafica'
     ];
 
     /**
@@ -307,7 +307,7 @@ class DatiAnagraficiCessionarioCommittente implements ModelInterface, ArrayAcces
     /**
      * Gets id_fiscale_iva
      *
-     * @return \InvoicetronicInvoiceSdk\Model\IdFiscaleIVA|null
+     * @return \Invoicetronic\Model\IdFiscaleIVA|null
      */
     public function getIdFiscaleIva()
     {
@@ -317,7 +317,7 @@ class DatiAnagraficiCessionarioCommittente implements ModelInterface, ArrayAcces
     /**
      * Sets id_fiscale_iva
      *
-     * @param \InvoicetronicInvoiceSdk\Model\IdFiscaleIVA|null $id_fiscale_iva id_fiscale_iva
+     * @param \Invoicetronic\Model\IdFiscaleIVA|null $id_fiscale_iva id_fiscale_iva
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class DatiAnagraficiCessionarioCommittente implements ModelInterface, ArrayAcces
     /**
      * Gets anagrafica
      *
-     * @return \InvoicetronicInvoiceSdk\Model\Anagrafica|null
+     * @return \Invoicetronic\Model\Anagrafica|null
      */
     public function getAnagrafica()
     {
@@ -378,7 +378,7 @@ class DatiAnagraficiCessionarioCommittente implements ModelInterface, ArrayAcces
     /**
      * Sets anagrafica
      *
-     * @param \InvoicetronicInvoiceSdk\Model\Anagrafica|null $anagrafica anagrafica
+     * @param \Invoicetronic\Model\Anagrafica|null $anagrafica anagrafica
      *
      * @return self
      */

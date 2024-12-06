@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * Update Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -70,7 +70,7 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'state' => 'string',
         'description' => 'string',
         'message_id' => 'string',
-        'errors' => '\InvoicetronicInvoiceSdk\Model\Error[]',
+        'errors' => '\Invoicetronic\Model\Error[]',
         'is_read' => 'bool'
     ];
 
@@ -784,7 +784,7 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets errors
      *
-     * @return \InvoicetronicInvoiceSdk\Model\Error[]|null
+     * @return \Invoicetronic\Model\Error[]|null
      */
     public function getErrors()
     {
@@ -794,7 +794,7 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets errors
      *
-     * @param \InvoicetronicInvoiceSdk\Model\Error[]|null $errors SDI errors, if any.
+     * @param \Invoicetronic\Model\Error[]|null $errors SDI errors, if any.
      *
      * @return self
      */

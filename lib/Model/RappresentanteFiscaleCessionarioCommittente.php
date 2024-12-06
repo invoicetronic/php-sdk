@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * RappresentanteFiscaleCessionarioCommittente Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -61,7 +61,7 @@ class RappresentanteFiscaleCessionarioCommittente implements ModelInterface, Arr
         'denominazione' => 'string',
         'nome' => 'string',
         'cognome' => 'string',
-        'id_fiscale_iva' => '\InvoicetronicInvoiceSdk\Model\IdFiscaleIVA'
+        'id_fiscale_iva' => '\Invoicetronic\Model\IdFiscaleIVA'
     ];
 
     /**
@@ -416,7 +416,7 @@ class RappresentanteFiscaleCessionarioCommittente implements ModelInterface, Arr
     /**
      * Gets id_fiscale_iva
      *
-     * @return \InvoicetronicInvoiceSdk\Model\IdFiscaleIVA|null
+     * @return \Invoicetronic\Model\IdFiscaleIVA|null
      */
     public function getIdFiscaleIva()
     {
@@ -426,7 +426,7 @@ class RappresentanteFiscaleCessionarioCommittente implements ModelInterface, Arr
     /**
      * Sets id_fiscale_iva
      *
-     * @param \InvoicetronicInvoiceSdk\Model\IdFiscaleIVA|null $id_fiscale_iva id_fiscale_iva
+     * @param \Invoicetronic\Model\IdFiscaleIVA|null $id_fiscale_iva id_fiscale_iva
      *
      * @return self
      */

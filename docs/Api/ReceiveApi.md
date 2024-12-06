@@ -1,4 +1,4 @@
-# InvoicetronicInvoiceSdk\ReceiveApi
+# Invoicetronic\ReceiveApi
 
 All URIs are relative to https://api.invoicetronic.com, except if the operation defines another base path.
 
@@ -12,7 +12,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `invoiceV1ReceiveGet()`
 
 ```php
-invoiceV1ReceiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size): \InvoicetronicInvoiceSdk\Model\Receive[]
+invoiceV1ReceiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size): \Invoicetronic\Model\Receive[]
 ```
 
 List incoming invoices
@@ -27,12 +27,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\ReceiveApi(
+$apiInstance = new Invoicetronic\Api\ReceiveApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -84,7 +84,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Receive[]**](../Model/Receive.md)
+[**\Invoicetronic\Model\Receive[]**](../Model/Receive.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ try {
 ## `invoiceV1ReceiveIdDelete()`
 
 ```php
-invoiceV1ReceiveIdDelete($id): \InvoicetronicInvoiceSdk\Model\Receive
+invoiceV1ReceiveIdDelete($id): \Invoicetronic\Model\Receive
 ```
 
 Delete an incoming invoice by id
@@ -117,12 +117,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\ReceiveApi(
+$apiInstance = new Invoicetronic\Api\ReceiveApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -146,7 +146,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Receive**](../Model/Receive.md)
+[**\Invoicetronic\Model\Receive**](../Model/Receive.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ try {
 ## `invoiceV1ReceiveIdGet()`
 
 ```php
-invoiceV1ReceiveIdGet($id): \InvoicetronicInvoiceSdk\Model\Receive
+invoiceV1ReceiveIdGet($id): \Invoicetronic\Model\Receive
 ```
 
 Get an incoming invoice by id
@@ -179,12 +179,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\ReceiveApi(
+$apiInstance = new Invoicetronic\Api\ReceiveApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -208,7 +208,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Receive**](../Model/Receive.md)
+[**\Invoicetronic\Model\Receive**](../Model/Receive.md)
 
 ### Authorization
 

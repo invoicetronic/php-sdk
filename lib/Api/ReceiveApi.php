@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Api;
+namespace Invoicetronic\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use InvoicetronicInvoiceSdk\ApiException;
-use InvoicetronicInvoiceSdk\Configuration;
-use InvoicetronicInvoiceSdk\HeaderSelector;
-use InvoicetronicInvoiceSdk\ObjectSerializer;
+use Invoicetronic\ApiException;
+use Invoicetronic\Configuration;
+use Invoicetronic\HeaderSelector;
+use Invoicetronic\ObjectSerializer;
 
 /**
  * ReceiveApi Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -151,9 +151,9 @@ class ReceiveApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1ReceiveGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Receive[]|\InvoicetronicInvoiceSdk\Model\ProblemDetails
+     * @return \Invoicetronic\Model\Receive[]|\Invoicetronic\Model\ProblemDetails
      */
     public function invoiceV1ReceiveGet($company_id = null, $identifier = null, $unread = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1ReceiveGet'][0])
     {
@@ -183,9 +183,9 @@ class ReceiveApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1ReceiveGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Receive[]|\InvoicetronicInvoiceSdk\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Receive[]|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1ReceiveGetWithHttpInfo($company_id = null, $identifier = null, $unread = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1ReceiveGet'][0])
     {
@@ -216,11 +216,11 @@ class ReceiveApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Receive[]' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Receive[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Receive[]' !== 'string') {
+                        if ('\Invoicetronic\Model\Receive[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -238,16 +238,16 @@ class ReceiveApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Receive[]', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Receive[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\InvoicetronicInvoiceSdk\Model\ProblemDetails' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\ProblemDetails' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\ProblemDetails' !== 'string') {
+                        if ('\Invoicetronic\Model\ProblemDetails' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -265,7 +265,7 @@ class ReceiveApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\ProblemDetails', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemDetails', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -284,7 +284,7 @@ class ReceiveApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Receive[]';
+            $returnType = '\Invoicetronic\Model\Receive[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -317,7 +317,7 @@ class ReceiveApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Receive[]',
+                        '\Invoicetronic\Model\Receive[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -325,7 +325,7 @@ class ReceiveApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\ProblemDetails',
+                        '\Invoicetronic\Model\ProblemDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -397,7 +397,7 @@ class ReceiveApi
      */
     public function invoiceV1ReceiveGetAsyncWithHttpInfo($company_id = null, $identifier = null, $unread = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1ReceiveGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Receive[]';
+        $returnType = '\Invoicetronic\Model\Receive[]';
         $request = $this->invoiceV1ReceiveGetRequest($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size, $contentType);
 
         return $this->client
@@ -689,9 +689,9 @@ class ReceiveApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1ReceiveIdDelete'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Receive
+     * @return \Invoicetronic\Model\Receive
      */
     public function invoiceV1ReceiveIdDelete($id, string $contentType = self::contentTypes['invoiceV1ReceiveIdDelete'][0])
     {
@@ -707,9 +707,9 @@ class ReceiveApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1ReceiveIdDelete'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Receive, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Receive, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1ReceiveIdDeleteWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1ReceiveIdDelete'][0])
     {
@@ -740,11 +740,11 @@ class ReceiveApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Receive' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Receive' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Receive' !== 'string') {
+                        if ('\Invoicetronic\Model\Receive' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -762,7 +762,7 @@ class ReceiveApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Receive', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Receive', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -781,7 +781,7 @@ class ReceiveApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Receive';
+            $returnType = '\Invoicetronic\Model\Receive';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -814,7 +814,7 @@ class ReceiveApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Receive',
+                        '\Invoicetronic\Model\Receive',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -858,7 +858,7 @@ class ReceiveApi
      */
     public function invoiceV1ReceiveIdDeleteAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1ReceiveIdDelete'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Receive';
+        $returnType = '\Invoicetronic\Model\Receive';
         $request = $this->invoiceV1ReceiveIdDeleteRequest($id, $contentType);
 
         return $this->client
@@ -1001,9 +1001,9 @@ class ReceiveApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1ReceiveIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Receive
+     * @return \Invoicetronic\Model\Receive
      */
     public function invoiceV1ReceiveIdGet($id, string $contentType = self::contentTypes['invoiceV1ReceiveIdGet'][0])
     {
@@ -1019,9 +1019,9 @@ class ReceiveApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1ReceiveIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Receive, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Receive, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1ReceiveIdGetWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1ReceiveIdGet'][0])
     {
@@ -1052,11 +1052,11 @@ class ReceiveApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Receive' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Receive' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Receive' !== 'string') {
+                        if ('\Invoicetronic\Model\Receive' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1074,7 +1074,7 @@ class ReceiveApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Receive', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Receive', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1093,7 +1093,7 @@ class ReceiveApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Receive';
+            $returnType = '\Invoicetronic\Model\Receive';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1126,7 +1126,7 @@ class ReceiveApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Receive',
+                        '\Invoicetronic\Model\Receive',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1170,7 +1170,7 @@ class ReceiveApi
      */
     public function invoiceV1ReceiveIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1ReceiveIdGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Receive';
+        $returnType = '\Invoicetronic\Model\Receive';
         $request = $this->invoiceV1ReceiveIdGetRequest($id, $contentType);
 
         return $this->client

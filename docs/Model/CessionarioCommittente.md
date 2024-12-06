@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dati_anagrafici** | [**\InvoicetronicInvoiceSdk\Model\DatiAnagraficiCessionarioCommittente**](DatiAnagraficiCessionarioCommittente.md) |  | [optional]
-**sede** | [**\InvoicetronicInvoiceSdk\Model\SedeCessionarioCommittente**](SedeCessionarioCommittente.md) |  | [optional]
-**stabile_organizzazione** | [**\InvoicetronicInvoiceSdk\Model\StabileOrganizzazione**](StabileOrganizzazione.md) |  | [optional]
-**rappresentante_fiscale** | [**\InvoicetronicInvoiceSdk\Model\RappresentanteFiscaleCessionarioCommittente**](RappresentanteFiscaleCessionarioCommittente.md) |  | [optional]
+**dati_anagrafici** | [**\Invoicetronic\Model\DatiAnagraficiCessionarioCommittente**](DatiAnagraficiCessionarioCommittente.md) |  | [optional]
+**sede** | [**\Invoicetronic\Model\SedeCessionarioCommittente**](SedeCessionarioCommittente.md) |  | [optional]
+**stabile_organizzazione** | [**\Invoicetronic\Model\StabileOrganizzazione**](StabileOrganizzazione.md) |  | [optional]
+**rappresentante_fiscale** | [**\Invoicetronic\Model\RappresentanteFiscaleCessionarioCommittente**](RappresentanteFiscaleCessionarioCommittente.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

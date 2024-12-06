@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Api;
+namespace Invoicetronic\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use InvoicetronicInvoiceSdk\ApiException;
-use InvoicetronicInvoiceSdk\Configuration;
-use InvoicetronicInvoiceSdk\HeaderSelector;
-use InvoicetronicInvoiceSdk\ObjectSerializer;
+use Invoicetronic\ApiException;
+use Invoicetronic\Configuration;
+use Invoicetronic\HeaderSelector;
+use Invoicetronic\ObjectSerializer;
 
 /**
  * UpdateApi Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -144,9 +144,9 @@ class UpdateApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Update[]
+     * @return \Invoicetronic\Model\Update[]
      */
     public function invoiceV1UpdateGet($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1UpdateGet'][0])
     {
@@ -172,9 +172,9 @@ class UpdateApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Update[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Update[], HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1UpdateGetWithHttpInfo($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1UpdateGet'][0])
     {
@@ -205,11 +205,11 @@ class UpdateApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Update[]' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Update[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Update[]' !== 'string') {
+                        if ('\Invoicetronic\Model\Update[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -227,7 +227,7 @@ class UpdateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Update[]', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Update[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -246,7 +246,7 @@ class UpdateApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Update[]';
+            $returnType = '\Invoicetronic\Model\Update[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -279,7 +279,7 @@ class UpdateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Update[]',
+                        '\Invoicetronic\Model\Update[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -343,7 +343,7 @@ class UpdateApi
      */
     public function invoiceV1UpdateGetAsyncWithHttpInfo($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1UpdateGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Update[]';
+        $returnType = '\Invoicetronic\Model\Update[]';
         $request = $this->invoiceV1UpdateGetRequest($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $contentType);
 
         return $this->client
@@ -591,9 +591,9 @@ class UpdateApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Update
+     * @return \Invoicetronic\Model\Update
      */
     public function invoiceV1UpdateIdGet($id, string $contentType = self::contentTypes['invoiceV1UpdateIdGet'][0])
     {
@@ -609,9 +609,9 @@ class UpdateApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Update, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Update, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1UpdateIdGetWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1UpdateIdGet'][0])
     {
@@ -642,11 +642,11 @@ class UpdateApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Update' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Update' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Update' !== 'string') {
+                        if ('\Invoicetronic\Model\Update' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -664,7 +664,7 @@ class UpdateApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Update', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Update', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -683,7 +683,7 @@ class UpdateApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Update';
+            $returnType = '\Invoicetronic\Model\Update';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -716,7 +716,7 @@ class UpdateApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Update',
+                        '\Invoicetronic\Model\Update',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -760,7 +760,7 @@ class UpdateApi
      */
     public function invoiceV1UpdateIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1UpdateIdGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Update';
+        $returnType = '\Invoicetronic\Model\Update';
         $request = $this->invoiceV1UpdateIdGetRequest($id, $contentType);
 
         return $this->client

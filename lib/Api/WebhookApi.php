@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Api;
+namespace Invoicetronic\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use InvoicetronicInvoiceSdk\ApiException;
-use InvoicetronicInvoiceSdk\Configuration;
-use InvoicetronicInvoiceSdk\HeaderSelector;
-use InvoicetronicInvoiceSdk\ObjectSerializer;
+use Invoicetronic\ApiException;
+use Invoicetronic\Configuration;
+use Invoicetronic\HeaderSelector;
+use Invoicetronic\ObjectSerializer;
 
 /**
  * WebhookApi Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -150,9 +150,9 @@ class WebhookApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\WebHook[]
+     * @return \Invoicetronic\Model\WebHook[]
      */
     public function invoiceV1WebhookGet($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookGet'][0])
     {
@@ -169,9 +169,9 @@ class WebhookApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\WebHook[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook[], HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookGetWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookGet'][0])
     {
@@ -202,11 +202,11 @@ class WebhookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\WebHook[]' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\WebHook[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\WebHook[]' !== 'string') {
+                        if ('\Invoicetronic\Model\WebHook[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -224,7 +224,7 @@ class WebhookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\WebHook[]', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\WebHook[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -243,7 +243,7 @@ class WebhookApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook[]';
+            $returnType = '\Invoicetronic\Model\WebHook[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -276,7 +276,7 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\WebHook[]',
+                        '\Invoicetronic\Model\WebHook[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -322,7 +322,7 @@ class WebhookApi
      */
     public function invoiceV1WebhookGetAsyncWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook[]';
+        $returnType = '\Invoicetronic\Model\WebHook[]';
         $request = $this->invoiceV1WebhookGetRequest($page, $page_size, $contentType);
 
         return $this->client
@@ -471,9 +471,9 @@ class WebhookApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookIdDelete'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\WebHook
+     * @return \Invoicetronic\Model\WebHook
      */
     public function invoiceV1WebhookIdDelete($id, string $contentType = self::contentTypes['invoiceV1WebhookIdDelete'][0])
     {
@@ -489,9 +489,9 @@ class WebhookApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookIdDelete'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookIdDeleteWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1WebhookIdDelete'][0])
     {
@@ -522,11 +522,11 @@ class WebhookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\WebHook' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\WebHook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\WebHook' !== 'string') {
+                        if ('\Invoicetronic\Model\WebHook' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -544,7 +544,7 @@ class WebhookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\WebHook', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\WebHook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -563,7 +563,7 @@ class WebhookApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook';
+            $returnType = '\Invoicetronic\Model\WebHook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -596,7 +596,7 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\WebHook',
+                        '\Invoicetronic\Model\WebHook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -640,7 +640,7 @@ class WebhookApi
      */
     public function invoiceV1WebhookIdDeleteAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1WebhookIdDelete'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook';
+        $returnType = '\Invoicetronic\Model\WebHook';
         $request = $this->invoiceV1WebhookIdDeleteRequest($id, $contentType);
 
         return $this->client
@@ -783,9 +783,9 @@ class WebhookApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\WebHook
+     * @return \Invoicetronic\Model\WebHook
      */
     public function invoiceV1WebhookIdGet($id, string $contentType = self::contentTypes['invoiceV1WebhookIdGet'][0])
     {
@@ -801,9 +801,9 @@ class WebhookApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookIdGetWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1WebhookIdGet'][0])
     {
@@ -834,11 +834,11 @@ class WebhookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\WebHook' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\WebHook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\WebHook' !== 'string') {
+                        if ('\Invoicetronic\Model\WebHook' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -856,7 +856,7 @@ class WebhookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\WebHook', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\WebHook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -875,7 +875,7 @@ class WebhookApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook';
+            $returnType = '\Invoicetronic\Model\WebHook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -908,7 +908,7 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\WebHook',
+                        '\Invoicetronic\Model\WebHook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -952,7 +952,7 @@ class WebhookApi
      */
     public function invoiceV1WebhookIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1WebhookIdGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook';
+        $returnType = '\Invoicetronic\Model\WebHook';
         $request = $this->invoiceV1WebhookIdGetRequest($id, $contentType);
 
         return $this->client
@@ -1092,12 +1092,12 @@ class WebhookApi
      *
      * Add a webhook
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\WebHook
+     * @return \Invoicetronic\Model\WebHook
      */
     public function invoiceV1WebhookPost($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPost'][0])
     {
@@ -1110,12 +1110,12 @@ class WebhookApi
      *
      * Add a webhook
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookPostWithHttpInfo($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPost'][0])
     {
@@ -1146,11 +1146,11 @@ class WebhookApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\InvoicetronicInvoiceSdk\Model\WebHook' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\WebHook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\WebHook' !== 'string') {
+                        if ('\Invoicetronic\Model\WebHook' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1168,7 +1168,7 @@ class WebhookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\WebHook', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\WebHook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1187,7 +1187,7 @@ class WebhookApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook';
+            $returnType = '\Invoicetronic\Model\WebHook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1220,7 +1220,7 @@ class WebhookApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\WebHook',
+                        '\Invoicetronic\Model\WebHook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1235,7 +1235,7 @@ class WebhookApi
      *
      * Add a webhook
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1256,7 +1256,7 @@ class WebhookApi
      *
      * Add a webhook
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1264,7 +1264,7 @@ class WebhookApi
      */
     public function invoiceV1WebhookPostAsyncWithHttpInfo($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPost'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook';
+        $returnType = '\Invoicetronic\Model\WebHook';
         $request = $this->invoiceV1WebhookPostRequest($web_hook, $contentType);
 
         return $this->client
@@ -1306,7 +1306,7 @@ class WebhookApi
     /**
      * Create request for operation 'invoiceV1WebhookPost'
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1403,12 +1403,12 @@ class WebhookApi
      *
      * Update a webhook
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPut'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\WebHook
+     * @return \Invoicetronic\Model\WebHook
      */
     public function invoiceV1WebhookPut($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPut'][0])
     {
@@ -1421,12 +1421,12 @@ class WebhookApi
      *
      * Update a webhook
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPut'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookPutWithHttpInfo($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPut'][0])
     {
@@ -1457,11 +1457,11 @@ class WebhookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\WebHook' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\WebHook' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\WebHook' !== 'string') {
+                        if ('\Invoicetronic\Model\WebHook' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1479,7 +1479,7 @@ class WebhookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\WebHook', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\WebHook', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1498,7 +1498,7 @@ class WebhookApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook';
+            $returnType = '\Invoicetronic\Model\WebHook';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1531,7 +1531,7 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\WebHook',
+                        '\Invoicetronic\Model\WebHook',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1546,7 +1546,7 @@ class WebhookApi
      *
      * Update a webhook
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1567,7 +1567,7 @@ class WebhookApi
      *
      * Update a webhook
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1575,7 +1575,7 @@ class WebhookApi
      */
     public function invoiceV1WebhookPutAsyncWithHttpInfo($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPut'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\WebHook';
+        $returnType = '\Invoicetronic\Model\WebHook';
         $request = $this->invoiceV1WebhookPutRequest($web_hook, $contentType);
 
         return $this->client
@@ -1617,7 +1617,7 @@ class WebhookApi
     /**
      * Create request for operation 'invoiceV1WebhookPut'
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\WebHook $web_hook (required)
+     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1718,9 +1718,9 @@ class WebhookApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookhistoryGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\WebHookHistory[]
+     * @return \Invoicetronic\Model\WebHookHistory[]
      */
     public function invoiceV1WebhookhistoryGet($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookhistoryGet'][0])
     {
@@ -1737,9 +1737,9 @@ class WebhookApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookhistoryGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\WebHookHistory[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHookHistory[], HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookhistoryGetWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookhistoryGet'][0])
     {
@@ -1770,11 +1770,11 @@ class WebhookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\WebHookHistory[]' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\WebHookHistory[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\WebHookHistory[]' !== 'string') {
+                        if ('\Invoicetronic\Model\WebHookHistory[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1792,7 +1792,7 @@ class WebhookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\WebHookHistory[]', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\WebHookHistory[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1811,7 +1811,7 @@ class WebhookApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\WebHookHistory[]';
+            $returnType = '\Invoicetronic\Model\WebHookHistory[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1844,7 +1844,7 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\WebHookHistory[]',
+                        '\Invoicetronic\Model\WebHookHistory[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1890,7 +1890,7 @@ class WebhookApi
      */
     public function invoiceV1WebhookhistoryGetAsyncWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookhistoryGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\WebHookHistory[]';
+        $returnType = '\Invoicetronic\Model\WebHookHistory[]';
         $request = $this->invoiceV1WebhookhistoryGetRequest($page, $page_size, $contentType);
 
         return $this->client
@@ -2039,9 +2039,9 @@ class WebhookApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookhistoryIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\WebHookHistory
+     * @return \Invoicetronic\Model\WebHookHistory
      */
     public function invoiceV1WebhookhistoryIdGet($id, string $contentType = self::contentTypes['invoiceV1WebhookhistoryIdGet'][0])
     {
@@ -2057,9 +2057,9 @@ class WebhookApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1WebhookhistoryIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\WebHookHistory, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHookHistory, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookhistoryIdGetWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1WebhookhistoryIdGet'][0])
     {
@@ -2090,11 +2090,11 @@ class WebhookApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\WebHookHistory' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\WebHookHistory' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\WebHookHistory' !== 'string') {
+                        if ('\Invoicetronic\Model\WebHookHistory' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2112,7 +2112,7 @@ class WebhookApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\WebHookHistory', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\WebHookHistory', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2131,7 +2131,7 @@ class WebhookApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\WebHookHistory';
+            $returnType = '\Invoicetronic\Model\WebHookHistory';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2164,7 +2164,7 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\WebHookHistory',
+                        '\Invoicetronic\Model\WebHookHistory',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2208,7 +2208,7 @@ class WebhookApi
      */
     public function invoiceV1WebhookhistoryIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1WebhookhistoryIdGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\WebHookHistory';
+        $returnType = '\Invoicetronic\Model\WebHookHistory';
         $request = $this->invoiceV1WebhookhistoryIdGetRequest($id, $contentType);
 
         return $this->client

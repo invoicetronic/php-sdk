@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dati_anagrafici_vettore** | [**\InvoicetronicInvoiceSdk\Model\DatiAnagraficiVettore**](DatiAnagraficiVettore.md) |  | [optional]
+**dati_anagrafici_vettore** | [**\Invoicetronic\Model\DatiAnagraficiVettore**](DatiAnagraficiVettore.md) |  | [optional]
 **mezzo_trasporto** | **string** |  | [optional]
 **causale_trasporto** | **string** |  | [optional]
 **numero_colli** | **int** |  | [optional]
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **data_ora_ritiro** | **\DateTime** |  | [optional]
 **data_inizio_trasporto** | **\DateTime** |  | [optional]
 **tipo_resa** | **string** |  | [optional]
-**indirizzo_resa** | [**\InvoicetronicInvoiceSdk\Model\IndirizzoResa**](IndirizzoResa.md) |  | [optional]
+**indirizzo_resa** | [**\Invoicetronic\Model\IndirizzoResa**](IndirizzoResa.md) |  | [optional]
 **data_ora_consegna** | **\DateTime** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

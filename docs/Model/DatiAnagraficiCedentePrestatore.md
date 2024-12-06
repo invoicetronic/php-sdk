@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id_fiscale_iva** | [**\InvoicetronicInvoiceSdk\Model\IdFiscaleIVA**](IdFiscaleIVA.md) |  | [optional]
+**id_fiscale_iva** | [**\Invoicetronic\Model\IdFiscaleIVA**](IdFiscaleIVA.md) |  | [optional]
 **codice_fiscale** | **string** |  | [optional]
-**anagrafica** | [**\InvoicetronicInvoiceSdk\Model\Anagrafica**](Anagrafica.md) |  | [optional]
+**anagrafica** | [**\Invoicetronic\Model\Anagrafica**](Anagrafica.md) |  | [optional]
 **albo_professionale** | **string** |  | [optional]
 **provincia_albo** | **string** |  | [optional]
 **numero_iscrizione_albo** | **string** |  | [optional]

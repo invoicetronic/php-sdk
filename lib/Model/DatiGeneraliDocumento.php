@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * DatiGeneraliDocumento Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -62,10 +62,10 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
         'divisa' => 'string',
         'data' => '\DateTime',
         'numero' => 'string',
-        'dati_ritenuta' => '\InvoicetronicInvoiceSdk\Model\DatiRitenuta[]',
-        'dati_bollo' => '\InvoicetronicInvoiceSdk\Model\DatiBollo',
-        'dati_cassa_previdenziale' => '\InvoicetronicInvoiceSdk\Model\DatiCassaPrevidenziale[]',
-        'sconto_maggiorazione' => '\InvoicetronicInvoiceSdk\Model\ScontoMaggiorazione[]',
+        'dati_ritenuta' => '\Invoicetronic\Model\DatiRitenuta[]',
+        'dati_bollo' => '\Invoicetronic\Model\DatiBollo',
+        'dati_cassa_previdenziale' => '\Invoicetronic\Model\DatiCassaPrevidenziale[]',
+        'sconto_maggiorazione' => '\Invoicetronic\Model\ScontoMaggiorazione[]',
         'importo_totale_documento' => 'float',
         'arrotondamento' => 'float',
         'causale' => 'string[]',
@@ -499,7 +499,7 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets dati_ritenuta
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiRitenuta[]|null
+     * @return \Invoicetronic\Model\DatiRitenuta[]|null
      */
     public function getDatiRitenuta()
     {
@@ -509,7 +509,7 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets dati_ritenuta
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiRitenuta[]|null $dati_ritenuta dati_ritenuta
+     * @param \Invoicetronic\Model\DatiRitenuta[]|null $dati_ritenuta dati_ritenuta
      *
      * @return self
      */
@@ -533,7 +533,7 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets dati_bollo
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiBollo|null
+     * @return \Invoicetronic\Model\DatiBollo|null
      */
     public function getDatiBollo()
     {
@@ -543,7 +543,7 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets dati_bollo
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiBollo|null $dati_bollo dati_bollo
+     * @param \Invoicetronic\Model\DatiBollo|null $dati_bollo dati_bollo
      *
      * @return self
      */
@@ -560,7 +560,7 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets dati_cassa_previdenziale
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiCassaPrevidenziale[]|null
+     * @return \Invoicetronic\Model\DatiCassaPrevidenziale[]|null
      */
     public function getDatiCassaPrevidenziale()
     {
@@ -570,7 +570,7 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets dati_cassa_previdenziale
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiCassaPrevidenziale[]|null $dati_cassa_previdenziale dati_cassa_previdenziale
+     * @param \Invoicetronic\Model\DatiCassaPrevidenziale[]|null $dati_cassa_previdenziale dati_cassa_previdenziale
      *
      * @return self
      */
@@ -594,7 +594,7 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets sconto_maggiorazione
      *
-     * @return \InvoicetronicInvoiceSdk\Model\ScontoMaggiorazione[]|null
+     * @return \Invoicetronic\Model\ScontoMaggiorazione[]|null
      */
     public function getScontoMaggiorazione()
     {
@@ -604,7 +604,7 @@ class DatiGeneraliDocumento implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets sconto_maggiorazione
      *
-     * @param \InvoicetronicInvoiceSdk\Model\ScontoMaggiorazione[]|null $sconto_maggiorazione sconto_maggiorazione
+     * @param \Invoicetronic\Model\ScontoMaggiorazione[]|null $sconto_maggiorazione sconto_maggiorazione
      *
      * @return self
      */

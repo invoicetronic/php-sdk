@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * Receive Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -71,7 +71,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'payload' => 'string',
         'last_update' => '\DateTime',
         'date_sent' => '\DateTime',
-        'documents' => '\InvoicetronicInvoiceSdk\Model\DocumentData[]',
+        'documents' => '\Invoicetronic\Model\DocumentData[]',
         'is_read' => 'bool'
     ];
 
@@ -798,7 +798,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets documents
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DocumentData[]|null
+     * @return \Invoicetronic\Model\DocumentData[]|null
      */
     public function getDocuments()
     {
@@ -808,7 +808,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets documents
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DocumentData[]|null $documents The invoices included in the payload. This is set by the system, based on the xml content.
+     * @param \Invoicetronic\Model\DocumentData[]|null $documents The invoices included in the payload. This is set by the system, based on the xml content.
      *
      * @return self
      */

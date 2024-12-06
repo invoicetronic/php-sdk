@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * DettaglioLinee Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -60,20 +60,20 @@ class DettaglioLinee implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'numero_linea' => 'int',
         'tipo_cessione_prestazione' => 'string',
-        'codice_articolo' => '\InvoicetronicInvoiceSdk\Model\CodiceArticolo[]',
+        'codice_articolo' => '\Invoicetronic\Model\CodiceArticolo[]',
         'descrizione' => 'string',
         'quantita' => 'float',
         'unita_misura' => 'string',
         'data_inizio_periodo' => '\DateTime',
         'data_fine_periodo' => '\DateTime',
         'prezzo_unitario' => 'float',
-        'sconto_maggiorazione' => '\InvoicetronicInvoiceSdk\Model\ScontoMaggiorazione[]',
+        'sconto_maggiorazione' => '\Invoicetronic\Model\ScontoMaggiorazione[]',
         'prezzo_totale' => 'float',
         'aliquota_iva' => 'float',
         'ritenuta' => 'string',
         'natura' => 'string',
         'riferimento_amministrazione' => 'string',
-        'altri_dati_gestionali' => '\InvoicetronicInvoiceSdk\Model\AltriDatiGestionali[]'
+        'altri_dati_gestionali' => '\Invoicetronic\Model\AltriDatiGestionali[]'
     ];
 
     /**
@@ -459,7 +459,7 @@ class DettaglioLinee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets codice_articolo
      *
-     * @return \InvoicetronicInvoiceSdk\Model\CodiceArticolo[]|null
+     * @return \Invoicetronic\Model\CodiceArticolo[]|null
      */
     public function getCodiceArticolo()
     {
@@ -469,7 +469,7 @@ class DettaglioLinee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets codice_articolo
      *
-     * @param \InvoicetronicInvoiceSdk\Model\CodiceArticolo[]|null $codice_articolo codice_articolo
+     * @param \Invoicetronic\Model\CodiceArticolo[]|null $codice_articolo codice_articolo
      *
      * @return self
      */
@@ -690,7 +690,7 @@ class DettaglioLinee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sconto_maggiorazione
      *
-     * @return \InvoicetronicInvoiceSdk\Model\ScontoMaggiorazione[]|null
+     * @return \Invoicetronic\Model\ScontoMaggiorazione[]|null
      */
     public function getScontoMaggiorazione()
     {
@@ -700,7 +700,7 @@ class DettaglioLinee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sconto_maggiorazione
      *
-     * @param \InvoicetronicInvoiceSdk\Model\ScontoMaggiorazione[]|null $sconto_maggiorazione sconto_maggiorazione
+     * @param \Invoicetronic\Model\ScontoMaggiorazione[]|null $sconto_maggiorazione sconto_maggiorazione
      *
      * @return self
      */
@@ -880,7 +880,7 @@ class DettaglioLinee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets altri_dati_gestionali
      *
-     * @return \InvoicetronicInvoiceSdk\Model\AltriDatiGestionali[]|null
+     * @return \Invoicetronic\Model\AltriDatiGestionali[]|null
      */
     public function getAltriDatiGestionali()
     {
@@ -890,7 +890,7 @@ class DettaglioLinee implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets altri_dati_gestionali
      *
-     * @param \InvoicetronicInvoiceSdk\Model\AltriDatiGestionali[]|null $altri_dati_gestionali altri_dati_gestionali
+     * @param \Invoicetronic\Model\AltriDatiGestionali[]|null $altri_dati_gestionali altri_dati_gestionali
      *
      * @return self
      */

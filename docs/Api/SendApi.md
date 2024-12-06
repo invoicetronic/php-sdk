@@ -1,4 +1,4 @@
-# InvoicetronicInvoiceSdk\SendApi
+# Invoicetronic\SendApi
 
 All URIs are relative to https://api.invoicetronic.com, except if the operation defines another base path.
 
@@ -15,7 +15,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `invoiceV1SendFilesPost()`
 
 ```php
-invoiceV1SendFilesPost($files, $validate): \InvoicetronicInvoiceSdk\Model\Send
+invoiceV1SendFilesPost($files, $validate): \Invoicetronic\Model\Send
 ```
 
 Add a send invoice by file
@@ -30,12 +30,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\SendApi(
+$apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -61,7 +61,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Send**](../Model/Send.md)
+[**\Invoicetronic\Model\Send**](../Model/Send.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ try {
 ## `invoiceV1SendGet()`
 
 ```php
-invoiceV1SendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size): \InvoicetronicInvoiceSdk\Model\Send[]
+invoiceV1SendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size): \Invoicetronic\Model\Send[]
 ```
 
 List send invoices
@@ -94,12 +94,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\SendApi(
+$apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -149,7 +149,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Send[]**](../Model/Send.md)
+[**\Invoicetronic\Model\Send[]**](../Model/Send.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ try {
 ## `invoiceV1SendIdGet()`
 
 ```php
-invoiceV1SendIdGet($id): \InvoicetronicInvoiceSdk\Model\Send
+invoiceV1SendIdGet($id): \Invoicetronic\Model\Send
 ```
 
 Get a send invoice by id
@@ -182,12 +182,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\SendApi(
+$apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -211,7 +211,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Send**](../Model/Send.md)
+[**\Invoicetronic\Model\Send**](../Model/Send.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ try {
 ## `invoiceV1SendJsonPost()`
 
 ```php
-invoiceV1SendJsonPost($fattura_ordinaria, $validate): \InvoicetronicInvoiceSdk\Model\Send
+invoiceV1SendJsonPost($fattura_ordinaria, $validate): \Invoicetronic\Model\Send
 ```
 
 Add a send invoice by json
@@ -244,18 +244,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\SendApi(
+$apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$fattura_ordinaria = new \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria(); // \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria
+$fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
 $validate = false; // bool | Validate the document first, and reject it on failure.
 
 try {
@@ -270,12 +270,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fattura_ordinaria** | [**\InvoicetronicInvoiceSdk\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
+| **fattura_ordinaria** | [**\Invoicetronic\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Send**](../Model/Send.md)
+[**\Invoicetronic\Model\Send**](../Model/Send.md)
 
 ### Authorization
 
@@ -293,7 +293,7 @@ try {
 ## `invoiceV1SendPost()`
 
 ```php
-invoiceV1SendPost($send, $validate): \InvoicetronicInvoiceSdk\Model\Send
+invoiceV1SendPost($send, $validate): \Invoicetronic\Model\Send
 ```
 
 Add a send invoice
@@ -308,18 +308,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\SendApi(
+$apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$send = new \InvoicetronicInvoiceSdk\Model\Send(); // \InvoicetronicInvoiceSdk\Model\Send
+$send = new \Invoicetronic\Model\Send(); // \Invoicetronic\Model\Send
 $validate = false; // bool | Validate the document first, and reject it on failure.
 
 try {
@@ -334,12 +334,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **send** | [**\InvoicetronicInvoiceSdk\Model\Send**](../Model/Send.md)|  | |
+| **send** | [**\Invoicetronic\Model\Send**](../Model/Send.md)|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Send**](../Model/Send.md)
+[**\Invoicetronic\Model\Send**](../Model/Send.md)
 
 ### Authorization
 
@@ -357,7 +357,7 @@ try {
 ## `invoiceV1SendXmlPost()`
 
 ```php
-invoiceV1SendXmlPost($fattura_ordinaria, $validate): \InvoicetronicInvoiceSdk\Model\Send
+invoiceV1SendXmlPost($fattura_ordinaria, $validate): \Invoicetronic\Model\Send
 ```
 
 Add a send invoice by xml
@@ -372,18 +372,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\SendApi(
+$apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$fattura_ordinaria = new \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria(); // \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria
+$fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
 $validate = false; // bool | Validate the document first, and reject it on failure.
 
 try {
@@ -398,12 +398,12 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fattura_ordinaria** | [**\InvoicetronicInvoiceSdk\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
+| **fattura_ordinaria** | [**\Invoicetronic\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Send**](../Model/Send.md)
+[**\Invoicetronic\Model\Send**](../Model/Send.md)
 
 ### Authorization
 

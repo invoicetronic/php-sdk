@@ -34,11 +34,11 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
+      "url": "https://github.com/invoicetronic/invoice-php-sdk.git"
     }
   ],
   "require": {
-    "GIT_USER_ID/GIT_REPO_ID": "*@dev"
+    "invoicetronic/invoice-php-sdk": "*@dev"
   }
 }
 ```
@@ -51,7 +51,7 @@ Download the files and include `autoload.php`:
 
 ```php
 <?php
-require_once('/path/to/Invoicetronic Invoice PHP SDK/vendor/autoload.php');
+require_once('/path/to/Invoicetronic Invoice SDK/vendor/autoload.php');
 ```
 
 ## Getting Started
@@ -65,12 +65,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\CompanyApi(
+$apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),

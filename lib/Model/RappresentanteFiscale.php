@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * RappresentanteFiscale Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class RappresentanteFiscale implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dati_anagrafici' => '\InvoicetronicInvoiceSdk\Model\DatiAnagrafici'
+        'dati_anagrafici' => '\Invoicetronic\Model\DatiAnagrafici'
     ];
 
     /**
@@ -293,7 +293,7 @@ class RappresentanteFiscale implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets dati_anagrafici
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiAnagrafici|null
+     * @return \Invoicetronic\Model\DatiAnagrafici|null
      */
     public function getDatiAnagrafici()
     {
@@ -303,7 +303,7 @@ class RappresentanteFiscale implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets dati_anagrafici
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiAnagrafici|null $dati_anagrafici dati_anagrafici
+     * @param \Invoicetronic\Model\DatiAnagrafici|null $dati_anagrafici dati_anagrafici
      *
      * @return self
      */

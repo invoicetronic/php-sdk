@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * DatiPagamento Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -59,7 +59,7 @@ class DatiPagamento implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'condizioni_pagamento' => 'string',
-        'dettaglio_pagamento' => '\InvoicetronicInvoiceSdk\Model\DettaglioPagamento[]'
+        'dettaglio_pagamento' => '\Invoicetronic\Model\DettaglioPagamento[]'
     ];
 
     /**
@@ -334,7 +334,7 @@ class DatiPagamento implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dettaglio_pagamento
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DettaglioPagamento[]|null
+     * @return \Invoicetronic\Model\DettaglioPagamento[]|null
      */
     public function getDettaglioPagamento()
     {
@@ -344,7 +344,7 @@ class DatiPagamento implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dettaglio_pagamento
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DettaglioPagamento[]|null $dettaglio_pagamento dettaglio_pagamento
+     * @param \Invoicetronic\Model\DettaglioPagamento[]|null $dettaglio_pagamento dettaglio_pagamento
      *
      * @return self
      */

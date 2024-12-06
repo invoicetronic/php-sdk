@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * CessionarioCommittente Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,10 +58,10 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dati_anagrafici' => '\InvoicetronicInvoiceSdk\Model\DatiAnagraficiCessionarioCommittente',
-        'sede' => '\InvoicetronicInvoiceSdk\Model\SedeCessionarioCommittente',
-        'stabile_organizzazione' => '\InvoicetronicInvoiceSdk\Model\StabileOrganizzazione',
-        'rappresentante_fiscale' => '\InvoicetronicInvoiceSdk\Model\RappresentanteFiscaleCessionarioCommittente'
+        'dati_anagrafici' => '\Invoicetronic\Model\DatiAnagraficiCessionarioCommittente',
+        'sede' => '\Invoicetronic\Model\SedeCessionarioCommittente',
+        'stabile_organizzazione' => '\Invoicetronic\Model\StabileOrganizzazione',
+        'rappresentante_fiscale' => '\Invoicetronic\Model\RappresentanteFiscaleCessionarioCommittente'
     ];
 
     /**
@@ -314,7 +314,7 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets dati_anagrafici
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiAnagraficiCessionarioCommittente|null
+     * @return \Invoicetronic\Model\DatiAnagraficiCessionarioCommittente|null
      */
     public function getDatiAnagrafici()
     {
@@ -324,7 +324,7 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets dati_anagrafici
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiAnagraficiCessionarioCommittente|null $dati_anagrafici dati_anagrafici
+     * @param \Invoicetronic\Model\DatiAnagraficiCessionarioCommittente|null $dati_anagrafici dati_anagrafici
      *
      * @return self
      */
@@ -341,7 +341,7 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets sede
      *
-     * @return \InvoicetronicInvoiceSdk\Model\SedeCessionarioCommittente|null
+     * @return \Invoicetronic\Model\SedeCessionarioCommittente|null
      */
     public function getSede()
     {
@@ -351,7 +351,7 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets sede
      *
-     * @param \InvoicetronicInvoiceSdk\Model\SedeCessionarioCommittente|null $sede sede
+     * @param \Invoicetronic\Model\SedeCessionarioCommittente|null $sede sede
      *
      * @return self
      */
@@ -368,7 +368,7 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets stabile_organizzazione
      *
-     * @return \InvoicetronicInvoiceSdk\Model\StabileOrganizzazione|null
+     * @return \Invoicetronic\Model\StabileOrganizzazione|null
      */
     public function getStabileOrganizzazione()
     {
@@ -378,7 +378,7 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets stabile_organizzazione
      *
-     * @param \InvoicetronicInvoiceSdk\Model\StabileOrganizzazione|null $stabile_organizzazione stabile_organizzazione
+     * @param \Invoicetronic\Model\StabileOrganizzazione|null $stabile_organizzazione stabile_organizzazione
      *
      * @return self
      */
@@ -395,7 +395,7 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets rappresentante_fiscale
      *
-     * @return \InvoicetronicInvoiceSdk\Model\RappresentanteFiscaleCessionarioCommittente|null
+     * @return \Invoicetronic\Model\RappresentanteFiscaleCessionarioCommittente|null
      */
     public function getRappresentanteFiscale()
     {
@@ -405,7 +405,7 @@ class CessionarioCommittente implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets rappresentante_fiscale
      *
-     * @param \InvoicetronicInvoiceSdk\Model\RappresentanteFiscaleCessionarioCommittente|null $rappresentante_fiscale rappresentante_fiscale
+     * @param \Invoicetronic\Model\RappresentanteFiscaleCessionarioCommittente|null $rappresentante_fiscale rappresentante_fiscale
      *
      * @return self
      */

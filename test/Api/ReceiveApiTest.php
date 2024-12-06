@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,18 +26,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace InvoicetronicInvoiceSdk\Test\Api;
+namespace Invoicetronic\Test\Api;
 
-use \InvoicetronicInvoiceSdk\Configuration;
-use \InvoicetronicInvoiceSdk\ApiException;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\Configuration;
+use \Invoicetronic\ApiException;
+use \Invoicetronic\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * ReceiveApiTest Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */

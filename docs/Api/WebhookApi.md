@@ -1,4 +1,4 @@
-# InvoicetronicInvoiceSdk\WebhookApi
+# Invoicetronic\WebhookApi
 
 All URIs are relative to https://api.invoicetronic.com, except if the operation defines another base path.
 
@@ -16,7 +16,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `invoiceV1WebhookGet()`
 
 ```php
-invoiceV1WebhookGet($page, $page_size): \InvoicetronicInvoiceSdk\Model\WebHook[]
+invoiceV1WebhookGet($page, $page_size): \Invoicetronic\Model\WebHook[]
 ```
 
 List webhooks
@@ -31,12 +31,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\WebhookApi(
+$apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -62,7 +62,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\WebHook[]**](../Model/WebHook.md)
+[**\Invoicetronic\Model\WebHook[]**](../Model/WebHook.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ try {
 ## `invoiceV1WebhookIdDelete()`
 
 ```php
-invoiceV1WebhookIdDelete($id): \InvoicetronicInvoiceSdk\Model\WebHook
+invoiceV1WebhookIdDelete($id): \Invoicetronic\Model\WebHook
 ```
 
 Delete a webhook by id
@@ -95,12 +95,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\WebhookApi(
+$apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -124,7 +124,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\WebHook**](../Model/WebHook.md)
+[**\Invoicetronic\Model\WebHook**](../Model/WebHook.md)
 
 ### Authorization
 
@@ -142,7 +142,7 @@ try {
 ## `invoiceV1WebhookIdGet()`
 
 ```php
-invoiceV1WebhookIdGet($id): \InvoicetronicInvoiceSdk\Model\WebHook
+invoiceV1WebhookIdGet($id): \Invoicetronic\Model\WebHook
 ```
 
 Get a webhook by id
@@ -157,12 +157,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\WebhookApi(
+$apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -186,7 +186,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\WebHook**](../Model/WebHook.md)
+[**\Invoicetronic\Model\WebHook**](../Model/WebHook.md)
 
 ### Authorization
 
@@ -204,7 +204,7 @@ try {
 ## `invoiceV1WebhookPost()`
 
 ```php
-invoiceV1WebhookPost($web_hook): \InvoicetronicInvoiceSdk\Model\WebHook
+invoiceV1WebhookPost($web_hook): \Invoicetronic\Model\WebHook
 ```
 
 Add a webhook
@@ -219,18 +219,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\WebhookApi(
+$apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$web_hook = new \InvoicetronicInvoiceSdk\Model\WebHook(); // \InvoicetronicInvoiceSdk\Model\WebHook
+$web_hook = new \Invoicetronic\Model\WebHook(); // \Invoicetronic\Model\WebHook
 
 try {
     $result = $apiInstance->invoiceV1WebhookPost($web_hook);
@@ -244,11 +244,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_hook** | [**\InvoicetronicInvoiceSdk\Model\WebHook**](../Model/WebHook.md)|  | |
+| **web_hook** | [**\Invoicetronic\Model\WebHook**](../Model/WebHook.md)|  | |
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\WebHook**](../Model/WebHook.md)
+[**\Invoicetronic\Model\WebHook**](../Model/WebHook.md)
 
 ### Authorization
 
@@ -266,7 +266,7 @@ try {
 ## `invoiceV1WebhookPut()`
 
 ```php
-invoiceV1WebhookPut($web_hook): \InvoicetronicInvoiceSdk\Model\WebHook
+invoiceV1WebhookPut($web_hook): \Invoicetronic\Model\WebHook
 ```
 
 Update a webhook
@@ -281,18 +281,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\WebhookApi(
+$apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$web_hook = new \InvoicetronicInvoiceSdk\Model\WebHook(); // \InvoicetronicInvoiceSdk\Model\WebHook
+$web_hook = new \Invoicetronic\Model\WebHook(); // \Invoicetronic\Model\WebHook
 
 try {
     $result = $apiInstance->invoiceV1WebhookPut($web_hook);
@@ -306,11 +306,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **web_hook** | [**\InvoicetronicInvoiceSdk\Model\WebHook**](../Model/WebHook.md)|  | |
+| **web_hook** | [**\Invoicetronic\Model\WebHook**](../Model/WebHook.md)|  | |
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\WebHook**](../Model/WebHook.md)
+[**\Invoicetronic\Model\WebHook**](../Model/WebHook.md)
 
 ### Authorization
 
@@ -328,7 +328,7 @@ try {
 ## `invoiceV1WebhookhistoryGet()`
 
 ```php
-invoiceV1WebhookhistoryGet($page, $page_size): \InvoicetronicInvoiceSdk\Model\WebHookHistory[]
+invoiceV1WebhookhistoryGet($page, $page_size): \Invoicetronic\Model\WebHookHistory[]
 ```
 
 List webhook history items
@@ -341,12 +341,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\WebhookApi(
+$apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -372,7 +372,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\WebHookHistory[]**](../Model/WebHookHistory.md)
+[**\Invoicetronic\Model\WebHookHistory[]**](../Model/WebHookHistory.md)
 
 ### Authorization
 
@@ -390,7 +390,7 @@ try {
 ## `invoiceV1WebhookhistoryIdGet()`
 
 ```php
-invoiceV1WebhookhistoryIdGet($id): \InvoicetronicInvoiceSdk\Model\WebHookHistory
+invoiceV1WebhookhistoryIdGet($id): \Invoicetronic\Model\WebHookHistory
 ```
 
 Get a webhook history item by id
@@ -403,12 +403,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\WebhookApi(
+$apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -432,7 +432,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\WebHookHistory**](../Model/WebHookHistory.md)
+[**\Invoicetronic\Model\WebHookHistory**](../Model/WebHookHistory.md)
 
 ### Authorization
 

@@ -1,4 +1,5 @@
 {
+    "name": "invoicetronic/invoice-php-sdk",
     "description": "The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1] (Interchange Service). The API is designed by Invoicetronic to be simple and easy to use, abstracting away the Interchange Service's complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see:  - [Invoicetronic website][2] - [Invoice API reference][3]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/ [3]: https://api.invoicetronic.com/invoice/v1/docs",
     "keywords": [
         "openapitools",
@@ -9,7 +10,7 @@
         "rest",
         "api"
     ],
-    "homepage": "https://openapi-generator.tech",
+    "homepage": "https://invoicetronic.com",
     "license": "MIT",
     "authors": [
         {
@@ -30,9 +31,9 @@
         "friendsofphp/php-cs-fixer": "^3.5"
     },
     "autoload": {
-        "psr-4": { "InvoicetronicInvoiceSdk\\" : "lib/" }
+        "psr-4": { "Invoicetronic\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "InvoicetronicInvoiceSdk\\Test\\" : "test/" }
+        "psr-4": { "Invoicetronic\\Test\\" : "test/" }
     }
 }

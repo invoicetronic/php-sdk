@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * DatiTrasporto Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,7 +58,7 @@ class DatiTrasporto implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dati_anagrafici_vettore' => '\InvoicetronicInvoiceSdk\Model\DatiAnagraficiVettore',
+        'dati_anagrafici_vettore' => '\Invoicetronic\Model\DatiAnagraficiVettore',
         'mezzo_trasporto' => 'string',
         'causale_trasporto' => 'string',
         'numero_colli' => 'int',
@@ -69,7 +69,7 @@ class DatiTrasporto implements ModelInterface, ArrayAccess, \JsonSerializable
         'data_ora_ritiro' => '\DateTime',
         'data_inizio_trasporto' => '\DateTime',
         'tipo_resa' => 'string',
-        'indirizzo_resa' => '\InvoicetronicInvoiceSdk\Model\IndirizzoResa',
+        'indirizzo_resa' => '\Invoicetronic\Model\IndirizzoResa',
         'data_ora_consegna' => '\DateTime'
     ];
 
@@ -377,7 +377,7 @@ class DatiTrasporto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets dati_anagrafici_vettore
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiAnagraficiVettore|null
+     * @return \Invoicetronic\Model\DatiAnagraficiVettore|null
      */
     public function getDatiAnagraficiVettore()
     {
@@ -387,7 +387,7 @@ class DatiTrasporto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets dati_anagrafici_vettore
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiAnagraficiVettore|null $dati_anagrafici_vettore dati_anagrafici_vettore
+     * @param \Invoicetronic\Model\DatiAnagraficiVettore|null $dati_anagrafici_vettore dati_anagrafici_vettore
      *
      * @return self
      */
@@ -744,7 +744,7 @@ class DatiTrasporto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets indirizzo_resa
      *
-     * @return \InvoicetronicInvoiceSdk\Model\IndirizzoResa|null
+     * @return \Invoicetronic\Model\IndirizzoResa|null
      */
     public function getIndirizzoResa()
     {
@@ -754,7 +754,7 @@ class DatiTrasporto implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets indirizzo_resa
      *
-     * @param \InvoicetronicInvoiceSdk\Model\IndirizzoResa|null $indirizzo_resa indirizzo_resa
+     * @param \Invoicetronic\Model\IndirizzoResa|null $indirizzo_resa indirizzo_resa
      *
      * @return self
      */

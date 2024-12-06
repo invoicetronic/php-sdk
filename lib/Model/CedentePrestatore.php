@@ -5,7 +5,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Model;
+namespace Invoicetronic\Model;
 
 use \ArrayAccess;
-use \InvoicetronicInvoiceSdk\ObjectSerializer;
+use \Invoicetronic\ObjectSerializer;
 
 /**
  * CedentePrestatore Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
@@ -58,11 +58,11 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'dati_anagrafici' => '\InvoicetronicInvoiceSdk\Model\DatiAnagraficiCedentePrestatore',
-        'sede' => '\InvoicetronicInvoiceSdk\Model\SedeCedentePrestatore',
-        'stabile_organizzazione' => '\InvoicetronicInvoiceSdk\Model\StabileOrganizzazione',
-        'iscrizione_rea' => '\InvoicetronicInvoiceSdk\Model\IscrizioneREA',
-        'contatti' => '\InvoicetronicInvoiceSdk\Model\Contatti',
+        'dati_anagrafici' => '\Invoicetronic\Model\DatiAnagraficiCedentePrestatore',
+        'sede' => '\Invoicetronic\Model\SedeCedentePrestatore',
+        'stabile_organizzazione' => '\Invoicetronic\Model\StabileOrganizzazione',
+        'iscrizione_rea' => '\Invoicetronic\Model\IscrizioneREA',
+        'contatti' => '\Invoicetronic\Model\Contatti',
         'riferimento_amministrazione' => 'string'
     ];
 
@@ -328,7 +328,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets dati_anagrafici
      *
-     * @return \InvoicetronicInvoiceSdk\Model\DatiAnagraficiCedentePrestatore|null
+     * @return \Invoicetronic\Model\DatiAnagraficiCedentePrestatore|null
      */
     public function getDatiAnagrafici()
     {
@@ -338,7 +338,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets dati_anagrafici
      *
-     * @param \InvoicetronicInvoiceSdk\Model\DatiAnagraficiCedentePrestatore|null $dati_anagrafici dati_anagrafici
+     * @param \Invoicetronic\Model\DatiAnagraficiCedentePrestatore|null $dati_anagrafici dati_anagrafici
      *
      * @return self
      */
@@ -355,7 +355,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets sede
      *
-     * @return \InvoicetronicInvoiceSdk\Model\SedeCedentePrestatore|null
+     * @return \Invoicetronic\Model\SedeCedentePrestatore|null
      */
     public function getSede()
     {
@@ -365,7 +365,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets sede
      *
-     * @param \InvoicetronicInvoiceSdk\Model\SedeCedentePrestatore|null $sede sede
+     * @param \Invoicetronic\Model\SedeCedentePrestatore|null $sede sede
      *
      * @return self
      */
@@ -382,7 +382,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets stabile_organizzazione
      *
-     * @return \InvoicetronicInvoiceSdk\Model\StabileOrganizzazione|null
+     * @return \Invoicetronic\Model\StabileOrganizzazione|null
      */
     public function getStabileOrganizzazione()
     {
@@ -392,7 +392,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets stabile_organizzazione
      *
-     * @param \InvoicetronicInvoiceSdk\Model\StabileOrganizzazione|null $stabile_organizzazione stabile_organizzazione
+     * @param \Invoicetronic\Model\StabileOrganizzazione|null $stabile_organizzazione stabile_organizzazione
      *
      * @return self
      */
@@ -409,7 +409,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets iscrizione_rea
      *
-     * @return \InvoicetronicInvoiceSdk\Model\IscrizioneREA|null
+     * @return \Invoicetronic\Model\IscrizioneREA|null
      */
     public function getIscrizioneRea()
     {
@@ -419,7 +419,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets iscrizione_rea
      *
-     * @param \InvoicetronicInvoiceSdk\Model\IscrizioneREA|null $iscrizione_rea iscrizione_rea
+     * @param \Invoicetronic\Model\IscrizioneREA|null $iscrizione_rea iscrizione_rea
      *
      * @return self
      */
@@ -436,7 +436,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets contatti
      *
-     * @return \InvoicetronicInvoiceSdk\Model\Contatti|null
+     * @return \Invoicetronic\Model\Contatti|null
      */
     public function getContatti()
     {
@@ -446,7 +446,7 @@ class CedentePrestatore implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets contatti
      *
-     * @param \InvoicetronicInvoiceSdk\Model\Contatti|null $contatti contatti
+     * @param \Invoicetronic\Model\Contatti|null $contatti contatti
      *
      * @return self
      */

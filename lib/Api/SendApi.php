@@ -4,7 +4,7 @@
  * PHP version 7.4
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace InvoicetronicInvoiceSdk\Api;
+namespace Invoicetronic\Api;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -35,16 +35,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use InvoicetronicInvoiceSdk\ApiException;
-use InvoicetronicInvoiceSdk\Configuration;
-use InvoicetronicInvoiceSdk\HeaderSelector;
-use InvoicetronicInvoiceSdk\ObjectSerializer;
+use Invoicetronic\ApiException;
+use Invoicetronic\Configuration;
+use Invoicetronic\HeaderSelector;
+use Invoicetronic\ObjectSerializer;
 
 /**
  * SendApi Class Doc Comment
  *
  * @category Class
- * @package  InvoicetronicInvoiceSdk
+ * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -147,9 +147,9 @@ class SendApi
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendFilesPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Send
+     * @return \Invoicetronic\Model\Send
      */
     public function invoiceV1SendFilesPost($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
@@ -166,9 +166,9 @@ class SendApi
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendFilesPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendFilesPostWithHttpInfo($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
@@ -199,11 +199,11 @@ class SendApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\InvoicetronicInvoiceSdk\Model\Send' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Send' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Send' !== 'string') {
+                        if ('\Invoicetronic\Model\Send' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -221,7 +221,7 @@ class SendApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Send', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Send', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -240,7 +240,7 @@ class SendApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+            $returnType = '\Invoicetronic\Model\Send';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -273,7 +273,7 @@ class SendApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Send',
+                        '\Invoicetronic\Model\Send',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -319,7 +319,7 @@ class SendApi
      */
     public function invoiceV1SendFilesPostAsyncWithHttpInfo($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+        $returnType = '\Invoicetronic\Model\Send';
         $request = $this->invoiceV1SendFilesPostRequest($files, $validate, $contentType);
 
         return $this->client
@@ -490,9 +490,9 @@ class SendApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Send[]|\InvoicetronicInvoiceSdk\Model\ProblemDetails
+     * @return \Invoicetronic\Model\Send[]|\Invoicetronic\Model\ProblemDetails
      */
     public function invoiceV1SendGet($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1SendGet'][0])
     {
@@ -521,9 +521,9 @@ class SendApi
      * @param  int $page_size Items per page. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Send[]|\InvoicetronicInvoiceSdk\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send[]|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendGetWithHttpInfo($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1SendGet'][0])
     {
@@ -554,11 +554,11 @@ class SendApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Send[]' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Send[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Send[]' !== 'string') {
+                        if ('\Invoicetronic\Model\Send[]' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -576,16 +576,16 @@ class SendApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Send[]', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Send[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\InvoicetronicInvoiceSdk\Model\ProblemDetails' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\ProblemDetails' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\ProblemDetails' !== 'string') {
+                        if ('\Invoicetronic\Model\ProblemDetails' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -603,7 +603,7 @@ class SendApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\ProblemDetails', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemDetails', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -622,7 +622,7 @@ class SendApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Send[]';
+            $returnType = '\Invoicetronic\Model\Send[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -655,7 +655,7 @@ class SendApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Send[]',
+                        '\Invoicetronic\Model\Send[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -663,7 +663,7 @@ class SendApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\ProblemDetails',
+                        '\Invoicetronic\Model\ProblemDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -733,7 +733,7 @@ class SendApi
      */
     public function invoiceV1SendGetAsyncWithHttpInfo($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1SendGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Send[]';
+        $returnType = '\Invoicetronic\Model\Send[]';
         $request = $this->invoiceV1SendGetRequest($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size, $contentType);
 
         return $this->client
@@ -1014,9 +1014,9 @@ class SendApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Send
+     * @return \Invoicetronic\Model\Send
      */
     public function invoiceV1SendIdGet($id, string $contentType = self::contentTypes['invoiceV1SendIdGet'][0])
     {
@@ -1032,9 +1032,9 @@ class SendApi
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendIdGetWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1SendIdGet'][0])
     {
@@ -1065,11 +1065,11 @@ class SendApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\InvoicetronicInvoiceSdk\Model\Send' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Send' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Send' !== 'string') {
+                        if ('\Invoicetronic\Model\Send' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1087,7 +1087,7 @@ class SendApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Send', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Send', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1106,7 +1106,7 @@ class SendApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+            $returnType = '\Invoicetronic\Model\Send';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1139,7 +1139,7 @@ class SendApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Send',
+                        '\Invoicetronic\Model\Send',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1183,7 +1183,7 @@ class SendApi
      */
     public function invoiceV1SendIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1SendIdGet'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+        $returnType = '\Invoicetronic\Model\Send';
         $request = $this->invoiceV1SendIdGetRequest($id, $contentType);
 
         return $this->client
@@ -1323,13 +1323,13 @@ class SendApi
      *
      * Add a send invoice by json
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Send
+     * @return \Invoicetronic\Model\Send
      */
     public function invoiceV1SendJsonPost($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
@@ -1342,13 +1342,13 @@ class SendApi
      *
      * Add a send invoice by json
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendJsonPostWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
@@ -1379,11 +1379,11 @@ class SendApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\InvoicetronicInvoiceSdk\Model\Send' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Send' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Send' !== 'string') {
+                        if ('\Invoicetronic\Model\Send' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1401,7 +1401,7 @@ class SendApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Send', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Send', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1420,7 +1420,7 @@ class SendApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+            $returnType = '\Invoicetronic\Model\Send';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1453,7 +1453,7 @@ class SendApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Send',
+                        '\Invoicetronic\Model\Send',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1468,7 +1468,7 @@ class SendApi
      *
      * Add a send invoice by json
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
@@ -1490,7 +1490,7 @@ class SendApi
      *
      * Add a send invoice by json
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
@@ -1499,7 +1499,7 @@ class SendApi
      */
     public function invoiceV1SendJsonPostAsyncWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+        $returnType = '\Invoicetronic\Model\Send';
         $request = $this->invoiceV1SendJsonPostRequest($fattura_ordinaria, $validate, $contentType);
 
         return $this->client
@@ -1541,7 +1541,7 @@ class SendApi
     /**
      * Create request for operation 'invoiceV1SendJsonPost'
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
@@ -1649,13 +1649,13 @@ class SendApi
      *
      * Add a send invoice
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Send $send send (required)
+     * @param  \Invoicetronic\Model\Send $send send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Send
+     * @return \Invoicetronic\Model\Send
      */
     public function invoiceV1SendPost($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
@@ -1668,13 +1668,13 @@ class SendApi
      *
      * Add a send invoice
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Send $send (required)
+     * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendPostWithHttpInfo($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
@@ -1705,11 +1705,11 @@ class SendApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\InvoicetronicInvoiceSdk\Model\Send' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Send' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Send' !== 'string') {
+                        if ('\Invoicetronic\Model\Send' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -1727,7 +1727,7 @@ class SendApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Send', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Send', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1746,7 +1746,7 @@ class SendApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+            $returnType = '\Invoicetronic\Model\Send';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1779,7 +1779,7 @@ class SendApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Send',
+                        '\Invoicetronic\Model\Send',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1794,7 +1794,7 @@ class SendApi
      *
      * Add a send invoice
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Send $send (required)
+     * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
@@ -1816,7 +1816,7 @@ class SendApi
      *
      * Add a send invoice
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Send $send (required)
+     * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
@@ -1825,7 +1825,7 @@ class SendApi
      */
     public function invoiceV1SendPostAsyncWithHttpInfo($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+        $returnType = '\Invoicetronic\Model\Send';
         $request = $this->invoiceV1SendPostRequest($send, $validate, $contentType);
 
         return $this->client
@@ -1867,7 +1867,7 @@ class SendApi
     /**
      * Create request for operation 'invoiceV1SendPost'
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\Send $send (required)
+     * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
@@ -1975,13 +1975,13 @@ class SendApi
      *
      * Add a send invoice by xml
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \InvoicetronicInvoiceSdk\Model\Send
+     * @return \Invoicetronic\Model\Send
      */
     public function invoiceV1SendXmlPost($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
@@ -1994,13 +1994,13 @@ class SendApi
      *
      * Add a send invoice by xml
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
-     * @throws \InvoicetronicInvoiceSdk\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \InvoicetronicInvoiceSdk\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendXmlPostWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
@@ -2031,11 +2031,11 @@ class SendApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\InvoicetronicInvoiceSdk\Model\Send' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\Send' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\InvoicetronicInvoiceSdk\Model\Send' !== 'string') {
+                        if ('\Invoicetronic\Model\Send' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -2053,7 +2053,7 @@ class SendApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\InvoicetronicInvoiceSdk\Model\Send', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\Send', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2072,7 +2072,7 @@ class SendApi
                 );
             }
 
-            $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+            $returnType = '\Invoicetronic\Model\Send';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2105,7 +2105,7 @@ class SendApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\InvoicetronicInvoiceSdk\Model\Send',
+                        '\Invoicetronic\Model\Send',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2120,7 +2120,7 @@ class SendApi
      *
      * Add a send invoice by xml
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
@@ -2142,7 +2142,7 @@ class SendApi
      *
      * Add a send invoice by xml
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
@@ -2151,7 +2151,7 @@ class SendApi
      */
     public function invoiceV1SendXmlPostAsyncWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
-        $returnType = '\InvoicetronicInvoiceSdk\Model\Send';
+        $returnType = '\Invoicetronic\Model\Send';
         $request = $this->invoiceV1SendXmlPostRequest($fattura_ordinaria, $validate, $contentType);
 
         return $this->client
@@ -2193,7 +2193,7 @@ class SendApi
     /**
      * Create request for operation 'invoiceV1SendXmlPost'
      *
-     * @param  \InvoicetronicInvoiceSdk\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *

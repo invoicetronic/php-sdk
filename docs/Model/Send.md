@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **payload** | **string** | Xml payloaad. This is the actual xml content, as string. On send, it can be base64 encoded. If it&#39;s not, it will be encoded before sending. It is guaranteed to be cyphered at rest. | [optional]
 **last_update** | **\DateTime** | Last update from SDI. | [optional]
 **date_sent** | **\DateTime** | When the invoice was sent to SDI. | [optional]
-**documents** | [**\InvoicetronicInvoiceSdk\Model\DocumentData[]**](DocumentData.md) | The invoices included in the payload. This is set by the system, based on the xml content. | [optional]
+**documents** | [**\Invoicetronic\Model\DocumentData[]**](DocumentData.md) | The invoices included in the payload. This is set by the system, based on the xml content. | [optional]
 **meta_data** | **array<string,string>** | Optional metadata, as json. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

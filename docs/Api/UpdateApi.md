@@ -1,4 +1,4 @@
-# InvoicetronicInvoiceSdk\UpdateApi
+# Invoicetronic\UpdateApi
 
 All URIs are relative to https://api.invoicetronic.com, except if the operation defines another base path.
 
@@ -11,7 +11,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `invoiceV1UpdateGet()`
 
 ```php
-invoiceV1UpdateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size): \InvoicetronicInvoiceSdk\Model\Update[]
+invoiceV1UpdateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size): \Invoicetronic\Model\Update[]
 ```
 
 List updates
@@ -26,12 +26,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\UpdateApi(
+$apiInstance = new Invoicetronic\Api\UpdateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -75,7 +75,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Update[]**](../Model/Update.md)
+[**\Invoicetronic\Model\Update[]**](../Model/Update.md)
 
 ### Authorization
 
@@ -93,7 +93,7 @@ try {
 ## `invoiceV1UpdateIdGet()`
 
 ```php
-invoiceV1UpdateIdGet($id): \InvoicetronicInvoiceSdk\Model\Update
+invoiceV1UpdateIdGet($id): \Invoicetronic\Model\Update
 ```
 
 Get an update by id
@@ -108,12 +108,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: Basic
-$config = InvoicetronicInvoiceSdk\Configuration::getDefaultConfiguration()
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
               ->setUsername('YOUR_USERNAME')
               ->setPassword('YOUR_PASSWORD');
 
 
-$apiInstance = new InvoicetronicInvoiceSdk\Api\UpdateApi(
+$apiInstance = new Invoicetronic\Api\UpdateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -137,7 +137,7 @@ try {
 
 ### Return type
 
-[**\InvoicetronicInvoiceSdk\Model\Update**](../Model/Update.md)
+[**\Invoicetronic\Model\Update**](../Model/Update.md)
 
 ### Authorization
 
