@@ -544,7 +544,7 @@ void (empty response body)
 ## `invoiceV1SendValidateXmlPost()`
 
 ```php
-invoiceV1SendValidateXmlPost()
+invoiceV1SendValidateXmlPost($fattura_ordinaria)
 ```
 
 Validate an invoice by xml
@@ -570,9 +570,10 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
+$fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
 
 try {
-    $apiInstance->invoiceV1SendValidateXmlPost();
+    $apiInstance->invoiceV1SendValidateXmlPost($fattura_ordinaria);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->invoiceV1SendValidateXmlPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -580,7 +581,9 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **fattura_ordinaria** | [**\Invoicetronic\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
 
 ### Return type
 
@@ -592,7 +595,7 @@ void (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: `application/xml`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

@@ -97,7 +97,7 @@ class SendApi
             'application/json',
         ],
         'invoiceV1SendValidateXmlPost' => [
-            'application/json',
+            'application/xml',
         ],
         'invoiceV1SendXmlPost' => [
             'application/xml',
@@ -2910,15 +2910,16 @@ class SendApi
      *
      * Validate an invoice by xml
      *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function invoiceV1SendValidateXmlPost(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    public function invoiceV1SendValidateXmlPost($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
     {
-        $this->invoiceV1SendValidateXmlPostWithHttpInfo($contentType);
+        $this->invoiceV1SendValidateXmlPostWithHttpInfo($fattura_ordinaria, $contentType);
     }
 
     /**
@@ -2926,15 +2927,16 @@ class SendApi
      *
      * Validate an invoice by xml
      *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function invoiceV1SendValidateXmlPostWithHttpInfo(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    public function invoiceV1SendValidateXmlPostWithHttpInfo($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
     {
-        $request = $this->invoiceV1SendValidateXmlPostRequest($contentType);
+        $request = $this->invoiceV1SendValidateXmlPostRequest($fattura_ordinaria, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2989,14 +2991,15 @@ class SendApi
      *
      * Validate an invoice by xml
      *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendValidateXmlPostAsync(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    public function invoiceV1SendValidateXmlPostAsync($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
     {
-        return $this->invoiceV1SendValidateXmlPostAsyncWithHttpInfo($contentType)
+        return $this->invoiceV1SendValidateXmlPostAsyncWithHttpInfo($fattura_ordinaria, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3009,15 +3012,16 @@ class SendApi
      *
      * Validate an invoice by xml
      *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendValidateXmlPostAsyncWithHttpInfo(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    public function invoiceV1SendValidateXmlPostAsyncWithHttpInfo($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
     {
         $returnType = '';
-        $request = $this->invoiceV1SendValidateXmlPostRequest($contentType);
+        $request = $this->invoiceV1SendValidateXmlPostRequest($fattura_ordinaria, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3045,13 +3049,21 @@ class SendApi
     /**
      * Create request for operation 'invoiceV1SendValidateXmlPost'
      *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function invoiceV1SendValidateXmlPostRequest(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    public function invoiceV1SendValidateXmlPostRequest($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
     {
+
+        // verify the required parameter 'fattura_ordinaria' is set
+        if ($fattura_ordinaria === null || (is_array($fattura_ordinaria) && count($fattura_ordinaria) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fattura_ordinaria when calling invoiceV1SendValidateXmlPost'
+            );
+        }
 
 
         $resourcePath = '/invoice/v1/send/validate/xml';
@@ -3072,7 +3084,14 @@ class SendApi
         );
 
         // for model (json/xml)
-        if (count($formParams) > 0) {
+        if (isset($fattura_ordinaria)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($fattura_ordinaria));
+            } else {
+                $httpBody = $fattura_ordinaria;
+            }
+        } elseif (count($formParams) > 0) {
             if ($multipart) {
                 $multipartContents = [];
                 foreach ($formParams as $formParamName => $formParamValue) {
