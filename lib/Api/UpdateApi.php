@@ -146,7 +146,7 @@ class UpdateApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\Update[]
+     * @return \Invoicetronic\Model\Update[]|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1UpdateGet($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1UpdateGet'][0])
     {
@@ -174,7 +174,7 @@ class UpdateApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\Update[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Update[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1UpdateGetWithHttpInfo($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1UpdateGet'][0])
     {
@@ -231,6 +231,33 @@ class UpdateApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -280,6 +307,14 @@ class UpdateApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Invoicetronic\Model\Update[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

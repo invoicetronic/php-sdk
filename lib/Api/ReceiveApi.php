@@ -153,7 +153,7 @@ class ReceiveApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\Receive[]|\Invoicetronic\Model\ProblemDetails
+     * @return \Invoicetronic\Model\Receive[]|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1ReceiveGet($company_id = null, $identifier = null, $unread = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1ReceiveGet'][0])
     {
@@ -185,7 +185,7 @@ class ReceiveApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\Receive[]|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Receive[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1ReceiveGetWithHttpInfo($company_id = null, $identifier = null, $unread = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1ReceiveGet'][0])
     {
@@ -243,11 +243,11 @@ class ReceiveApi
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Invoicetronic\Model\ProblemDetails' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Invoicetronic\Model\ProblemDetails' !== 'string') {
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -265,7 +265,7 @@ class ReceiveApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemDetails', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -325,7 +325,7 @@ class ReceiveApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Invoicetronic\Model\ProblemDetails',
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -625,7 +625,7 @@ class ReceiveApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', 'application/problem+json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -691,7 +691,7 @@ class ReceiveApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\Receive
+     * @return \Invoicetronic\Model\Receive|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1ReceiveIdDelete($id, string $contentType = self::contentTypes['invoiceV1ReceiveIdDelete'][0])
     {
@@ -709,7 +709,7 @@ class ReceiveApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\Receive, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Receive|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1ReceiveIdDeleteWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1ReceiveIdDelete'][0])
     {
@@ -766,6 +766,60 @@ class ReceiveApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 422:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -815,6 +869,22 @@ class ReceiveApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Invoicetronic\Model\Receive',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

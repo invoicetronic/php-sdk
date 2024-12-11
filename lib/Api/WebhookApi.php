@@ -152,7 +152,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook[]
+     * @return \Invoicetronic\Model\WebHook[]|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1WebhookGet($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookGet'][0])
     {
@@ -171,7 +171,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookGetWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookGet'][0])
     {
@@ -228,6 +228,33 @@ class WebhookApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -277,6 +304,14 @@ class WebhookApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Invoicetronic\Model\WebHook[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -473,7 +508,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook
+     * @return \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1WebhookIdDelete($id, string $contentType = self::contentTypes['invoiceV1WebhookIdDelete'][0])
     {
@@ -491,7 +526,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookIdDeleteWithHttpInfo($id, string $contentType = self::contentTypes['invoiceV1WebhookIdDelete'][0])
     {
@@ -548,6 +583,60 @@ class WebhookApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 422:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -597,6 +686,22 @@ class WebhookApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Invoicetronic\Model\WebHook',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1097,7 +1202,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook
+     * @return \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1WebhookPost($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPost'][0])
     {
@@ -1115,7 +1220,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookPostWithHttpInfo($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPost'][0])
     {
@@ -1172,6 +1277,60 @@ class WebhookApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -1221,6 +1380,22 @@ class WebhookApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Invoicetronic\Model\WebHook',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1408,7 +1583,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook
+     * @return \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1WebhookPut($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPut'][0])
     {
@@ -1426,7 +1601,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookPutWithHttpInfo($web_hook, string $contentType = self::contentTypes['invoiceV1WebhookPut'][0])
     {
@@ -1483,6 +1658,60 @@ class WebhookApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 422:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -1532,6 +1761,22 @@ class WebhookApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Invoicetronic\Model\WebHook',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1720,7 +1965,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHookHistory[]
+     * @return \Invoicetronic\Model\WebHookHistory[]|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1WebhookhistoryGet($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookhistoryGet'][0])
     {
@@ -1739,7 +1984,7 @@ class WebhookApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHookHistory[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\WebHookHistory[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1WebhookhistoryGetWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1WebhookhistoryGet'][0])
     {
@@ -1796,6 +2041,33 @@ class WebhookApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -1845,6 +2117,14 @@ class WebhookApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Invoicetronic\Model\WebHookHistory[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

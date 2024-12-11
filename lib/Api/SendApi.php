@@ -87,6 +87,18 @@ class SendApi
         'invoiceV1SendPost' => [
             'application/json',
         ],
+        'invoiceV1SendValidateFilesPost' => [
+            'multipart/form-data',
+        ],
+        'invoiceV1SendValidateJsonPost' => [
+            'application/json',
+        ],
+        'invoiceV1SendValidatePost' => [
+            'application/json',
+        ],
+        'invoiceV1SendValidateXmlPost' => [
+            'application/json',
+        ],
         'invoiceV1SendXmlPost' => [
             'application/xml',
         ],
@@ -141,7 +153,7 @@ class SendApi
     /**
      * Operation invoiceV1SendFilesPost
      *
-     * Add a send invoice by file
+     * Add an invoice by file
      *
      * @param  \SplFileObject[] $files files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -149,7 +161,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\Send
+     * @return \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1SendFilesPost($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
@@ -160,7 +172,7 @@ class SendApi
     /**
      * Operation invoiceV1SendFilesPostWithHttpInfo
      *
-     * Add a send invoice by file
+     * Add an invoice by file
      *
      * @param  \SplFileObject[] $files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -168,7 +180,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendFilesPostWithHttpInfo($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
@@ -225,6 +237,60 @@ class SendApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -278,6 +344,22 @@ class SendApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -286,7 +368,7 @@ class SendApi
     /**
      * Operation invoiceV1SendFilesPostAsync
      *
-     * Add a send invoice by file
+     * Add an invoice by file
      *
      * @param  \SplFileObject[] $files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -308,7 +390,7 @@ class SendApi
     /**
      * Operation invoiceV1SendFilesPostAsyncWithHttpInfo
      *
-     * Add a send invoice by file
+     * Add an invoice by file
      *
      * @param  \SplFileObject[] $files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -472,7 +554,7 @@ class SendApi
     /**
      * Operation invoiceV1SendGet
      *
-     * List send invoices
+     * List invoices
      *
      * @param  int $company_id Company id. (optional)
      * @param  string $identifier SDI identifier. (optional)
@@ -492,7 +574,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\Send[]|\Invoicetronic\Model\ProblemDetails
+     * @return \Invoicetronic\Model\Send[]|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1SendGet($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1SendGet'][0])
     {
@@ -503,7 +585,7 @@ class SendApi
     /**
      * Operation invoiceV1SendGetWithHttpInfo
      *
-     * List send invoices
+     * List invoices
      *
      * @param  int $company_id Company id. (optional)
      * @param  string $identifier SDI identifier. (optional)
@@ -523,7 +605,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\Send[]|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendGetWithHttpInfo($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1SendGet'][0])
     {
@@ -581,11 +663,11 @@ class SendApi
                         $response->getHeaders()
                     ];
                 case 400:
-                    if ('\Invoicetronic\Model\ProblemDetails' === '\SplFileObject') {
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Invoicetronic\Model\ProblemDetails' !== 'string') {
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
                             try {
                                 $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
                             } catch (\JsonException $exception) {
@@ -603,7 +685,7 @@ class SendApi
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemDetails', []),
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -663,7 +745,7 @@ class SendApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Invoicetronic\Model\ProblemDetails',
+                        '\Invoicetronic\Model\ProblemHttpResult',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -676,7 +758,7 @@ class SendApi
     /**
      * Operation invoiceV1SendGetAsync
      *
-     * List send invoices
+     * List invoices
      *
      * @param  int $company_id Company id. (optional)
      * @param  string $identifier SDI identifier. (optional)
@@ -710,7 +792,7 @@ class SendApi
     /**
      * Operation invoiceV1SendGetAsyncWithHttpInfo
      *
-     * List send invoices
+     * List invoices
      *
      * @param  int $company_id Company id. (optional)
      * @param  string $identifier SDI identifier. (optional)
@@ -950,7 +1032,7 @@ class SendApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', 'application/problem+json', ],
+            ['application/json', ],
             $contentType,
             $multipart
         );
@@ -1009,7 +1091,7 @@ class SendApi
     /**
      * Operation invoiceV1SendIdGet
      *
-     * Get a send invoice by id
+     * Get a invoice by id
      *
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
@@ -1027,7 +1109,7 @@ class SendApi
     /**
      * Operation invoiceV1SendIdGetWithHttpInfo
      *
-     * Get a send invoice by id
+     * Get a invoice by id
      *
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
@@ -1152,7 +1234,7 @@ class SendApi
     /**
      * Operation invoiceV1SendIdGetAsync
      *
-     * Get a send invoice by id
+     * Get a invoice by id
      *
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
@@ -1173,7 +1255,7 @@ class SendApi
     /**
      * Operation invoiceV1SendIdGetAsyncWithHttpInfo
      *
-     * Get a send invoice by id
+     * Get a invoice by id
      *
      * @param  int $id Item id. (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
@@ -1321,7 +1403,7 @@ class SendApi
     /**
      * Operation invoiceV1SendJsonPost
      *
-     * Add a send invoice by json
+     * Add an invoice by json
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1329,7 +1411,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\Send
+     * @return \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1SendJsonPost($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
@@ -1340,7 +1422,7 @@ class SendApi
     /**
      * Operation invoiceV1SendJsonPostWithHttpInfo
      *
-     * Add a send invoice by json
+     * Add an invoice by json
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1348,7 +1430,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendJsonPostWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
@@ -1405,6 +1487,60 @@ class SendApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -1458,6 +1594,22 @@ class SendApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1466,7 +1618,7 @@ class SendApi
     /**
      * Operation invoiceV1SendJsonPostAsync
      *
-     * Add a send invoice by json
+     * Add an invoice by json
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1488,7 +1640,7 @@ class SendApi
     /**
      * Operation invoiceV1SendJsonPostAsyncWithHttpInfo
      *
-     * Add a send invoice by json
+     * Add an invoice by json
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1647,7 +1799,7 @@ class SendApi
     /**
      * Operation invoiceV1SendPost
      *
-     * Add a send invoice
+     * Add an invoice
      *
      * @param  \Invoicetronic\Model\Send $send send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1655,7 +1807,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\Send
+     * @return \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1SendPost($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
@@ -1666,7 +1818,7 @@ class SendApi
     /**
      * Operation invoiceV1SendPostWithHttpInfo
      *
-     * Add a send invoice
+     * Add an invoice
      *
      * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1674,7 +1826,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendPostWithHttpInfo($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
@@ -1731,6 +1883,60 @@ class SendApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -1784,6 +1990,22 @@ class SendApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1792,7 +2014,7 @@ class SendApi
     /**
      * Operation invoiceV1SendPostAsync
      *
-     * Add a send invoice
+     * Add an invoice
      *
      * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1814,7 +2036,7 @@ class SendApi
     /**
      * Operation invoiceV1SendPostAsyncWithHttpInfo
      *
-     * Add a send invoice
+     * Add an invoice
      *
      * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1971,9 +2193,939 @@ class SendApi
     }
 
     /**
+     * Operation invoiceV1SendValidateFilesPost
+     *
+     * Validate an invoice by file
+     *
+     * @param  \SplFileObject[] $files files (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateFilesPost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function invoiceV1SendValidateFilesPost($files, string $contentType = self::contentTypes['invoiceV1SendValidateFilesPost'][0])
+    {
+        $this->invoiceV1SendValidateFilesPostWithHttpInfo($files, $contentType);
+    }
+
+    /**
+     * Operation invoiceV1SendValidateFilesPostWithHttpInfo
+     *
+     * Validate an invoice by file
+     *
+     * @param  \SplFileObject[] $files (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateFilesPost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function invoiceV1SendValidateFilesPostWithHttpInfo($files, string $contentType = self::contentTypes['invoiceV1SendValidateFilesPost'][0])
+    {
+        $request = $this->invoiceV1SendValidateFilesPostRequest($files, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation invoiceV1SendValidateFilesPostAsync
+     *
+     * Validate an invoice by file
+     *
+     * @param  \SplFileObject[] $files (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateFilesPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function invoiceV1SendValidateFilesPostAsync($files, string $contentType = self::contentTypes['invoiceV1SendValidateFilesPost'][0])
+    {
+        return $this->invoiceV1SendValidateFilesPostAsyncWithHttpInfo($files, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation invoiceV1SendValidateFilesPostAsyncWithHttpInfo
+     *
+     * Validate an invoice by file
+     *
+     * @param  \SplFileObject[] $files (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateFilesPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function invoiceV1SendValidateFilesPostAsyncWithHttpInfo($files, string $contentType = self::contentTypes['invoiceV1SendValidateFilesPost'][0])
+    {
+        $returnType = '';
+        $request = $this->invoiceV1SendValidateFilesPostRequest($files, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'invoiceV1SendValidateFilesPost'
+     *
+     * @param  \SplFileObject[] $files (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateFilesPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function invoiceV1SendValidateFilesPostRequest($files, string $contentType = self::contentTypes['invoiceV1SendValidateFilesPost'][0])
+    {
+
+        // verify the required parameter 'files' is set
+        if ($files === null || (is_array($files) && count($files) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $files when calling invoiceV1SendValidateFilesPost'
+            );
+        }
+
+
+        $resourcePath = '/invoice/v1/send/validate/files';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+        // form params
+        if ($files !== null) {
+            $multipart = true;
+            $formParams['files'] = [];
+            $paramFiles = is_array($files) ? $files : [$files];
+            foreach ($paramFiles as $paramFile) {
+                $formParams['files'][] = \GuzzleHttp\Psr7\Utils::tryFopen(
+                    ObjectSerializer::toFormValue($paramFile),
+                    'rb'
+                );
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation invoiceV1SendValidateJsonPost
+     *
+     * Validate an invoice by json
+     *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateJsonPost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function invoiceV1SendValidateJsonPost($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateJsonPost'][0])
+    {
+        $this->invoiceV1SendValidateJsonPostWithHttpInfo($fattura_ordinaria, $contentType);
+    }
+
+    /**
+     * Operation invoiceV1SendValidateJsonPostWithHttpInfo
+     *
+     * Validate an invoice by json
+     *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateJsonPost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function invoiceV1SendValidateJsonPostWithHttpInfo($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateJsonPost'][0])
+    {
+        $request = $this->invoiceV1SendValidateJsonPostRequest($fattura_ordinaria, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation invoiceV1SendValidateJsonPostAsync
+     *
+     * Validate an invoice by json
+     *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateJsonPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function invoiceV1SendValidateJsonPostAsync($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateJsonPost'][0])
+    {
+        return $this->invoiceV1SendValidateJsonPostAsyncWithHttpInfo($fattura_ordinaria, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation invoiceV1SendValidateJsonPostAsyncWithHttpInfo
+     *
+     * Validate an invoice by json
+     *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateJsonPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function invoiceV1SendValidateJsonPostAsyncWithHttpInfo($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateJsonPost'][0])
+    {
+        $returnType = '';
+        $request = $this->invoiceV1SendValidateJsonPostRequest($fattura_ordinaria, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'invoiceV1SendValidateJsonPost'
+     *
+     * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateJsonPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function invoiceV1SendValidateJsonPostRequest($fattura_ordinaria, string $contentType = self::contentTypes['invoiceV1SendValidateJsonPost'][0])
+    {
+
+        // verify the required parameter 'fattura_ordinaria' is set
+        if ($fattura_ordinaria === null || (is_array($fattura_ordinaria) && count($fattura_ordinaria) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $fattura_ordinaria when calling invoiceV1SendValidateJsonPost'
+            );
+        }
+
+
+        $resourcePath = '/invoice/v1/send/validate/json';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($fattura_ordinaria)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($fattura_ordinaria));
+            } else {
+                $httpBody = $fattura_ordinaria;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation invoiceV1SendValidatePost
+     *
+     * Validate an invoice
+     *
+     * @param  \Invoicetronic\Model\Send $send send (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidatePost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function invoiceV1SendValidatePost($send, string $contentType = self::contentTypes['invoiceV1SendValidatePost'][0])
+    {
+        $this->invoiceV1SendValidatePostWithHttpInfo($send, $contentType);
+    }
+
+    /**
+     * Operation invoiceV1SendValidatePostWithHttpInfo
+     *
+     * Validate an invoice
+     *
+     * @param  \Invoicetronic\Model\Send $send (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidatePost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function invoiceV1SendValidatePostWithHttpInfo($send, string $contentType = self::contentTypes['invoiceV1SendValidatePost'][0])
+    {
+        $request = $this->invoiceV1SendValidatePostRequest($send, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation invoiceV1SendValidatePostAsync
+     *
+     * Validate an invoice
+     *
+     * @param  \Invoicetronic\Model\Send $send (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidatePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function invoiceV1SendValidatePostAsync($send, string $contentType = self::contentTypes['invoiceV1SendValidatePost'][0])
+    {
+        return $this->invoiceV1SendValidatePostAsyncWithHttpInfo($send, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation invoiceV1SendValidatePostAsyncWithHttpInfo
+     *
+     * Validate an invoice
+     *
+     * @param  \Invoicetronic\Model\Send $send (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidatePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function invoiceV1SendValidatePostAsyncWithHttpInfo($send, string $contentType = self::contentTypes['invoiceV1SendValidatePost'][0])
+    {
+        $returnType = '';
+        $request = $this->invoiceV1SendValidatePostRequest($send, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'invoiceV1SendValidatePost'
+     *
+     * @param  \Invoicetronic\Model\Send $send (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidatePost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function invoiceV1SendValidatePostRequest($send, string $contentType = self::contentTypes['invoiceV1SendValidatePost'][0])
+    {
+
+        // verify the required parameter 'send' is set
+        if ($send === null || (is_array($send) && count($send) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $send when calling invoiceV1SendValidatePost'
+            );
+        }
+
+
+        $resourcePath = '/invoice/v1/send/validate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($send)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($send));
+            } else {
+                $httpBody = $send;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation invoiceV1SendValidateXmlPost
+     *
+     * Validate an invoice by xml
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function invoiceV1SendValidateXmlPost(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    {
+        $this->invoiceV1SendValidateXmlPostWithHttpInfo($contentType);
+    }
+
+    /**
+     * Operation invoiceV1SendValidateXmlPostWithHttpInfo
+     *
+     * Validate an invoice by xml
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function invoiceV1SendValidateXmlPostWithHttpInfo(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    {
+        $request = $this->invoiceV1SendValidateXmlPostRequest($contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation invoiceV1SendValidateXmlPostAsync
+     *
+     * Validate an invoice by xml
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function invoiceV1SendValidateXmlPostAsync(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    {
+        return $this->invoiceV1SendValidateXmlPostAsyncWithHttpInfo($contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation invoiceV1SendValidateXmlPostAsyncWithHttpInfo
+     *
+     * Validate an invoice by xml
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function invoiceV1SendValidateXmlPostAsyncWithHttpInfo(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    {
+        $returnType = '';
+        $request = $this->invoiceV1SendValidateXmlPostRequest($contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'invoiceV1SendValidateXmlPost'
+     *
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendValidateXmlPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function invoiceV1SendValidateXmlPostRequest(string $contentType = self::contentTypes['invoiceV1SendValidateXmlPost'][0])
+    {
+
+
+        $resourcePath = '/invoice/v1/send/validate/xml';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation invoiceV1SendXmlPost
      *
-     * Add a send invoice by xml
+     * Add an invoice by xml
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -1981,7 +3133,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\Send
+     * @return \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
     public function invoiceV1SendXmlPost($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
@@ -1992,7 +3144,7 @@ class SendApi
     /**
      * Operation invoiceV1SendXmlPostWithHttpInfo
      *
-     * Add a send invoice by xml
+     * Add an invoice by xml
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -2000,7 +3152,7 @@ class SendApi
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\Send, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
     public function invoiceV1SendXmlPostWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
@@ -2057,6 +3209,60 @@ class SendApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 422:
+                    if ('\Invoicetronic\Model\ProblemHttpResult' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\Invoicetronic\Model\ProblemHttpResult' !== 'string') {
+                            try {
+                                $content = json_decode($content, false, 512, JSON_THROW_ON_ERROR);
+                            } catch (\JsonException $exception) {
+                                throw new ApiException(
+                                    sprintf(
+                                        'Error JSON decoding server response (%s)',
+                                        $request->getUri()
+                                    ),
+                                    $statusCode,
+                                    $response->getHeaders(),
+                                    $content
+                                );
+                            }
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\Invoicetronic\Model\ProblemHttpResult', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             if ($statusCode < 200 || $statusCode > 299) {
@@ -2110,6 +3316,22 @@ class SendApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemHttpResult',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2118,7 +3340,7 @@ class SendApi
     /**
      * Operation invoiceV1SendXmlPostAsync
      *
-     * Add a send invoice by xml
+     * Add an invoice by xml
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
@@ -2140,7 +3362,7 @@ class SendApi
     /**
      * Operation invoiceV1SendXmlPostAsyncWithHttpInfo
      *
-     * Add a send invoice by xml
+     * Add an invoice by xml
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)

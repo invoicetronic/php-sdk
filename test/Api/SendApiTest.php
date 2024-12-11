@@ -75,7 +75,7 @@ class SendApiTest extends TestCase
     /**
      * Test case for invoiceV1SendFilesPost
      *
-     * Add a send invoice by file.
+     * Add an invoice by file.
      *
      */
     public function testInvoiceV1SendFilesPost()
@@ -87,7 +87,7 @@ class SendApiTest extends TestCase
     /**
      * Test case for invoiceV1SendGet
      *
-     * List send invoices.
+     * List invoices.
      *
      */
     public function testInvoiceV1SendGet()
@@ -99,7 +99,7 @@ class SendApiTest extends TestCase
     /**
      * Test case for invoiceV1SendIdGet
      *
-     * Get a send invoice by id.
+     * Get a invoice by id.
      *
      */
     public function testInvoiceV1SendIdGet()
@@ -111,7 +111,7 @@ class SendApiTest extends TestCase
     /**
      * Test case for invoiceV1SendJsonPost
      *
-     * Add a send invoice by json.
+     * Add an invoice by json.
      *
      */
     public function testInvoiceV1SendJsonPost()
@@ -123,7 +123,7 @@ class SendApiTest extends TestCase
     /**
      * Test case for invoiceV1SendPost
      *
-     * Add a send invoice.
+     * Add an invoice.
      *
      */
     public function testInvoiceV1SendPost()
@@ -133,9 +133,57 @@ class SendApiTest extends TestCase
     }
 
     /**
+     * Test case for invoiceV1SendValidateFilesPost
+     *
+     * Validate an invoice by file.
+     *
+     */
+    public function testInvoiceV1SendValidateFilesPost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for invoiceV1SendValidateJsonPost
+     *
+     * Validate an invoice by json.
+     *
+     */
+    public function testInvoiceV1SendValidateJsonPost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for invoiceV1SendValidatePost
+     *
+     * Validate an invoice.
+     *
+     */
+    public function testInvoiceV1SendValidatePost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for invoiceV1SendValidateXmlPost
+     *
+     * Validate an invoice by xml.
+     *
+     */
+    public function testInvoiceV1SendValidateXmlPost()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for invoiceV1SendXmlPost
      *
-     * Add a send invoice by xml.
+     * Add an invoice by xml.
      *
      */
     public function testInvoiceV1SendXmlPost()
