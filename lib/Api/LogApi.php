@@ -12,7 +12,7 @@
 /**
  * Italian eInvoice API
  *
- * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+ * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@invoicetronic.com
@@ -131,17 +131,24 @@ class LogApi
      *
      * List events
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $company_id Company id (optional)
+     * @param  string $endpoint endpoint (optional)
+     * @param  string $method method (optional)
+     * @param  int $api_verion Api version (optional)
+     * @param  int $status_code Response status code (optional)
+     * @param  \DateTime $date_created_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  \DateTime $date_created_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Event[]|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function invoiceV1LogGet($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
+    public function invoiceV1LogGet($company_id = null, $endpoint = null, $method = null, $api_verion = null, $status_code = null, $date_created_from = null, $date_created_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
     {
-        list($response) = $this->invoiceV1LogGetWithHttpInfo($page, $page_size, $contentType);
+        list($response) = $this->invoiceV1LogGetWithHttpInfo($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size, $contentType);
         return $response;
     }
 
@@ -150,17 +157,24 @@ class LogApi
      *
      * List events
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $company_id Company id (optional)
+     * @param  string $endpoint (optional)
+     * @param  string $method (optional)
+     * @param  int $api_verion Api version (optional)
+     * @param  int $status_code Response status code (optional)
+     * @param  \DateTime $date_created_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  \DateTime $date_created_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Event[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function invoiceV1LogGetWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
+    public function invoiceV1LogGetWithHttpInfo($company_id = null, $endpoint = null, $method = null, $api_verion = null, $status_code = null, $date_created_from = null, $date_created_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
     {
-        $request = $this->invoiceV1LogGetRequest($page, $page_size, $contentType);
+        $request = $this->invoiceV1LogGetRequest($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -311,16 +325,23 @@ class LogApi
      *
      * List events
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $company_id Company id (optional)
+     * @param  string $endpoint (optional)
+     * @param  string $method (optional)
+     * @param  int $api_verion Api version (optional)
+     * @param  int $status_code Response status code (optional)
+     * @param  \DateTime $date_created_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  \DateTime $date_created_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1LogGetAsync($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
+    public function invoiceV1LogGetAsync($company_id = null, $endpoint = null, $method = null, $api_verion = null, $status_code = null, $date_created_from = null, $date_created_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
     {
-        return $this->invoiceV1LogGetAsyncWithHttpInfo($page, $page_size, $contentType)
+        return $this->invoiceV1LogGetAsyncWithHttpInfo($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -333,17 +354,24 @@ class LogApi
      *
      * List events
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $company_id Company id (optional)
+     * @param  string $endpoint (optional)
+     * @param  string $method (optional)
+     * @param  int $api_verion Api version (optional)
+     * @param  int $status_code Response status code (optional)
+     * @param  \DateTime $date_created_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  \DateTime $date_created_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1LogGetAsyncWithHttpInfo($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
+    public function invoiceV1LogGetAsyncWithHttpInfo($company_id = null, $endpoint = null, $method = null, $api_verion = null, $status_code = null, $date_created_from = null, $date_created_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
     {
         $returnType = '\Invoicetronic\Model\Event[]';
-        $request = $this->invoiceV1LogGetRequest($page, $page_size, $contentType);
+        $request = $this->invoiceV1LogGetRequest($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -384,15 +412,29 @@ class LogApi
     /**
      * Create request for operation 'invoiceV1LogGet'
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $company_id Company id (optional)
+     * @param  string $endpoint (optional)
+     * @param  string $method (optional)
+     * @param  int $api_verion Api version (optional)
+     * @param  int $status_code Response status code (optional)
+     * @param  \DateTime $date_created_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  \DateTime $date_created_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function invoiceV1LogGetRequest($page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
+    public function invoiceV1LogGetRequest($company_id = null, $endpoint = null, $method = null, $api_verion = null, $status_code = null, $date_created_from = null, $date_created_to = null, $page = 1, $page_size = 100, string $contentType = self::contentTypes['invoiceV1LogGet'][0])
     {
+
+
+
+
+
+
+
 
 
 
@@ -404,6 +446,69 @@ class LogApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $company_id,
+            'company_id', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $endpoint,
+            'endpoint', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $method,
+            'method', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $api_verion,
+            'api_verion', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $status_code,
+            'status_code', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $date_created_from,
+            'date_created_from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $date_created_to,
+            'date_created_to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page,
@@ -488,7 +593,7 @@ class LogApi
      *
      * Get an event by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -506,7 +611,7 @@ class LogApi
      *
      * Get an event by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -631,7 +736,7 @@ class LogApi
      *
      * Get an event by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -652,7 +757,7 @@ class LogApi
      *
      * Get an event by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -702,7 +807,7 @@ class LogApi
     /**
      * Create request for operation 'invoiceV1LogIdGet'
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1LogIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

@@ -37,17 +37,17 @@ $apiInstance = new Invoicetronic\Api\UpdateApi(
     new GuzzleHttp\Client(),
     $config
 );
-$company_id = 56; // int | Company id.
+$company_id = 56; // int | Company id
 $identifier = 'identifier_example'; // string | SDI identifier.
-$unread = True; // bool | Only unread items.
+$unread = True; // bool | Unread items only.
 $send_id = 56; // int | Send item's id.
 $state = 'state_example'; // string | SDI state
 $last_update_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $last_update_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $date_sent_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
-$date_sent_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 format (2024-11-29T12:34:56Z)
-$page = 1; // int | Page number.
-$page_size = 100; // int | Items per page.
+$date_sent_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
+$page = 1; // int | Page number. Defaults to 1.
+$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
 
 try {
     $result = $apiInstance->invoiceV1UpdateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size);
@@ -61,17 +61,17 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **company_id** | **int**| Company id. | [optional] |
+| **company_id** | **int**| Company id | [optional] |
 | **identifier** | **string**| SDI identifier. | [optional] |
-| **unread** | **bool**| Only unread items. | [optional] |
+| **unread** | **bool**| Unread items only. | [optional] |
 | **send_id** | **int**| Send item&#39;s id. | [optional] |
 | **state** | **string**| SDI state | [optional] |
 | **last_update_from** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **last_update_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **date_sent_from** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
-| **date_sent_to** | **\DateTime**| UTC ISO 8601 format (2024-11-29T12:34:56Z) | [optional] |
-| **page** | **int**| Page number. | [optional] [default to 1] |
-| **page_size** | **int**| Items per page. | [optional] [default to 100] |
+| **date_sent_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
+| **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
+| **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
 
 ### Return type
 
@@ -119,7 +119,7 @@ $apiInstance = new Invoicetronic\Api\UpdateApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1UpdateIdGet($id);
@@ -133,7 +133,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 

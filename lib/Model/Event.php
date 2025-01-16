@@ -13,7 +13,7 @@
 /**
  * Italian eInvoice API
  *
- * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+ * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@invoicetronic.com
@@ -61,6 +61,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int',
         'created' => '\DateTime',
         'version' => 'int',
+        'user_id' => 'int',
+        'api_key_id' => 'int',
         'company_id' => 'int',
         'method' => 'string',
         'query' => 'string',
@@ -69,11 +71,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_code' => 'int',
         'date_time' => '\DateTime',
         'error' => 'string',
-        'request_body' => 'string',
-        'response_body' => 'string',
         'success' => 'bool',
-        'user_id' => 'int',
-        'api_key_id' => 'int'
+        'response_body' => 'string'
     ];
 
     /**
@@ -87,6 +86,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'int32',
         'created' => 'date-time',
         'version' => 'int32',
+        'user_id' => 'int32',
+        'api_key_id' => 'int32',
         'company_id' => 'int32',
         'method' => null,
         'query' => null,
@@ -95,11 +96,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_code' => 'int32',
         'date_time' => 'date-time',
         'error' => null,
-        'request_body' => null,
-        'response_body' => null,
         'success' => null,
-        'user_id' => 'int32',
-        'api_key_id' => 'int32'
+        'response_body' => null
     ];
 
     /**
@@ -111,6 +109,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => false,
         'created' => false,
         'version' => false,
+        'user_id' => false,
+        'api_key_id' => false,
         'company_id' => true,
         'method' => true,
         'query' => true,
@@ -119,11 +119,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_code' => false,
         'date_time' => false,
         'error' => true,
-        'request_body' => true,
-        'response_body' => true,
         'success' => false,
-        'user_id' => false,
-        'api_key_id' => false
+        'response_body' => true
     ];
 
     /**
@@ -215,6 +212,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'id',
         'created' => 'created',
         'version' => 'version',
+        'user_id' => 'user_id',
+        'api_key_id' => 'api_key_id',
         'company_id' => 'company_id',
         'method' => 'method',
         'query' => 'query',
@@ -223,11 +222,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_code' => 'status_code',
         'date_time' => 'date_time',
         'error' => 'error',
-        'request_body' => 'request_body',
-        'response_body' => 'response_body',
         'success' => 'success',
-        'user_id' => 'user_id',
-        'api_key_id' => 'api_key_id'
+        'response_body' => 'response_body'
     ];
 
     /**
@@ -239,6 +235,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'setId',
         'created' => 'setCreated',
         'version' => 'setVersion',
+        'user_id' => 'setUserId',
+        'api_key_id' => 'setApiKeyId',
         'company_id' => 'setCompanyId',
         'method' => 'setMethod',
         'query' => 'setQuery',
@@ -247,11 +245,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_code' => 'setStatusCode',
         'date_time' => 'setDateTime',
         'error' => 'setError',
-        'request_body' => 'setRequestBody',
-        'response_body' => 'setResponseBody',
         'success' => 'setSuccess',
-        'user_id' => 'setUserId',
-        'api_key_id' => 'setApiKeyId'
+        'response_body' => 'setResponseBody'
     ];
 
     /**
@@ -263,6 +258,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'id' => 'getId',
         'created' => 'getCreated',
         'version' => 'getVersion',
+        'user_id' => 'getUserId',
+        'api_key_id' => 'getApiKeyId',
         'company_id' => 'getCompanyId',
         'method' => 'getMethod',
         'query' => 'getQuery',
@@ -271,11 +268,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         'status_code' => 'getStatusCode',
         'date_time' => 'getDateTime',
         'error' => 'getError',
-        'request_body' => 'getRequestBody',
-        'response_body' => 'getResponseBody',
         'success' => 'getSuccess',
-        'user_id' => 'getUserId',
-        'api_key_id' => 'getApiKeyId'
+        'response_body' => 'getResponseBody'
     ];
 
     /**
@@ -338,6 +332,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('id', $data ?? [], null);
         $this->setIfExists('created', $data ?? [], null);
         $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('user_id', $data ?? [], null);
+        $this->setIfExists('api_key_id', $data ?? [], null);
         $this->setIfExists('company_id', $data ?? [], null);
         $this->setIfExists('method', $data ?? [], null);
         $this->setIfExists('query', $data ?? [], null);
@@ -346,11 +342,8 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('status_code', $data ?? [], null);
         $this->setIfExists('date_time', $data ?? [], null);
         $this->setIfExists('error', $data ?? [], null);
-        $this->setIfExists('request_body', $data ?? [], null);
-        $this->setIfExists('response_body', $data ?? [], null);
         $this->setIfExists('success', $data ?? [], null);
-        $this->setIfExists('user_id', $data ?? [], null);
-        $this->setIfExists('api_key_id', $data ?? [], null);
+        $this->setIfExists('response_body', $data ?? [], null);
     }
 
     /**
@@ -472,6 +465,60 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable version cannot be null');
         }
         $this->container['version'] = $version;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_id
+     *
+     * @return int|null
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param int|null $user_id User id.
+     *
+     * @return self
+     */
+    public function setUserId($user_id)
+    {
+        if (is_null($user_id)) {
+            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
+        }
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets api_key_id
+     *
+     * @return int|null
+     */
+    public function getApiKeyId()
+    {
+        return $this->container['api_key_id'];
+    }
+
+    /**
+     * Sets api_key_id
+     *
+     * @param int|null $api_key_id Api key id.
+     *
+     * @return self
+     */
+    public function setApiKeyId($api_key_id)
+    {
+        if (is_null($api_key_id)) {
+            throw new \InvalidArgumentException('non-nullable api_key_id cannot be null');
+        }
+        $this->container['api_key_id'] = $api_key_id;
 
         return $this;
     }
@@ -728,35 +775,28 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets request_body
+     * Gets success
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getRequestBody()
+    public function getSuccess()
     {
-        return $this->container['request_body'];
+        return $this->container['success'];
     }
 
     /**
-     * Sets request_body
+     * Sets success
      *
-     * @param string|null $request_body Request payload. It is guaranteed to be cyphered at rest.
+     * @param bool|null $success Wether the request was successful.
      *
      * @return self
      */
-    public function setRequestBody($request_body)
+    public function setSuccess($success)
     {
-        if (is_null($request_body)) {
-            array_push($this->openAPINullablesSetToNull, 'request_body');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('request_body', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($success)) {
+            throw new \InvalidArgumentException('non-nullable success cannot be null');
         }
-        $this->container['request_body'] = $request_body;
+        $this->container['success'] = $success;
 
         return $this;
     }
@@ -791,87 +831,6 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['response_body'] = $response_body;
-
-        return $this;
-    }
-
-    /**
-     * Gets success
-     *
-     * @return bool|null
-     */
-    public function getSuccess()
-    {
-        return $this->container['success'];
-    }
-
-    /**
-     * Sets success
-     *
-     * @param bool|null $success Wether the request was successful.
-     *
-     * @return self
-     */
-    public function setSuccess($success)
-    {
-        if (is_null($success)) {
-            throw new \InvalidArgumentException('non-nullable success cannot be null');
-        }
-        $this->container['success'] = $success;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return int|null
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param int|null $user_id User id.
-     *
-     * @return self
-     */
-    public function setUserId($user_id)
-    {
-        if (is_null($user_id)) {
-            throw new \InvalidArgumentException('non-nullable user_id cannot be null');
-        }
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets api_key_id
-     *
-     * @return int|null
-     */
-    public function getApiKeyId()
-    {
-        return $this->container['api_key_id'];
-    }
-
-    /**
-     * Sets api_key_id
-     *
-     * @param int|null $api_key_id Api key id.
-     *
-     * @return self
-     */
-    public function setApiKeyId($api_key_id)
-    {
-        if (is_null($api_key_id)) {
-            throw new \InvalidArgumentException('non-nullable api_key_id cannot be null');
-        }
-        $this->container['api_key_id'] = $api_key_id;
 
         return $this;
     }

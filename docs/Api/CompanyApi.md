@@ -19,7 +19,7 @@ invoiceV1CompanyGet($page, $page_size): \Invoicetronic\Model\Company[]
 
 List companies
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 
@@ -40,8 +40,8 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int | Page number.
-$page_size = 100; // int | Items per page.
+$page = 1; // int | Page number. Defaults to 1.
+$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
 
 try {
     $result = $apiInstance->invoiceV1CompanyGet($page, $page_size);
@@ -55,8 +55,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**| Page number. | [optional] [default to 1] |
-| **page_size** | **int**| Items per page. | [optional] [default to 100] |
+| **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
+| **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
 
 ### Return type
 
@@ -83,7 +83,7 @@ invoiceV1CompanyIdDelete($id): \Invoicetronic\Model\Company
 
 Delete a company
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 
@@ -104,7 +104,7 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1CompanyIdDelete($id);
@@ -118,7 +118,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 
@@ -145,7 +145,7 @@ invoiceV1CompanyIdGet($id): \Invoicetronic\Model\Company
 
 Get a company by id
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 
@@ -166,7 +166,7 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1CompanyIdGet($id);
@@ -180,7 +180,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 
@@ -207,7 +207,7 @@ invoiceV1CompanyPost($company): \Invoicetronic\Model\Company
 
 Add a company
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 
@@ -269,7 +269,7 @@ invoiceV1CompanyPut($company): \Invoicetronic\Model\Company
 
 Update a company
 
-Companies are the entities that send and receive invoices. At least one company is required in order to send and receive invoices.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
 
 ### Example
 

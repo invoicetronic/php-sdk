@@ -13,7 +13,7 @@
 /**
  * Italian eInvoice API
  *
- * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+ * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@invoicetronic.com
@@ -72,7 +72,9 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => '\DateTime',
         'date_sent' => '\DateTime',
         'documents' => '\Invoicetronic\Model\DocumentData[]',
-        'meta_data' => 'array<string,string>'
+        'encoding' => 'string',
+        'meta_data' => 'array<string,string>',
+        'company' => '\Invoicetronic\Model\Company'
     ];
 
     /**
@@ -97,7 +99,9 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => 'date-time',
         'date_sent' => 'date-time',
         'documents' => null,
-        'meta_data' => null
+        'encoding' => null,
+        'meta_data' => null,
+        'company' => null
     ];
 
     /**
@@ -120,7 +124,9 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => true,
         'date_sent' => true,
         'documents' => true,
-        'meta_data' => true
+        'encoding' => false,
+        'meta_data' => true,
+        'company' => false
     ];
 
     /**
@@ -223,7 +229,9 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => 'last_update',
         'date_sent' => 'date_sent',
         'documents' => 'documents',
-        'meta_data' => 'meta_data'
+        'encoding' => 'encoding',
+        'meta_data' => 'meta_data',
+        'company' => 'company'
     ];
 
     /**
@@ -246,7 +254,9 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => 'setLastUpdate',
         'date_sent' => 'setDateSent',
         'documents' => 'setDocuments',
-        'meta_data' => 'setMetaData'
+        'encoding' => 'setEncoding',
+        'meta_data' => 'setMetaData',
+        'company' => 'setCompany'
     ];
 
     /**
@@ -269,7 +279,9 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => 'getLastUpdate',
         'date_sent' => 'getDateSent',
         'documents' => 'getDocuments',
-        'meta_data' => 'getMetaData'
+        'encoding' => 'getEncoding',
+        'meta_data' => 'getMetaData',
+        'company' => 'getCompany'
     ];
 
     /**
@@ -313,6 +325,21 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const ENCODING_XML = 'Xml';
+    public const ENCODING_BASE64 = 'Base64';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEncodingAllowableValues()
+    {
+        return [
+            self::ENCODING_XML,
+            self::ENCODING_BASE64,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -343,7 +370,9 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('last_update', $data ?? [], null);
         $this->setIfExists('date_sent', $data ?? [], null);
         $this->setIfExists('documents', $data ?? [], null);
+        $this->setIfExists('encoding', $data ?? [], null);
         $this->setIfExists('meta_data', $data ?? [], null);
+        $this->setIfExists('company', $data ?? [], null);
     }
 
     /**
@@ -372,6 +401,15 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getEncodingAllowableValues();
+        if (!is_null($this->container['encoding']) && !in_array($this->container['encoding'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'encoding', must be one of '%s'",
+                $this->container['encoding'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -830,6 +868,43 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets encoding
+     *
+     * @return string|null
+     */
+    public function getEncoding()
+    {
+        return $this->container['encoding'];
+    }
+
+    /**
+     * Sets encoding
+     *
+     * @param string|null $encoding Whether the payload is Base64 encoded or a plain XML (text).
+     *
+     * @return self
+     */
+    public function setEncoding($encoding)
+    {
+        if (is_null($encoding)) {
+            throw new \InvalidArgumentException('non-nullable encoding cannot be null');
+        }
+        $allowedValues = $this->getEncodingAllowableValues();
+        if (!in_array($encoding, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'encoding', must be one of '%s'",
+                    $encoding,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['encoding'] = $encoding;
+
+        return $this;
+    }
+
+    /**
      * Gets meta_data
      *
      * @return array<string,string>|null
@@ -859,6 +934,33 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['meta_data'] = $meta_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets company
+     *
+     * @return \Invoicetronic\Model\Company|null
+     */
+    public function getCompany()
+    {
+        return $this->container['company'];
+    }
+
+    /**
+     * Sets company
+     *
+     * @param \Invoicetronic\Model\Company|null $company company
+     *
+     * @return self
+     */
+    public function setCompany($company)
+    {
+        if (is_null($company)) {
+            throw new \InvalidArgumentException('non-nullable company cannot be null');
+        }
+        $this->container['company'] = $company;
 
         return $this;
     }

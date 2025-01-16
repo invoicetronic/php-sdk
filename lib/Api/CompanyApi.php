@@ -12,7 +12,7 @@
 /**
  * Italian eInvoice API
  *
- * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+ * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@invoicetronic.com
@@ -140,8 +140,8 @@ class CompanyApi
      *
      * List companies
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -159,8 +159,8 @@ class CompanyApi
      *
      * List companies
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -320,8 +320,8 @@ class CompanyApi
      *
      * List companies
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -342,8 +342,8 @@ class CompanyApi
      *
      * List companies
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -393,8 +393,8 @@ class CompanyApi
     /**
      * Create request for operation 'invoiceV1CompanyGet'
      *
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -425,7 +425,7 @@ class CompanyApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page_size,
-            'pageSize', // param base name
+            'page_size', // param base name
             'integer', // openApiType
             'form', // style
             true, // explode
@@ -497,7 +497,7 @@ class CompanyApi
      *
      * Delete a company
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdDelete'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -515,7 +515,7 @@ class CompanyApi
      *
      * Delete a company
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdDelete'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -710,7 +710,7 @@ class CompanyApi
      *
      * Delete a company
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -731,7 +731,7 @@ class CompanyApi
      *
      * Delete a company
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -781,7 +781,7 @@ class CompanyApi
     /**
      * Create request for operation 'invoiceV1CompanyIdDelete'
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -879,7 +879,7 @@ class CompanyApi
      *
      * Get a company by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -897,7 +897,7 @@ class CompanyApi
      *
      * Get a company by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1022,7 +1022,7 @@ class CompanyApi
      *
      * Get a company by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1043,7 +1043,7 @@ class CompanyApi
      *
      * Get a company by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1093,7 +1093,7 @@ class CompanyApi
     /**
      * Create request for operation 'invoiceV1CompanyIdGet'
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1CompanyIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

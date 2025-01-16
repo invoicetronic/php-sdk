@@ -11,8 +11,6 @@ Name | Type | Description | Notes
 **user_id** | **int** | User id. | [optional]
 **event** | **string** | Event name. | [optional]
 **status_code** | **int** | Status code. | [optional]
-**request_body** | **string** | Webhook request body. | [optional]
-**response_body** | **string** | Webhook response body. | [optional]
 **date_time** | **\DateTime** | Date and time of the request. | [optional]
 **success** | **bool** | Wether the request was successful. | [optional] [readonly]
 

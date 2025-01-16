@@ -12,7 +12,7 @@
 /**
  * Italian eInvoice API
  *
- * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+ * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@invoicetronic.com
@@ -157,15 +157,16 @@ class SendApi
      *
      * @param  \SplFileObject[] $files files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendFilesPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function invoiceV1SendFilesPost($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
+    public function invoiceV1SendFilesPost($files, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
-        list($response) = $this->invoiceV1SendFilesPostWithHttpInfo($files, $validate, $contentType);
+        list($response) = $this->invoiceV1SendFilesPostWithHttpInfo($files, $validate, $signature, $contentType);
         return $response;
     }
 
@@ -176,15 +177,16 @@ class SendApi
      *
      * @param  \SplFileObject[] $files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendFilesPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function invoiceV1SendFilesPostWithHttpInfo($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
+    public function invoiceV1SendFilesPostWithHttpInfo($files, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
-        $request = $this->invoiceV1SendFilesPostRequest($files, $validate, $contentType);
+        $request = $this->invoiceV1SendFilesPostRequest($files, $validate, $signature, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -372,14 +374,15 @@ class SendApi
      *
      * @param  \SplFileObject[] $files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendFilesPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendFilesPostAsync($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
+    public function invoiceV1SendFilesPostAsync($files, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
-        return $this->invoiceV1SendFilesPostAsyncWithHttpInfo($files, $validate, $contentType)
+        return $this->invoiceV1SendFilesPostAsyncWithHttpInfo($files, $validate, $signature, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -394,15 +397,16 @@ class SendApi
      *
      * @param  \SplFileObject[] $files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendFilesPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendFilesPostAsyncWithHttpInfo($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
+    public function invoiceV1SendFilesPostAsyncWithHttpInfo($files, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
         $returnType = '\Invoicetronic\Model\Send';
-        $request = $this->invoiceV1SendFilesPostRequest($files, $validate, $contentType);
+        $request = $this->invoiceV1SendFilesPostRequest($files, $validate, $signature, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -445,12 +449,13 @@ class SendApi
      *
      * @param  \SplFileObject[] $files (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendFilesPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function invoiceV1SendFilesPostRequest($files, $validate = false, string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
+    public function invoiceV1SendFilesPostRequest($files, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendFilesPost'][0])
     {
 
         // verify the required parameter 'files' is set
@@ -459,6 +464,7 @@ class SendApi
                 'Missing the required parameter $files when calling invoiceV1SendFilesPost'
             );
         }
+
 
 
 
@@ -474,6 +480,15 @@ class SendApi
             $validate,
             'validate', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $signature,
+            'signature', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -556,10 +571,10 @@ class SendApi
      *
      * List invoices
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  string $committente VAT number or fiscal code. (optional)
-     * @param  string $prestatore VAT number or fiscal code. (optional)
+     * @param  string $committente Vat number or fiscal code. (optional)
+     * @param  string $prestatore Vat number or fiscal code. (optional)
      * @param  string $file_name File name. (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
@@ -568,8 +583,8 @@ class SendApi
      * @param  \DateTime $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string $document_number Document number. (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -587,10 +602,10 @@ class SendApi
      *
      * List invoices
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  string $committente VAT number or fiscal code. (optional)
-     * @param  string $prestatore VAT number or fiscal code. (optional)
+     * @param  string $committente Vat number or fiscal code. (optional)
+     * @param  string $prestatore Vat number or fiscal code. (optional)
      * @param  string $file_name File name. (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
@@ -599,8 +614,8 @@ class SendApi
      * @param  \DateTime $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string $document_number Document number. (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -760,10 +775,10 @@ class SendApi
      *
      * List invoices
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  string $committente VAT number or fiscal code. (optional)
-     * @param  string $prestatore VAT number or fiscal code. (optional)
+     * @param  string $committente Vat number or fiscal code. (optional)
+     * @param  string $prestatore Vat number or fiscal code. (optional)
      * @param  string $file_name File name. (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
@@ -772,8 +787,8 @@ class SendApi
      * @param  \DateTime $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string $document_number Document number. (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -794,10 +809,10 @@ class SendApi
      *
      * List invoices
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  string $committente VAT number or fiscal code. (optional)
-     * @param  string $prestatore VAT number or fiscal code. (optional)
+     * @param  string $committente Vat number or fiscal code. (optional)
+     * @param  string $prestatore Vat number or fiscal code. (optional)
      * @param  string $file_name File name. (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
@@ -806,8 +821,8 @@ class SendApi
      * @param  \DateTime $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string $document_number Document number. (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -857,10 +872,10 @@ class SendApi
     /**
      * Create request for operation 'invoiceV1SendGet'
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  string $committente VAT number or fiscal code. (optional)
-     * @param  string $prestatore VAT number or fiscal code. (optional)
+     * @param  string $committente Vat number or fiscal code. (optional)
+     * @param  string $prestatore Vat number or fiscal code. (optional)
      * @param  string $file_name File name. (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
@@ -869,8 +884,8 @@ class SendApi
      * @param  \DateTime $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string $document_number Document number. (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1093,7 +1108,7 @@ class SendApi
      *
      * Get a invoice by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1111,7 +1126,7 @@ class SendApi
      *
      * Get a invoice by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1236,7 +1251,7 @@ class SendApi
      *
      * Get a invoice by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1257,7 +1272,7 @@ class SendApi
      *
      * Get a invoice by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1307,7 +1322,7 @@ class SendApi
     /**
      * Create request for operation 'invoiceV1SendIdGet'
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1407,15 +1422,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function invoiceV1SendJsonPost($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
+    public function invoiceV1SendJsonPost($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
-        list($response) = $this->invoiceV1SendJsonPostWithHttpInfo($fattura_ordinaria, $validate, $contentType);
+        list($response) = $this->invoiceV1SendJsonPostWithHttpInfo($fattura_ordinaria, $validate, $signature, $contentType);
         return $response;
     }
 
@@ -1426,15 +1442,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function invoiceV1SendJsonPostWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
+    public function invoiceV1SendJsonPostWithHttpInfo($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
-        $request = $this->invoiceV1SendJsonPostRequest($fattura_ordinaria, $validate, $contentType);
+        $request = $this->invoiceV1SendJsonPostRequest($fattura_ordinaria, $validate, $signature, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1622,14 +1639,15 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendJsonPostAsync($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
+    public function invoiceV1SendJsonPostAsync($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
-        return $this->invoiceV1SendJsonPostAsyncWithHttpInfo($fattura_ordinaria, $validate, $contentType)
+        return $this->invoiceV1SendJsonPostAsyncWithHttpInfo($fattura_ordinaria, $validate, $signature, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1644,15 +1662,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendJsonPostAsyncWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
+    public function invoiceV1SendJsonPostAsyncWithHttpInfo($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
         $returnType = '\Invoicetronic\Model\Send';
-        $request = $this->invoiceV1SendJsonPostRequest($fattura_ordinaria, $validate, $contentType);
+        $request = $this->invoiceV1SendJsonPostRequest($fattura_ordinaria, $validate, $signature, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1695,12 +1714,13 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendJsonPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function invoiceV1SendJsonPostRequest($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
+    public function invoiceV1SendJsonPostRequest($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendJsonPost'][0])
     {
 
         // verify the required parameter 'fattura_ordinaria' is set
@@ -1709,6 +1729,7 @@ class SendApi
                 'Missing the required parameter $fattura_ordinaria when calling invoiceV1SendJsonPost'
             );
         }
+
 
 
 
@@ -1724,6 +1745,15 @@ class SendApi
             $validate,
             'validate', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $signature,
+            'signature', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -1803,15 +1833,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\Send $send send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function invoiceV1SendPost($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
+    public function invoiceV1SendPost($send, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
-        list($response) = $this->invoiceV1SendPostWithHttpInfo($send, $validate, $contentType);
+        list($response) = $this->invoiceV1SendPostWithHttpInfo($send, $validate, $signature, $contentType);
         return $response;
     }
 
@@ -1822,15 +1853,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function invoiceV1SendPostWithHttpInfo($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
+    public function invoiceV1SendPostWithHttpInfo($send, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
-        $request = $this->invoiceV1SendPostRequest($send, $validate, $contentType);
+        $request = $this->invoiceV1SendPostRequest($send, $validate, $signature, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2018,14 +2050,15 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendPostAsync($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
+    public function invoiceV1SendPostAsync($send, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
-        return $this->invoiceV1SendPostAsyncWithHttpInfo($send, $validate, $contentType)
+        return $this->invoiceV1SendPostAsyncWithHttpInfo($send, $validate, $signature, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2040,15 +2073,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendPostAsyncWithHttpInfo($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
+    public function invoiceV1SendPostAsyncWithHttpInfo($send, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
         $returnType = '\Invoicetronic\Model\Send';
-        $request = $this->invoiceV1SendPostRequest($send, $validate, $contentType);
+        $request = $this->invoiceV1SendPostRequest($send, $validate, $signature, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2091,12 +2125,13 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\Send $send (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function invoiceV1SendPostRequest($send, $validate = false, string $contentType = self::contentTypes['invoiceV1SendPost'][0])
+    public function invoiceV1SendPostRequest($send, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendPost'][0])
     {
 
         // verify the required parameter 'send' is set
@@ -2105,6 +2140,7 @@ class SendApi
                 'Missing the required parameter $send when calling invoiceV1SendPost'
             );
         }
+
 
 
 
@@ -2120,6 +2156,15 @@ class SendApi
             $validate,
             'validate', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $signature,
+            'signature', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required
@@ -3148,15 +3193,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function invoiceV1SendXmlPost($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
+    public function invoiceV1SendXmlPost($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
-        list($response) = $this->invoiceV1SendXmlPostWithHttpInfo($fattura_ordinaria, $validate, $contentType);
+        list($response) = $this->invoiceV1SendXmlPostWithHttpInfo($fattura_ordinaria, $validate, $signature, $contentType);
         return $response;
     }
 
@@ -3167,15 +3213,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Send|\Invoicetronic\Model\ProblemHttpResult|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function invoiceV1SendXmlPostWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
+    public function invoiceV1SendXmlPostWithHttpInfo($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
-        $request = $this->invoiceV1SendXmlPostRequest($fattura_ordinaria, $validate, $contentType);
+        $request = $this->invoiceV1SendXmlPostRequest($fattura_ordinaria, $validate, $signature, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3363,14 +3410,15 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendXmlPostAsync($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
+    public function invoiceV1SendXmlPostAsync($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
-        return $this->invoiceV1SendXmlPostAsyncWithHttpInfo($fattura_ordinaria, $validate, $contentType)
+        return $this->invoiceV1SendXmlPostAsyncWithHttpInfo($fattura_ordinaria, $validate, $signature, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3385,15 +3433,16 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function invoiceV1SendXmlPostAsyncWithHttpInfo($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
+    public function invoiceV1SendXmlPostAsyncWithHttpInfo($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
         $returnType = '\Invoicetronic\Model\Send';
-        $request = $this->invoiceV1SendXmlPostRequest($fattura_ordinaria, $validate, $contentType);
+        $request = $this->invoiceV1SendXmlPostRequest($fattura_ordinaria, $validate, $signature, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3436,12 +3485,13 @@ class SendApi
      *
      * @param  \Invoicetronic\Model\FatturaOrdinaria $fattura_ordinaria (required)
      * @param  bool $validate Validate the document first, and reject it on failure. (optional, default to false)
+     * @param  string $signature Whether to digitally sign the document. (optional, default to 'Auto')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1SendXmlPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function invoiceV1SendXmlPostRequest($fattura_ordinaria, $validate = false, string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
+    public function invoiceV1SendXmlPostRequest($fattura_ordinaria, $validate = false, $signature = 'Auto', string $contentType = self::contentTypes['invoiceV1SendXmlPost'][0])
     {
 
         // verify the required parameter 'fattura_ordinaria' is set
@@ -3450,6 +3500,7 @@ class SendApi
                 'Missing the required parameter $fattura_ordinaria when calling invoiceV1SendXmlPost'
             );
         }
+
 
 
 
@@ -3465,6 +3516,15 @@ class SendApi
             $validate,
             'validate', // param base name
             'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $signature,
+            'signature', // param base name
+            'string', // openApiType
             'form', // style
             true, // explode
             false // required

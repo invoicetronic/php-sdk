@@ -42,8 +42,8 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int | Page number.
-$page_size = 100; // int | Items per page.
+$page = 1; // int | Page number. Defaults to 1.
+$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
 
 try {
     $result = $apiInstance->invoiceV1WebhookGet($page, $page_size);
@@ -57,8 +57,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**| Page number. | [optional] [default to 1] |
-| **page_size** | **int**| Items per page. | [optional] [default to 100] |
+| **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
+| **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
 
 ### Return type
 
@@ -106,7 +106,7 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1WebhookIdDelete($id);
@@ -120,7 +120,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 
@@ -168,7 +168,7 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1WebhookIdGet($id);
@@ -182,7 +182,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 
@@ -352,8 +352,8 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int | Page number.
-$page_size = 100; // int | Items per page.
+$page = 1; // int | Page number. Defaults to 1.
+$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
 
 try {
     $result = $apiInstance->invoiceV1WebhookhistoryGet($page, $page_size);
@@ -367,8 +367,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**| Page number. | [optional] [default to 1] |
-| **page_size** | **int**| Items per page. | [optional] [default to 100] |
+| **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
+| **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
 
 ### Return type
 
@@ -414,7 +414,7 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1WebhookhistoryIdGet($id);
@@ -428,7 +428,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 

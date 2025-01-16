@@ -13,7 +13,7 @@
 /**
  * Italian eInvoice API
  *
- * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+ * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@invoicetronic.com
@@ -66,8 +66,6 @@ class WebHookHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'int',
         'event' => 'string',
         'status_code' => 'int',
-        'request_body' => 'string',
-        'response_body' => 'string',
         'date_time' => '\DateTime',
         'success' => 'bool'
     ];
@@ -87,8 +85,6 @@ class WebHookHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'int32',
         'event' => null,
         'status_code' => 'int32',
-        'request_body' => null,
-        'response_body' => null,
         'date_time' => 'date-time',
         'success' => null
     ];
@@ -106,8 +102,6 @@ class WebHookHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => false,
         'event' => true,
         'status_code' => false,
-        'request_body' => true,
-        'response_body' => true,
         'date_time' => false,
         'success' => false
     ];
@@ -205,8 +199,6 @@ class WebHookHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'user_id',
         'event' => 'event',
         'status_code' => 'status_code',
-        'request_body' => 'request_body',
-        'response_body' => 'response_body',
         'date_time' => 'date_time',
         'success' => 'success'
     ];
@@ -224,8 +216,6 @@ class WebHookHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'setUserId',
         'event' => 'setEvent',
         'status_code' => 'setStatusCode',
-        'request_body' => 'setRequestBody',
-        'response_body' => 'setResponseBody',
         'date_time' => 'setDateTime',
         'success' => 'setSuccess'
     ];
@@ -243,8 +233,6 @@ class WebHookHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'getUserId',
         'event' => 'getEvent',
         'status_code' => 'getStatusCode',
-        'request_body' => 'getRequestBody',
-        'response_body' => 'getResponseBody',
         'date_time' => 'getDateTime',
         'success' => 'getSuccess'
     ];
@@ -313,8 +301,6 @@ class WebHookHistory implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('event', $data ?? [], null);
         $this->setIfExists('status_code', $data ?? [], null);
-        $this->setIfExists('request_body', $data ?? [], null);
-        $this->setIfExists('response_body', $data ?? [], null);
         $this->setIfExists('date_time', $data ?? [], null);
         $this->setIfExists('success', $data ?? [], null);
     }
@@ -553,74 +539,6 @@ class WebHookHistory implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable status_code cannot be null');
         }
         $this->container['status_code'] = $status_code;
-
-        return $this;
-    }
-
-    /**
-     * Gets request_body
-     *
-     * @return string|null
-     */
-    public function getRequestBody()
-    {
-        return $this->container['request_body'];
-    }
-
-    /**
-     * Sets request_body
-     *
-     * @param string|null $request_body Webhook request body.
-     *
-     * @return self
-     */
-    public function setRequestBody($request_body)
-    {
-        if (is_null($request_body)) {
-            array_push($this->openAPINullablesSetToNull, 'request_body');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('request_body', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['request_body'] = $request_body;
-
-        return $this;
-    }
-
-    /**
-     * Gets response_body
-     *
-     * @return string|null
-     */
-    public function getResponseBody()
-    {
-        return $this->container['response_body'];
-    }
-
-    /**
-     * Sets response_body
-     *
-     * @param string|null $response_body Webhook response body.
-     *
-     * @return self
-     */
-    public function setResponseBody($response_body)
-    {
-        if (is_null($response_body)) {
-            array_push($this->openAPINullablesSetToNull, 'response_body');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('response_body', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['response_body'] = $response_body;
 
         return $this;
     }

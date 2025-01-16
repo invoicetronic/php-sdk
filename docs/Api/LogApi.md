@@ -11,7 +11,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `invoiceV1LogGet()`
 
 ```php
-invoiceV1LogGet($page, $page_size): \Invoicetronic\Model\Event[]
+invoiceV1LogGet($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size): \Invoicetronic\Model\Event[]
 ```
 
 List events
@@ -37,11 +37,18 @@ $apiInstance = new Invoicetronic\Api\LogApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int | Page number.
-$page_size = 100; // int | Items per page.
+$company_id = 56; // int | Company id
+$endpoint = 'endpoint_example'; // string
+$method = 'method_example'; // string
+$api_verion = 56; // int | Api version
+$status_code = 56; // int | Response status code
+$date_created_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
+$date_created_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
+$page = 1; // int | Page number. Defaults to 1.
+$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
 
 try {
-    $result = $apiInstance->invoiceV1LogGet($page, $page_size);
+    $result = $apiInstance->invoiceV1LogGet($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LogApi->invoiceV1LogGet: ', $e->getMessage(), PHP_EOL;
@@ -52,8 +59,15 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**| Page number. | [optional] [default to 1] |
-| **page_size** | **int**| Items per page. | [optional] [default to 100] |
+| **company_id** | **int**| Company id | [optional] |
+| **endpoint** | **string**|  | [optional] |
+| **method** | **string**|  | [optional] |
+| **api_verion** | **int**| Api version | [optional] |
+| **status_code** | **int**| Response status code | [optional] |
+| **date_created_from** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
+| **date_created_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
+| **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
+| **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
 
 ### Return type
 
@@ -101,7 +115,7 @@ $apiInstance = new Invoicetronic\Api\LogApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1LogIdGet($id);
@@ -115,7 +129,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 

@@ -38,11 +38,11 @@ $apiInstance = new Invoicetronic\Api\ReceiveApi(
     new GuzzleHttp\Client(),
     $config
 );
-$company_id = 56; // int | Company id.
+$company_id = 56; // int | Company id
 $identifier = 'identifier_example'; // string | SDI identifier.
 $unread = True; // bool | Unread items only.
-$committente = 'committente_example'; // string | VAT number or fiscal code.
-$prestatore = 'prestatore_example'; // string | VAT number or fiscal code.
+$committente = 'committente_example'; // string | Vat number or fiscal code.
+$prestatore = 'prestatore_example'; // string | Vat number or fiscal code.
 $file_name = 'file_name_example'; // string | File name.
 $last_update_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $last_update_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
@@ -51,8 +51,8 @@ $date_sent_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC I
 $document_date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $document_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $document_number = 'document_number_example'; // string | Document number.
-$page = 1; // int | Page number.
-$page_size = 100; // int | Items per page.
+$page = 1; // int | Page number. Defaults to 1.
+$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
 
 try {
     $result = $apiInstance->invoiceV1ReceiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size);
@@ -66,11 +66,11 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **company_id** | **int**| Company id. | [optional] |
+| **company_id** | **int**| Company id | [optional] |
 | **identifier** | **string**| SDI identifier. | [optional] |
 | **unread** | **bool**| Unread items only. | [optional] |
-| **committente** | **string**| VAT number or fiscal code. | [optional] |
-| **prestatore** | **string**| VAT number or fiscal code. | [optional] |
+| **committente** | **string**| Vat number or fiscal code. | [optional] |
+| **prestatore** | **string**| Vat number or fiscal code. | [optional] |
 | **file_name** | **string**| File name. | [optional] |
 | **last_update_from** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **last_update_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
@@ -79,8 +79,8 @@ try {
 | **document_date_from** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **document_date_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **document_number** | **string**| Document number. | [optional] |
-| **page** | **int**| Page number. | [optional] [default to 1] |
-| **page_size** | **int**| Items per page. | [optional] [default to 100] |
+| **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
+| **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
 
 ### Return type
 
@@ -128,7 +128,7 @@ $apiInstance = new Invoicetronic\Api\ReceiveApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1ReceiveIdDelete($id);
@@ -142,7 +142,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 
@@ -190,7 +190,7 @@ $apiInstance = new Invoicetronic\Api\ReceiveApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | Item id.
+$id = 56; // int | Item id
 
 try {
     $result = $apiInstance->invoiceV1ReceiveIdGet($id);
@@ -204,7 +204,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**| Item id. | |
+| **id** | **int**| Item id | |
 
 ### Return type
 

@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **last_update** | **\DateTime** | Last update from SDI. | [optional]
 **date_sent** | **\DateTime** | When the invoice was sent to SDI. | [optional]
 **documents** | [**\Invoicetronic\Model\DocumentData[]**](DocumentData.md) | The invoices included in the payload. This is set by the system, based on the xml content. | [optional]
+**encoding** | **string** | Whether the payload is Base64 encoded or a plain XML (text). | [optional]
 **meta_data** | **array<string,string>** | Optional metadata, as json. | [optional]
+**company** | [**\Invoicetronic\Model\Company**](Company.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

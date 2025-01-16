@@ -12,7 +12,7 @@
 /**
  * Italian eInvoice API
  *
- * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+ * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@invoicetronic.com
@@ -131,17 +131,17 @@ class UpdateApi
      *
      * List updates
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  bool $unread Only unread items. (optional)
+     * @param  bool $unread Unread items only. (optional)
      * @param  int $send_id Send item&#39;s id. (optional)
      * @param  string $state SDI state (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $date_sent_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime $date_sent_to UTC ISO 8601 format (2024-11-29T12:34:56Z) (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  \DateTime $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -159,17 +159,17 @@ class UpdateApi
      *
      * List updates
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  bool $unread Only unread items. (optional)
+     * @param  bool $unread Unread items only. (optional)
      * @param  int $send_id Send item&#39;s id. (optional)
      * @param  string $state SDI state (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $date_sent_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime $date_sent_to UTC ISO 8601 format (2024-11-29T12:34:56Z) (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  \DateTime $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -329,17 +329,17 @@ class UpdateApi
      *
      * List updates
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  bool $unread Only unread items. (optional)
+     * @param  bool $unread Unread items only. (optional)
      * @param  int $send_id Send item&#39;s id. (optional)
      * @param  string $state SDI state (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $date_sent_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime $date_sent_to UTC ISO 8601 format (2024-11-29T12:34:56Z) (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  \DateTime $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -360,17 +360,17 @@ class UpdateApi
      *
      * List updates
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  bool $unread Only unread items. (optional)
+     * @param  bool $unread Unread items only. (optional)
      * @param  int $send_id Send item&#39;s id. (optional)
      * @param  string $state SDI state (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $date_sent_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime $date_sent_to UTC ISO 8601 format (2024-11-29T12:34:56Z) (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  \DateTime $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -420,17 +420,17 @@ class UpdateApi
     /**
      * Create request for operation 'invoiceV1UpdateGet'
      *
-     * @param  int $company_id Company id. (optional)
+     * @param  int $company_id Company id (optional)
      * @param  string $identifier SDI identifier. (optional)
-     * @param  bool $unread Only unread items. (optional)
+     * @param  bool $unread Unread items only. (optional)
      * @param  int $send_id Send item&#39;s id. (optional)
      * @param  string $state SDI state (optional)
      * @param  \DateTime $last_update_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $last_update_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  \DateTime $date_sent_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime $date_sent_to UTC ISO 8601 format (2024-11-29T12:34:56Z) (optional)
-     * @param  int $page Page number. (optional, default to 1)
-     * @param  int $page_size Items per page. (optional, default to 100)
+     * @param  \DateTime $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
+     * @param  int $page Page number. Defaults to 1. (optional, default to 1)
+     * @param  int $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -623,7 +623,7 @@ class UpdateApi
      *
      * Get an update by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -641,7 +641,7 @@ class UpdateApi
      *
      * Get an update by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -766,7 +766,7 @@ class UpdateApi
      *
      * Get an update by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -787,7 +787,7 @@ class UpdateApi
      *
      * Get an update by id
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -837,7 +837,7 @@ class UpdateApi
     /**
      * Create request for operation 'invoiceV1UpdateIdGet'
      *
-     * @param  int $id Item id. (required)
+     * @param  int $id Item id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['invoiceV1UpdateIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException

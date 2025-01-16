@@ -13,7 +13,7 @@
 /**
  * Italian eInvoice API
  *
- * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while still providing complete control over the invoice send/receive process. The API also provides advanced features and a rich toolchain, such as invoice validation, multiple upload methods, webhooks, event logs, CORS support, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
+ * The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.  For more information, see  [Invoicetronic website][2]  [1]: https://www.fatturapa.gov.it/it/sistemainterscambio/cose-il-sdi/ [2]: https://invoicetronic.com/
  *
  * The version of the OpenAPI document: 1.0.0
  * Contact: support@invoicetronic.com
@@ -72,7 +72,9 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => '\DateTime',
         'date_sent' => '\DateTime',
         'documents' => '\Invoicetronic\Model\DocumentData[]',
-        'is_read' => 'bool'
+        'encoding' => 'string',
+        'is_read' => 'bool',
+        'message_id' => 'string'
     ];
 
     /**
@@ -97,7 +99,9 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => 'date-time',
         'date_sent' => 'date-time',
         'documents' => null,
-        'is_read' => null
+        'encoding' => null,
+        'is_read' => null,
+        'message_id' => null
     ];
 
     /**
@@ -120,7 +124,9 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => true,
         'date_sent' => true,
         'documents' => true,
-        'is_read' => false
+        'encoding' => false,
+        'is_read' => false,
+        'message_id' => true
     ];
 
     /**
@@ -223,7 +229,9 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => 'last_update',
         'date_sent' => 'date_sent',
         'documents' => 'documents',
-        'is_read' => 'is_read'
+        'encoding' => 'encoding',
+        'is_read' => 'is_read',
+        'message_id' => 'message_id'
     ];
 
     /**
@@ -246,7 +254,9 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => 'setLastUpdate',
         'date_sent' => 'setDateSent',
         'documents' => 'setDocuments',
-        'is_read' => 'setIsRead'
+        'encoding' => 'setEncoding',
+        'is_read' => 'setIsRead',
+        'message_id' => 'setMessageId'
     ];
 
     /**
@@ -269,7 +279,9 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'last_update' => 'getLastUpdate',
         'date_sent' => 'getDateSent',
         'documents' => 'getDocuments',
-        'is_read' => 'getIsRead'
+        'encoding' => 'getEncoding',
+        'is_read' => 'getIsRead',
+        'message_id' => 'getMessageId'
     ];
 
     /**
@@ -313,6 +325,21 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const ENCODING_XML = 'Xml';
+    public const ENCODING_BASE64 = 'Base64';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getEncodingAllowableValues()
+    {
+        return [
+            self::ENCODING_XML,
+            self::ENCODING_BASE64,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -343,7 +370,9 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('last_update', $data ?? [], null);
         $this->setIfExists('date_sent', $data ?? [], null);
         $this->setIfExists('documents', $data ?? [], null);
+        $this->setIfExists('encoding', $data ?? [], null);
         $this->setIfExists('is_read', $data ?? [], null);
+        $this->setIfExists('message_id', $data ?? [], null);
     }
 
     /**
@@ -372,6 +401,15 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getEncodingAllowableValues();
+        if (!is_null($this->container['encoding']) && !in_array($this->container['encoding'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'encoding', must be one of '%s'",
+                $this->container['encoding'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         return $invalidProperties;
     }
@@ -830,6 +868,43 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets encoding
+     *
+     * @return string|null
+     */
+    public function getEncoding()
+    {
+        return $this->container['encoding'];
+    }
+
+    /**
+     * Sets encoding
+     *
+     * @param string|null $encoding Whether the payload is Base64 encoded or a plain XML (text).
+     *
+     * @return self
+     */
+    public function setEncoding($encoding)
+    {
+        if (is_null($encoding)) {
+            throw new \InvalidArgumentException('non-nullable encoding cannot be null');
+        }
+        $allowedValues = $this->getEncodingAllowableValues();
+        if (!in_array($encoding, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'encoding', must be one of '%s'",
+                    $encoding,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['encoding'] = $encoding;
+
+        return $this;
+    }
+
+    /**
      * Gets is_read
      *
      * @return bool|null
@@ -852,6 +927,40 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_read cannot be null');
         }
         $this->container['is_read'] = $is_read;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_id
+     *
+     * @return string|null
+     */
+    public function getMessageId()
+    {
+        return $this->container['message_id'];
+    }
+
+    /**
+     * Sets message_id
+     *
+     * @param string|null $message_id SDI message id.
+     *
+     * @return self
+     */
+    public function setMessageId($message_id)
+    {
+        if (is_null($message_id)) {
+            array_push($this->openAPINullablesSetToNull, 'message_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['message_id'] = $message_id;
 
         return $this;
     }
