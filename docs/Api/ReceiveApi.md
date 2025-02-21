@@ -4,15 +4,15 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**invoiceV1ReceiveGet()**](ReceiveApi.md#invoiceV1ReceiveGet) | **GET** /invoice/v1/receive | List incoming invoices |
-| [**invoiceV1ReceiveIdDelete()**](ReceiveApi.md#invoiceV1ReceiveIdDelete) | **DELETE** /invoice/v1/receive/{id} | Delete an incoming invoice by id |
-| [**invoiceV1ReceiveIdGet()**](ReceiveApi.md#invoiceV1ReceiveIdGet) | **GET** /invoice/v1/receive/{id} | Get an incoming invoice by id |
+| [**receiveGet()**](ReceiveApi.md#receiveGet) | **GET** /receive | List incoming invoices |
+| [**receiveIdDelete()**](ReceiveApi.md#receiveIdDelete) | **DELETE** /receive/{id} | Delete an incoming invoice by id |
+| [**receiveIdGet()**](ReceiveApi.md#receiveIdGet) | **GET** /receive/{id} | Get an incoming invoice by id |
 
 
-## `invoiceV1ReceiveGet()`
+## `receiveGet()`
 
 ```php
-invoiceV1ReceiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size): \Invoicetronic\Model\Receive[]
+receiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size, $sort): \Invoicetronic\Model\Receive[]
 ```
 
 List incoming invoices
@@ -53,12 +53,13 @@ $document_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | U
 $document_number = 'document_number_example'; // string | Document number.
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
-    $result = $apiInstance->invoiceV1ReceiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size);
+    $result = $apiInstance->receiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ReceiveApi->invoiceV1ReceiveGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ReceiveApi->receiveGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -81,6 +82,7 @@ try {
 | **document_number** | **string**| Document number. | [optional] |
 | **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
+| **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
 
 ### Return type
 
@@ -99,10 +101,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1ReceiveIdDelete()`
+## `receiveIdDelete()`
 
 ```php
-invoiceV1ReceiveIdDelete($id): \Invoicetronic\Model\Receive
+receiveIdDelete($id): \Invoicetronic\Model\Receive
 ```
 
 Delete an incoming invoice by id
@@ -131,10 +133,10 @@ $apiInstance = new Invoicetronic\Api\ReceiveApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1ReceiveIdDelete($id);
+    $result = $apiInstance->receiveIdDelete($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ReceiveApi->invoiceV1ReceiveIdDelete: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ReceiveApi->receiveIdDelete: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -161,10 +163,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1ReceiveIdGet()`
+## `receiveIdGet()`
 
 ```php
-invoiceV1ReceiveIdGet($id): \Invoicetronic\Model\Receive
+receiveIdGet($id): \Invoicetronic\Model\Receive
 ```
 
 Get an incoming invoice by id
@@ -193,10 +195,10 @@ $apiInstance = new Invoicetronic\Api\ReceiveApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1ReceiveIdGet($id);
+    $result = $apiInstance->receiveIdGet($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ReceiveApi->invoiceV1ReceiveIdGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ReceiveApi->receiveIdGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

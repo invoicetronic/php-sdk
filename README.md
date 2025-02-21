@@ -1,10 +1,6 @@
 # PHP SDK for the Italian eInvoice API
 
-The Italian eInvoice API is a RESTful API that allows you to send and receive invoices through the
-Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple
-and easy to use, abstracting away SDI complexity while providing complete control over the
-invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation,
-multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.
+The [Italian eInvoice API][2] is a RESTful API that allows you to send and receive invoices through the Italian [Servizio di Interscambio (SDI)][1], or Interchange Service. The API is designed by Invoicetronic to be simple and easy to use, abstracting away SDI complexity while providing complete control over the invoice send/receive process. The API also provides advanced features as encryption at rest, invoice validation, multiple upload formats, webhooks, event logging, client SDKs for commonly used languages, and CLI tools.
 
 For more information, see  [Invoicetronic website][2]
 
@@ -73,12 +69,13 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
 );
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
-    $result = $apiInstance->invoiceV1CompanyGet($page, $page_size);
+    $result = $apiInstance->companyGet($page, $page_size, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CompanyApi->invoiceV1CompanyGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CompanyApi->companyGet: ', $e->getMessage(), PHP_EOL;
 }
 
 ```
@@ -89,35 +86,35 @@ All URIs are relative to *http://localhost*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*CompanyApi* | [**invoiceV1CompanyGet**](docs/Api/CompanyApi.md#invoicev1companyget) | **GET** /invoice/v1/company | List companies
-*CompanyApi* | [**invoiceV1CompanyIdDelete**](docs/Api/CompanyApi.md#invoicev1companyiddelete) | **DELETE** /invoice/v1/company/{id} | Delete a company
-*CompanyApi* | [**invoiceV1CompanyIdGet**](docs/Api/CompanyApi.md#invoicev1companyidget) | **GET** /invoice/v1/company/{id} | Get a company by id
-*CompanyApi* | [**invoiceV1CompanyPost**](docs/Api/CompanyApi.md#invoicev1companypost) | **POST** /invoice/v1/company | Add a company
-*CompanyApi* | [**invoiceV1CompanyPut**](docs/Api/CompanyApi.md#invoicev1companyput) | **PUT** /invoice/v1/company | Update a company
-*LogApi* | [**invoiceV1LogGet**](docs/Api/LogApi.md#invoicev1logget) | **GET** /invoice/v1/log | List events
-*LogApi* | [**invoiceV1LogIdGet**](docs/Api/LogApi.md#invoicev1logidget) | **GET** /invoice/v1/log/{id} | Get an event by id
-*ReceiveApi* | [**invoiceV1ReceiveGet**](docs/Api/ReceiveApi.md#invoicev1receiveget) | **GET** /invoice/v1/receive | List incoming invoices
-*ReceiveApi* | [**invoiceV1ReceiveIdDelete**](docs/Api/ReceiveApi.md#invoicev1receiveiddelete) | **DELETE** /invoice/v1/receive/{id} | Delete an incoming invoice by id
-*ReceiveApi* | [**invoiceV1ReceiveIdGet**](docs/Api/ReceiveApi.md#invoicev1receiveidget) | **GET** /invoice/v1/receive/{id} | Get an incoming invoice by id
-*SendApi* | [**invoiceV1SendFilesPost**](docs/Api/SendApi.md#invoicev1sendfilespost) | **POST** /invoice/v1/send/files | Add an invoice by file
-*SendApi* | [**invoiceV1SendGet**](docs/Api/SendApi.md#invoicev1sendget) | **GET** /invoice/v1/send | List invoices
-*SendApi* | [**invoiceV1SendIdGet**](docs/Api/SendApi.md#invoicev1sendidget) | **GET** /invoice/v1/send/{id} | Get a invoice by id
-*SendApi* | [**invoiceV1SendJsonPost**](docs/Api/SendApi.md#invoicev1sendjsonpost) | **POST** /invoice/v1/send/json | Add an invoice by json
-*SendApi* | [**invoiceV1SendPost**](docs/Api/SendApi.md#invoicev1sendpost) | **POST** /invoice/v1/send | Add an invoice
-*SendApi* | [**invoiceV1SendValidateFilesPost**](docs/Api/SendApi.md#invoicev1sendvalidatefilespost) | **POST** /invoice/v1/send/validate/files | Validate an invoice by file
-*SendApi* | [**invoiceV1SendValidateJsonPost**](docs/Api/SendApi.md#invoicev1sendvalidatejsonpost) | **POST** /invoice/v1/send/validate/json | Validate an invoice by json
-*SendApi* | [**invoiceV1SendValidatePost**](docs/Api/SendApi.md#invoicev1sendvalidatepost) | **POST** /invoice/v1/send/validate | Validate an invoice
-*SendApi* | [**invoiceV1SendValidateXmlPost**](docs/Api/SendApi.md#invoicev1sendvalidatexmlpost) | **POST** /invoice/v1/send/validate/xml | Validate an invoice by xml
-*SendApi* | [**invoiceV1SendXmlPost**](docs/Api/SendApi.md#invoicev1sendxmlpost) | **POST** /invoice/v1/send/xml | Add an invoice by xml
-*UpdateApi* | [**invoiceV1UpdateGet**](docs/Api/UpdateApi.md#invoicev1updateget) | **GET** /invoice/v1/update | List updates
-*UpdateApi* | [**invoiceV1UpdateIdGet**](docs/Api/UpdateApi.md#invoicev1updateidget) | **GET** /invoice/v1/update/{id} | Get an update by id
-*WebhookApi* | [**invoiceV1WebhookGet**](docs/Api/WebhookApi.md#invoicev1webhookget) | **GET** /invoice/v1/webhook | List webhooks
-*WebhookApi* | [**invoiceV1WebhookIdDelete**](docs/Api/WebhookApi.md#invoicev1webhookiddelete) | **DELETE** /invoice/v1/webhook/{id} | Delete a webhook by id
-*WebhookApi* | [**invoiceV1WebhookIdGet**](docs/Api/WebhookApi.md#invoicev1webhookidget) | **GET** /invoice/v1/webhook/{id} | Get a webhook by id
-*WebhookApi* | [**invoiceV1WebhookPost**](docs/Api/WebhookApi.md#invoicev1webhookpost) | **POST** /invoice/v1/webhook | Add a webhook
-*WebhookApi* | [**invoiceV1WebhookPut**](docs/Api/WebhookApi.md#invoicev1webhookput) | **PUT** /invoice/v1/webhook | Update a webhook
-*WebhookApi* | [**invoiceV1WebhookhistoryGet**](docs/Api/WebhookApi.md#invoicev1webhookhistoryget) | **GET** /invoice/v1/webhookhistory | List webhook history items
-*WebhookApi* | [**invoiceV1WebhookhistoryIdGet**](docs/Api/WebhookApi.md#invoicev1webhookhistoryidget) | **GET** /invoice/v1/webhookhistory/{id} | Get a webhook history item by id
+*CompanyApi* | [**companyGet**](docs/Api/CompanyApi.md#companyget) | **GET** /company | List companies
+*CompanyApi* | [**companyIdDelete**](docs/Api/CompanyApi.md#companyiddelete) | **DELETE** /company/{id} | Delete a company
+*CompanyApi* | [**companyIdGet**](docs/Api/CompanyApi.md#companyidget) | **GET** /company/{id} | Get a company by id
+*CompanyApi* | [**companyPost**](docs/Api/CompanyApi.md#companypost) | **POST** /company | Add a company
+*CompanyApi* | [**companyPut**](docs/Api/CompanyApi.md#companyput) | **PUT** /company | Update a company
+*LogApi* | [**logGet**](docs/Api/LogApi.md#logget) | **GET** /log | List events
+*LogApi* | [**logIdGet**](docs/Api/LogApi.md#logidget) | **GET** /log/{id} | Get an event by id
+*ReceiveApi* | [**receiveGet**](docs/Api/ReceiveApi.md#receiveget) | **GET** /receive | List incoming invoices
+*ReceiveApi* | [**receiveIdDelete**](docs/Api/ReceiveApi.md#receiveiddelete) | **DELETE** /receive/{id} | Delete an incoming invoice by id
+*ReceiveApi* | [**receiveIdGet**](docs/Api/ReceiveApi.md#receiveidget) | **GET** /receive/{id} | Get an incoming invoice by id
+*SendApi* | [**sendFilePost**](docs/Api/SendApi.md#sendfilepost) | **POST** /send/file | Add an invoice by file
+*SendApi* | [**sendGet**](docs/Api/SendApi.md#sendget) | **GET** /send | List invoices
+*SendApi* | [**sendIdGet**](docs/Api/SendApi.md#sendidget) | **GET** /send/{id} | Get a invoice by id
+*SendApi* | [**sendJsonPost**](docs/Api/SendApi.md#sendjsonpost) | **POST** /send/json | Add an invoice by json
+*SendApi* | [**sendPost**](docs/Api/SendApi.md#sendpost) | **POST** /send | Add an invoice
+*SendApi* | [**sendValidateFilesPost**](docs/Api/SendApi.md#sendvalidatefilespost) | **POST** /send/validate/files | Validate an invoice by file
+*SendApi* | [**sendValidateJsonPost**](docs/Api/SendApi.md#sendvalidatejsonpost) | **POST** /send/validate/json | Validate an invoice by json
+*SendApi* | [**sendValidatePost**](docs/Api/SendApi.md#sendvalidatepost) | **POST** /send/validate | Validate an invoice
+*SendApi* | [**sendValidateXmlPost**](docs/Api/SendApi.md#sendvalidatexmlpost) | **POST** /send/validate/xml | Validate an invoice by xml
+*SendApi* | [**sendXmlPost**](docs/Api/SendApi.md#sendxmlpost) | **POST** /send/xml | Add an invoice by xml
+*UpdateApi* | [**updateGet**](docs/Api/UpdateApi.md#updateget) | **GET** /update | List updates
+*UpdateApi* | [**updateIdGet**](docs/Api/UpdateApi.md#updateidget) | **GET** /update/{id} | Get an update by id
+*WebhookApi* | [**webhookGet**](docs/Api/WebhookApi.md#webhookget) | **GET** /webhook | List webhooks
+*WebhookApi* | [**webhookIdDelete**](docs/Api/WebhookApi.md#webhookiddelete) | **DELETE** /webhook/{id} | Delete a webhook by id
+*WebhookApi* | [**webhookIdGet**](docs/Api/WebhookApi.md#webhookidget) | **GET** /webhook/{id} | Get a webhook by id
+*WebhookApi* | [**webhookPost**](docs/Api/WebhookApi.md#webhookpost) | **POST** /webhook | Add a webhook
+*WebhookApi* | [**webhookPut**](docs/Api/WebhookApi.md#webhookput) | **PUT** /webhook | Update a webhook
+*WebhookApi* | [**webhookhistoryGet**](docs/Api/WebhookApi.md#webhookhistoryget) | **GET** /webhookhistory | List webhook history items
+*WebhookApi* | [**webhookhistoryIdGet**](docs/Api/WebhookApi.md#webhookhistoryidget) | **GET** /webhookhistory/{id} | Get a webhook history item by id
 
 ## Models
 
@@ -204,6 +201,6 @@ support@invoicetronic.com
 
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
-- API version: `1.0.0`
+- API version: `1`
     - Generator version: `7.11.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

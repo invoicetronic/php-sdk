@@ -4,17 +4,17 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**invoiceV1CompanyGet()**](CompanyApi.md#invoiceV1CompanyGet) | **GET** /invoice/v1/company | List companies |
-| [**invoiceV1CompanyIdDelete()**](CompanyApi.md#invoiceV1CompanyIdDelete) | **DELETE** /invoice/v1/company/{id} | Delete a company |
-| [**invoiceV1CompanyIdGet()**](CompanyApi.md#invoiceV1CompanyIdGet) | **GET** /invoice/v1/company/{id} | Get a company by id |
-| [**invoiceV1CompanyPost()**](CompanyApi.md#invoiceV1CompanyPost) | **POST** /invoice/v1/company | Add a company |
-| [**invoiceV1CompanyPut()**](CompanyApi.md#invoiceV1CompanyPut) | **PUT** /invoice/v1/company | Update a company |
+| [**companyGet()**](CompanyApi.md#companyGet) | **GET** /company | List companies |
+| [**companyIdDelete()**](CompanyApi.md#companyIdDelete) | **DELETE** /company/{id} | Delete a company |
+| [**companyIdGet()**](CompanyApi.md#companyIdGet) | **GET** /company/{id} | Get a company by id |
+| [**companyPost()**](CompanyApi.md#companyPost) | **POST** /company | Add a company |
+| [**companyPut()**](CompanyApi.md#companyPut) | **PUT** /company | Update a company |
 
 
-## `invoiceV1CompanyGet()`
+## `companyGet()`
 
 ```php
-invoiceV1CompanyGet($page, $page_size): \Invoicetronic\Model\Company[]
+companyGet($page, $page_size, $sort): \Invoicetronic\Model\Company[]
 ```
 
 List companies
@@ -42,12 +42,13 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
 );
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
-    $result = $apiInstance->invoiceV1CompanyGet($page, $page_size);
+    $result = $apiInstance->companyGet($page, $page_size, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CompanyApi->invoiceV1CompanyGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CompanyApi->companyGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -57,6 +58,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
+| **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
 
 ### Return type
 
@@ -75,10 +77,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1CompanyIdDelete()`
+## `companyIdDelete()`
 
 ```php
-invoiceV1CompanyIdDelete($id): \Invoicetronic\Model\Company
+companyIdDelete($id): \Invoicetronic\Model\Company
 ```
 
 Delete a company
@@ -107,10 +109,10 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1CompanyIdDelete($id);
+    $result = $apiInstance->companyIdDelete($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CompanyApi->invoiceV1CompanyIdDelete: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CompanyApi->companyIdDelete: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -137,10 +139,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1CompanyIdGet()`
+## `companyIdGet()`
 
 ```php
-invoiceV1CompanyIdGet($id): \Invoicetronic\Model\Company
+companyIdGet($id): \Invoicetronic\Model\Company
 ```
 
 Get a company by id
@@ -169,10 +171,10 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1CompanyIdGet($id);
+    $result = $apiInstance->companyIdGet($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CompanyApi->invoiceV1CompanyIdGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CompanyApi->companyIdGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -199,10 +201,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1CompanyPost()`
+## `companyPost()`
 
 ```php
-invoiceV1CompanyPost($company): \Invoicetronic\Model\Company
+companyPost($company): \Invoicetronic\Model\Company
 ```
 
 Add a company
@@ -231,10 +233,10 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
 $company = new \Invoicetronic\Model\Company(); // \Invoicetronic\Model\Company
 
 try {
-    $result = $apiInstance->invoiceV1CompanyPost($company);
+    $result = $apiInstance->companyPost($company);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CompanyApi->invoiceV1CompanyPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CompanyApi->companyPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -261,10 +263,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1CompanyPut()`
+## `companyPut()`
 
 ```php
-invoiceV1CompanyPut($company): \Invoicetronic\Model\Company
+companyPut($company): \Invoicetronic\Model\Company
 ```
 
 Update a company
@@ -293,10 +295,10 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
 $company = new \Invoicetronic\Model\Company(); // \Invoicetronic\Model\Company
 
 try {
-    $result = $apiInstance->invoiceV1CompanyPut($company);
+    $result = $apiInstance->companyPut($company);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling CompanyApi->invoiceV1CompanyPut: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CompanyApi->companyPut: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

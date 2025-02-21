@@ -4,14 +4,14 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**invoiceV1UpdateGet()**](UpdateApi.md#invoiceV1UpdateGet) | **GET** /invoice/v1/update | List updates |
-| [**invoiceV1UpdateIdGet()**](UpdateApi.md#invoiceV1UpdateIdGet) | **GET** /invoice/v1/update/{id} | Get an update by id |
+| [**updateGet()**](UpdateApi.md#updateGet) | **GET** /update | List updates |
+| [**updateIdGet()**](UpdateApi.md#updateIdGet) | **GET** /update/{id} | Get an update by id |
 
 
-## `invoiceV1UpdateGet()`
+## `updateGet()`
 
 ```php
-invoiceV1UpdateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size): \Invoicetronic\Model\Update[]
+updateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort): \Invoicetronic\Model\Update[]
 ```
 
 List updates
@@ -48,12 +48,13 @@ $date_sent_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC
 $date_sent_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
-    $result = $apiInstance->invoiceV1UpdateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size);
+    $result = $apiInstance->updateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UpdateApi->invoiceV1UpdateGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UpdateApi->updateGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -72,6 +73,7 @@ try {
 | **date_sent_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
+| **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
 
 ### Return type
 
@@ -90,10 +92,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1UpdateIdGet()`
+## `updateIdGet()`
 
 ```php
-invoiceV1UpdateIdGet($id): \Invoicetronic\Model\Update
+updateIdGet($id): \Invoicetronic\Model\Update
 ```
 
 Get an update by id
@@ -122,10 +124,10 @@ $apiInstance = new Invoicetronic\Api\UpdateApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1UpdateIdGet($id);
+    $result = $apiInstance->updateIdGet($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UpdateApi->invoiceV1UpdateIdGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UpdateApi->updateIdGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

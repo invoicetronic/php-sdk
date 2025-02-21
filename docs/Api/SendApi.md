@@ -4,22 +4,22 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**invoiceV1SendFilesPost()**](SendApi.md#invoiceV1SendFilesPost) | **POST** /invoice/v1/send/files | Add an invoice by file |
-| [**invoiceV1SendGet()**](SendApi.md#invoiceV1SendGet) | **GET** /invoice/v1/send | List invoices |
-| [**invoiceV1SendIdGet()**](SendApi.md#invoiceV1SendIdGet) | **GET** /invoice/v1/send/{id} | Get a invoice by id |
-| [**invoiceV1SendJsonPost()**](SendApi.md#invoiceV1SendJsonPost) | **POST** /invoice/v1/send/json | Add an invoice by json |
-| [**invoiceV1SendPost()**](SendApi.md#invoiceV1SendPost) | **POST** /invoice/v1/send | Add an invoice |
-| [**invoiceV1SendValidateFilesPost()**](SendApi.md#invoiceV1SendValidateFilesPost) | **POST** /invoice/v1/send/validate/files | Validate an invoice by file |
-| [**invoiceV1SendValidateJsonPost()**](SendApi.md#invoiceV1SendValidateJsonPost) | **POST** /invoice/v1/send/validate/json | Validate an invoice by json |
-| [**invoiceV1SendValidatePost()**](SendApi.md#invoiceV1SendValidatePost) | **POST** /invoice/v1/send/validate | Validate an invoice |
-| [**invoiceV1SendValidateXmlPost()**](SendApi.md#invoiceV1SendValidateXmlPost) | **POST** /invoice/v1/send/validate/xml | Validate an invoice by xml |
-| [**invoiceV1SendXmlPost()**](SendApi.md#invoiceV1SendXmlPost) | **POST** /invoice/v1/send/xml | Add an invoice by xml |
+| [**sendFilePost()**](SendApi.md#sendFilePost) | **POST** /send/file | Add an invoice by file |
+| [**sendGet()**](SendApi.md#sendGet) | **GET** /send | List invoices |
+| [**sendIdGet()**](SendApi.md#sendIdGet) | **GET** /send/{id} | Get a invoice by id |
+| [**sendJsonPost()**](SendApi.md#sendJsonPost) | **POST** /send/json | Add an invoice by json |
+| [**sendPost()**](SendApi.md#sendPost) | **POST** /send | Add an invoice |
+| [**sendValidateFilesPost()**](SendApi.md#sendValidateFilesPost) | **POST** /send/validate/files | Validate an invoice by file |
+| [**sendValidateJsonPost()**](SendApi.md#sendValidateJsonPost) | **POST** /send/validate/json | Validate an invoice by json |
+| [**sendValidatePost()**](SendApi.md#sendValidatePost) | **POST** /send/validate | Validate an invoice |
+| [**sendValidateXmlPost()**](SendApi.md#sendValidateXmlPost) | **POST** /send/validate/xml | Validate an invoice by xml |
+| [**sendXmlPost()**](SendApi.md#sendXmlPost) | **POST** /send/xml | Add an invoice by xml |
 
 
-## `invoiceV1SendFilesPost()`
+## `sendFilePost()`
 
 ```php
-invoiceV1SendFilesPost($files, $validate, $signature): \Invoicetronic\Model\Send
+sendFilePost($file, $validate, $signature): \Invoicetronic\Model\Send
 ```
 
 Add an invoice by file
@@ -45,15 +45,15 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
-$files = array('/path/to/file.txt'); // \SplFileObject[]
+$file = '/path/to/file.txt'; // \SplFileObject
 $validate = false; // bool | Validate the document first, and reject it on failure.
 $signature = 'Auto'; // string | Whether to digitally sign the document.
 
 try {
-    $result = $apiInstance->invoiceV1SendFilesPost($files, $validate, $signature);
+    $result = $apiInstance->sendFilePost($file, $validate, $signature);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendFilesPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendFilePost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -61,7 +61,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **files** | **\SplFileObject[]**|  | |
+| **file** | **\SplFileObject****\SplFileObject**|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 | **signature** | **string**| Whether to digitally sign the document. | [optional] [default to &#39;Auto&#39;] |
 
@@ -82,10 +82,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendGet()`
+## `sendGet()`
 
 ```php
-invoiceV1SendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size): \Invoicetronic\Model\Send[]
+sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size, $sort): \Invoicetronic\Model\Send[]
 ```
 
 List invoices
@@ -125,12 +125,13 @@ $document_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | U
 $document_number = 'document_number_example'; // string | Document number.
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
-    $result = $apiInstance->invoiceV1SendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size);
+    $result = $apiInstance->sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $page, $page_size, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -152,6 +153,7 @@ try {
 | **document_number** | **string**| Document number. | [optional] |
 | **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
+| **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
 
 ### Return type
 
@@ -170,10 +172,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendIdGet()`
+## `sendIdGet()`
 
 ```php
-invoiceV1SendIdGet($id): \Invoicetronic\Model\Send
+sendIdGet($id): \Invoicetronic\Model\Send
 ```
 
 Get a invoice by id
@@ -202,10 +204,10 @@ $apiInstance = new Invoicetronic\Api\SendApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1SendIdGet($id);
+    $result = $apiInstance->sendIdGet($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendIdGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendIdGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -232,10 +234,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendJsonPost()`
+## `sendJsonPost()`
 
 ```php
-invoiceV1SendJsonPost($fattura_ordinaria, $validate, $signature): \Invoicetronic\Model\Send
+sendJsonPost($fattura_ordinaria, $validate, $signature): \Invoicetronic\Model\Send
 ```
 
 Add an invoice by json
@@ -266,10 +268,10 @@ $validate = false; // bool | Validate the document first, and reject it on failu
 $signature = 'Auto'; // string | Whether to digitally sign the document.
 
 try {
-    $result = $apiInstance->invoiceV1SendJsonPost($fattura_ordinaria, $validate, $signature);
+    $result = $apiInstance->sendJsonPost($fattura_ordinaria, $validate, $signature);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendJsonPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendJsonPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -298,10 +300,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendPost()`
+## `sendPost()`
 
 ```php
-invoiceV1SendPost($send, $validate, $signature): \Invoicetronic\Model\Send
+sendPost($send, $validate, $signature): \Invoicetronic\Model\Send
 ```
 
 Add an invoice
@@ -332,10 +334,10 @@ $validate = false; // bool | Validate the document first, and reject it on failu
 $signature = 'Auto'; // string | Whether to digitally sign the document.
 
 try {
-    $result = $apiInstance->invoiceV1SendPost($send, $validate, $signature);
+    $result = $apiInstance->sendPost($send, $validate, $signature);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -364,10 +366,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendValidateFilesPost()`
+## `sendValidateFilesPost()`
 
 ```php
-invoiceV1SendValidateFilesPost($files)
+sendValidateFilesPost($files)
 ```
 
 Validate an invoice by file
@@ -396,9 +398,9 @@ $apiInstance = new Invoicetronic\Api\SendApi(
 $files = array('/path/to/file.txt'); // \SplFileObject[]
 
 try {
-    $apiInstance->invoiceV1SendValidateFilesPost($files);
+    $apiInstance->sendValidateFilesPost($files);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendValidateFilesPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendValidateFilesPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -425,10 +427,10 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendValidateJsonPost()`
+## `sendValidateJsonPost()`
 
 ```php
-invoiceV1SendValidateJsonPost($fattura_ordinaria)
+sendValidateJsonPost($fattura_ordinaria)
 ```
 
 Validate an invoice by json
@@ -457,9 +459,9 @@ $apiInstance = new Invoicetronic\Api\SendApi(
 $fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
 
 try {
-    $apiInstance->invoiceV1SendValidateJsonPost($fattura_ordinaria);
+    $apiInstance->sendValidateJsonPost($fattura_ordinaria);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendValidateJsonPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendValidateJsonPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -486,10 +488,10 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendValidatePost()`
+## `sendValidatePost()`
 
 ```php
-invoiceV1SendValidatePost($send)
+sendValidatePost($send)
 ```
 
 Validate an invoice
@@ -518,9 +520,9 @@ $apiInstance = new Invoicetronic\Api\SendApi(
 $send = new \Invoicetronic\Model\Send(); // \Invoicetronic\Model\Send
 
 try {
-    $apiInstance->invoiceV1SendValidatePost($send);
+    $apiInstance->sendValidatePost($send);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendValidatePost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendValidatePost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -547,10 +549,10 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendValidateXmlPost()`
+## `sendValidateXmlPost()`
 
 ```php
-invoiceV1SendValidateXmlPost($fattura_ordinaria)
+sendValidateXmlPost($fattura_ordinaria)
 ```
 
 Validate an invoice by xml
@@ -579,9 +581,9 @@ $apiInstance = new Invoicetronic\Api\SendApi(
 $fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
 
 try {
-    $apiInstance->invoiceV1SendValidateXmlPost($fattura_ordinaria);
+    $apiInstance->sendValidateXmlPost($fattura_ordinaria);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendValidateXmlPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendValidateXmlPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -608,10 +610,10 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1SendXmlPost()`
+## `sendXmlPost()`
 
 ```php
-invoiceV1SendXmlPost($fattura_ordinaria, $validate, $signature): \Invoicetronic\Model\Send
+sendXmlPost($fattura_ordinaria, $validate, $signature): \Invoicetronic\Model\Send
 ```
 
 Add an invoice by xml
@@ -642,10 +644,10 @@ $validate = false; // bool | Validate the document first, and reject it on failu
 $signature = 'Auto'; // string | Whether to digitally sign the document.
 
 try {
-    $result = $apiInstance->invoiceV1SendXmlPost($fattura_ordinaria, $validate, $signature);
+    $result = $apiInstance->sendXmlPost($fattura_ordinaria, $validate, $signature);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->invoiceV1SendXmlPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendXmlPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

@@ -4,19 +4,19 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**invoiceV1WebhookGet()**](WebhookApi.md#invoiceV1WebhookGet) | **GET** /invoice/v1/webhook | List webhooks |
-| [**invoiceV1WebhookIdDelete()**](WebhookApi.md#invoiceV1WebhookIdDelete) | **DELETE** /invoice/v1/webhook/{id} | Delete a webhook by id |
-| [**invoiceV1WebhookIdGet()**](WebhookApi.md#invoiceV1WebhookIdGet) | **GET** /invoice/v1/webhook/{id} | Get a webhook by id |
-| [**invoiceV1WebhookPost()**](WebhookApi.md#invoiceV1WebhookPost) | **POST** /invoice/v1/webhook | Add a webhook |
-| [**invoiceV1WebhookPut()**](WebhookApi.md#invoiceV1WebhookPut) | **PUT** /invoice/v1/webhook | Update a webhook |
-| [**invoiceV1WebhookhistoryGet()**](WebhookApi.md#invoiceV1WebhookhistoryGet) | **GET** /invoice/v1/webhookhistory | List webhook history items |
-| [**invoiceV1WebhookhistoryIdGet()**](WebhookApi.md#invoiceV1WebhookhistoryIdGet) | **GET** /invoice/v1/webhookhistory/{id} | Get a webhook history item by id |
+| [**webhookGet()**](WebhookApi.md#webhookGet) | **GET** /webhook | List webhooks |
+| [**webhookIdDelete()**](WebhookApi.md#webhookIdDelete) | **DELETE** /webhook/{id} | Delete a webhook by id |
+| [**webhookIdGet()**](WebhookApi.md#webhookIdGet) | **GET** /webhook/{id} | Get a webhook by id |
+| [**webhookPost()**](WebhookApi.md#webhookPost) | **POST** /webhook | Add a webhook |
+| [**webhookPut()**](WebhookApi.md#webhookPut) | **PUT** /webhook | Update a webhook |
+| [**webhookhistoryGet()**](WebhookApi.md#webhookhistoryGet) | **GET** /webhookhistory | List webhook history items |
+| [**webhookhistoryIdGet()**](WebhookApi.md#webhookhistoryIdGet) | **GET** /webhookhistory/{id} | Get a webhook history item by id |
 
 
-## `invoiceV1WebhookGet()`
+## `webhookGet()`
 
 ```php
-invoiceV1WebhookGet($page, $page_size): \Invoicetronic\Model\WebHook[]
+webhookGet($page, $page_size, $sort): \Invoicetronic\Model\WebHook[]
 ```
 
 List webhooks
@@ -44,12 +44,13 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
 );
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
-    $result = $apiInstance->invoiceV1WebhookGet($page, $page_size);
+    $result = $apiInstance->webhookGet($page, $page_size, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhookApi->invoiceV1WebhookGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WebhookApi->webhookGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -59,6 +60,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
+| **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
 
 ### Return type
 
@@ -77,10 +79,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1WebhookIdDelete()`
+## `webhookIdDelete()`
 
 ```php
-invoiceV1WebhookIdDelete($id): \Invoicetronic\Model\WebHook
+webhookIdDelete($id): \Invoicetronic\Model\WebHook
 ```
 
 Delete a webhook by id
@@ -109,10 +111,10 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1WebhookIdDelete($id);
+    $result = $apiInstance->webhookIdDelete($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhookApi->invoiceV1WebhookIdDelete: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WebhookApi->webhookIdDelete: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -139,10 +141,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1WebhookIdGet()`
+## `webhookIdGet()`
 
 ```php
-invoiceV1WebhookIdGet($id): \Invoicetronic\Model\WebHook
+webhookIdGet($id): \Invoicetronic\Model\WebHook
 ```
 
 Get a webhook by id
@@ -171,10 +173,10 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1WebhookIdGet($id);
+    $result = $apiInstance->webhookIdGet($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhookApi->invoiceV1WebhookIdGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WebhookApi->webhookIdGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -201,10 +203,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1WebhookPost()`
+## `webhookPost()`
 
 ```php
-invoiceV1WebhookPost($web_hook): \Invoicetronic\Model\WebHook
+webhookPost($web_hook): \Invoicetronic\Model\WebHook
 ```
 
 Add a webhook
@@ -233,10 +235,10 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
 $web_hook = new \Invoicetronic\Model\WebHook(); // \Invoicetronic\Model\WebHook
 
 try {
-    $result = $apiInstance->invoiceV1WebhookPost($web_hook);
+    $result = $apiInstance->webhookPost($web_hook);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhookApi->invoiceV1WebhookPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WebhookApi->webhookPost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -263,10 +265,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1WebhookPut()`
+## `webhookPut()`
 
 ```php
-invoiceV1WebhookPut($web_hook): \Invoicetronic\Model\WebHook
+webhookPut($web_hook): \Invoicetronic\Model\WebHook
 ```
 
 Update a webhook
@@ -295,10 +297,10 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
 $web_hook = new \Invoicetronic\Model\WebHook(); // \Invoicetronic\Model\WebHook
 
 try {
-    $result = $apiInstance->invoiceV1WebhookPut($web_hook);
+    $result = $apiInstance->webhookPut($web_hook);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhookApi->invoiceV1WebhookPut: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WebhookApi->webhookPut: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -325,10 +327,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1WebhookhistoryGet()`
+## `webhookhistoryGet()`
 
 ```php
-invoiceV1WebhookhistoryGet($page, $page_size): \Invoicetronic\Model\WebHookHistory[]
+webhookhistoryGet($page, $page_size, $sort): \Invoicetronic\Model\WebHookHistory[]
 ```
 
 List webhook history items
@@ -354,12 +356,13 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
 );
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
-    $result = $apiInstance->invoiceV1WebhookhistoryGet($page, $page_size);
+    $result = $apiInstance->webhookhistoryGet($page, $page_size, $sort);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhookApi->invoiceV1WebhookhistoryGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WebhookApi->webhookhistoryGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -369,6 +372,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
+| **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
 
 ### Return type
 
@@ -387,10 +391,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `invoiceV1WebhookhistoryIdGet()`
+## `webhookhistoryIdGet()`
 
 ```php
-invoiceV1WebhookhistoryIdGet($id): \Invoicetronic\Model\WebHookHistory
+webhookhistoryIdGet($id): \Invoicetronic\Model\WebHookHistory
 ```
 
 Get a webhook history item by id
@@ -417,10 +421,10 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
 $id = 56; // int | Item id
 
 try {
-    $result = $apiInstance->invoiceV1WebhookhistoryIdGet($id);
+    $result = $apiInstance->webhookhistoryIdGet($id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhookApi->invoiceV1WebhookhistoryIdGet: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling WebhookApi->webhookhistoryIdGet: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
