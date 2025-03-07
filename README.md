@@ -25,11 +25,11 @@ To install the bindings via [Composer](https://getcomposer.org/), add the follow
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/invoicetronic/invoice-php-sdk.git"
+      "url": "https://github.com/invoicetronic/php-sdk.git"
     }
   ],
   "require": {
-    "invoicetronic/invoice-php-sdk": "*@dev"
+    "invoicetronic/php-sdk": "*@dev"
   }
 }
 ```
