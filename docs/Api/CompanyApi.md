@@ -19,7 +19,7 @@ companyGet($page, $page_size, $sort): \Invoicetronic\Model\Company[]
 
 List companies
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 
@@ -85,7 +85,7 @@ companyIdDelete($id): \Invoicetronic\Model\Company
 
 Delete a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 
@@ -147,7 +147,7 @@ companyIdGet($id): \Invoicetronic\Model\Company
 
 Get a company by id
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 
@@ -209,7 +209,7 @@ companyPost($company): \Invoicetronic\Model\Company
 
 Add a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 
@@ -271,7 +271,7 @@ companyPut($company): \Invoicetronic\Model\Company
 
 Update a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed. **You can only receive invoices for existing companies**.
+Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
 
 ### Example
 

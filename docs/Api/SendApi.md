@@ -24,7 +24,7 @@ sendFilePost($file, $validate, $signature): \Invoicetronic\Model\Send
 
 Add an invoice by file
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 
@@ -180,7 +180,7 @@ sendIdGet($id): \Invoicetronic\Model\Send
 
 Get a invoice by id
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 
@@ -242,7 +242,7 @@ sendJsonPost($fattura_ordinaria, $validate, $signature): \Invoicetronic\Model\Se
 
 Add an invoice by json
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 
@@ -308,7 +308,7 @@ sendPost($send, $validate, $signature): \Invoicetronic\Model\Send
 
 Add an invoice
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 
@@ -374,7 +374,7 @@ sendValidateFilesPost($files)
 
 Validate an invoice by file
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 
@@ -435,7 +435,7 @@ sendValidateJsonPost($fattura_ordinaria)
 
 Validate an invoice by json
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 
@@ -496,7 +496,7 @@ sendValidatePost($send)
 
 Validate an invoice
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 
@@ -557,7 +557,7 @@ sendValidateXmlPost($fattura_ordinaria)
 
 Validate an invoice by xml
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 
@@ -618,7 +618,7 @@ sendXmlPost($fattura_ordinaria, $validate, $signature): \Invoicetronic\Model\Sen
 
 Add an invoice by xml
 
-Send invoices are the invoices that are sent to the SDI.
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
 ### Example
 

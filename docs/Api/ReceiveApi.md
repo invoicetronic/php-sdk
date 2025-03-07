@@ -17,7 +17,7 @@ receiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_n
 
 List incoming invoices
 
-Receive invoices are the invoices that are received from other companies.
+Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
 ### Example
 
@@ -109,7 +109,7 @@ receiveIdDelete($id): \Invoicetronic\Model\Receive
 
 Delete an incoming invoice by id
 
-Receive invoices are the invoices that are received from other companies.
+Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
 ### Example
 
@@ -171,7 +171,7 @@ receiveIdGet($id): \Invoicetronic\Model\Receive
 
 Get an incoming invoice by id
 
-Receive invoices are the invoices that are received from other companies.
+Receive invoices are the invoices that are received from other companies. They are preserved for two years in the live environment and 24 hours in the Sandbox.
 
 ### Example
 

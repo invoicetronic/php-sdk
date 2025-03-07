@@ -335,6 +335,8 @@ webhookhistoryGet($page, $page_size, $sort): \Invoicetronic\Model\WebHookHistory
 
 List webhook history items
 
+Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
+
 ### Example
 
 ```php
@@ -398,6 +400,8 @@ webhookhistoryIdGet($id): \Invoicetronic\Model\WebHookHistory
 ```
 
 Get a webhook history item by id
+
+Webhook history items are stored in the database and can be accessed via the API. They are preserved for 15 in both the live and sandbox environments.
 
 ### Example
 

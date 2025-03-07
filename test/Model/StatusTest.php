@@ -1,6 +1,6 @@
 <?php
 /**
- * ContattiTrasmittenteTest
+ * StatusTest
  *
  * PHP version 7.4
  *
@@ -32,15 +32,15 @@ namespace Invoicetronic\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ContattiTrasmittenteTest Class Doc Comment
+ * StatusTest Class Doc Comment
  *
  * @category    Class
- * @description ContattiTrasmittente
+ * @description Status
  * @package     Invoicetronic
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class ContattiTrasmittenteTest extends TestCase
+class StatusTest extends TestCase
 {
 
     /**
@@ -72,27 +72,27 @@ class ContattiTrasmittenteTest extends TestCase
     }
 
     /**
-     * Test "ContattiTrasmittente"
+     * Test "Status"
      */
-    public function testContattiTrasmittente()
+    public function testStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "telefono"
+     * Test attribute "operation_left"
      */
-    public function testPropertyTelefono()
+    public function testPropertyOperationLeft()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "email"
+     * Test attribute "signature_left"
      */
-    public function testPropertyEmail()
+    public function testPropertySignatureLeft()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

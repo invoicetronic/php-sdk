@@ -1,6 +1,6 @@
 <?php
 /**
- * IndirizzoResa
+ * Status
  *
  * PHP version 7.4
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \Invoicetronic\ObjectSerializer;
 
 /**
- * IndirizzoResa Class Doc Comment
+ * Status Class Doc Comment
  *
  * @category Class
  * @package  Invoicetronic
@@ -41,7 +41,7 @@ use \Invoicetronic\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
+class Status implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'IndirizzoResa';
+    protected static $openAPIModelName = 'Status';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,12 +58,8 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'indirizzo' => 'string',
-        'numero_civico' => 'string',
-        'cap' => 'string',
-        'comune' => 'string',
-        'provincia' => 'string',
-        'nazione' => 'string'
+        'operation_left' => 'int',
+        'signature_left' => 'int'
     ];
 
     /**
@@ -74,12 +70,8 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'indirizzo' => null,
-        'numero_civico' => null,
-        'cap' => null,
-        'comune' => null,
-        'provincia' => null,
-        'nazione' => null
+        'operation_left' => 'int32',
+        'signature_left' => 'int32'
     ];
 
     /**
@@ -88,12 +80,8 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'indirizzo' => true,
-        'numero_civico' => true,
-        'cap' => true,
-        'comune' => true,
-        'provincia' => true,
-        'nazione' => true
+        'operation_left' => false,
+        'signature_left' => false
     ];
 
     /**
@@ -182,12 +170,8 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'indirizzo' => 'indirizzo',
-        'numero_civico' => 'numero_civico',
-        'cap' => 'cap',
-        'comune' => 'comune',
-        'provincia' => 'provincia',
-        'nazione' => 'nazione'
+        'operation_left' => 'operation_left',
+        'signature_left' => 'signature_left'
     ];
 
     /**
@@ -196,12 +180,8 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'indirizzo' => 'setIndirizzo',
-        'numero_civico' => 'setNumeroCivico',
-        'cap' => 'setCap',
-        'comune' => 'setComune',
-        'provincia' => 'setProvincia',
-        'nazione' => 'setNazione'
+        'operation_left' => 'setOperationLeft',
+        'signature_left' => 'setSignatureLeft'
     ];
 
     /**
@@ -210,12 +190,8 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'indirizzo' => 'getIndirizzo',
-        'numero_civico' => 'getNumeroCivico',
-        'cap' => 'getCap',
-        'comune' => 'getComune',
-        'provincia' => 'getProvincia',
-        'nazione' => 'getNazione'
+        'operation_left' => 'getOperationLeft',
+        'signature_left' => 'getSignatureLeft'
     ];
 
     /**
@@ -275,12 +251,8 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('indirizzo', $data ?? [], null);
-        $this->setIfExists('numero_civico', $data ?? [], null);
-        $this->setIfExists('cap', $data ?? [], null);
-        $this->setIfExists('comune', $data ?? [], null);
-        $this->setIfExists('provincia', $data ?? [], null);
-        $this->setIfExists('nazione', $data ?? [], 'IT');
+        $this->setIfExists('operation_left', $data ?? [], null);
+        $this->setIfExists('signature_left', $data ?? [], null);
     }
 
     /**
@@ -326,205 +298,55 @@ class IndirizzoResa implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets indirizzo
+     * Gets operation_left
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getIndirizzo()
+    public function getOperationLeft()
     {
-        return $this->container['indirizzo'];
+        return $this->container['operation_left'];
     }
 
     /**
-     * Sets indirizzo
+     * Sets operation_left
      *
-     * @param string|null $indirizzo indirizzo
+     * @param int|null $operation_left Operations (invoices and validations) left.
      *
      * @return self
      */
-    public function setIndirizzo($indirizzo)
+    public function setOperationLeft($operation_left)
     {
-        if (is_null($indirizzo)) {
-            array_push($this->openAPINullablesSetToNull, 'indirizzo');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('indirizzo', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($operation_left)) {
+            throw new \InvalidArgumentException('non-nullable operation_left cannot be null');
         }
-        $this->container['indirizzo'] = $indirizzo;
+        $this->container['operation_left'] = $operation_left;
 
         return $this;
     }
 
     /**
-     * Gets numero_civico
+     * Gets signature_left
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getNumeroCivico()
+    public function getSignatureLeft()
     {
-        return $this->container['numero_civico'];
+        return $this->container['signature_left'];
     }
 
     /**
-     * Sets numero_civico
+     * Sets signature_left
      *
-     * @param string|null $numero_civico numero_civico
+     * @param int|null $signature_left Signatures left.
      *
      * @return self
      */
-    public function setNumeroCivico($numero_civico)
+    public function setSignatureLeft($signature_left)
     {
-        if (is_null($numero_civico)) {
-            array_push($this->openAPINullablesSetToNull, 'numero_civico');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('numero_civico', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($signature_left)) {
+            throw new \InvalidArgumentException('non-nullable signature_left cannot be null');
         }
-        $this->container['numero_civico'] = $numero_civico;
-
-        return $this;
-    }
-
-    /**
-     * Gets cap
-     *
-     * @return string|null
-     */
-    public function getCap()
-    {
-        return $this->container['cap'];
-    }
-
-    /**
-     * Sets cap
-     *
-     * @param string|null $cap cap
-     *
-     * @return self
-     */
-    public function setCap($cap)
-    {
-        if (is_null($cap)) {
-            array_push($this->openAPINullablesSetToNull, 'cap');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('cap', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['cap'] = $cap;
-
-        return $this;
-    }
-
-    /**
-     * Gets comune
-     *
-     * @return string|null
-     */
-    public function getComune()
-    {
-        return $this->container['comune'];
-    }
-
-    /**
-     * Sets comune
-     *
-     * @param string|null $comune comune
-     *
-     * @return self
-     */
-    public function setComune($comune)
-    {
-        if (is_null($comune)) {
-            array_push($this->openAPINullablesSetToNull, 'comune');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('comune', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['comune'] = $comune;
-
-        return $this;
-    }
-
-    /**
-     * Gets provincia
-     *
-     * @return string|null
-     */
-    public function getProvincia()
-    {
-        return $this->container['provincia'];
-    }
-
-    /**
-     * Sets provincia
-     *
-     * @param string|null $provincia provincia
-     *
-     * @return self
-     */
-    public function setProvincia($provincia)
-    {
-        if (is_null($provincia)) {
-            array_push($this->openAPINullablesSetToNull, 'provincia');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('provincia', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['provincia'] = $provincia;
-
-        return $this;
-    }
-
-    /**
-     * Gets nazione
-     *
-     * @return string|null
-     */
-    public function getNazione()
-    {
-        return $this->container['nazione'];
-    }
-
-    /**
-     * Sets nazione
-     *
-     * @param string|null $nazione nazione
-     *
-     * @return self
-     */
-    public function setNazione($nazione)
-    {
-        if (is_null($nazione)) {
-            array_push($this->openAPINullablesSetToNull, 'nazione');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('nazione', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['nazione'] = $nazione;
+        $this->container['signature_left'] = $signature_left;
 
         return $this;
     }

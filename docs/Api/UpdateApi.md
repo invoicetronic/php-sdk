@@ -16,7 +16,7 @@ updateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from
 
 List updates
 
-Updates are notifications that are sent by the SDI about the status of sent invoices.
+Updates are notifications sent by the SDI about the status of invoices you sent.
 
 ### Example
 
@@ -100,7 +100,7 @@ updateIdGet($id): \Invoicetronic\Model\Update
 
 Get an update by id
 
-Updates are notifications that are sent by the SDI about the status of sent invoices.
+Updates are notifications sent by the SDI about the status of invoices you sent.
 
 ### Example
 
