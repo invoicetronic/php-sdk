@@ -9,7 +9,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 | [**sendIdGet()**](SendApi.md#sendIdGet) | **GET** /send/{id} | Get a invoice by id |
 | [**sendJsonPost()**](SendApi.md#sendJsonPost) | **POST** /send/json | Add an invoice by json |
 | [**sendPost()**](SendApi.md#sendPost) | **POST** /send | Add an invoice |
-| [**sendValidateFilesPost()**](SendApi.md#sendValidateFilesPost) | **POST** /send/validate/files | Validate an invoice by file |
+| [**sendValidateFilePost()**](SendApi.md#sendValidateFilePost) | **POST** /send/validate/file | Validate an invoice file |
 | [**sendValidateJsonPost()**](SendApi.md#sendValidateJsonPost) | **POST** /send/validate/json | Validate an invoice by json |
 | [**sendValidatePost()**](SendApi.md#sendValidatePost) | **POST** /send/validate | Validate an invoice |
 | [**sendValidateXmlPost()**](SendApi.md#sendValidateXmlPost) | **POST** /send/validate/xml | Validate an invoice by xml |
@@ -366,13 +366,13 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `sendValidateFilesPost()`
+## `sendValidateFilePost()`
 
 ```php
-sendValidateFilesPost($files)
+sendValidateFilePost($file)
 ```
 
-Validate an invoice by file
+Validate an invoice file
 
 Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
 
@@ -395,12 +395,12 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
-$files = array('/path/to/file.txt'); // \SplFileObject[]
+$file = '/path/to/file.txt'; // \SplFileObject
 
 try {
-    $apiInstance->sendValidateFilesPost($files);
+    $apiInstance->sendValidateFilePost($file);
 } catch (Exception $e) {
-    echo 'Exception when calling SendApi->sendValidateFilesPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling SendApi->sendValidateFilePost: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -408,7 +408,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **files** | **\SplFileObject[]**|  | |
+| **file** | **\SplFileObject****\SplFileObject**|  | |
 
 ### Return type
 

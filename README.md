@@ -101,7 +101,7 @@ Class | Method | HTTP request | Description
 *SendApi* | [**sendIdGet**](docs/Api/SendApi.md#sendidget) | **GET** /send/{id} | Get a invoice by id
 *SendApi* | [**sendJsonPost**](docs/Api/SendApi.md#sendjsonpost) | **POST** /send/json | Add an invoice by json
 *SendApi* | [**sendPost**](docs/Api/SendApi.md#sendpost) | **POST** /send | Add an invoice
-*SendApi* | [**sendValidateFilesPost**](docs/Api/SendApi.md#sendvalidatefilespost) | **POST** /send/validate/files | Validate an invoice by file
+*SendApi* | [**sendValidateFilePost**](docs/Api/SendApi.md#sendvalidatefilepost) | **POST** /send/validate/file | Validate an invoice file
 *SendApi* | [**sendValidateJsonPost**](docs/Api/SendApi.md#sendvalidatejsonpost) | **POST** /send/validate/json | Validate an invoice by json
 *SendApi* | [**sendValidatePost**](docs/Api/SendApi.md#sendvalidatepost) | **POST** /send/validate | Validate an invoice
 *SendApi* | [**sendValidateXmlPost**](docs/Api/SendApi.md#sendvalidatexmlpost) | **POST** /send/validate/xml | Validate an invoice by xml

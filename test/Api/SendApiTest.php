@@ -133,12 +133,12 @@ class SendApiTest extends TestCase
     }
 
     /**
-     * Test case for sendValidateFilesPost
+     * Test case for sendValidateFilePost
      *
-     * Validate an invoice by file.
+     * Validate an invoice file.
      *
      */
-    public function testSendValidateFilesPost()
+    public function testSendValidateFilePost()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -90,7 +90,7 @@ class SendApi
         'sendPost' => [
             'application/json',
         ],
-        'sendValidateFilesPost' => [
+        'sendValidateFilePost' => [
             'multipart/form-data',
         ],
         'sendValidateJsonPost' => [
@@ -1907,37 +1907,37 @@ class SendApi
     }
 
     /**
-     * Operation sendValidateFilesPost
+     * Operation sendValidateFilePost
      *
-     * Validate an invoice by file
+     * Validate an invoice file
      *
-     * @param  \SplFileObject[] $files files (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilesPost'] to see the possible values for this operation
+     * @param  \SplFileObject $file file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilePost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function sendValidateFilesPost($files, string $contentType = self::contentTypes['sendValidateFilesPost'][0])
+    public function sendValidateFilePost($file, string $contentType = self::contentTypes['sendValidateFilePost'][0])
     {
-        $this->sendValidateFilesPostWithHttpInfo($files, $contentType);
+        $this->sendValidateFilePostWithHttpInfo($file, $contentType);
     }
 
     /**
-     * Operation sendValidateFilesPostWithHttpInfo
+     * Operation sendValidateFilePostWithHttpInfo
      *
-     * Validate an invoice by file
+     * Validate an invoice file
      *
-     * @param  \SplFileObject[] $files (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilesPost'] to see the possible values for this operation
+     * @param  \SplFileObject $file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilePost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendValidateFilesPostWithHttpInfo($files, string $contentType = self::contentTypes['sendValidateFilesPost'][0])
+    public function sendValidateFilePostWithHttpInfo($file, string $contentType = self::contentTypes['sendValidateFilePost'][0])
     {
-        $request = $this->sendValidateFilesPostRequest($files, $contentType);
+        $request = $this->sendValidateFilePostRequest($file, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1989,19 +1989,19 @@ class SendApi
     }
 
     /**
-     * Operation sendValidateFilesPostAsync
+     * Operation sendValidateFilePostAsync
      *
-     * Validate an invoice by file
+     * Validate an invoice file
      *
-     * @param  \SplFileObject[] $files (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilesPost'] to see the possible values for this operation
+     * @param  \SplFileObject $file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendValidateFilesPostAsync($files, string $contentType = self::contentTypes['sendValidateFilesPost'][0])
+    public function sendValidateFilePostAsync($file, string $contentType = self::contentTypes['sendValidateFilePost'][0])
     {
-        return $this->sendValidateFilesPostAsyncWithHttpInfo($files, $contentType)
+        return $this->sendValidateFilePostAsyncWithHttpInfo($file, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2010,20 +2010,20 @@ class SendApi
     }
 
     /**
-     * Operation sendValidateFilesPostAsyncWithHttpInfo
+     * Operation sendValidateFilePostAsyncWithHttpInfo
      *
-     * Validate an invoice by file
+     * Validate an invoice file
      *
-     * @param  \SplFileObject[] $files (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilesPost'] to see the possible values for this operation
+     * @param  \SplFileObject $file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendValidateFilesPostAsyncWithHttpInfo($files, string $contentType = self::contentTypes['sendValidateFilesPost'][0])
+    public function sendValidateFilePostAsyncWithHttpInfo($file, string $contentType = self::contentTypes['sendValidateFilePost'][0])
     {
         $returnType = '';
-        $request = $this->sendValidateFilesPostRequest($files, $contentType);
+        $request = $this->sendValidateFilePostRequest($file, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2049,26 +2049,26 @@ class SendApi
     }
 
     /**
-     * Create request for operation 'sendValidateFilesPost'
+     * Create request for operation 'sendValidateFilePost'
      *
-     * @param  \SplFileObject[] $files (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilesPost'] to see the possible values for this operation
+     * @param  \SplFileObject $file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendValidateFilePost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendValidateFilesPostRequest($files, string $contentType = self::contentTypes['sendValidateFilesPost'][0])
+    public function sendValidateFilePostRequest($file, string $contentType = self::contentTypes['sendValidateFilePost'][0])
     {
 
-        // verify the required parameter 'files' is set
-        if ($files === null || (is_array($files) && count($files) === 0)) {
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $files when calling sendValidateFilesPost'
+                'Missing the required parameter $file when calling sendValidateFilePost'
             );
         }
 
 
-        $resourcePath = '/send/validate/files';
+        $resourcePath = '/send/validate/file';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -2082,7 +2082,7 @@ class SendApi
         $formDataProcessor = new FormDataProcessor();
 
         $formData = $formDataProcessor->prepare([
-            'files' => $files,
+            'file' => $file,
         ]);
 
         $formParams = $formDataProcessor->flatten($formData);
