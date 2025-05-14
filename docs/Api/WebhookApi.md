@@ -16,7 +16,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `webhookGet()`
 
 ```php
-webhookGet($page, $page_size, $sort): \Invoicetronic\Model\WebHook[]
+webhookGet($company_id, $page, $page_size, $sort, $description, $enabled, $events, $url): \Invoicetronic\Model\WebHook[]
 ```
 
 List webhooks
@@ -42,12 +42,17 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
     new GuzzleHttp\Client(),
     $config
 );
+$company_id = 56; // int | Company id
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
+$description = 'description_example'; // string
+$enabled = True; // bool
+$events = 'events_example'; // string
+$url = 'url_example'; // string
 
 try {
-    $result = $apiInstance->webhookGet($page, $page_size, $sort);
+    $result = $apiInstance->webhookGet($company_id, $page, $page_size, $sort, $description, $enabled, $events, $url);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->webhookGet: ', $e->getMessage(), PHP_EOL;
@@ -58,9 +63,14 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **company_id** | **int**| Company id | [optional] |
 | **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
 | **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
+| **description** | **string**|  | [optional] |
+| **enabled** | **bool**|  | [optional] |
+| **events** | **string**|  | [optional] |
+| **url** | **string**|  | [optional] |
 
 ### Return type
 
@@ -330,7 +340,7 @@ try {
 ## `webhookhistoryGet()`
 
 ```php
-webhookhistoryGet($page, $page_size, $sort): \Invoicetronic\Model\WebHookHistory[]
+webhookhistoryGet($page, $page_size, $sort, $webhook_id): \Invoicetronic\Model\WebHookHistory[]
 ```
 
 List webhook history items
@@ -359,9 +369,10 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
 $page = 1; // int | Page number. Defaults to 1.
 $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
+$webhook_id = 56; // int | WebHook id
 
 try {
-    $result = $apiInstance->webhookhistoryGet($page, $page_size, $sort);
+    $result = $apiInstance->webhookhistoryGet($page, $page_size, $sort, $webhook_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhookApi->webhookhistoryGet: ', $e->getMessage(), PHP_EOL;
@@ -375,6 +386,7 @@ try {
 | **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
 | **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
+| **webhook_id** | **int**| WebHook id | [optional] |
 
 ### Return type
 
