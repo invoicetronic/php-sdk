@@ -71,7 +71,9 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'string',
         'message_id' => 'string',
         'errors' => '\Invoicetronic\Model\Error[]',
-        'is_read' => 'bool'
+        'is_read' => 'bool',
+        'meta_data' => 'array<string,string>',
+        'documents' => '\Invoicetronic\Model\DocumentData[]'
     ];
 
     /**
@@ -95,7 +97,9 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => null,
         'message_id' => null,
         'errors' => null,
-        'is_read' => null
+        'is_read' => null,
+        'meta_data' => null,
+        'documents' => null
     ];
 
     /**
@@ -117,7 +121,9 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => true,
         'message_id' => true,
         'errors' => true,
-        'is_read' => false
+        'is_read' => false,
+        'meta_data' => true,
+        'documents' => true
     ];
 
     /**
@@ -219,7 +225,9 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'description',
         'message_id' => 'message_id',
         'errors' => 'errors',
-        'is_read' => 'is_read'
+        'is_read' => 'is_read',
+        'meta_data' => 'meta_data',
+        'documents' => 'documents'
     ];
 
     /**
@@ -241,7 +249,9 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'setDescription',
         'message_id' => 'setMessageId',
         'errors' => 'setErrors',
-        'is_read' => 'setIsRead'
+        'is_read' => 'setIsRead',
+        'meta_data' => 'setMetaData',
+        'documents' => 'setDocuments'
     ];
 
     /**
@@ -263,7 +273,9 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'description' => 'getDescription',
         'message_id' => 'getMessageId',
         'errors' => 'getErrors',
-        'is_read' => 'getIsRead'
+        'is_read' => 'getIsRead',
+        'meta_data' => 'getMetaData',
+        'documents' => 'getDocuments'
     ];
 
     /**
@@ -366,6 +378,8 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('message_id', $data ?? [], null);
         $this->setIfExists('errors', $data ?? [], null);
         $this->setIfExists('is_read', $data ?? [], null);
+        $this->setIfExists('meta_data', $data ?? [], null);
+        $this->setIfExists('documents', $data ?? [], null);
     }
 
     /**
@@ -838,6 +852,74 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable is_read cannot be null');
         }
         $this->container['is_read'] = $is_read;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta_data
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetaData()
+    {
+        return $this->container['meta_data'];
+    }
+
+    /**
+     * Sets meta_data
+     *
+     * @param array<string,string>|null $meta_data Metadata from the Send item this update refers to.
+     *
+     * @return self
+     */
+    public function setMetaData($meta_data)
+    {
+        if (is_null($meta_data)) {
+            array_push($this->openAPINullablesSetToNull, 'meta_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['meta_data'] = $meta_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets documents
+     *
+     * @return \Invoicetronic\Model\DocumentData[]|null
+     */
+    public function getDocuments()
+    {
+        return $this->container['documents'];
+    }
+
+    /**
+     * Sets documents
+     *
+     * @param \Invoicetronic\Model\DocumentData[]|null $documents Invoice references from the Send item this update refers to.
+     *
+     * @return self
+     */
+    public function setDocuments($documents)
+    {
+        if (is_null($documents)) {
+            array_push($this->openAPINullablesSetToNull, 'documents');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('documents', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['documents'] = $documents;
 
         return $this;
     }

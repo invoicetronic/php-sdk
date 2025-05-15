@@ -18,5 +18,7 @@ Name | Type | Description | Notes
 **message_id** | **string** | SDI message id. | [optional]
 **errors** | [**\Invoicetronic\Model\Error[]**](Error.md) | SDI errors, if any. | [optional]
 **is_read** | **bool** | Wether the item has been read at least once. | [optional]
+**meta_data** | **array<string,string>** | Metadata from the Send item this update refers to. | [optional]
+**documents** | [**\Invoicetronic\Model\DocumentData[]**](DocumentData.md) | Invoice references from the Send item this update refers to. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -205,4 +205,22 @@ class UpdateTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "meta_data"
+     */
+    public function testPropertyMetaData()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "documents"
+     */
+    public function testPropertyDocuments()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }
