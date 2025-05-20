@@ -223,4 +223,13 @@ class UpdateTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "prestatore"
+     */
+    public function testPropertyPrestatore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

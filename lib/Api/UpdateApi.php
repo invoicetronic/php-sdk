@@ -136,6 +136,7 @@ class UpdateApi
      *
      * @param  int|null $company_id Company id (optional)
      * @param  string|null $identifier SDI identifier. (optional)
+     * @param  string|null $prestatore Vat number or fiscal code. (optional)
      * @param  bool|null $unread Unread items only. (optional)
      * @param  int|null $send_id Send item&#39;s id. (optional)
      * @param  string|null $state SDI state (optional)
@@ -152,9 +153,9 @@ class UpdateApi
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Update[]|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function updateGet($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGet($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
     {
-        list($response) = $this->updateGetWithHttpInfo($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
+        list($response) = $this->updateGetWithHttpInfo($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
         return $response;
     }
 
@@ -165,6 +166,7 @@ class UpdateApi
      *
      * @param  int|null $company_id Company id (optional)
      * @param  string|null $identifier SDI identifier. (optional)
+     * @param  string|null $prestatore Vat number or fiscal code. (optional)
      * @param  bool|null $unread Unread items only. (optional)
      * @param  int|null $send_id Send item&#39;s id. (optional)
      * @param  string|null $state SDI state (optional)
@@ -181,9 +183,9 @@ class UpdateApi
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Update[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateGetWithHttpInfo($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGetWithHttpInfo($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
     {
-        $request = $this->updateGetRequest($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
+        $request = $this->updateGetRequest($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -275,6 +277,7 @@ class UpdateApi
      *
      * @param  int|null $company_id Company id (optional)
      * @param  string|null $identifier SDI identifier. (optional)
+     * @param  string|null $prestatore Vat number or fiscal code. (optional)
      * @param  bool|null $unread Unread items only. (optional)
      * @param  int|null $send_id Send item&#39;s id. (optional)
      * @param  string|null $state SDI state (optional)
@@ -290,9 +293,9 @@ class UpdateApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateGetAsync($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGetAsync($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
     {
-        return $this->updateGetAsyncWithHttpInfo($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType)
+        return $this->updateGetAsyncWithHttpInfo($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -307,6 +310,7 @@ class UpdateApi
      *
      * @param  int|null $company_id Company id (optional)
      * @param  string|null $identifier SDI identifier. (optional)
+     * @param  string|null $prestatore Vat number or fiscal code. (optional)
      * @param  bool|null $unread Unread items only. (optional)
      * @param  int|null $send_id Send item&#39;s id. (optional)
      * @param  string|null $state SDI state (optional)
@@ -322,10 +326,10 @@ class UpdateApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateGetAsyncWithHttpInfo($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGetAsyncWithHttpInfo($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
     {
         $returnType = '\Invoicetronic\Model\Update[]';
-        $request = $this->updateGetRequest($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
+        $request = $this->updateGetRequest($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -368,6 +372,7 @@ class UpdateApi
      *
      * @param  int|null $company_id Company id (optional)
      * @param  string|null $identifier SDI identifier. (optional)
+     * @param  string|null $prestatore Vat number or fiscal code. (optional)
      * @param  bool|null $unread Unread items only. (optional)
      * @param  int|null $send_id Send item&#39;s id. (optional)
      * @param  string|null $state SDI state (optional)
@@ -383,8 +388,9 @@ class UpdateApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateGetRequest($company_id = null, $identifier = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGetRequest($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
     {
+
 
 
 
@@ -419,6 +425,15 @@ class UpdateApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $identifier,
             'identifier', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $prestatore,
+            'prestatore', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

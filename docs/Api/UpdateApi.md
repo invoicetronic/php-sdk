@@ -11,7 +11,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `updateGet()`
 
 ```php
-updateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort): \Invoicetronic\Model\Update[]
+updateGet($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort): \Invoicetronic\Model\Update[]
 ```
 
 List updates
@@ -39,6 +39,7 @@ $apiInstance = new Invoicetronic\Api\UpdateApi(
 );
 $company_id = 56; // int | Company id
 $identifier = 'identifier_example'; // string | SDI identifier.
+$prestatore = 'prestatore_example'; // string | Vat number or fiscal code.
 $unread = True; // bool | Unread items only.
 $send_id = 56; // int | Send item's id.
 $state = 'state_example'; // string | SDI state
@@ -51,7 +52,7 @@ $page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater tha
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
-    $result = $apiInstance->updateGet($company_id, $identifier, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort);
+    $result = $apiInstance->updateGet($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UpdateApi->updateGet: ', $e->getMessage(), PHP_EOL;
@@ -64,6 +65,7 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **company_id** | **int**| Company id | [optional] |
 | **identifier** | **string**| SDI identifier. | [optional] |
+| **prestatore** | **string**| Vat number or fiscal code. | [optional] |
 | **unread** | **bool**| Unread items only. | [optional] |
 | **send_id** | **int**| Send item&#39;s id. | [optional] |
 | **state** | **string**| SDI state | [optional] |

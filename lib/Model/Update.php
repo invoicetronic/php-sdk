@@ -73,7 +73,8 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'errors' => '\Invoicetronic\Model\Error[]',
         'is_read' => 'bool',
         'meta_data' => 'array<string,string>',
-        'documents' => '\Invoicetronic\Model\DocumentData[]'
+        'documents' => '\Invoicetronic\Model\DocumentData[]',
+        'prestatore' => 'string'
     ];
 
     /**
@@ -99,7 +100,8 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'errors' => null,
         'is_read' => null,
         'meta_data' => null,
-        'documents' => null
+        'documents' => null,
+        'prestatore' => null
     ];
 
     /**
@@ -123,7 +125,8 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'errors' => true,
         'is_read' => false,
         'meta_data' => true,
-        'documents' => true
+        'documents' => true,
+        'prestatore' => true
     ];
 
     /**
@@ -227,7 +230,8 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'errors' => 'errors',
         'is_read' => 'is_read',
         'meta_data' => 'meta_data',
-        'documents' => 'documents'
+        'documents' => 'documents',
+        'prestatore' => 'prestatore'
     ];
 
     /**
@@ -251,7 +255,8 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'errors' => 'setErrors',
         'is_read' => 'setIsRead',
         'meta_data' => 'setMetaData',
-        'documents' => 'setDocuments'
+        'documents' => 'setDocuments',
+        'prestatore' => 'setPrestatore'
     ];
 
     /**
@@ -275,7 +280,8 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         'errors' => 'getErrors',
         'is_read' => 'getIsRead',
         'meta_data' => 'getMetaData',
-        'documents' => 'getDocuments'
+        'documents' => 'getDocuments',
+        'prestatore' => 'getPrestatore'
     ];
 
     /**
@@ -380,6 +386,7 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('is_read', $data ?? [], null);
         $this->setIfExists('meta_data', $data ?? [], null);
         $this->setIfExists('documents', $data ?? [], null);
+        $this->setIfExists('prestatore', $data ?? [], null);
     }
 
     /**
@@ -920,6 +927,40 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
             }
         }
         $this->container['documents'] = $documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets prestatore
+     *
+     * @return string|null
+     */
+    public function getPrestatore()
+    {
+        return $this->container['prestatore'];
+    }
+
+    /**
+     * Sets prestatore
+     *
+     * @param string|null $prestatore Prestatore reference from the Send item this status refers to.
+     *
+     * @return self
+     */
+    public function setPrestatore($prestatore)
+    {
+        if (is_null($prestatore)) {
+            array_push($this->openAPINullablesSetToNull, 'prestatore');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('prestatore', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['prestatore'] = $prestatore;
 
         return $this;
     }
