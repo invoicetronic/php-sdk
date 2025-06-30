@@ -1,6 +1,6 @@
 <?php
 /**
- * DatiConvenzioneTest
+ * SendReducedTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Invoicetronic\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * DatiConvenzioneTest Class Doc Comment
+ * SendReducedTest Class Doc Comment
  *
  * @category    Class
- * @description DatiConvenzione
+ * @description Reduced Send data for Update responses, containing only the essential fields.
  * @package     Invoicetronic
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class DatiConvenzioneTest extends TestCase
+class SendReducedTest extends TestCase
 {
 
     /**
@@ -72,72 +72,54 @@ class DatiConvenzioneTest extends TestCase
     }
 
     /**
-     * Test "DatiConvenzione"
+     * Test "SendReduced"
      */
-    public function testDatiConvenzione()
+    public function testSendReduced()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "riferimento_numero_linea"
+     * Test attribute "identifier"
      */
-    public function testPropertyRiferimentoNumeroLinea()
+    public function testPropertyIdentifier()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "id_documento"
+     * Test attribute "prestatore"
      */
-    public function testPropertyIdDocumento()
+    public function testPropertyPrestatore()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "data"
+     * Test attribute "meta_data"
      */
-    public function testPropertyData()
+    public function testPropertyMetaData()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "num_item"
+     * Test attribute "documents"
      */
-    public function testPropertyNumItem()
+    public function testPropertyDocuments()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "codice_commessa_convenzione"
+     * Test attribute "date_sent"
      */
-    public function testPropertyCodiceCommessaConvenzione()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "codice_cup"
-     */
-    public function testPropertyCodiceCup()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "codice_cig"
-     */
-    public function testPropertyCodiceCig()
+    public function testPropertyDateSent()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

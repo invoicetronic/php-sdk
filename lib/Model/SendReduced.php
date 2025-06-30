@@ -1,6 +1,6 @@
 <?php
 /**
- * DatiAnagraficiVettore
+ * SendReduced
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \Invoicetronic\ObjectSerializer;
 
 /**
- * DatiAnagraficiVettore Class Doc Comment
+ * SendReduced Class Doc Comment
  *
  * @category Class
+ * @description Reduced Send data for Update responses, containing only the essential fields.
  * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSerializable
+class SendReduced implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
       *
       * @var string
       */
-    protected static $openAPIModelName = 'DatiAnagraficiVettore';
+    protected static $openAPIModelName = 'SendReduced';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +59,11 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id_fiscale_iva' => '\Invoicetronic\Model\IdFiscaleIVA',
-        'codice_fiscale' => 'string',
-        'anagrafica' => '\Invoicetronic\Model\Anagrafica',
-        'numero_licenza_guida' => 'string'
+        'identifier' => 'string',
+        'prestatore' => 'string',
+        'meta_data' => 'array<string,string>',
+        'documents' => '\Invoicetronic\Model\DocumentData[]',
+        'date_sent' => '\DateTime'
     ];
 
     /**
@@ -72,10 +74,11 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id_fiscale_iva' => null,
-        'codice_fiscale' => null,
-        'anagrafica' => null,
-        'numero_licenza_guida' => null
+        'identifier' => null,
+        'prestatore' => null,
+        'meta_data' => null,
+        'documents' => null,
+        'date_sent' => 'date-time'
     ];
 
     /**
@@ -84,10 +87,11 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id_fiscale_iva' => false,
-        'codice_fiscale' => true,
-        'anagrafica' => false,
-        'numero_licenza_guida' => true
+        'identifier' => true,
+        'prestatore' => true,
+        'meta_data' => true,
+        'documents' => true,
+        'date_sent' => true
     ];
 
     /**
@@ -176,10 +180,11 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $attributeMap = [
-        'id_fiscale_iva' => 'id_fiscale_iva',
-        'codice_fiscale' => 'codice_fiscale',
-        'anagrafica' => 'anagrafica',
-        'numero_licenza_guida' => 'numero_licenza_guida'
+        'identifier' => 'identifier',
+        'prestatore' => 'prestatore',
+        'meta_data' => 'meta_data',
+        'documents' => 'documents',
+        'date_sent' => 'date_sent'
     ];
 
     /**
@@ -188,10 +193,11 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $setters = [
-        'id_fiscale_iva' => 'setIdFiscaleIva',
-        'codice_fiscale' => 'setCodiceFiscale',
-        'anagrafica' => 'setAnagrafica',
-        'numero_licenza_guida' => 'setNumeroLicenzaGuida'
+        'identifier' => 'setIdentifier',
+        'prestatore' => 'setPrestatore',
+        'meta_data' => 'setMetaData',
+        'documents' => 'setDocuments',
+        'date_sent' => 'setDateSent'
     ];
 
     /**
@@ -200,10 +206,11 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
      * @var string[]
      */
     protected static $getters = [
-        'id_fiscale_iva' => 'getIdFiscaleIva',
-        'codice_fiscale' => 'getCodiceFiscale',
-        'anagrafica' => 'getAnagrafica',
-        'numero_licenza_guida' => 'getNumeroLicenzaGuida'
+        'identifier' => 'getIdentifier',
+        'prestatore' => 'getPrestatore',
+        'meta_data' => 'getMetaData',
+        'documents' => 'getDocuments',
+        'date_sent' => 'getDateSent'
     ];
 
     /**
@@ -263,10 +270,11 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id_fiscale_iva', $data ?? [], null);
-        $this->setIfExists('codice_fiscale', $data ?? [], null);
-        $this->setIfExists('anagrafica', $data ?? [], null);
-        $this->setIfExists('numero_licenza_guida', $data ?? [], null);
+        $this->setIfExists('identifier', $data ?? [], null);
+        $this->setIfExists('prestatore', $data ?? [], null);
+        $this->setIfExists('meta_data', $data ?? [], null);
+        $this->setIfExists('documents', $data ?? [], null);
+        $this->setIfExists('date_sent', $data ?? [], null);
     }
 
     /**
@@ -312,123 +320,171 @@ class DatiAnagraficiVettore implements ModelInterface, ArrayAccess, \JsonSeriali
 
 
     /**
-     * Gets id_fiscale_iva
-     *
-     * @return \Invoicetronic\Model\IdFiscaleIVA|null
-     */
-    public function getIdFiscaleIva()
-    {
-        return $this->container['id_fiscale_iva'];
-    }
-
-    /**
-     * Sets id_fiscale_iva
-     *
-     * @param \Invoicetronic\Model\IdFiscaleIVA|null $id_fiscale_iva id_fiscale_iva
-     *
-     * @return self
-     */
-    public function setIdFiscaleIva($id_fiscale_iva)
-    {
-        if (is_null($id_fiscale_iva)) {
-            throw new \InvalidArgumentException('non-nullable id_fiscale_iva cannot be null');
-        }
-        $this->container['id_fiscale_iva'] = $id_fiscale_iva;
-
-        return $this;
-    }
-
-    /**
-     * Gets codice_fiscale
+     * Gets identifier
      *
      * @return string|null
      */
-    public function getCodiceFiscale()
+    public function getIdentifier()
     {
-        return $this->container['codice_fiscale'];
+        return $this->container['identifier'];
     }
 
     /**
-     * Sets codice_fiscale
+     * Sets identifier
      *
-     * @param string|null $codice_fiscale codice_fiscale
+     * @param string|null $identifier SDI identifier.
      *
      * @return self
      */
-    public function setCodiceFiscale($codice_fiscale)
+    public function setIdentifier($identifier)
     {
-        if (is_null($codice_fiscale)) {
-            array_push($this->openAPINullablesSetToNull, 'codice_fiscale');
+        if (is_null($identifier)) {
+            array_push($this->openAPINullablesSetToNull, 'identifier');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('codice_fiscale', $nullablesSetToNull);
+            $index = array_search('identifier', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['codice_fiscale'] = $codice_fiscale;
+        $this->container['identifier'] = $identifier;
 
         return $this;
     }
 
     /**
-     * Gets anagrafica
-     *
-     * @return \Invoicetronic\Model\Anagrafica|null
-     */
-    public function getAnagrafica()
-    {
-        return $this->container['anagrafica'];
-    }
-
-    /**
-     * Sets anagrafica
-     *
-     * @param \Invoicetronic\Model\Anagrafica|null $anagrafica anagrafica
-     *
-     * @return self
-     */
-    public function setAnagrafica($anagrafica)
-    {
-        if (is_null($anagrafica)) {
-            throw new \InvalidArgumentException('non-nullable anagrafica cannot be null');
-        }
-        $this->container['anagrafica'] = $anagrafica;
-
-        return $this;
-    }
-
-    /**
-     * Gets numero_licenza_guida
+     * Gets prestatore
      *
      * @return string|null
      */
-    public function getNumeroLicenzaGuida()
+    public function getPrestatore()
     {
-        return $this->container['numero_licenza_guida'];
+        return $this->container['prestatore'];
     }
 
     /**
-     * Sets numero_licenza_guida
+     * Sets prestatore
      *
-     * @param string|null $numero_licenza_guida numero_licenza_guida
+     * @param string|null $prestatore VAT number of the Cedente/Prestatore (vendor).
      *
      * @return self
      */
-    public function setNumeroLicenzaGuida($numero_licenza_guida)
+    public function setPrestatore($prestatore)
     {
-        if (is_null($numero_licenza_guida)) {
-            array_push($this->openAPINullablesSetToNull, 'numero_licenza_guida');
+        if (is_null($prestatore)) {
+            array_push($this->openAPINullablesSetToNull, 'prestatore');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('numero_licenza_guida', $nullablesSetToNull);
+            $index = array_search('prestatore', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['numero_licenza_guida'] = $numero_licenza_guida;
+        $this->container['prestatore'] = $prestatore;
+
+        return $this;
+    }
+
+    /**
+     * Gets meta_data
+     *
+     * @return array<string,string>|null
+     */
+    public function getMetaData()
+    {
+        return $this->container['meta_data'];
+    }
+
+    /**
+     * Sets meta_data
+     *
+     * @param array<string,string>|null $meta_data Optional metadata, as json.
+     *
+     * @return self
+     */
+    public function setMetaData($meta_data)
+    {
+        if (is_null($meta_data)) {
+            array_push($this->openAPINullablesSetToNull, 'meta_data');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('meta_data', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['meta_data'] = $meta_data;
+
+        return $this;
+    }
+
+    /**
+     * Gets documents
+     *
+     * @return \Invoicetronic\Model\DocumentData[]|null
+     */
+    public function getDocuments()
+    {
+        return $this->container['documents'];
+    }
+
+    /**
+     * Sets documents
+     *
+     * @param \Invoicetronic\Model\DocumentData[]|null $documents The invoices included in the payload.
+     *
+     * @return self
+     */
+    public function setDocuments($documents)
+    {
+        if (is_null($documents)) {
+            array_push($this->openAPINullablesSetToNull, 'documents');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('documents', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['documents'] = $documents;
+
+        return $this;
+    }
+
+    /**
+     * Gets date_sent
+     *
+     * @return \DateTime|null
+     */
+    public function getDateSent()
+    {
+        return $this->container['date_sent'];
+    }
+
+    /**
+     * Sets date_sent
+     *
+     * @param \DateTime|null $date_sent When the invoice was sent to SDI.
+     *
+     * @return self
+     */
+    public function setDateSent($date_sent)
+    {
+        if (is_null($date_sent)) {
+            array_push($this->openAPINullablesSetToNull, 'date_sent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('date_sent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['date_sent'] = $date_sent;
 
         return $this;
     }
