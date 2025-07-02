@@ -150,8 +150,8 @@ class WebhookApi
      * List webhooks
      *
      * @param  int|null $company_id Company id (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string|null $description description (optional)
      * @param  bool|null $enabled enabled (optional)
@@ -175,8 +175,8 @@ class WebhookApi
      * List webhooks
      *
      * @param  int|null $company_id Company id (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string|null $description (optional)
      * @param  bool|null $enabled (optional)
@@ -281,8 +281,8 @@ class WebhookApi
      * List webhooks
      *
      * @param  int|null $company_id Company id (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string|null $description (optional)
      * @param  bool|null $enabled (optional)
@@ -309,8 +309,8 @@ class WebhookApi
      * List webhooks
      *
      * @param  int|null $company_id Company id (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string|null $description (optional)
      * @param  bool|null $enabled (optional)
@@ -366,8 +366,8 @@ class WebhookApi
      * Create request for operation 'webhookGet'
      *
      * @param  int|null $company_id Company id (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string|null $description (optional)
      * @param  bool|null $enabled (optional)
@@ -1705,8 +1705,8 @@ class WebhookApi
      *
      * List webhook history items
      *
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  int|null $webhook_id WebHook id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
@@ -1726,8 +1726,8 @@ class WebhookApi
      *
      * List webhook history items
      *
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  int|null $webhook_id WebHook id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
@@ -1828,8 +1828,8 @@ class WebhookApi
      *
      * List webhook history items
      *
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  int|null $webhook_id WebHook id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
@@ -1852,8 +1852,8 @@ class WebhookApi
      *
      * List webhook history items
      *
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  int|null $webhook_id WebHook id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
@@ -1905,8 +1905,8 @@ class WebhookApi
     /**
      * Create request for operation 'webhookhistoryGet'
      *
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  int|null $webhook_id WebHook id (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation

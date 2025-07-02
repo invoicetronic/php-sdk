@@ -67,8 +67,8 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int | Page number. Defaults to 1.
-$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$page = 1; // int | Page number.
+$page_size = 100; // int | Items per page. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {

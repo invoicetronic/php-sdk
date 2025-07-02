@@ -503,8 +503,8 @@ class SendApi
      * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string|null $document_number Document number. (optional)
      * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
@@ -536,8 +536,8 @@ class SendApi
      * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string|null $document_number Document number. (optional)
      * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
@@ -650,8 +650,8 @@ class SendApi
      * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string|null $document_number Document number. (optional)
      * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
@@ -686,8 +686,8 @@ class SendApi
      * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string|null $document_number Document number. (optional)
      * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
@@ -751,8 +751,8 @@ class SendApi
      * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  string|null $document_number Document number. (optional)
      * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional)
-     * @param  int|null $page Page number. Defaults to 1. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Defaults to 50. Cannot be greater than 200. (optional, default to 100)
+     * @param  int|null $page Page number. (optional, default to 1)
+     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *

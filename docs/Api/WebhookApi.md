@@ -43,8 +43,8 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
     $config
 );
 $company_id = 56; // int | Company id
-$page = 1; // int | Page number. Defaults to 1.
-$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$page = 1; // int | Page number.
+$page_size = 100; // int | Items per page. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 $description = 'description_example'; // string
 $enabled = True; // bool
@@ -64,8 +64,8 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **company_id** | **int**| Company id | [optional] |
-| **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
-| **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
+| **page** | **int**| Page number. | [optional] [default to 1] |
+| **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100] |
 | **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
 | **description** | **string**|  | [optional] |
 | **enabled** | **bool**|  | [optional] |
@@ -366,8 +366,8 @@ $apiInstance = new Invoicetronic\Api\WebhookApi(
     new GuzzleHttp\Client(),
     $config
 );
-$page = 1; // int | Page number. Defaults to 1.
-$page_size = 100; // int | Items per page. Defaults to 50. Cannot be greater than 200.
+$page = 1; // int | Page number.
+$page_size = 100; // int | Items per page. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 $webhook_id = 56; // int | WebHook id
 
@@ -383,8 +383,8 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **page** | **int**| Page number. Defaults to 1. | [optional] [default to 1] |
-| **page_size** | **int**| Items per page. Defaults to 50. Cannot be greater than 200. | [optional] [default to 100] |
+| **page** | **int**| Page number. | [optional] [default to 1] |
+| **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100] |
 | **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
 | **webhook_id** | **int**| WebHook id | [optional] |
 
