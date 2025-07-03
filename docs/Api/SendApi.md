@@ -7,6 +7,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 | [**sendFilePost()**](SendApi.md#sendFilePost) | **POST** /send/file | Add an invoice by file |
 | [**sendGet()**](SendApi.md#sendGet) | **GET** /send | List invoices |
 | [**sendIdGet()**](SendApi.md#sendIdGet) | **GET** /send/{id} | Get a invoice by id |
+| [**sendIdentifierGet()**](SendApi.md#sendIdentifierGet) | **GET** /send/{identifier} | Get a invoice by identifier |
 | [**sendJsonPost()**](SendApi.md#sendJsonPost) | **POST** /send/json | Add an invoice by json |
 | [**sendPost()**](SendApi.md#sendPost) | **POST** /send | Add an invoice |
 | [**sendValidateFilePost()**](SendApi.md#sendValidateFilePost) | **POST** /send/validate/file | Validate an invoice file |
@@ -177,7 +178,7 @@ try {
 ## `sendIdGet()`
 
 ```php
-sendIdGet($id): \Invoicetronic\Model\Send
+sendIdGet($id, $include_payload): \Invoicetronic\Model\Send
 ```
 
 Get a invoice by id
@@ -204,9 +205,10 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     $config
 );
 $id = 56; // int | Item id
+$include_payload = false; // bool
 
 try {
-    $result = $apiInstance->sendIdGet($id);
+    $result = $apiInstance->sendIdGet($id, $include_payload);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendIdGet: ', $e->getMessage(), PHP_EOL;
@@ -218,6 +220,71 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **int**| Item id | |
+| **include_payload** | **bool**|  | [optional] [default to false] |
+
+### Return type
+
+[**\Invoicetronic\Model\Send**](../Model/Send.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `sendIdentifierGet()`
+
+```php
+sendIdentifierGet($identifier, $include_payload): \Invoicetronic\Model\Send
+```
+
+Get a invoice by identifier
+
+Send invoices are the invoices that are sent to the SDI. They are preserved for two years in the live environment and 15 days in the Sandbox.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Invoicetronic\Api\SendApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$identifier = 'identifier_example'; // string
+$include_payload = false; // bool
+
+try {
+    $result = $apiInstance->sendIdentifierGet($identifier, $include_payload);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SendApi->sendIdentifierGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **identifier** | **string**|  | |
+| **include_payload** | **bool**|  | [optional] [default to false] |
 
 ### Return type
 

@@ -168,7 +168,7 @@ try {
 ## `receiveIdGet()`
 
 ```php
-receiveIdGet($id): \Invoicetronic\Model\Receive
+receiveIdGet($id, $include_payload): \Invoicetronic\Model\Receive
 ```
 
 Get an incoming invoice by id
@@ -195,9 +195,10 @@ $apiInstance = new Invoicetronic\Api\ReceiveApi(
     $config
 );
 $id = 56; // int | Item id
+$include_payload = false; // bool
 
 try {
-    $result = $apiInstance->receiveIdGet($id);
+    $result = $apiInstance->receiveIdGet($id, $include_payload);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReceiveApi->receiveIdGet: ', $e->getMessage(), PHP_EOL;
@@ -209,6 +210,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **int**| Item id | |
+| **include_payload** | **bool**|  | [optional] [default to false] |
 
 ### Return type
 

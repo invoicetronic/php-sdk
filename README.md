@@ -99,6 +99,7 @@ Class | Method | HTTP request | Description
 *SendApi* | [**sendFilePost**](docs/Api/SendApi.md#sendfilepost) | **POST** /send/file | Add an invoice by file
 *SendApi* | [**sendGet**](docs/Api/SendApi.md#sendget) | **GET** /send | List invoices
 *SendApi* | [**sendIdGet**](docs/Api/SendApi.md#sendidget) | **GET** /send/{id} | Get a invoice by id
+*SendApi* | [**sendIdentifierGet**](docs/Api/SendApi.md#sendidentifierget) | **GET** /send/{identifier} | Get a invoice by identifier
 *SendApi* | [**sendJsonPost**](docs/Api/SendApi.md#sendjsonpost) | **POST** /send/json | Add an invoice by json
 *SendApi* | [**sendPost**](docs/Api/SendApi.md#sendpost) | **POST** /send | Add an invoice
 *SendApi* | [**sendValidateFilePost**](docs/Api/SendApi.md#sendvalidatefilepost) | **POST** /send/validate/file | Validate an invoice file
@@ -198,7 +199,7 @@ vendor/bin/phpunit
 
 ## Author
 
-support@invoicetronic.com
+info@invoicetronic.com
 
 ## About this package
 
