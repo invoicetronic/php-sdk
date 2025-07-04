@@ -307,7 +307,7 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
     public const STATE_SCARTATO = 'Scartato';
     public const STATE_ACCETTATO_DAL_DESTINATARIO = 'AccettatoDalDestinatario';
     public const STATE_RIFIUTATO_DAL_DESTINATARIO = 'RifiutatoDalDestinatario';
-    public const STATE_IMPOSSIBILITA_DI_RECAPITO = 'ImpossibilitaDiRecapito';
+    public const STATE_IMPOSSIBILITDI_RECAPITO = 'ImpossibilitàDiRecapito';
     public const STATE_DECORRENZA_TERMINI = 'DecorrenzaTermini';
     public const STATE_ATTESTAZIONE_TRASMISSIONE_FATTURA = 'AttestazioneTrasmissioneFattura';
 
@@ -325,7 +325,7 @@ class Update implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATE_SCARTATO,
             self::STATE_ACCETTATO_DAL_DESTINATARIO,
             self::STATE_RIFIUTATO_DAL_DESTINATARIO,
-            self::STATE_IMPOSSIBILITA_DI_RECAPITO,
+            self::STATE_IMPOSSIBILITDI_RECAPITO,
             self::STATE_DECORRENZA_TERMINI,
             self::STATE_ATTESTAZIONE_TRASMISSIONE_FATTURA,
         ];
