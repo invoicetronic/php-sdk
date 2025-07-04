@@ -49,7 +49,7 @@ $date_sent_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC
 $date_sent_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $page = 1; // int | Page number.
 $page_size = 100; // int | Items per page. Cannot be greater than 200.
-$sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
+$sort = 'last_update'; // string | Sort by field. Prefix with '-' for descending order.
 
 try {
     $result = $apiInstance->updateGet($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort);
@@ -75,7 +75,7 @@ try {
 | **date_sent_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **page** | **int**| Page number. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100] |
-| **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
+| **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] [default to &#39;last_update&#39;] |
 
 ### Return type
 

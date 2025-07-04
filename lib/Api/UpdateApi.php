@@ -146,14 +146,14 @@ class UpdateApi
      * @param  \DateTime|null $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional, default to 'last_update')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Update[]|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function updateGet($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGet($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = 'last_update', string $contentType = self::contentTypes['updateGet'][0])
     {
         list($response) = $this->updateGetWithHttpInfo($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
         return $response;
@@ -176,14 +176,14 @@ class UpdateApi
      * @param  \DateTime|null $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional, default to 'last_update')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Update[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateGetWithHttpInfo($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGetWithHttpInfo($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = 'last_update', string $contentType = self::contentTypes['updateGet'][0])
     {
         $request = $this->updateGetRequest($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
 
@@ -287,13 +287,13 @@ class UpdateApi
      * @param  \DateTime|null $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional, default to 'last_update')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateGetAsync($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGetAsync($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = 'last_update', string $contentType = self::contentTypes['updateGet'][0])
     {
         return $this->updateGetAsyncWithHttpInfo($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType)
             ->then(
@@ -320,13 +320,13 @@ class UpdateApi
      * @param  \DateTime|null $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional, default to 'last_update')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateGetAsyncWithHttpInfo($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGetAsyncWithHttpInfo($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = 'last_update', string $contentType = self::contentTypes['updateGet'][0])
     {
         $returnType = '\Invoicetronic\Model\Update[]';
         $request = $this->updateGetRequest($company_id, $identifier, $prestatore, $unread, $send_id, $state, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $page, $page_size, $sort, $contentType);
@@ -382,13 +382,13 @@ class UpdateApi
      * @param  \DateTime|null $date_sent_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional, default to 'last_update')
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateGetRequest($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['updateGet'][0])
+    public function updateGetRequest($company_id = null, $identifier = null, $prestatore = null, $unread = null, $send_id = null, $state = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $page = 1, $page_size = 100, $sort = 'last_update', string $contentType = self::contentTypes['updateGet'][0])
     {
 
 
