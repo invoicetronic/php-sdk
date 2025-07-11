@@ -142,13 +142,4 @@ class CompanyTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
-
-    /**
-     * Test attribute "counter"
-     */
-    public function testPropertyCounter()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
 }

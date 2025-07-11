@@ -195,7 +195,7 @@ $apiInstance = new Invoicetronic\Api\ReceiveApi(
     $config
 );
 $id = 56; // int | Item id
-$include_payload = false; // bool
+$include_payload = false; // bool | Include payload in the response. Defaults to false.
 
 try {
     $result = $apiInstance->receiveIdGet($id, $include_payload);
@@ -210,7 +210,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **int**| Item id | |
-| **include_payload** | **bool**|  | [optional] [default to false] |
+| **include_payload** | **bool**| Include payload in the response. Defaults to false. | [optional] [default to false] |
 
 ### Return type
 

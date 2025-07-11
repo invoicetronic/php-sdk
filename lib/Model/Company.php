@@ -65,8 +65,7 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'int',
         'vat' => 'string',
         'fiscal_code' => 'string',
-        'name' => 'string',
-        'counter' => 'int'
+        'name' => 'string'
     ];
 
     /**
@@ -83,8 +82,7 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'int32',
         'vat' => null,
         'fiscal_code' => null,
-        'name' => null,
-        'counter' => 'int32'
+        'name' => null
     ];
 
     /**
@@ -99,8 +97,7 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => false,
         'vat' => false,
         'fiscal_code' => false,
-        'name' => false,
-        'counter' => false
+        'name' => false
     ];
 
     /**
@@ -195,8 +192,7 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'user_id',
         'vat' => 'vat',
         'fiscal_code' => 'fiscal_code',
-        'name' => 'name',
-        'counter' => 'counter'
+        'name' => 'name'
     ];
 
     /**
@@ -211,8 +207,7 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'setUserId',
         'vat' => 'setVat',
         'fiscal_code' => 'setFiscalCode',
-        'name' => 'setName',
-        'counter' => 'setCounter'
+        'name' => 'setName'
     ];
 
     /**
@@ -227,8 +222,7 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
         'user_id' => 'getUserId',
         'vat' => 'getVat',
         'fiscal_code' => 'getFiscalCode',
-        'name' => 'getName',
-        'counter' => 'getCounter'
+        'name' => 'getName'
     ];
 
     /**
@@ -295,7 +289,6 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('vat', $data ?? [], null);
         $this->setIfExists('fiscal_code', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('counter', $data ?? [], null);
     }
 
     /**
@@ -561,33 +554,6 @@ class Company implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets counter
-     *
-     * @return int|null
-     */
-    public function getCounter()
-    {
-        return $this->container['counter'];
-    }
-
-    /**
-     * Sets counter
-     *
-     * @param int|null $counter Holds the last unique value used to generate a XML filename. This is automatically updated by the system   when a raw XML file is uploaded. Normally, you do not need or want to change this value.
-     *
-     * @return self
-     */
-    public function setCounter($counter)
-    {
-        if (is_null($counter)) {
-            throw new \InvalidArgumentException('non-nullable counter cannot be null');
-        }
-        $this->container['counter'] = $counter;
 
         return $this;
     }

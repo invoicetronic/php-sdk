@@ -959,7 +959,7 @@ class ReceiveApi
      * Get an incoming invoice by id
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['receiveIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -978,7 +978,7 @@ class ReceiveApi
      * Get an incoming invoice by id
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['receiveIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1064,7 +1064,7 @@ class ReceiveApi
      * Get an incoming invoice by id
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['receiveIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1086,7 +1086,7 @@ class ReceiveApi
      * Get an incoming invoice by id
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['receiveIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1137,7 +1137,7 @@ class ReceiveApi
      * Create request for operation 'receiveIdGet'
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['receiveIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1165,7 +1165,7 @@ class ReceiveApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_payload,
-            'includePayload', // param base name
+            'include_payload', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode

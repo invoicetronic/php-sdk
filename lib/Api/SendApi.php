@@ -1000,7 +1000,7 @@ class SendApi
      * Get a invoice by id
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1019,7 +1019,7 @@ class SendApi
      * Get a invoice by id
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1105,7 +1105,7 @@ class SendApi
      * Get a invoice by id
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1127,7 +1127,7 @@ class SendApi
      * Get a invoice by id
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1178,7 +1178,7 @@ class SendApi
      * Create request for operation 'sendIdGet'
      *
      * @param  int $id Item id (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1206,7 +1206,7 @@ class SendApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_payload,
-            'includePayload', // param base name
+            'include_payload', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -1287,7 +1287,7 @@ class SendApi
      * Get a invoice by identifier
      *
      * @param  string $identifier identifier (required)
-     * @param  bool|null $include_payload include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdentifierGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1306,7 +1306,7 @@ class SendApi
      * Get a invoice by identifier
      *
      * @param  string $identifier (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdentifierGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
@@ -1406,7 +1406,7 @@ class SendApi
      * Get a invoice by identifier
      *
      * @param  string $identifier (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdentifierGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1428,7 +1428,7 @@ class SendApi
      * Get a invoice by identifier
      *
      * @param  string $identifier (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdentifierGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1479,7 +1479,7 @@ class SendApi
      * Create request for operation 'sendIdentifierGet'
      *
      * @param  string $identifier (required)
-     * @param  bool|null $include_payload (optional, default to false)
+     * @param  bool|null $include_payload Include payload in the response. Defaults to false. (optional, default to false)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendIdentifierGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
@@ -1507,7 +1507,7 @@ class SendApi
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $include_payload,
-            'includePayload', // param base name
+            'include_payload', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
