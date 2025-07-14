@@ -101,7 +101,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'Invoicetronic/1.0/PHP-SDK';
+    protected $userAgent = 'Invoicetronic/main/PHP-SDK';
 
     /**
      * Debug switch (default set to false)
