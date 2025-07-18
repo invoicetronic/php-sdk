@@ -18,31 +18,23 @@ Should also work with PHP 8.0.
 
 ### Composer
 
-To install the bindings via [Composer](https://getcomposer.org/), add the following to `composer.json`:
+To install the bindings via [Composer](https://getcomposer.org/), run the following command:
 
-```json
-{
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/invoicetronic/php-sdk.git"
-    }
-  ],
-  "require": {
-    "invoicetronic/php-sdk": "*@dev"
-  }
-}
+```bash
+$ composer require invoicetronic/php-sdk
 ```
 
 Then run `composer install`
 
 ### Manual Installation
 
-Download the files and include `autoload.php`:
-
+There are three options:
+- Download the latest release of the PHP SDK [Phar Archive](https://github.com/invoicetronic/php-sdk/releases) and simply include it in your project.
 ```php
-<?php
-require_once('/path/to/PHP SDK for the Invoicetronic API/vendor/autoload.php');
+require_once('./invoicetronic-sdk.phar');
+```
+- download our SDK using [PHP-download](https://php-download.com/package/invoicetronic/php-sdk) and simply include it in your project.
+- create your own custom autoloader and download all the dependencies (transitive included) as explained [here](https://ehikioya.com/how-to-install-php-packages-without-composer/).
 ```
 
 ## Getting Started
