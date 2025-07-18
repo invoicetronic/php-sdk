@@ -15,10 +15,55 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          tools: composer
+
+      - name: Generate phar archive
+        run: |
+          # Install dependencies
+          composer install --no-dev --optimize-autoloader
+          
+          # Create phar build script
+          cat > build-phar.php << 'EOF'
+          <?php
+          $version = str_replace('v', '', getenv('GITHUB_REF_NAME') ?: '0.0.0');
+          $pharFile = 'invoicetronic-sdk-' . $version . '.phar';
+          
+          if (file_exists($pharFile)) {
+              unlink($pharFile);
+          }
+          
+          $phar = new Phar($pharFile);
+          $phar->startBuffering();
+          
+          // Add all necessary files
+          $phar->buildFromDirectory(__DIR__, '/\.(php|json)$/');
+          
+          // Set stub
+          $phar->setStub('<?php
+          require_once "phar://" . __FILE__ . "/vendor/autoload.php";
+          __HALT_COMPILER();');
+          
+          $phar->stopBuffering();
+          
+          echo "Phar archive created: $pharFile\n";
+          EOF
+          
+          # Build the phar
+          php build-phar.php
+          
+          # Verify the phar was created
+          ls -la *.phar
+
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
           make_latest: true
+          files: |
+            *.phar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
