@@ -29,12 +29,13 @@ Then run `composer install`
 ### Manual Installation
 
 There are three options:
+
 - Download the latest release of the PHP SDK [Phar Archive](https://github.com/invoicetronic/php-sdk/releases) and simply include it in your project.
 ```php
 require_once('./invoicetronic-sdk.phar');
 ```
-- download our SDK using [PHP-download](https://php-download.com/package/invoicetronic/php-sdk) and simply include it in your project.
-- create your own custom autoloader and download all the dependencies (transitive included) as explained [here](https://ehikioya.com/how-to-install-php-packages-without-composer/).
+- Download our SDK using [PHP-download](https://php-download.com/package/invoicetronic/php-sdk) and simply include it in your project.
+- Create your own custom autoloader and download all the dependencies (transitive included) as explained [here](https://ehikioya.com/how-to-install-php-packages-without-composer/).
 ```
 
 ## Getting Started
