@@ -53,7 +53,7 @@ jobs:
           EOF
           
           # Build the phar
-          php build-phar.php
+          php -d phar.readonly=0 build-phar.php
           
           # Verify the phar was created
           ls -la *.phar
