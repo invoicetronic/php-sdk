@@ -1,5 +1,7 @@
 # Invoicetronic\UpdateApi
 
+
+
 All URIs are relative to https://api.invoicetronic.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
