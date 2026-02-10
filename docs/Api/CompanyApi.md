@@ -21,7 +21,7 @@ companyGet($page, $page_size, $sort): \Invoicetronic\Model\Company[]
 
 List companies
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Retrieve a paginated list of companies.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 
@@ -82,12 +82,12 @@ try {
 ## `companyIdDelete()`
 
 ```php
-companyIdDelete($id): \Invoicetronic\Model\Company
+companyIdDelete($id, $force): \Invoicetronic\Model\Company
 ```
 
 Delete a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Delete a company by its internal id.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.  **Warning:** Deleting a company will permanently remove all associated data, including sent invoices, received invoices, invoice updates from SDI, logs, and webhooks.  If the company has any linked invoices, you must explicitly confirm deletion by adding `?force=true` to the request. Without this parameter, the API will return `409 Conflict` with details about the linked data.
 
 ### Example
 
@@ -109,9 +109,10 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
     $config
 );
 $id = 56; // int | Item id
+$force = false; // bool | Force delete including all related data.
 
 try {
-    $result = $apiInstance->companyIdDelete($id);
+    $result = $apiInstance->companyIdDelete($id, $force);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CompanyApi->companyIdDelete: ', $e->getMessage(), PHP_EOL;
@@ -123,6 +124,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **id** | **int**| Item id | |
+| **force** | **bool**| Force delete including all related data. | [optional] [default to false] |
 
 ### Return type
 
@@ -149,7 +151,7 @@ companyIdGet($id): \Invoicetronic\Model\Company
 
 Get a company by id
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Retrieve a company by its internal id.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 
@@ -211,7 +213,7 @@ companyPost($company): \Invoicetronic\Model\Company
 
 Add a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Add a new company.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 
@@ -273,7 +275,7 @@ companyPut($company): \Invoicetronic\Model\Company
 
 Update a company
 
-Companies are the entities that send and receive invoices. As you send invoices, companies are added as needed (company details are extrapolated). **You can only receive invoices for existing companies, so ensure they exist**.
+Update an existing company.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 

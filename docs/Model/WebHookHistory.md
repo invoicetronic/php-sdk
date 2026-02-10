@@ -12,6 +12,6 @@ Name | Type | Description | Notes
 **event** | **string** | Event name. | [optional]
 **status_code** | **int** | Status code. | [optional]
 **date_time** | **\DateTime** | Date and time of the request. | [optional]
-**success** | **bool** | Wether the request was successful. | [optional] [readonly]
+**success** | **bool** | Whether the request was successful. | [optional] [readonly]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

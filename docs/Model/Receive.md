@@ -11,15 +11,15 @@ Name | Type | Description | Notes
 **company_id** | **int** | Company id. On send, this is the sender and must be set in advance. On receive, it will be  automatically set based on the recipient&#39;s VAT number. If a matching company is not found, the invoice will be rejected until the company is created. | [optional]
 **committente** | **string** | VAT number of the Cessionario/Committente (customer). This is automatically set based on the recipient&#39;s VAT number. | [optional]
 **prestatore** | **string** | VAT number of the Cedente/Prestatore (vendor). This is automatically set based on the sender&#39;s VAT number. | [optional]
-**identifier** | **string** | SDI identifier. This is set by the SDI and is guaranted to be unique within the SDI system. | [optional]
+**identifier** | **string** | SDI identifier. This is set by the SDI and is guaranteed to be unique within the SDI system. | [optional]
 **file_name** | **string** | Xml file name. | [optional]
 **format** | **string** | SDI format (FPA12, FPR12, FSM10, ...) | [optional]
-**payload** | **string** | Xml payloaad. This is the actual xml content, as string. On send, it can be base64 encoded. If it&#39;s not, it will be encoded before sending. It is guaranteed to be cyphered at rest. |
+**payload** | **string** | Xml payload. This is the actual xml content, as string. On send, it can be base64 encoded. If it&#39;s not, it will be encoded before sending. It is guaranteed to be encrypted at rest. |
 **last_update** | **\DateTime** | Last update from SDI. | [optional]
 **date_sent** | **\DateTime** | When the invoice was sent to SDI. | [optional]
 **documents** | [**\Invoicetronic\Model\DocumentData[]**](DocumentData.md) | The invoices included in the payload. This is set by the system, based on the xml content. | [optional]
 **encoding** | **string** | Whether the payload is Base64 encoded or a plain XML (text). | [optional]
-**is_read** | **bool** | Wether the invoice has been read at least once. | [optional]
+**is_read** | **bool** | Whether the invoice has been read at least once. Set to true only when the invoice is requested with include_payload&#x3D;true. | [optional]
 **message_id** | **string** | SDI message id. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
