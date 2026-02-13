@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**companyIdGet**](docs/Api/CompanyApi.md#companyidget) | **GET** /company/{id} | Get a company by id
 *CompanyApi* | [**companyPost**](docs/Api/CompanyApi.md#companypost) | **POST** /company | Add a company
 *CompanyApi* | [**companyPut**](docs/Api/CompanyApi.md#companyput) | **PUT** /company | Update a company
+*ExportApi* | [**exportGet**](docs/Api/ExportApi.md#exportget) | **GET** /export | Export invoices as a ZIP archive
 *LogApi* | [**logGet**](docs/Api/LogApi.md#logget) | **GET** /log | List events
 *LogApi* | [**logIdGet**](docs/Api/LogApi.md#logidget) | **GET** /log/{id} | Get an event by id
 *ReceiveApi* | [**receiveGet**](docs/Api/ReceiveApi.md#receiveget) | **GET** /receive | List incoming invoices
