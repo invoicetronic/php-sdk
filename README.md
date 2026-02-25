@@ -83,15 +83,18 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**companyIdGet**](docs/Api/CompanyApi.md#companyidget) | **GET** /company/{id} | Get a company by id
 *CompanyApi* | [**companyPost**](docs/Api/CompanyApi.md#companypost) | **POST** /company | Add a company
 *CompanyApi* | [**companyPut**](docs/Api/CompanyApi.md#companyput) | **PUT** /company | Update a company
+*CompanyApi* | [**companyVatGet**](docs/Api/CompanyApi.md#companyvatget) | **GET** /company/{vat} | Get a company by vat number
 *ExportApi* | [**exportGet**](docs/Api/ExportApi.md#exportget) | **GET** /export | Export invoices as a ZIP archive
 *LogApi* | [**logGet**](docs/Api/LogApi.md#logget) | **GET** /log | List events
 *LogApi* | [**logIdGet**](docs/Api/LogApi.md#logidget) | **GET** /log/{id} | Get an event by id
 *ReceiveApi* | [**receiveGet**](docs/Api/ReceiveApi.md#receiveget) | **GET** /receive | List incoming invoices
 *ReceiveApi* | [**receiveIdDelete**](docs/Api/ReceiveApi.md#receiveiddelete) | **DELETE** /receive/{id} | Delete an incoming invoice by id
 *ReceiveApi* | [**receiveIdGet**](docs/Api/ReceiveApi.md#receiveidget) | **GET** /receive/{id} | Get an incoming invoice by id
+*ReceiveApi* | [**receiveIdPayloadGet**](docs/Api/ReceiveApi.md#receiveidpayloadget) | **GET** /receive/{id}/payload | Get a receive invoice payload by id
 *SendApi* | [**sendFilePost**](docs/Api/SendApi.md#sendfilepost) | **POST** /send/file | Add an invoice by file
 *SendApi* | [**sendGet**](docs/Api/SendApi.md#sendget) | **GET** /send | List invoices
 *SendApi* | [**sendIdGet**](docs/Api/SendApi.md#sendidget) | **GET** /send/{id} | Get a invoice by id
+*SendApi* | [**sendIdPayloadGet**](docs/Api/SendApi.md#sendidpayloadget) | **GET** /send/{id}/payload | Get a send invoice payload by id
 *SendApi* | [**sendIdentifierGet**](docs/Api/SendApi.md#sendidentifierget) | **GET** /send/{identifier} | Get a invoice by identifier
 *SendApi* | [**sendJsonPost**](docs/Api/SendApi.md#sendjsonpost) | **POST** /send/json | Add an invoice by json
 *SendApi* | [**sendPost**](docs/Api/SendApi.md#sendpost) | **POST** /send | Add an invoice
@@ -113,63 +116,11 @@ Class | Method | HTTP request | Description
 
 ## Models
 
-- [Allegati](docs/Model/Allegati.md)
-- [AltriDatiGestionali](docs/Model/AltriDatiGestionali.md)
-- [Anagrafica](docs/Model/Anagrafica.md)
-- [CedentePrestatore](docs/Model/CedentePrestatore.md)
-- [CessionarioCommittente](docs/Model/CessionarioCommittente.md)
-- [CodiceArticolo](docs/Model/CodiceArticolo.md)
 - [Company](docs/Model/Company.md)
-- [Contatti](docs/Model/Contatti.md)
-- [ContattiTrasmittente](docs/Model/ContattiTrasmittente.md)
-- [DatiAnagrafici](docs/Model/DatiAnagrafici.md)
-- [DatiAnagraficiCedentePrestatore](docs/Model/DatiAnagraficiCedentePrestatore.md)
-- [DatiAnagraficiCessionarioCommittente](docs/Model/DatiAnagraficiCessionarioCommittente.md)
-- [DatiAnagraficiVettore](docs/Model/DatiAnagraficiVettore.md)
-- [DatiBeniServizi](docs/Model/DatiBeniServizi.md)
-- [DatiBollo](docs/Model/DatiBollo.md)
-- [DatiCassaPrevidenziale](docs/Model/DatiCassaPrevidenziale.md)
-- [DatiContratto](docs/Model/DatiContratto.md)
-- [DatiConvenzione](docs/Model/DatiConvenzione.md)
-- [DatiDDT](docs/Model/DatiDDT.md)
-- [DatiFattureCollegate](docs/Model/DatiFattureCollegate.md)
-- [DatiGenerali](docs/Model/DatiGenerali.md)
-- [DatiGeneraliDocumento](docs/Model/DatiGeneraliDocumento.md)
-- [DatiOrdineAcquisto](docs/Model/DatiOrdineAcquisto.md)
-- [DatiPagamento](docs/Model/DatiPagamento.md)
-- [DatiRicezione](docs/Model/DatiRicezione.md)
-- [DatiRiepilogo](docs/Model/DatiRiepilogo.md)
-- [DatiRitenuta](docs/Model/DatiRitenuta.md)
-- [DatiSAL](docs/Model/DatiSAL.md)
-- [DatiTrasmissione](docs/Model/DatiTrasmissione.md)
-- [DatiTrasporto](docs/Model/DatiTrasporto.md)
-- [DatiVeicoli](docs/Model/DatiVeicoli.md)
-- [DettaglioLinee](docs/Model/DettaglioLinee.md)
-- [DettaglioPagamento](docs/Model/DettaglioPagamento.md)
-- [DocumentData](docs/Model/DocumentData.md)
-- [Error](docs/Model/Error.md)
 - [Event](docs/Model/Event.md)
-- [FatturaElettronicaBody](docs/Model/FatturaElettronicaBody.md)
-- [FatturaElettronicaHeader](docs/Model/FatturaElettronicaHeader.md)
-- [FatturaOrdinaria](docs/Model/FatturaOrdinaria.md)
-- [FatturaPrincipale](docs/Model/FatturaPrincipale.md)
-- [IdFiscaleIVA](docs/Model/IdFiscaleIVA.md)
-- [IdTrasmittente](docs/Model/IdTrasmittente.md)
-- [IndirizzoResa](docs/Model/IndirizzoResa.md)
-- [IscrizioneREA](docs/Model/IscrizioneREA.md)
-- [ProblemDetails](docs/Model/ProblemDetails.md)
-- [ProblemHttpResult](docs/Model/ProblemHttpResult.md)
-- [RappresentanteFiscale](docs/Model/RappresentanteFiscale.md)
-- [RappresentanteFiscaleCessionarioCommittente](docs/Model/RappresentanteFiscaleCessionarioCommittente.md)
 - [Receive](docs/Model/Receive.md)
-- [ScontoMaggiorazione](docs/Model/ScontoMaggiorazione.md)
-- [SedeCedentePrestatore](docs/Model/SedeCedentePrestatore.md)
-- [SedeCessionarioCommittente](docs/Model/SedeCessionarioCommittente.md)
 - [Send](docs/Model/Send.md)
-- [SendReduced](docs/Model/SendReduced.md)
-- [StabileOrganizzazione](docs/Model/StabileOrganizzazione.md)
 - [Status](docs/Model/Status.md)
-- [TerzoIntermediarioOSoggettoEmittente](docs/Model/TerzoIntermediarioOSoggettoEmittente.md)
 - [Update](docs/Model/Update.md)
 - [WebHook](docs/Model/WebHook.md)
 - [WebHookHistory](docs/Model/WebHookHistory.md)
@@ -199,5 +150,5 @@ info@invoicetronic.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `1`
-    - Generator version: `7.19.0`
+    - Generator version: `7.20.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

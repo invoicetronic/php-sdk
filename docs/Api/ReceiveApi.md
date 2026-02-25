@@ -9,6 +9,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 | [**receiveGet()**](ReceiveApi.md#receiveGet) | **GET** /receive | List incoming invoices |
 | [**receiveIdDelete()**](ReceiveApi.md#receiveIdDelete) | **DELETE** /receive/{id} | Delete an incoming invoice by id |
 | [**receiveIdGet()**](ReceiveApi.md#receiveIdGet) | **GET** /receive/{id} | Get an incoming invoice by id |
+| [**receiveIdPayloadGet()**](ReceiveApi.md#receiveIdPayloadGet) | **GET** /receive/{id}/payload | Get a receive invoice payload by id |
 
 
 ## `receiveGet()`
@@ -226,6 +227,67 @@ try {
 
 - **Content-Type**: Not defined
 - **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `receiveIdPayloadGet()`
+
+```php
+receiveIdPayloadGet($id)
+```
+
+Get a receive invoice payload by id
+
+Retrieve only the payload of a receive invoice, without the full invoice metadata. This is useful when you already have the invoice metadata and only need the XML content.  The response is a `text/plain` string, identical to the `payload` field returned by the standard GET endpoint with `include_payload=true`.  The invoice is marked as read (`is_read` = true) and counted as an operation, same as when retrieving the full invoice with `include_payload=true`.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Invoicetronic\Api\ReceiveApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | Item id
+
+try {
+    $apiInstance->receiveIdPayloadGet($id);
+} catch (Exception $e) {
+    echo 'Exception when calling ReceiveApi->receiveIdPayloadGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **int**| Item id | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Basic](../../README.md#Basic)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

@@ -11,6 +11,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 | [**companyIdGet()**](CompanyApi.md#companyIdGet) | **GET** /company/{id} | Get a company by id |
 | [**companyPost()**](CompanyApi.md#companyPost) | **POST** /company | Add a company |
 | [**companyPut()**](CompanyApi.md#companyPut) | **PUT** /company | Update a company |
+| [**companyVatGet()**](CompanyApi.md#companyVatGet) | **GET** /company/{vat} | Get a company by vat number |
 
 
 ## `companyGet()`
@@ -323,6 +324,68 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `companyVatGet()`
+
+```php
+companyVatGet($vat): \Invoicetronic\Model\Company
+```
+
+Get a company by vat number
+
+Retrieve a company by its VAT number.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
+
+$apiInstance = new Invoicetronic\Api\CompanyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$vat = 'vat_example'; // string
+
+try {
+    $result = $apiInstance->companyVatGet($vat);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling CompanyApi->companyVatGet: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **vat** | **string**|  | |
+
+### Return type
+
+[**\Invoicetronic\Model\Company**](../Model/Company.md)
+
+### Authorization
+
+[Basic](../../README.md#Basic)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
