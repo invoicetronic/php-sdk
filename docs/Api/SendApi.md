@@ -370,7 +370,7 @@ try {
 ## `sendJsonPost()`
 
 ```php
-sendJsonPost($fattura_ordinaria, $validate, $signature): \Invoicetronic\Model\Send
+sendJsonPost($body, $validate, $signature): \Invoicetronic\Model\Send
 ```
 
 Add an invoice by json
@@ -396,12 +396,12 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
+$body = array('key' => new \stdClass); // object
 $validate = false; // bool | Validate the document first, and reject it on failure.
 $signature = 'Auto'; // string | Whether to digitally sign the document.
 
 try {
-    $result = $apiInstance->sendJsonPost($fattura_ordinaria, $validate, $signature);
+    $result = $apiInstance->sendJsonPost($body, $validate, $signature);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendJsonPost: ', $e->getMessage(), PHP_EOL;
@@ -412,7 +412,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fattura_ordinaria** | [**\Invoicetronic\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
+| **body** | **object**|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 | **signature** | **string**| Whether to digitally sign the document. | [optional] [default to &#39;Auto&#39;] |
 
@@ -563,7 +563,7 @@ void (empty response body)
 ## `sendValidateJsonPost()`
 
 ```php
-sendValidateJsonPost($fattura_ordinaria)
+sendValidateJsonPost($body)
 ```
 
 Validate an invoice by json
@@ -589,10 +589,10 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
+$body = array('key' => new \stdClass); // object
 
 try {
-    $apiInstance->sendValidateJsonPost($fattura_ordinaria);
+    $apiInstance->sendValidateJsonPost($body);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendValidateJsonPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -602,7 +602,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fattura_ordinaria** | [**\Invoicetronic\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
+| **body** | **object**|  | |
 
 ### Return type
 
@@ -685,7 +685,7 @@ void (empty response body)
 ## `sendValidateXmlPost()`
 
 ```php
-sendValidateXmlPost($fattura_ordinaria)
+sendValidateXmlPost($body)
 ```
 
 Validate an invoice by xml
@@ -711,10 +711,10 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
+$body = array('key' => new \stdClass); // object
 
 try {
-    $apiInstance->sendValidateXmlPost($fattura_ordinaria);
+    $apiInstance->sendValidateXmlPost($body);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendValidateXmlPost: ', $e->getMessage(), PHP_EOL;
 }
@@ -724,7 +724,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fattura_ordinaria** | [**\Invoicetronic\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
+| **body** | **object**|  | |
 
 ### Return type
 
@@ -746,7 +746,7 @@ void (empty response body)
 ## `sendXmlPost()`
 
 ```php
-sendXmlPost($fattura_ordinaria, $validate, $signature): \Invoicetronic\Model\Send
+sendXmlPost($body, $validate, $signature): \Invoicetronic\Model\Send
 ```
 
 Add an invoice by xml
@@ -772,12 +772,12 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
-$fattura_ordinaria = new \Invoicetronic\Model\FatturaOrdinaria(); // \Invoicetronic\Model\FatturaOrdinaria
+$body = array('key' => new \stdClass); // object
 $validate = false; // bool | Validate the document first, and reject it on failure.
 $signature = 'Auto'; // string | Whether to digitally sign the document.
 
 try {
-    $result = $apiInstance->sendXmlPost($fattura_ordinaria, $validate, $signature);
+    $result = $apiInstance->sendXmlPost($body, $validate, $signature);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendXmlPost: ', $e->getMessage(), PHP_EOL;
@@ -788,7 +788,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **fattura_ordinaria** | [**\Invoicetronic\Model\FatturaOrdinaria**](../Model/FatturaOrdinaria.md)|  | |
+| **body** | **object**|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 | **signature** | **string**| Whether to digitally sign the document. | [optional] [default to &#39;Auto&#39;] |
 
