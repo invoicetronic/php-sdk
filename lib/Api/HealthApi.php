@@ -1,6 +1,6 @@
 <?php
 /**
- * ExportApi
+ * HealthApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use Invoicetronic\HeaderSelector;
 use Invoicetronic\ObjectSerializer;
 
 /**
- * ExportApi Class Doc Comment
+ * HealthApi Class Doc Comment
  *
  * @category Class
  * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ExportApi
+class HealthApi
 {
     /**
      * @var ClientInterface
@@ -75,7 +75,7 @@ class ExportApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'exportGet' => [
+        'healthGet' => [
             'application/json',
         ],
     ];
@@ -127,49 +127,35 @@ class ExportApi
     }
 
     /**
-     * Operation exportGet
+     * Operation healthGet
      *
-     * Export invoices as a ZIP archive
+     * Health check
      *
-     * @param  string|null $type type (optional)
-     * @param  int|null $company_id Company id (optional)
-     * @param  int|null $year year (optional)
-     * @param  int|null $month month (optional)
-     * @param  int|null $quarter quarter (optional)
-     * @param  \DateTime|null $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function exportGet($type = null, $company_id = null, $year = null, $month = null, $quarter = null, $document_date_from = null, $document_date_to = null, string $contentType = self::contentTypes['exportGet'][0])
+    public function healthGet(string $contentType = self::contentTypes['healthGet'][0])
     {
-        $this->exportGetWithHttpInfo($type, $company_id, $year, $month, $quarter, $document_date_from, $document_date_to, $contentType);
+        $this->healthGetWithHttpInfo($contentType);
     }
 
     /**
-     * Operation exportGetWithHttpInfo
+     * Operation healthGetWithHttpInfo
      *
-     * Export invoices as a ZIP archive
+     * Health check
      *
-     * @param  string|null $type (optional)
-     * @param  int|null $company_id Company id (optional)
-     * @param  int|null $year (optional)
-     * @param  int|null $month (optional)
-     * @param  int|null $quarter (optional)
-     * @param  \DateTime|null $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function exportGetWithHttpInfo($type = null, $company_id = null, $year = null, $month = null, $quarter = null, $document_date_from = null, $document_date_to = null, string $contentType = self::contentTypes['exportGet'][0])
+    public function healthGetWithHttpInfo(string $contentType = self::contentTypes['healthGet'][0])
     {
-        $request = $this->exportGetRequest($type, $company_id, $year, $month, $quarter, $document_date_from, $document_date_to, $contentType);
+        $request = $this->healthGetRequest($contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -197,14 +183,6 @@ class ExportApi
             return [null, $statusCode, $response->getHeaders()];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Invoicetronic\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
             }
         
 
@@ -213,25 +191,18 @@ class ExportApi
     }
 
     /**
-     * Operation exportGetAsync
+     * Operation healthGetAsync
      *
-     * Export invoices as a ZIP archive
+     * Health check
      *
-     * @param  string|null $type (optional)
-     * @param  int|null $company_id Company id (optional)
-     * @param  int|null $year (optional)
-     * @param  int|null $month (optional)
-     * @param  int|null $quarter (optional)
-     * @param  \DateTime|null $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportGetAsync($type = null, $company_id = null, $year = null, $month = null, $quarter = null, $document_date_from = null, $document_date_to = null, string $contentType = self::contentTypes['exportGet'][0])
+    public function healthGetAsync(string $contentType = self::contentTypes['healthGet'][0])
     {
-        return $this->exportGetAsyncWithHttpInfo($type, $company_id, $year, $month, $quarter, $document_date_from, $document_date_to, $contentType)
+        return $this->healthGetAsyncWithHttpInfo($contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -240,26 +211,19 @@ class ExportApi
     }
 
     /**
-     * Operation exportGetAsyncWithHttpInfo
+     * Operation healthGetAsyncWithHttpInfo
      *
-     * Export invoices as a ZIP archive
+     * Health check
      *
-     * @param  string|null $type (optional)
-     * @param  int|null $company_id Company id (optional)
-     * @param  int|null $year (optional)
-     * @param  int|null $month (optional)
-     * @param  int|null $quarter (optional)
-     * @param  \DateTime|null $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function exportGetAsyncWithHttpInfo($type = null, $company_id = null, $year = null, $month = null, $quarter = null, $document_date_from = null, $document_date_to = null, string $contentType = self::contentTypes['exportGet'][0])
+    public function healthGetAsyncWithHttpInfo(string $contentType = self::contentTypes['healthGet'][0])
     {
         $returnType = '';
-        $request = $this->exportGetRequest($type, $company_id, $year, $month, $quarter, $document_date_from, $document_date_to, $contentType);
+        $request = $this->healthGetRequest($contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -285,107 +249,30 @@ class ExportApi
     }
 
     /**
-     * Create request for operation 'exportGet'
+     * Create request for operation 'healthGet'
      *
-     * @param  string|null $type (optional)
-     * @param  int|null $company_id Company id (optional)
-     * @param  int|null $year (optional)
-     * @param  int|null $month (optional)
-     * @param  int|null $quarter (optional)
-     * @param  \DateTime|null $document_date_from UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  \DateTime|null $document_date_to UTC ISO 8601 (2024-11-29T12:34:56Z) (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['exportGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['healthGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function exportGetRequest($type = null, $company_id = null, $year = null, $month = null, $quarter = null, $document_date_from = null, $document_date_to = null, string $contentType = self::contentTypes['exportGet'][0])
+    public function healthGetRequest(string $contentType = self::contentTypes['healthGet'][0])
     {
 
 
-
-
-
-
-
-
-
-        $resourcePath = '/export';
+        $resourcePath = '/health';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $type,
-            'type', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $company_id,
-            'company_id', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $year,
-            'year', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $month,
-            'month', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $quarter,
-            'quarter', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $document_date_from,
-            'document_date_from', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $document_date_to,
-            'document_date_to', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
 
 
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/problem+json', ],
+            [],
             $contentType,
             $multipart
         );

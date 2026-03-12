@@ -38,7 +38,7 @@ $apiInstance = new Invoicetronic\Api\ExportApi(
     new GuzzleHttp\Client(),
     $config
 );
-$type = 'Both'; // string
+$type = 'type_example'; // string
 $company_id = 56; // int | Company id
 $year = 56; // int
 $month = 56; // int
@@ -57,7 +57,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **type** | **string**|  | [optional] [default to &#39;Both&#39;] |
+| **type** | **string**|  | [optional] |
 | **company_id** | **int**| Company id | [optional] |
 | **year** | **int**|  | [optional] |
 | **month** | **int**|  | [optional] |

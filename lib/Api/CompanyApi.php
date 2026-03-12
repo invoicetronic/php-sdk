@@ -149,15 +149,16 @@ class CompanyApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['companyGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Company[]|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function companyGet($page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['companyGet'][0])
+    public function companyGet($page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['companyGet'][0])
     {
-        list($response) = $this->companyGetWithHttpInfo($page, $page_size, $sort, $contentType);
+        list($response) = $this->companyGetWithHttpInfo($page, $page_size, $sort, $q, $contentType);
         return $response;
     }
 
@@ -169,15 +170,16 @@ class CompanyApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['companyGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Company[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function companyGetWithHttpInfo($page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['companyGet'][0])
+    public function companyGetWithHttpInfo($page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['companyGet'][0])
     {
-        $request = $this->companyGetRequest($page, $page_size, $sort, $contentType);
+        $request = $this->companyGetRequest($page, $page_size, $sort, $q, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -270,14 +272,15 @@ class CompanyApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['companyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function companyGetAsync($page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['companyGet'][0])
+    public function companyGetAsync($page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['companyGet'][0])
     {
-        return $this->companyGetAsyncWithHttpInfo($page, $page_size, $sort, $contentType)
+        return $this->companyGetAsyncWithHttpInfo($page, $page_size, $sort, $q, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -293,15 +296,16 @@ class CompanyApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['companyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function companyGetAsyncWithHttpInfo($page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['companyGet'][0])
+    public function companyGetAsyncWithHttpInfo($page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['companyGet'][0])
     {
         $returnType = '\Invoicetronic\Model\Company[]';
-        $request = $this->companyGetRequest($page, $page_size, $sort, $contentType);
+        $request = $this->companyGetRequest($page, $page_size, $sort, $q, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -345,13 +349,15 @@ class CompanyApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['companyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function companyGetRequest($page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['companyGet'][0])
+    public function companyGetRequest($page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['companyGet'][0])
     {
+
 
 
 
@@ -386,6 +392,15 @@ class CompanyApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sort,
             'sort', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $q,
+            'q', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

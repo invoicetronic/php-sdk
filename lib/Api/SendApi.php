@@ -512,15 +512,16 @@ class SendApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \Invoicetronic\Model\Send[]|\Invoicetronic\Model\ProblemHttpResult
      */
-    public function sendGet($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['sendGet'][0])
+    public function sendGet($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['sendGet'][0])
     {
-        list($response) = $this->sendGetWithHttpInfo($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $contentType);
+        list($response) = $this->sendGetWithHttpInfo($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $q, $contentType);
         return $response;
     }
 
@@ -545,15 +546,16 @@ class SendApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \Invoicetronic\Model\Send[]|\Invoicetronic\Model\ProblemHttpResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendGetWithHttpInfo($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['sendGet'][0])
+    public function sendGetWithHttpInfo($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['sendGet'][0])
     {
-        $request = $this->sendGetRequest($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $contentType);
+        $request = $this->sendGetRequest($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $q, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -659,14 +661,15 @@ class SendApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendGetAsync($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['sendGet'][0])
+    public function sendGetAsync($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['sendGet'][0])
     {
-        return $this->sendGetAsyncWithHttpInfo($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $contentType)
+        return $this->sendGetAsyncWithHttpInfo($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $q, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -695,15 +698,16 @@ class SendApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendGetAsyncWithHttpInfo($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['sendGet'][0])
+    public function sendGetAsyncWithHttpInfo($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['sendGet'][0])
     {
         $returnType = '\Invoicetronic\Model\Send[]';
-        $request = $this->sendGetRequest($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $contentType);
+        $request = $this->sendGetRequest($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $q, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -760,13 +764,15 @@ class SendApi
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
      * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
+     * @param  string|null $q Full-text search across committente, prestatore, identifier, and file name. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['sendGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendGetRequest($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, string $contentType = self::contentTypes['sendGet'][0])
+    public function sendGetRequest($company_id = null, $identifier = null, $committente = null, $prestatore = null, $file_name = null, $last_update_from = null, $last_update_to = null, $date_sent_from = null, $date_sent_to = null, $document_date_from = null, $document_date_to = null, $document_number = null, $include_payload = null, $page = 1, $page_size = 100, $sort = null, $q = null, string $contentType = self::contentTypes['sendGet'][0])
     {
+
 
 
 
@@ -931,6 +937,15 @@ class SendApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $sort,
             'sort', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $q,
+            'q', // param base name
             'string', // openApiType
             'form', // style
             true, // explode

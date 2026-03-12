@@ -216,6 +216,15 @@ class SendTest extends TestCase
     }
 
     /**
+     * Test attribute "nome_committente"
+     */
+    public function testPropertyNomeCommittente()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "meta_data"
      */
     public function testPropertyMetaData()

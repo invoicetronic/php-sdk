@@ -17,12 +17,12 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `companyGet()`
 
 ```php
-companyGet($page, $page_size, $sort): \Invoicetronic\Model\Company[]
+companyGet($page, $page_size, $sort, $q): \Invoicetronic\Model\Company[]
 ```
 
 List companies
 
-Retrieve a paginated list of companies.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
+Retrieve a paginated list of companies. Results can be filtered by free-text search (`q`) across name, VAT number, and fiscal code.  **Companies** are the entities that send and receive invoices. They are automatically created from invoice data when invoices are sent or received.
 
 ### Example
 
@@ -46,9 +46,10 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
 $page = 1; // int | Page number.
 $page_size = 100; // int | Items per page. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
+$q = 'q_example'; // string | Full-text search across committente, prestatore, identifier, and file name.
 
 try {
-    $result = $apiInstance->companyGet($page, $page_size, $sort);
+    $result = $apiInstance->companyGet($page, $page_size, $sort, $q);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CompanyApi->companyGet: ', $e->getMessage(), PHP_EOL;
@@ -62,6 +63,7 @@ try {
 | **page** | **int**| Page number. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100] |
 | **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
+| **q** | **string**| Full-text search across committente, prestatore, identifier, and file name. | [optional] |
 
 ### Return type
 

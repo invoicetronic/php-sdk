@@ -216,6 +216,15 @@ class ReceiveTest extends TestCase
     }
 
     /**
+     * Test attribute "nome_prestatore"
+     */
+    public function testPropertyNomePrestatore()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "is_read"
      */
     public function testPropertyIsRead()

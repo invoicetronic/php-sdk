@@ -62,9 +62,10 @@ $apiInstance = new Invoicetronic\Api\CompanyApi(
 $page = 1; // int | Page number.
 $page_size = 100; // int | Items per page. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
+$q = 'q_example'; // string | Full-text search across committente, prestatore, identifier, and file name.
 
 try {
-    $result = $apiInstance->companyGet($page, $page_size, $sort);
+    $result = $apiInstance->companyGet($page, $page_size, $sort, $q);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CompanyApi->companyGet: ', $e->getMessage(), PHP_EOL;
@@ -85,6 +86,7 @@ Class | Method | HTTP request | Description
 *CompanyApi* | [**companyPut**](docs/Api/CompanyApi.md#companyput) | **PUT** /company | Update a company
 *CompanyApi* | [**companyVatGet**](docs/Api/CompanyApi.md#companyvatget) | **GET** /company/{vat} | Get a company by vat number
 *ExportApi* | [**exportGet**](docs/Api/ExportApi.md#exportget) | **GET** /export | Export invoices as a ZIP archive
+*HealthApi* | [**healthGet**](docs/Api/HealthApi.md#healthget) | **GET** /health | Health check
 *LogApi* | [**logGet**](docs/Api/LogApi.md#logget) | **GET** /log | List events
 *LogApi* | [**logIdGet**](docs/Api/LogApi.md#logidget) | **GET** /log/{id} | Get an event by id
 *ReceiveApi* | [**receiveGet**](docs/Api/ReceiveApi.md#receiveget) | **GET** /receive | List incoming invoices

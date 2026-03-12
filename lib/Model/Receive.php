@@ -74,6 +74,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => '\DateTime',
         'documents' => '\Invoicetronic\Model\DocumentData[]',
         'encoding' => 'string',
+        'nome_prestatore' => 'string',
         'is_read' => 'bool',
         'message_id' => 'string'
     ];
@@ -101,6 +102,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => 'date-time',
         'documents' => null,
         'encoding' => null,
+        'nome_prestatore' => null,
         'is_read' => null,
         'message_id' => null
     ];
@@ -126,6 +128,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => true,
         'documents' => true,
         'encoding' => false,
+        'nome_prestatore' => true,
         'is_read' => false,
         'message_id' => true
     ];
@@ -231,6 +234,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => 'date_sent',
         'documents' => 'documents',
         'encoding' => 'encoding',
+        'nome_prestatore' => 'nome_prestatore',
         'is_read' => 'is_read',
         'message_id' => 'message_id'
     ];
@@ -256,6 +260,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => 'setDateSent',
         'documents' => 'setDocuments',
         'encoding' => 'setEncoding',
+        'nome_prestatore' => 'setNomePrestatore',
         'is_read' => 'setIsRead',
         'message_id' => 'setMessageId'
     ];
@@ -281,6 +286,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => 'getDateSent',
         'documents' => 'getDocuments',
         'encoding' => 'getEncoding',
+        'nome_prestatore' => 'getNomePrestatore',
         'is_read' => 'getIsRead',
         'message_id' => 'getMessageId'
     ];
@@ -372,6 +378,7 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('date_sent', $data ?? [], null);
         $this->setIfExists('documents', $data ?? [], null);
         $this->setIfExists('encoding', $data ?? [], null);
+        $this->setIfExists('nome_prestatore', $data ?? [], null);
         $this->setIfExists('is_read', $data ?? [], null);
         $this->setIfExists('message_id', $data ?? [], null);
     }
@@ -906,6 +913,40 @@ class Receive implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['encoding'] = $encoding;
+
+        return $this;
+    }
+
+    /**
+     * Gets nome_prestatore
+     *
+     * @return string|null
+     */
+    public function getNomePrestatore()
+    {
+        return $this->container['nome_prestatore'];
+    }
+
+    /**
+     * Sets nome_prestatore
+     *
+     * @param string|null $nome_prestatore Business name of the prestatore (supplier/seller) extracted from the invoice XML.
+     *
+     * @return self
+     */
+    public function setNomePrestatore($nome_prestatore)
+    {
+        if (is_null($nome_prestatore)) {
+            array_push($this->openAPINullablesSetToNull, 'nome_prestatore');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nome_prestatore', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['nome_prestatore'] = $nome_prestatore;
 
         return $this;
     }

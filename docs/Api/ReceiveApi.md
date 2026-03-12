@@ -15,12 +15,12 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `receiveGet()`
 
 ```php
-receiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort): \Invoicetronic\Model\Receive[]
+receiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $q): \Invoicetronic\Model\Receive[]
 ```
 
 List incoming invoices
 
-Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, and document number. Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+Retrieve a paginated list of receive invoices. Results can be filtered by various criteria such as company, date ranges, sender, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content. Invoices are marked as read (`is_read` = true) only when `include_payload` is true.  **Receive** invoices are inbound purchase invoices received from suppliers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 24 hours in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -58,9 +58,10 @@ $include_payload = True; // bool | Include payload in the response. Defaults to 
 $page = 1; // int | Page number.
 $page_size = 100; // int | Items per page. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
+$q = 'q_example'; // string | Full-text search across committente, prestatore, identifier, and file name.
 
 try {
-    $result = $apiInstance->receiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort);
+    $result = $apiInstance->receiveGet($company_id, $identifier, $unread, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $q);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReceiveApi->receiveGet: ', $e->getMessage(), PHP_EOL;
@@ -88,6 +89,7 @@ try {
 | **page** | **int**| Page number. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100] |
 | **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |
+| **q** | **string**| Full-text search across committente, prestatore, identifier, and file name. | [optional] |
 
 ### Return type
 

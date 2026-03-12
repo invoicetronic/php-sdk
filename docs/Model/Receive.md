@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **date_sent** | **\DateTime** | When the invoice was sent to SDI. | [optional]
 **documents** | [**\Invoicetronic\Model\DocumentData[]**](DocumentData.md) | The invoices included in the payload. This is set by the system, based on the xml content. | [optional]
 **encoding** | **string** | Whether the payload is Base64 encoded or a plain XML (text). | [optional]
+**nome_prestatore** | **string** | Business name of the prestatore (supplier/seller) extracted from the invoice XML. | [optional]
 **is_read** | **bool** | Whether the invoice has been read at least once. Set to true only when the invoice is requested with include_payload&#x3D;true. | [optional]
 **message_id** | **string** | SDI message id. | [optional]
 

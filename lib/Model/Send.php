@@ -74,6 +74,7 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => '\DateTime',
         'documents' => '\Invoicetronic\Model\DocumentData[]',
         'encoding' => 'string',
+        'nome_committente' => 'string',
         'meta_data' => 'array<string,string>',
         'company' => '\Invoicetronic\Model\Company'
     ];
@@ -101,6 +102,7 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => 'date-time',
         'documents' => null,
         'encoding' => null,
+        'nome_committente' => null,
         'meta_data' => null,
         'company' => null
     ];
@@ -126,6 +128,7 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => true,
         'documents' => true,
         'encoding' => false,
+        'nome_committente' => true,
         'meta_data' => true,
         'company' => false
     ];
@@ -231,6 +234,7 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => 'date_sent',
         'documents' => 'documents',
         'encoding' => 'encoding',
+        'nome_committente' => 'nome_committente',
         'meta_data' => 'meta_data',
         'company' => 'company'
     ];
@@ -256,6 +260,7 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => 'setDateSent',
         'documents' => 'setDocuments',
         'encoding' => 'setEncoding',
+        'nome_committente' => 'setNomeCommittente',
         'meta_data' => 'setMetaData',
         'company' => 'setCompany'
     ];
@@ -281,6 +286,7 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         'date_sent' => 'getDateSent',
         'documents' => 'getDocuments',
         'encoding' => 'getEncoding',
+        'nome_committente' => 'getNomeCommittente',
         'meta_data' => 'getMetaData',
         'company' => 'getCompany'
     ];
@@ -372,6 +378,7 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('date_sent', $data ?? [], null);
         $this->setIfExists('documents', $data ?? [], null);
         $this->setIfExists('encoding', $data ?? [], null);
+        $this->setIfExists('nome_committente', $data ?? [], null);
         $this->setIfExists('meta_data', $data ?? [], null);
         $this->setIfExists('company', $data ?? [], null);
     }
@@ -906,6 +913,40 @@ class Send implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['encoding'] = $encoding;
+
+        return $this;
+    }
+
+    /**
+     * Gets nome_committente
+     *
+     * @return string|null
+     */
+    public function getNomeCommittente()
+    {
+        return $this->container['nome_committente'];
+    }
+
+    /**
+     * Sets nome_committente
+     *
+     * @param string|null $nome_committente Business name of the committente (client/buyer) extracted from the invoice XML.
+     *
+     * @return self
+     */
+    public function setNomeCommittente($nome_committente)
+    {
+        if (is_null($nome_committente)) {
+            array_push($this->openAPINullablesSetToNull, 'nome_committente');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nome_committente', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['nome_committente'] = $nome_committente;
 
         return $this;
     }
