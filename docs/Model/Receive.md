@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **created** | **\DateTime** | Creation date. It is set automatically. | [optional]
 **version** | **int** | Row version, for optimistic concurrency. It is set automatically. | [optional]
 **user_id** | **int** | User id. | [optional]
-**company_id** | **int** | Company id. On send, this is the sender and must be set in advance. On receive, it will be  automatically set based on the recipient&#39;s VAT number. If a matching company is not found, the invoice will be rejected until the company is created. | [optional]
+**company_id** | **int** | Company id. On send, this is the sender and must be set in advance. On receive, it will be automatically set based on the recipient&#39;s VAT number. If a matching company is not found, the invoice will be rejected until the company is created. | [optional]
 **committente** | **string** | VAT number of the Cessionario/Committente (customer). This is automatically set based on the recipient&#39;s VAT number. | [optional]
 **prestatore** | **string** | VAT number of the Cedente/Prestatore (vendor). This is automatically set based on the sender&#39;s VAT number. | [optional]
 **identifier** | **string** | SDI identifier. This is set by the SDI and is guaranteed to be unique within the SDI system. | [optional]

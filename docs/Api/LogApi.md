@@ -13,7 +13,7 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `logGet()`
 
 ```php
-logGet($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size, $sort, $query, $success, $date_time_from, $date_time_to): \Invoicetronic\Model\Event[]
+logGet($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size, $sort, $query, $success, $date_time_from, $date_time_to, $user_agent): \Invoicetronic\Model\Event[]
 ```
 
 List events
@@ -27,17 +27,11 @@ Retrieve a paginated list of log events. Results can be filtered by various crit
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\LogApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $company_id = 56; // int | Company id
 $endpoint = 'endpoint_example'; // string
@@ -53,9 +47,10 @@ $query = 'query_example'; // string
 $success = True; // bool
 $date_time_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and time of the event
 $date_time_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Date and time of the event
+$user_agent = 'user_agent_example'; // string
 
 try {
-    $result = $apiInstance->logGet($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size, $sort, $query, $success, $date_time_from, $date_time_to);
+    $result = $apiInstance->logGet($company_id, $endpoint, $method, $api_verion, $status_code, $date_created_from, $date_created_to, $page, $page_size, $sort, $query, $success, $date_time_from, $date_time_to, $user_agent);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LogApi->logGet: ', $e->getMessage(), PHP_EOL;
@@ -80,6 +75,7 @@ try {
 | **success** | **bool**|  | [optional] |
 | **date_time_from** | **\DateTime**| Date and time of the event | [optional] |
 | **date_time_to** | **\DateTime**| Date and time of the event | [optional] |
+| **user_agent** | **string**|  | [optional] |
 
 ### Return type
 
@@ -87,7 +83,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -115,17 +111,11 @@ Retrieve a log event by its internal id.  **Logs** record every API request. The
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\LogApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $id = 56; // int | Item id
 
@@ -149,7 +139,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 

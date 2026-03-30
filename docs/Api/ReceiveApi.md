@@ -29,17 +29,11 @@ Retrieve a paginated list of receive invoices. Results can be filtered by variou
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\ReceiveApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $company_id = 56; // int | Company id
 $identifier = 'identifier_example'; // string | SDI identifier.
@@ -97,7 +91,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -125,17 +119,11 @@ Permanently delete a receive invoice by its internal id. This action cannot be u
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\ReceiveApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $id = 56; // int | Item id
 
@@ -159,7 +147,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -187,17 +175,11 @@ Retrieve an incoming invoice by its internal id. The `id` is unique and assigned
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\ReceiveApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $id = 56; // int | Item id
 $include_payload = false; // bool | Include payload in the response. Defaults to false.
@@ -223,7 +205,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -251,17 +233,11 @@ Retrieve only the payload of a receive invoice, without the full invoice metadat
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\ReceiveApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $id = 56; // int | Item id
 
@@ -284,7 +260,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 

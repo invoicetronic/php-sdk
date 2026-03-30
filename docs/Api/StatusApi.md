@@ -26,17 +26,11 @@ Retrieve the number of operations (invoices + validations) and signatures left o
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\StatusApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 
 try {
@@ -57,7 +51,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 

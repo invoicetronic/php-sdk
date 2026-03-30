@@ -26,17 +26,11 @@ Export invoices as a ZIP archive of FatturaPA XML files, suitable for import int
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\ExportApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $type = 'type_example'; // string
 $company_id = 56; // int | Company id
@@ -71,7 +65,7 @@ void (empty response body)
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 

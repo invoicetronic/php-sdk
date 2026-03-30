@@ -31,17 +31,11 @@ Retrieve a paginated list of companies. Results can be filtered by free-text sea
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $page = 1; // int | Page number.
 $page_size = 100; // int | Items per page. Cannot be greater than 200.
@@ -71,7 +65,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -99,17 +93,11 @@ Delete a company by its internal id.  **Companies** are the entities that send a
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $id = 56; // int | Item id
 $force = false; // bool | Force delete including all related data.
@@ -135,7 +123,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -163,17 +151,11 @@ Retrieve a company by its internal id.  **Companies** are the entities that send
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $id = 56; // int | Item id
 
@@ -197,7 +179,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -225,17 +207,11 @@ Add a new company.  **Companies** are the entities that send and receive invoice
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $company = new \Invoicetronic\Model\Company(); // \Invoicetronic\Model\Company
 
@@ -259,7 +235,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -287,17 +263,11 @@ Update an existing company.  **Companies** are the entities that send and receiv
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $company = new \Invoicetronic\Model\Company(); // \Invoicetronic\Model\Company
 
@@ -321,7 +291,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
@@ -349,17 +319,11 @@ Retrieve a company by its VAT number.  **Companies** are the entities that send 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-// Configure HTTP basic authorization: Basic
-$config = Invoicetronic\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
 
 $apiInstance = new Invoicetronic\Api\CompanyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+    new GuzzleHttp\Client()
 );
 $vat = 'vat_example'; // string
 
@@ -383,7 +347,7 @@ try {
 
 ### Authorization
 
-[Basic](../../README.md#Basic)
+No authorization required
 
 ### HTTP request headers
 
