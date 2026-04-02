@@ -27,11 +27,17 @@ Retrieve a paginated list of updates. Results can be filtered by various criteri
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\UpdateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $company_id = 56; // int | Company id
 $identifier = 'identifier_example'; // string | SDI identifier.
@@ -79,7 +85,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -107,11 +113,17 @@ Retrieve an update by its internal id.  **Updates** are status notifications fro
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\UpdateApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 56; // int | Item id
 
@@ -135,7 +147,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 

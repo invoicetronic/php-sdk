@@ -32,11 +32,17 @@ Retrieve a paginated list of webhooks. Results can be filtered by company, descr
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $company_id = 56; // int | Company id
 $page = 1; // int | Page number.
@@ -74,7 +80,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -102,11 +108,17 @@ Delete a webhook subscription by its internal id.  **Webhooks** allow you to rec
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 56; // int | Item id
 
@@ -130,7 +142,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -158,11 +170,17 @@ Retrieve a webhook by its internal id.  **Webhooks** allow you to receive notifi
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 56; // int | Item id
 
@@ -186,7 +204,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -214,11 +232,17 @@ Create a new webhook subscription.  **Webhooks** allow you to receive notificati
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $web_hook = new \Invoicetronic\Model\WebHook(); // \Invoicetronic\Model\WebHook
 
@@ -242,7 +266,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -270,11 +294,17 @@ Update an existing webhook subscription.  **Webhooks** allow you to receive noti
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $web_hook = new \Invoicetronic\Model\WebHook(); // \Invoicetronic\Model\WebHook
 
@@ -298,7 +328,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -326,11 +356,17 @@ Webhook history items are stored in the database and can be accessed via the API
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $page = 1; // int | Page number.
 $page_size = 100; // int | Items per page. Cannot be greater than 200.
@@ -360,7 +396,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -388,11 +424,17 @@ Webhook history items are stored in the database and can be accessed via the API
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\WebhookApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 56; // int | Item id
 
@@ -416,7 +458,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 

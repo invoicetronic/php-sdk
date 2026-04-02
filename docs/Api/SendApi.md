@@ -37,11 +37,17 @@ Add a new invoice by uploading a file. Supported formats are XML (FatturaPA) and
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $file = '/path/to/file.txt'; // \SplFileObject
 $validate = false; // bool | Validate the document first, and reject it on failure.
@@ -69,7 +75,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -97,11 +103,17 @@ Retrieve a paginated list of send invoices. Results can be filtered by various c
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $company_id = 56; // int | Company id
 $identifier = 'identifier_example'; // string | SDI identifier.
@@ -157,7 +169,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -185,11 +197,17 @@ Retrieve a send invoice by its internal id. The `id` is unique and assigned by t
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 56; // int | Item id
 $include_payload = false; // bool | Include payload in the response. Defaults to false.
@@ -215,7 +233,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -243,11 +261,17 @@ Retrieve only the payload of a send invoice, without the full invoice metadata. 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $id = 56; // int | Item id
 
@@ -270,7 +294,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -298,11 +322,17 @@ Retrieve a send invoice by its SDI identifier. The `identifier` is assigned by t
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $identifier = 'identifier_example'; // string
 $include_payload = false; // bool | Include payload in the response. Defaults to false.
@@ -328,7 +358,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -356,11 +386,17 @@ Add a new invoice using a FatturaPA JSON representation. The invoice will be sig
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $body = array('key' => new \stdClass); // object
 $validate = false; // bool | Validate the document first, and reject it on failure.
@@ -388,7 +424,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -416,11 +452,17 @@ Add a new invoice using a structured Send object. The invoice will be signed (if
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $send = new \Invoicetronic\Model\Send(); // \Invoicetronic\Model\Send
 $validate = false; // bool | Validate the document first, and reject it on failure.
@@ -448,7 +490,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -476,11 +518,17 @@ Validate an invoice file without sending it to SDI. Supported formats are XML (F
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $file = '/path/to/file.txt'; // \SplFileObject
 
@@ -503,7 +551,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -531,11 +579,17 @@ Validate a JSON invoice without sending it to SDI. Use this to check for errors 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $body = array('key' => new \stdClass); // object
 
@@ -558,7 +612,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -586,11 +640,17 @@ Validate an invoice without sending it to SDI. Use this to check for errors befo
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $send = new \Invoicetronic\Model\Send(); // \Invoicetronic\Model\Send
 
@@ -613,7 +673,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -641,11 +701,17 @@ Validate an XML invoice document without sending it to SDI. Use this to check fo
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $body = array('key' => new \stdClass); // object
 
@@ -668,7 +734,7 @@ void (empty response body)
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
@@ -696,11 +762,17 @@ Add a new invoice using a raw XML document in FatturaPA format. The invoice will
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
+// Configure HTTP basic authorization: Basic
+$config = Invoicetronic\Configuration::getDefaultConfiguration()
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
+
 
 $apiInstance = new Invoicetronic\Api\SendApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client()
+    new GuzzleHttp\Client(),
+    $config
 );
 $body = array('key' => new \stdClass); // object
 $validate = false; // bool | Validate the document first, and reject it on failure.
@@ -728,7 +800,7 @@ try {
 
 ### Authorization
 
-No authorization required
+[Basic](../../README.md#Basic)
 
 ### HTTP request headers
 
