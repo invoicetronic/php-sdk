@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **meta_data** | **array<string,string>** | Optional metadata, as json. | [optional]
 **documents** | [**\Invoicetronic\Model\DocumentData[]**](DocumentData.md) | The invoices included in the payload. | [optional]
 **date_sent** | **\DateTime** | When the invoice was sent to SDI. | [optional]
+**latest_state** | **string** | Current SDI state of the invoice. Reflects the most recent update received from SDI. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

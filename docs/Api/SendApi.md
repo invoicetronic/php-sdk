@@ -89,12 +89,12 @@ try {
 ## `sendGet()`
 
 ```php
-sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $q): \Invoicetronic\Model\Send[]
+sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $ids, $page, $page_size, $sort, $q): \Invoicetronic\Model\Send[]
 ```
 
 List invoices
 
-Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, and free-text search (`q`). Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, and free-text search (`q`). Use `ids` to fetch specific Send records in a single call (comma-separated, up to 100). Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -128,13 +128,14 @@ $document_date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime |
 $document_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $document_number = 'document_number_example'; // string | Document number.
 $include_payload = True; // bool | Include payload in the response. Defaults to false.
+$ids = 'ids_example'; // string | Comma-separated list of Send ids (max 100). Filters the collection to the matching rows; unknown or unauthorized ids are silently skipped.
 $page = 1; // int | Page number.
 $page_size = 100; // int | Items per page. Cannot be greater than 200.
 $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descending order.
 $q = 'q_example'; // string | Full-text search across committente, prestatore, identifier, and file name.
 
 try {
-    $result = $apiInstance->sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $page, $page_size, $sort, $q);
+    $result = $apiInstance->sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $ids, $page, $page_size, $sort, $q);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendGet: ', $e->getMessage(), PHP_EOL;
@@ -158,6 +159,7 @@ try {
 | **document_date_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **document_number** | **string**| Document number. | [optional] |
 | **include_payload** | **bool**| Include payload in the response. Defaults to false. | [optional] |
+| **ids** | **string**| Comma-separated list of Send ids (max 100). Filters the collection to the matching rows; unknown or unauthorized ids are silently skipped. | [optional] |
 | **page** | **int**| Page number. | [optional] [default to 1] |
 | **page_size** | **int**| Items per page. Cannot be greater than 200. | [optional] [default to 100] |
 | **sort** | **string**| Sort by field. Prefix with &#39;-&#39; for descending order. | [optional] |

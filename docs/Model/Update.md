@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Unique identifier. Leave it at 0 for new records as it will be set automatically. | [optional]
-**created** | **\DateTime** | Creation date. It is set automatically. | [optional]
-**version** | **int** | Row version, for optimistic concurrency. It is set automatically. | [optional]
+**id** | **int** | Unique identifier. For POST requests, leave it at &#x60;0&#x60; — the server will assign one automatically. For PUT requests, set it to the id of the record you want to update. | [optional]
+**created** | **\DateTime** | Creation date. It is set automatically. | [optional] [readonly]
+**version** | **int** | Row version, for optimistic concurrency. It is set automatically. | [optional] [readonly]
 **user_id** | **int** | User id. | [optional]
 **company_id** | **int** | Company id. | [optional]
 **send_id** | **int** | Send id. This is the id of the sent invoice to which this update refers to. | [optional]
