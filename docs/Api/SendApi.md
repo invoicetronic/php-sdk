@@ -23,12 +23,12 @@ All URIs are relative to https://api.invoicetronic.com, except if the operation 
 ## `sendFilePost()`
 
 ```php
-sendFilePost($file, $validate, $signature): \Invoicetronic\Model\Send
+sendFilePost($file, $validate, $signature, $idempotency_key): \Invoicetronic\Model\Send
 ```
 
 Add an invoice by file
 
-Add a new invoice by uploading a file. Supported formats are XML (FatturaPA) and P7M (signed). The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
+Add a new invoice by uploading a file. Supported formats are XML (FatturaPA) and P7M (signed). The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).  ### Idempotency  To protect against duplicate submissions caused by network retries, you can send an optional `Idempotency-Key` header with any unique, client-generated value (up to 255 characters).  - The first request with a given key is processed normally, and its response (status, body and `Location`) is stored for 24 hours. - Any subsequent request that reuses the same key within that window replays the original response instead of sending a second invoice to SDI. - If a request with the same key is still being processed, the retry receives `409 Conflict`. - If the same key is reused with a **different** invoice payload, the request is rejected with `422 Unprocessable Entity`: a given key must always map to the same request.  Keys are scoped per account, so different accounts can use the same key value without interfering. If the idempotency store is temporarily unavailable, the request is processed normally without idempotency protection.
 
 ### Example
 
@@ -52,9 +52,10 @@ $apiInstance = new Invoicetronic\Api\SendApi(
 $file = '/path/to/file.txt'; // \SplFileObject
 $validate = false; // bool | Validate the document first, and reject it on failure.
 $signature = 'Auto'; // string | Whether to digitally sign the document.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice.
 
 try {
-    $result = $apiInstance->sendFilePost($file, $validate, $signature);
+    $result = $apiInstance->sendFilePost($file, $validate, $signature, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendFilePost: ', $e->getMessage(), PHP_EOL;
@@ -68,6 +69,7 @@ try {
 | **file** | **\SplFileObject****\SplFileObject**|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 | **signature** | **string**| Whether to digitally sign the document. | [optional] [default to &#39;Auto&#39;] |
+| **idempotency_key** | **string**| Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. | [optional] |
 
 ### Return type
 
@@ -89,12 +91,12 @@ try {
 ## `sendGet()`
 
 ```php
-sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $ids, $page, $page_size, $sort, $q): \Invoicetronic\Model\Send[]
+sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $latest_state, $include_payload, $ids, $page, $page_size, $sort, $q): \Invoicetronic\Model\Send[]
 ```
 
 List invoices
 
-Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, and free-text search (`q`). Use `ids` to fetch specific Send records in a single call (comma-separated, up to 100). Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+Retrieve a paginated list of send invoices. Results can be filtered by various criteria such as company, date ranges, document number, current SDI state (`latest_state`), and free-text search (`q`). Use `ids` to fetch specific Send records in a single call (comma-separated, up to 100). Returns invoice metadata; set `include_payload` to true to include the full invoice content.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -127,6 +129,7 @@ $date_sent_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC I
 $document_date_from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $document_date_to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | UTC ISO 8601 (2024-11-29T12:34:56Z)
 $document_number = 'document_number_example'; // string | Document number.
+$latest_state = 'latest_state_example'; // string | Filter by the most recent SDI state for the invoice. Matches the `latest_state` field exposed inline on each Send.
 $include_payload = True; // bool | Include payload in the response. Defaults to false.
 $ids = 'ids_example'; // string | Comma-separated list of Send ids (max 100). Filters the collection to the matching rows; unknown or unauthorized ids are silently skipped.
 $page = 1; // int | Page number.
@@ -135,7 +138,7 @@ $sort = 'sort_example'; // string | Sort by field. Prefix with '-' for descendin
 $q = 'q_example'; // string | Full-text search across committente, prestatore, identifier, and file name.
 
 try {
-    $result = $apiInstance->sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $include_payload, $ids, $page, $page_size, $sort, $q);
+    $result = $apiInstance->sendGet($company_id, $identifier, $committente, $prestatore, $file_name, $last_update_from, $last_update_to, $date_sent_from, $date_sent_to, $document_date_from, $document_date_to, $document_number, $latest_state, $include_payload, $ids, $page, $page_size, $sort, $q);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendGet: ', $e->getMessage(), PHP_EOL;
@@ -158,6 +161,7 @@ try {
 | **document_date_from** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **document_date_to** | **\DateTime**| UTC ISO 8601 (2024-11-29T12:34:56Z) | [optional] |
 | **document_number** | **string**| Document number. | [optional] |
+| **latest_state** | **string**| Filter by the most recent SDI state for the invoice. Matches the &#x60;latest_state&#x60; field exposed inline on each Send. | [optional] |
 | **include_payload** | **bool**| Include payload in the response. Defaults to false. | [optional] |
 | **ids** | **string**| Comma-separated list of Send ids (max 100). Filters the collection to the matching rows; unknown or unauthorized ids are silently skipped. | [optional] |
 | **page** | **int**| Page number. | [optional] [default to 1] |
@@ -374,12 +378,12 @@ try {
 ## `sendJsonPost()`
 
 ```php
-sendJsonPost($body, $validate, $signature): \Invoicetronic\Model\Send
+sendJsonPost($body, $validate, $signature, $idempotency_key): \Invoicetronic\Model\Send
 ```
 
 Add an invoice by json
 
-Add a new invoice using a FatturaPA JSON representation. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
+Add a new invoice using a FatturaPA JSON representation. Property names mirror the FatturaPA XML schema (PascalCase, e.g. `FatturaElettronicaHeader`). The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).  ### Idempotency  To protect against duplicate submissions caused by network retries, you can send an optional `Idempotency-Key` header with any unique, client-generated value (up to 255 characters).  - The first request with a given key is processed normally, and its response (status, body and `Location`) is stored for 24 hours. - Any subsequent request that reuses the same key within that window replays the original response instead of sending a second invoice to SDI. - If a request with the same key is still being processed, the retry receives `409 Conflict`. - If the same key is reused with a **different** invoice payload, the request is rejected with `422 Unprocessable Entity`: a given key must always map to the same request.  Keys are scoped per account, so different accounts can use the same key value without interfering. If the idempotency store is temporarily unavailable, the request is processed normally without idempotency protection.
 
 ### Example
 
@@ -403,9 +407,10 @@ $apiInstance = new Invoicetronic\Api\SendApi(
 $body = array('key' => new \stdClass); // object
 $validate = false; // bool | Validate the document first, and reject it on failure.
 $signature = 'Auto'; // string | Whether to digitally sign the document.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice.
 
 try {
-    $result = $apiInstance->sendJsonPost($body, $validate, $signature);
+    $result = $apiInstance->sendJsonPost($body, $validate, $signature, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendJsonPost: ', $e->getMessage(), PHP_EOL;
@@ -419,6 +424,7 @@ try {
 | **body** | **object**|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 | **signature** | **string**| Whether to digitally sign the document. | [optional] [default to &#39;Auto&#39;] |
+| **idempotency_key** | **string**| Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. | [optional] |
 
 ### Return type
 
@@ -440,12 +446,12 @@ try {
 ## `sendPost()`
 
 ```php
-sendPost($send, $validate, $signature): \Invoicetronic\Model\Send
+sendPost($send, $validate, $signature, $idempotency_key): \Invoicetronic\Model\Send
 ```
 
 Add an invoice
 
-Add a new invoice using a structured Send object. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
+Add a new invoice using a structured Send object. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).  ### Idempotency  To protect against duplicate submissions caused by network retries, you can send an optional `Idempotency-Key` header with any unique, client-generated value (up to 255 characters).  - The first request with a given key is processed normally, and its response (status, body and `Location`) is stored for 24 hours. - Any subsequent request that reuses the same key within that window replays the original response instead of sending a second invoice to SDI. - If a request with the same key is still being processed, the retry receives `409 Conflict`. - If the same key is reused with a **different** invoice payload, the request is rejected with `422 Unprocessable Entity`: a given key must always map to the same request.  Keys are scoped per account, so different accounts can use the same key value without interfering. If the idempotency store is temporarily unavailable, the request is processed normally without idempotency protection.
 
 ### Example
 
@@ -469,9 +475,10 @@ $apiInstance = new Invoicetronic\Api\SendApi(
 $send = new \Invoicetronic\Model\Send(); // \Invoicetronic\Model\Send
 $validate = false; // bool | Validate the document first, and reject it on failure.
 $signature = 'Auto'; // string | Whether to digitally sign the document.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice.
 
 try {
-    $result = $apiInstance->sendPost($send, $validate, $signature);
+    $result = $apiInstance->sendPost($send, $validate, $signature, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendPost: ', $e->getMessage(), PHP_EOL;
@@ -485,6 +492,7 @@ try {
 | **send** | [**\Invoicetronic\Model\Send**](../Model/Send.md)|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 | **signature** | **string**| Whether to digitally sign the document. | [optional] [default to &#39;Auto&#39;] |
+| **idempotency_key** | **string**| Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. | [optional] |
 
 ### Return type
 
@@ -572,7 +580,7 @@ sendValidateJsonPost($body)
 
 Validate an invoice by json
 
-Validate a JSON invoice without sending it to SDI. Use this to check for errors before actual submission. Returns validation results with any errors found.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
+Validate a FatturaPA JSON invoice without sending it to SDI. Property names mirror the FatturaPA XML schema (PascalCase, e.g. `FatturaElettronicaHeader`). Use this to check for errors before actual submission. Returns validation results with any errors found.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).
 
 ### Example
 
@@ -715,7 +723,92 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array('key' => new \stdClass); // object
+$body = <?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01234567890</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>00001</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01234567890</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Prestatore Srl</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Roma 1</Indirizzo>
+        <CAP>00100</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>09876543210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Committente Srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Milano 2</Indirizzo>
+        <CAP>20100</CAP>
+        <Comune>Milano</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2025-01-01</Data>
+        <Numero>1</Numero>
+        <ImportoTotaleDocumento>122.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Servizio di consulenza</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>100.00</PrezzoUnitario>
+        <PrezzoTotale>100.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>100.00</ImponibileImporto>
+        <Imposta>22.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2025-01-31</DataScadenzaPagamento>
+        <ImportoPagamento>122.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>; // object
 
 try {
     $apiInstance->sendValidateXmlPost($body);
@@ -750,12 +843,12 @@ void (empty response body)
 ## `sendXmlPost()`
 
 ```php
-sendXmlPost($body, $validate, $signature): \Invoicetronic\Model\Send
+sendXmlPost($body, $validate, $signature, $idempotency_key): \Invoicetronic\Model\Send
 ```
 
 Add an invoice by xml
 
-Add a new invoice using a raw XML document in FatturaPA format. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).
+Add a new invoice using a raw XML document in FatturaPA format. The invoice will be signed (if requested), validated (if requested), and queued for delivery to SDI. Status updates from SDI will be available in the `update` endpoint.  **Send** invoices are outbound sales invoices transmitted to customers through Italy's SDI (Sistema di Interscambio). Preserved for two years in the live environment and 15 days in the [Sandbox](https://invoicetronic.com/en/docs/sandbox/).  You can also upload invoices via the [Dashboard](https://dashboard.invoicetronic.com).  ### Idempotency  To protect against duplicate submissions caused by network retries, you can send an optional `Idempotency-Key` header with any unique, client-generated value (up to 255 characters).  - The first request with a given key is processed normally, and its response (status, body and `Location`) is stored for 24 hours. - Any subsequent request that reuses the same key within that window replays the original response instead of sending a second invoice to SDI. - If a request with the same key is still being processed, the retry receives `409 Conflict`. - If the same key is reused with a **different** invoice payload, the request is rejected with `422 Unprocessable Entity`: a given key must always map to the same request.  Keys are scoped per account, so different accounts can use the same key value without interfering. If the idempotency store is temporarily unavailable, the request is processed normally without idempotency protection.
 
 ### Example
 
@@ -776,12 +869,98 @@ $apiInstance = new Invoicetronic\Api\SendApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array('key' => new \stdClass); // object
+$body = <?xml version="1.0" encoding="UTF-8"?>
+<p:FatturaElettronica versione="FPR12" xmlns:p="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ivaservizi.agenziaentrate.gov.it/docs/xsd/fatture/v1.2 http://www.fatturapa.gov.it/export/fatturazione/sdi/fatturapa/v1.2/Schema_del_file_xml_FatturaPA_versione_1.2.xsd">
+  <FatturaElettronicaHeader>
+    <DatiTrasmissione>
+      <IdTrasmittente>
+        <IdPaese>IT</IdPaese>
+        <IdCodice>01234567890</IdCodice>
+      </IdTrasmittente>
+      <ProgressivoInvio>00001</ProgressivoInvio>
+      <FormatoTrasmissione>FPR12</FormatoTrasmissione>
+      <CodiceDestinatario>0000000</CodiceDestinatario>
+    </DatiTrasmissione>
+    <CedentePrestatore>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>01234567890</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Prestatore Srl</Denominazione>
+        </Anagrafica>
+        <RegimeFiscale>RF01</RegimeFiscale>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Roma 1</Indirizzo>
+        <CAP>00100</CAP>
+        <Comune>Roma</Comune>
+        <Provincia>RM</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CedentePrestatore>
+    <CessionarioCommittente>
+      <DatiAnagrafici>
+        <IdFiscaleIVA>
+          <IdPaese>IT</IdPaese>
+          <IdCodice>09876543210</IdCodice>
+        </IdFiscaleIVA>
+        <Anagrafica>
+          <Denominazione>Committente Srl</Denominazione>
+        </Anagrafica>
+      </DatiAnagrafici>
+      <Sede>
+        <Indirizzo>Via Milano 2</Indirizzo>
+        <CAP>20100</CAP>
+        <Comune>Milano</Comune>
+        <Provincia>MI</Provincia>
+        <Nazione>IT</Nazione>
+      </Sede>
+    </CessionarioCommittente>
+  </FatturaElettronicaHeader>
+  <FatturaElettronicaBody>
+    <DatiGenerali>
+      <DatiGeneraliDocumento>
+        <TipoDocumento>TD01</TipoDocumento>
+        <Divisa>EUR</Divisa>
+        <Data>2025-01-01</Data>
+        <Numero>1</Numero>
+        <ImportoTotaleDocumento>122.00</ImportoTotaleDocumento>
+      </DatiGeneraliDocumento>
+    </DatiGenerali>
+    <DatiBeniServizi>
+      <DettaglioLinee>
+        <NumeroLinea>1</NumeroLinea>
+        <Descrizione>Servizio di consulenza</Descrizione>
+        <Quantita>1.00</Quantita>
+        <PrezzoUnitario>100.00</PrezzoUnitario>
+        <PrezzoTotale>100.00</PrezzoTotale>
+        <AliquotaIVA>22.00</AliquotaIVA>
+      </DettaglioLinee>
+      <DatiRiepilogo>
+        <AliquotaIVA>22.00</AliquotaIVA>
+        <ImponibileImporto>100.00</ImponibileImporto>
+        <Imposta>22.00</Imposta>
+        <EsigibilitaIVA>I</EsigibilitaIVA>
+      </DatiRiepilogo>
+    </DatiBeniServizi>
+    <DatiPagamento>
+      <CondizioniPagamento>TP02</CondizioniPagamento>
+      <DettaglioPagamento>
+        <ModalitaPagamento>MP05</ModalitaPagamento>
+        <DataScadenzaPagamento>2025-01-31</DataScadenzaPagamento>
+        <ImportoPagamento>122.00</ImportoPagamento>
+      </DettaglioPagamento>
+    </DatiPagamento>
+  </FatturaElettronicaBody>
+</p:FatturaElettronica>; // object
 $validate = false; // bool | Validate the document first, and reject it on failure.
 $signature = 'Auto'; // string | Whether to digitally sign the document.
+$idempotency_key = 'idempotency_key_example'; // string | Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice.
 
 try {
-    $result = $apiInstance->sendXmlPost($body, $validate, $signature);
+    $result = $apiInstance->sendXmlPost($body, $validate, $signature, $idempotency_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SendApi->sendXmlPost: ', $e->getMessage(), PHP_EOL;
@@ -795,6 +974,7 @@ try {
 | **body** | **object**|  | |
 | **validate** | **bool**| Validate the document first, and reject it on failure. | [optional] [default to false] |
 | **signature** | **string**| Whether to digitally sign the document. | [optional] [default to &#39;Auto&#39;] |
+| **idempotency_key** | **string**| Optional client-generated key that makes the submission idempotent. Retrying the same request with the same key within 24 hours returns the original response instead of creating a duplicate invoice. | [optional] |
 
 ### Return type
 
