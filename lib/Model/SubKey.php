@@ -1,6 +1,6 @@
 <?php
 /**
- * Status
+ * SubKey
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Invoicetronic\ObjectSerializer;
 
 /**
- * Status Class Doc Comment
+ * SubKey Class Doc Comment
  *
  * @category Class
- * @description Account status with remaining operations and signatures.
+ * @description A restricted key. Its secrets are returned only when the key is created or rolled.
  * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Status implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubKey implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Status';
+    protected static $openAPIModelName = 'SubKey';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,15 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'operation_left' => 'int',
-        'signature_left' => 'int',
-        'has_active_seat' => 'bool',
-        'is_sub_key' => 'bool'
+        'id' => 'int',
+        'created' => '\DateTime',
+        'version' => 'int',
+        'description' => 'string',
+        'active' => 'bool',
+        'permissions' => '\Invoicetronic\Model\Permissions',
+        'company_ids' => 'int[]',
+        'cors_origins' => 'string[]',
+        'previous_key_expires_at' => '\DateTime'
     ];
 
     /**
@@ -73,10 +78,15 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'operation_left' => 'int32',
-        'signature_left' => 'int32',
-        'has_active_seat' => null,
-        'is_sub_key' => null
+        'id' => 'int32',
+        'created' => 'date-time',
+        'version' => 'int32',
+        'description' => null,
+        'active' => null,
+        'permissions' => null,
+        'company_ids' => 'int32',
+        'cors_origins' => null,
+        'previous_key_expires_at' => 'date-time'
     ];
 
     /**
@@ -85,10 +95,15 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'operation_left' => false,
-        'signature_left' => false,
-        'has_active_seat' => false,
-        'is_sub_key' => false
+        'id' => false,
+        'created' => false,
+        'version' => false,
+        'description' => true,
+        'active' => false,
+        'permissions' => false,
+        'company_ids' => true,
+        'cors_origins' => true,
+        'previous_key_expires_at' => true
     ];
 
     /**
@@ -177,10 +192,15 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'operation_left' => 'operation_left',
-        'signature_left' => 'signature_left',
-        'has_active_seat' => 'has_active_seat',
-        'is_sub_key' => 'is_sub_key'
+        'id' => 'id',
+        'created' => 'created',
+        'version' => 'version',
+        'description' => 'description',
+        'active' => 'active',
+        'permissions' => 'permissions',
+        'company_ids' => 'company_ids',
+        'cors_origins' => 'cors_origins',
+        'previous_key_expires_at' => 'previous_key_expires_at'
     ];
 
     /**
@@ -189,10 +209,15 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'operation_left' => 'setOperationLeft',
-        'signature_left' => 'setSignatureLeft',
-        'has_active_seat' => 'setHasActiveSeat',
-        'is_sub_key' => 'setIsSubKey'
+        'id' => 'setId',
+        'created' => 'setCreated',
+        'version' => 'setVersion',
+        'description' => 'setDescription',
+        'active' => 'setActive',
+        'permissions' => 'setPermissions',
+        'company_ids' => 'setCompanyIds',
+        'cors_origins' => 'setCorsOrigins',
+        'previous_key_expires_at' => 'setPreviousKeyExpiresAt'
     ];
 
     /**
@@ -201,10 +226,15 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'operation_left' => 'getOperationLeft',
-        'signature_left' => 'getSignatureLeft',
-        'has_active_seat' => 'getHasActiveSeat',
-        'is_sub_key' => 'getIsSubKey'
+        'id' => 'getId',
+        'created' => 'getCreated',
+        'version' => 'getVersion',
+        'description' => 'getDescription',
+        'active' => 'getActive',
+        'permissions' => 'getPermissions',
+        'company_ids' => 'getCompanyIds',
+        'cors_origins' => 'getCorsOrigins',
+        'previous_key_expires_at' => 'getPreviousKeyExpiresAt'
     ];
 
     /**
@@ -264,10 +294,15 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('operation_left', $data ?? [], null);
-        $this->setIfExists('signature_left', $data ?? [], null);
-        $this->setIfExists('has_active_seat', $data ?? [], null);
-        $this->setIfExists('is_sub_key', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('permissions', $data ?? [], null);
+        $this->setIfExists('company_ids', $data ?? [], null);
+        $this->setIfExists('cors_origins', $data ?? [], null);
+        $this->setIfExists('previous_key_expires_at', $data ?? [], null);
     }
 
     /**
@@ -313,109 +348,272 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets operation_left
+     * Gets id
      *
      * @return int|null
      */
-    public function getOperationLeft()
+    public function getId()
     {
-        return $this->container['operation_left'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets operation_left
+     * Sets id
      *
-     * @param int|null $operation_left Operations (invoices and validations) left.
+     * @param int|null $id Unique identifier.
      *
      * @return self
      */
-    public function setOperationLeft($operation_left)
+    public function setId($id)
     {
-        if (is_null($operation_left)) {
-            throw new \InvalidArgumentException('non-nullable operation_left cannot be null');
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['operation_left'] = $operation_left;
+        $this->container['id'] = $id;
 
         return $this;
     }
 
     /**
-     * Gets signature_left
+     * Gets created
+     *
+     * @return \DateTime|null
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime|null $created Creation date.
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        }
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
      *
      * @return int|null
      */
-    public function getSignatureLeft()
+    public function getVersion()
     {
-        return $this->container['signature_left'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets signature_left
+     * Sets version
      *
-     * @param int|null $signature_left Signatures left.
+     * @param int|null $version Row version, for optimistic concurrency.
      *
      * @return self
      */
-    public function setSignatureLeft($signature_left)
+    public function setVersion($version)
     {
-        if (is_null($signature_left)) {
-            throw new \InvalidArgumentException('non-nullable signature_left cannot be null');
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
         }
-        $this->container['signature_left'] = $signature_left;
+        $this->container['version'] = $version;
 
         return $this;
     }
 
     /**
-     * Gets has_active_seat
+     * Gets description
      *
-     * @return bool|null
+     * @return string|null
      */
-    public function getHasActiveSeat()
+    public function getDescription()
     {
-        return $this->container['has_active_seat'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets has_active_seat
+     * Sets description
      *
-     * @param bool|null $has_active_seat Whether the current API key has an active Desk seat.
+     * @param string|null $description Human-readable label.
      *
      * @return self
      */
-    public function setHasActiveSeat($has_active_seat)
+    public function setDescription($description)
     {
-        if (is_null($has_active_seat)) {
-            throw new \InvalidArgumentException('non-nullable has_active_seat cannot be null');
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['has_active_seat'] = $has_active_seat;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets is_sub_key
+     * Gets active
      *
      * @return bool|null
      */
-    public function getIsSubKey()
+    public function getActive()
     {
-        return $this->container['is_sub_key'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets is_sub_key
+     * Sets active
      *
-     * @param bool|null $is_sub_key Whether the current API key is a sub-key (restricted key).
+     * @param bool|null $active Whether the key can authenticate.
      *
      * @return self
      */
-    public function setIsSubKey($is_sub_key)
+    public function setActive($active)
     {
-        if (is_null($is_sub_key)) {
-            throw new \InvalidArgumentException('non-nullable is_sub_key cannot be null');
+        if (is_null($active)) {
+            throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
-        $this->container['is_sub_key'] = $is_sub_key;
+        $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets permissions
+     *
+     * @return \Invoicetronic\Model\Permissions|null
+     */
+    public function getPermissions()
+    {
+        return $this->container['permissions'];
+    }
+
+    /**
+     * Sets permissions
+     *
+     * @param \Invoicetronic\Model\Permissions|null $permissions permissions
+     *
+     * @return self
+     */
+    public function setPermissions($permissions)
+    {
+        if (is_null($permissions)) {
+            throw new \InvalidArgumentException('non-nullable permissions cannot be null');
+        }
+        $this->container['permissions'] = $permissions;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_ids
+     *
+     * @return int[]|null
+     */
+    public function getCompanyIds()
+    {
+        return $this->container['company_ids'];
+    }
+
+    /**
+     * Sets company_ids
+     *
+     * @param int[]|null $company_ids Companies the key can access. Empty means all the companies of the account.
+     *
+     * @return self
+     */
+    public function setCompanyIds($company_ids)
+    {
+        if (is_null($company_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'company_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_ids'] = $company_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets cors_origins
+     *
+     * @return string[]|null
+     */
+    public function getCorsOrigins()
+    {
+        return $this->container['cors_origins'];
+    }
+
+    /**
+     * Sets cors_origins
+     *
+     * @param string[]|null $cors_origins Browser origins allowed to call the API with this key (CORS).
+     *
+     * @return self
+     */
+    public function setCorsOrigins($cors_origins)
+    {
+        if (is_null($cors_origins)) {
+            array_push($this->openAPINullablesSetToNull, 'cors_origins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cors_origins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cors_origins'] = $cors_origins;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_key_expires_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPreviousKeyExpiresAt()
+    {
+        return $this->container['previous_key_expires_at'];
+    }
+
+    /**
+     * Sets previous_key_expires_at
+     *
+     * @param \DateTime|null $previous_key_expires_at When the secrets replaced by the last roll stop working; null when there are none still valid.
+     *
+     * @return self
+     */
+    public function setPreviousKeyExpiresAt($previous_key_expires_at)
+    {
+        if (is_null($previous_key_expires_at)) {
+            array_push($this->openAPINullablesSetToNull, 'previous_key_expires_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous_key_expires_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['previous_key_expires_at'] = $previous_key_expires_at;
 
         return $this;
     }

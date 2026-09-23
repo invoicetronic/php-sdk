@@ -1,6 +1,6 @@
 <?php
 /**
- * Status
+ * SubKeyRequest
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Invoicetronic\ObjectSerializer;
 
 /**
- * Status Class Doc Comment
+ * SubKeyRequest Class Doc Comment
  *
  * @category Class
- * @description Account status with remaining operations and signatures.
+ * @description A restricted key to create.
  * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Status implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubKeyRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Status';
+    protected static $openAPIModelName = 'SubKeyRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,11 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'operation_left' => 'int',
-        'signature_left' => 'int',
-        'has_active_seat' => 'bool',
-        'is_sub_key' => 'bool'
+        'description' => 'string',
+        'active' => 'bool',
+        'permissions' => '\Invoicetronic\Model\Permissions',
+        'company_ids' => 'int[]',
+        'cors_origins' => 'string[]'
     ];
 
     /**
@@ -73,10 +74,11 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'operation_left' => 'int32',
-        'signature_left' => 'int32',
-        'has_active_seat' => null,
-        'is_sub_key' => null
+        'description' => null,
+        'active' => null,
+        'permissions' => null,
+        'company_ids' => 'int32',
+        'cors_origins' => null
     ];
 
     /**
@@ -85,10 +87,11 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'operation_left' => false,
-        'signature_left' => false,
-        'has_active_seat' => false,
-        'is_sub_key' => false
+        'description' => false,
+        'active' => false,
+        'permissions' => false,
+        'company_ids' => true,
+        'cors_origins' => true
     ];
 
     /**
@@ -177,10 +180,11 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'operation_left' => 'operation_left',
-        'signature_left' => 'signature_left',
-        'has_active_seat' => 'has_active_seat',
-        'is_sub_key' => 'is_sub_key'
+        'description' => 'description',
+        'active' => 'active',
+        'permissions' => 'permissions',
+        'company_ids' => 'company_ids',
+        'cors_origins' => 'cors_origins'
     ];
 
     /**
@@ -189,10 +193,11 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'operation_left' => 'setOperationLeft',
-        'signature_left' => 'setSignatureLeft',
-        'has_active_seat' => 'setHasActiveSeat',
-        'is_sub_key' => 'setIsSubKey'
+        'description' => 'setDescription',
+        'active' => 'setActive',
+        'permissions' => 'setPermissions',
+        'company_ids' => 'setCompanyIds',
+        'cors_origins' => 'setCorsOrigins'
     ];
 
     /**
@@ -201,10 +206,11 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'operation_left' => 'getOperationLeft',
-        'signature_left' => 'getSignatureLeft',
-        'has_active_seat' => 'getHasActiveSeat',
-        'is_sub_key' => 'getIsSubKey'
+        'description' => 'getDescription',
+        'active' => 'getActive',
+        'permissions' => 'getPermissions',
+        'company_ids' => 'getCompanyIds',
+        'cors_origins' => 'getCorsOrigins'
     ];
 
     /**
@@ -264,10 +270,11 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('operation_left', $data ?? [], null);
-        $this->setIfExists('signature_left', $data ?? [], null);
-        $this->setIfExists('has_active_seat', $data ?? [], null);
-        $this->setIfExists('is_sub_key', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('permissions', $data ?? [], null);
+        $this->setIfExists('company_ids', $data ?? [], null);
+        $this->setIfExists('cors_origins', $data ?? [], null);
     }
 
     /**
@@ -297,6 +304,13 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['description'] === null) {
+            $invalidProperties[] = "'description' can't be null";
+        }
+        if ((mb_strlen($this->container['description']) < 1)) {
+            $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -313,109 +327,155 @@ class Status implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets operation_left
+     * Gets description
      *
-     * @return int|null
+     * @return string
      */
-    public function getOperationLeft()
+    public function getDescription()
     {
-        return $this->container['operation_left'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets operation_left
+     * Sets description
      *
-     * @param int|null $operation_left Operations (invoices and validations) left.
+     * @param string $description Human-readable label, e.g. the name of the tenant the key is for.
      *
      * @return self
      */
-    public function setOperationLeft($operation_left)
+    public function setDescription($description)
     {
-        if (is_null($operation_left)) {
-            throw new \InvalidArgumentException('non-nullable operation_left cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['operation_left'] = $operation_left;
+
+        if ((mb_strlen($description) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $description when calling SubKeyRequest., must be bigger than or equal to 1.');
+        }
+
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets signature_left
-     *
-     * @return int|null
-     */
-    public function getSignatureLeft()
-    {
-        return $this->container['signature_left'];
-    }
-
-    /**
-     * Sets signature_left
-     *
-     * @param int|null $signature_left Signatures left.
-     *
-     * @return self
-     */
-    public function setSignatureLeft($signature_left)
-    {
-        if (is_null($signature_left)) {
-            throw new \InvalidArgumentException('non-nullable signature_left cannot be null');
-        }
-        $this->container['signature_left'] = $signature_left;
-
-        return $this;
-    }
-
-    /**
-     * Gets has_active_seat
+     * Gets active
      *
      * @return bool|null
      */
-    public function getHasActiveSeat()
+    public function getActive()
     {
-        return $this->container['has_active_seat'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets has_active_seat
+     * Sets active
      *
-     * @param bool|null $has_active_seat Whether the current API key has an active Desk seat.
+     * @param bool|null $active Whether the key can authenticate. Defaults to true.
      *
      * @return self
      */
-    public function setHasActiveSeat($has_active_seat)
+    public function setActive($active)
     {
-        if (is_null($has_active_seat)) {
-            throw new \InvalidArgumentException('non-nullable has_active_seat cannot be null');
+        if (is_null($active)) {
+            throw new \InvalidArgumentException('non-nullable active cannot be null');
         }
-        $this->container['has_active_seat'] = $has_active_seat;
+        $this->container['active'] = $active;
 
         return $this;
     }
 
     /**
-     * Gets is_sub_key
+     * Gets permissions
      *
-     * @return bool|null
+     * @return \Invoicetronic\Model\Permissions|null
      */
-    public function getIsSubKey()
+    public function getPermissions()
     {
-        return $this->container['is_sub_key'];
+        return $this->container['permissions'];
     }
 
     /**
-     * Sets is_sub_key
+     * Sets permissions
      *
-     * @param bool|null $is_sub_key Whether the current API key is a sub-key (restricted key).
+     * @param \Invoicetronic\Model\Permissions|null $permissions permissions
      *
      * @return self
      */
-    public function setIsSubKey($is_sub_key)
+    public function setPermissions($permissions)
     {
-        if (is_null($is_sub_key)) {
-            throw new \InvalidArgumentException('non-nullable is_sub_key cannot be null');
+        if (is_null($permissions)) {
+            throw new \InvalidArgumentException('non-nullable permissions cannot be null');
         }
-        $this->container['is_sub_key'] = $is_sub_key;
+        $this->container['permissions'] = $permissions;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_ids
+     *
+     * @return int[]|null
+     */
+    public function getCompanyIds()
+    {
+        return $this->container['company_ids'];
+    }
+
+    /**
+     * Sets company_ids
+     *
+     * @param int[]|null $company_ids Companies the key can access. When omitted or empty, the key can access all the companies of the account, including the ones created later.
+     *
+     * @return self
+     */
+    public function setCompanyIds($company_ids)
+    {
+        if (is_null($company_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'company_ids');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('company_ids', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['company_ids'] = $company_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets cors_origins
+     *
+     * @return string[]|null
+     */
+    public function getCorsOrigins()
+    {
+        return $this->container['cors_origins'];
+    }
+
+    /**
+     * Sets cors_origins
+     *
+     * @param string[]|null $cors_origins Browser origins allowed to call the API with this key (CORS), e.g. `https://app.example.com` or `*.example.com`. A key used from a browser is public: keep its permissions and companies minimal.
+     *
+     * @return self
+     */
+    public function setCorsOrigins($cors_origins)
+    {
+        if (is_null($cors_origins)) {
+            array_push($this->openAPINullablesSetToNull, 'cors_origins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cors_origins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cors_origins'] = $cors_origins;
 
         return $this;
     }

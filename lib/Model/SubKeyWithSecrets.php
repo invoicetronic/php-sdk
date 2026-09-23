@@ -1,6 +1,6 @@
 <?php
 /**
- * Error
+ * SubKeyWithSecrets
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \Invoicetronic\ObjectSerializer;
 
 /**
- * Error Class Doc Comment
+ * SubKeyWithSecrets Class Doc Comment
  *
  * @category Class
- * @description Validation error from the SDI.
+ * @description A restricted key with its secrets, returned only when the key is created or rolled. Store them safely: they cannot be read again.
  * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Error implements ModelInterface, ArrayAccess, \JsonSerializable
+class SubKeyWithSecrets implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Error';
+    protected static $openAPIModelName = 'SubKeyWithSecrets';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,9 +59,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'code' => 'string',
+        'id' => 'int',
+        'created' => '\DateTime',
+        'version' => 'int',
         'description' => 'string',
-        'hint' => 'string'
+        'active' => 'bool',
+        'permissions' => '\Invoicetronic\Model\Permissions',
+        'company_ids' => 'int[]',
+        'cors_origins' => 'string[]',
+        'previous_key_expires_at' => '\DateTime',
+        'test_key' => 'string',
+        'live_key' => 'string'
     ];
 
     /**
@@ -72,9 +80,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'code' => null,
+        'id' => 'int32',
+        'created' => 'date-time',
+        'version' => 'int32',
         'description' => null,
-        'hint' => null
+        'active' => null,
+        'permissions' => null,
+        'company_ids' => 'int32',
+        'cors_origins' => null,
+        'previous_key_expires_at' => 'date-time',
+        'test_key' => null,
+        'live_key' => null
     ];
 
     /**
@@ -83,9 +99,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'code' => true,
+        'id' => false,
+        'created' => false,
+        'version' => false,
         'description' => true,
-        'hint' => true
+        'active' => false,
+        'permissions' => false,
+        'company_ids' => true,
+        'cors_origins' => true,
+        'previous_key_expires_at' => true,
+        'test_key' => true,
+        'live_key' => true
     ];
 
     /**
@@ -174,9 +198,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'code' => 'code',
+        'id' => 'id',
+        'created' => 'created',
+        'version' => 'version',
         'description' => 'description',
-        'hint' => 'hint'
+        'active' => 'active',
+        'permissions' => 'permissions',
+        'company_ids' => 'company_ids',
+        'cors_origins' => 'cors_origins',
+        'previous_key_expires_at' => 'previous_key_expires_at',
+        'test_key' => 'test_key',
+        'live_key' => 'live_key'
     ];
 
     /**
@@ -185,9 +217,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'code' => 'setCode',
+        'id' => 'setId',
+        'created' => 'setCreated',
+        'version' => 'setVersion',
         'description' => 'setDescription',
-        'hint' => 'setHint'
+        'active' => 'setActive',
+        'permissions' => 'setPermissions',
+        'company_ids' => 'setCompanyIds',
+        'cors_origins' => 'setCorsOrigins',
+        'previous_key_expires_at' => 'setPreviousKeyExpiresAt',
+        'test_key' => 'setTestKey',
+        'live_key' => 'setLiveKey'
     ];
 
     /**
@@ -196,9 +236,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'code' => 'getCode',
+        'id' => 'getId',
+        'created' => 'getCreated',
+        'version' => 'getVersion',
         'description' => 'getDescription',
-        'hint' => 'getHint'
+        'active' => 'getActive',
+        'permissions' => 'getPermissions',
+        'company_ids' => 'getCompanyIds',
+        'cors_origins' => 'getCorsOrigins',
+        'previous_key_expires_at' => 'getPreviousKeyExpiresAt',
+        'test_key' => 'getTestKey',
+        'live_key' => 'getLiveKey'
     ];
 
     /**
@@ -258,9 +306,17 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('code', $data ?? [], null);
+        $this->setIfExists('id', $data ?? [], null);
+        $this->setIfExists('created', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('hint', $data ?? [], null);
+        $this->setIfExists('active', $data ?? [], null);
+        $this->setIfExists('permissions', $data ?? [], null);
+        $this->setIfExists('company_ids', $data ?? [], null);
+        $this->setIfExists('cors_origins', $data ?? [], null);
+        $this->setIfExists('previous_key_expires_at', $data ?? [], null);
+        $this->setIfExists('test_key', $data ?? [], null);
+        $this->setIfExists('live_key', $data ?? [], null);
     }
 
     /**
@@ -306,35 +362,82 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets code
+     * Gets id
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getCode()
+    public function getId()
     {
-        return $this->container['code'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets code
+     * Sets id
      *
-     * @param string|null $code Error code.
+     * @param int|null $id Unique identifier.
      *
      * @return self
      */
-    public function setCode($code)
+    public function setId($id)
     {
-        if (is_null($code)) {
-            array_push($this->openAPINullablesSetToNull, 'code');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('code', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($id)) {
+            throw new \InvalidArgumentException('non-nullable id cannot be null');
         }
-        $this->container['code'] = $code;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created
+     *
+     * @return \DateTime|null
+     */
+    public function getCreated()
+    {
+        return $this->container['created'];
+    }
+
+    /**
+     * Sets created
+     *
+     * @param \DateTime|null $created Creation date.
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        if (is_null($created)) {
+            throw new \InvalidArgumentException('non-nullable created cannot be null');
+        }
+        $this->container['created'] = $created;
+
+        return $this;
+    }
+
+    /**
+     * Gets version
+     *
+     * @return int|null
+     */
+    public function getVersion()
+    {
+        return $this->container['version'];
+    }
+
+    /**
+     * Sets version
+     *
+     * @param int|null $version Row version, for optimistic concurrency.
+     *
+     * @return self
+     */
+    public function setVersion($version)
+    {
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
+        }
+        $this->container['version'] = $version;
 
         return $this;
     }
@@ -352,7 +455,7 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description Error description.
+     * @param string|null $description Human-readable label.
      *
      * @return self
      */
@@ -374,35 +477,225 @@ class Error implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets hint
+     * Gets active
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getHint()
+    public function getActive()
     {
-        return $this->container['hint'];
+        return $this->container['active'];
     }
 
     /**
-     * Sets hint
+     * Sets active
      *
-     * @param string|null $hint Hint on how to solve the issue.
+     * @param bool|null $active Whether the key can authenticate.
      *
      * @return self
      */
-    public function setHint($hint)
+    public function setActive($active)
     {
-        if (is_null($hint)) {
-            array_push($this->openAPINullablesSetToNull, 'hint');
+        if (is_null($active)) {
+            throw new \InvalidArgumentException('non-nullable active cannot be null');
+        }
+        $this->container['active'] = $active;
+
+        return $this;
+    }
+
+    /**
+     * Gets permissions
+     *
+     * @return \Invoicetronic\Model\Permissions|null
+     */
+    public function getPermissions()
+    {
+        return $this->container['permissions'];
+    }
+
+    /**
+     * Sets permissions
+     *
+     * @param \Invoicetronic\Model\Permissions|null $permissions permissions
+     *
+     * @return self
+     */
+    public function setPermissions($permissions)
+    {
+        if (is_null($permissions)) {
+            throw new \InvalidArgumentException('non-nullable permissions cannot be null');
+        }
+        $this->container['permissions'] = $permissions;
+
+        return $this;
+    }
+
+    /**
+     * Gets company_ids
+     *
+     * @return int[]|null
+     */
+    public function getCompanyIds()
+    {
+        return $this->container['company_ids'];
+    }
+
+    /**
+     * Sets company_ids
+     *
+     * @param int[]|null $company_ids Companies the key can access. Empty means all the companies of the account.
+     *
+     * @return self
+     */
+    public function setCompanyIds($company_ids)
+    {
+        if (is_null($company_ids)) {
+            array_push($this->openAPINullablesSetToNull, 'company_ids');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('hint', $nullablesSetToNull);
+            $index = array_search('company_ids', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['hint'] = $hint;
+        $this->container['company_ids'] = $company_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets cors_origins
+     *
+     * @return string[]|null
+     */
+    public function getCorsOrigins()
+    {
+        return $this->container['cors_origins'];
+    }
+
+    /**
+     * Sets cors_origins
+     *
+     * @param string[]|null $cors_origins Browser origins allowed to call the API with this key (CORS).
+     *
+     * @return self
+     */
+    public function setCorsOrigins($cors_origins)
+    {
+        if (is_null($cors_origins)) {
+            array_push($this->openAPINullablesSetToNull, 'cors_origins');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('cors_origins', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['cors_origins'] = $cors_origins;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_key_expires_at
+     *
+     * @return \DateTime|null
+     */
+    public function getPreviousKeyExpiresAt()
+    {
+        return $this->container['previous_key_expires_at'];
+    }
+
+    /**
+     * Sets previous_key_expires_at
+     *
+     * @param \DateTime|null $previous_key_expires_at When the secrets replaced by the last roll stop working; null when there are none still valid.
+     *
+     * @return self
+     */
+    public function setPreviousKeyExpiresAt($previous_key_expires_at)
+    {
+        if (is_null($previous_key_expires_at)) {
+            array_push($this->openAPINullablesSetToNull, 'previous_key_expires_at');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('previous_key_expires_at', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['previous_key_expires_at'] = $previous_key_expires_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets test_key
+     *
+     * @return string|null
+     */
+    public function getTestKey()
+    {
+        return $this->container['test_key'];
+    }
+
+    /**
+     * Sets test_key
+     *
+     * @param string|null $test_key Sandbox secret.
+     *
+     * @return self
+     */
+    public function setTestKey($test_key)
+    {
+        if (is_null($test_key)) {
+            array_push($this->openAPINullablesSetToNull, 'test_key');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('test_key', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['test_key'] = $test_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets live_key
+     *
+     * @return string|null
+     */
+    public function getLiveKey()
+    {
+        return $this->container['live_key'];
+    }
+
+    /**
+     * Sets live_key
+     *
+     * @param string|null $live_key Production secret.
+     *
+     * @return self
+     */
+    public function setLiveKey($live_key)
+    {
+        if (is_null($live_key)) {
+            array_push($this->openAPINullablesSetToNull, 'live_key');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('live_key', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['live_key'] = $live_key;
 
         return $this;
     }

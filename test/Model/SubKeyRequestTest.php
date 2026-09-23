@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentDataTest
+ * SubKeyRequestTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Invoicetronic\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * DocumentDataTest Class Doc Comment
+ * SubKeyRequestTest Class Doc Comment
  *
  * @category    Class
- * @description DocumentData
+ * @description A restricted key to create.
  * @package     Invoicetronic
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class DocumentDataTest extends TestCase
+class SubKeyRequestTest extends TestCase
 {
 
     /**
@@ -72,27 +72,54 @@ class DocumentDataTest extends TestCase
     }
 
     /**
-     * Test "DocumentData"
+     * Test "SubKeyRequest"
      */
-    public function testDocumentData()
+    public function testSubKeyRequest()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "number"
+     * Test attribute "description"
      */
-    public function testPropertyNumber()
+    public function testPropertyDescription()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "date"
+     * Test attribute "active"
      */
-    public function testPropertyDate()
+    public function testPropertyActive()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "permissions"
+     */
+    public function testPropertyPermissions()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "company_ids"
+     */
+    public function testPropertyCompanyIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cors_origins"
+     */
+    public function testPropertyCorsOrigins()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

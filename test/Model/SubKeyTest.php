@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentDataTest
+ * SubKeyTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Invoicetronic\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * DocumentDataTest Class Doc Comment
+ * SubKeyTest Class Doc Comment
  *
  * @category    Class
- * @description DocumentData
+ * @description A restricted key. Its secrets are returned only when the key is created or rolled.
  * @package     Invoicetronic
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class DocumentDataTest extends TestCase
+class SubKeyTest extends TestCase
 {
 
     /**
@@ -72,27 +72,90 @@ class DocumentDataTest extends TestCase
     }
 
     /**
-     * Test "DocumentData"
+     * Test "SubKey"
      */
-    public function testDocumentData()
+    public function testSubKey()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "number"
+     * Test attribute "id"
      */
-    public function testPropertyNumber()
+    public function testPropertyId()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "date"
+     * Test attribute "created"
      */
-    public function testPropertyDate()
+    public function testPropertyCreated()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "version"
+     */
+    public function testPropertyVersion()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "description"
+     */
+    public function testPropertyDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "active"
+     */
+    public function testPropertyActive()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "permissions"
+     */
+    public function testPropertyPermissions()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "company_ids"
+     */
+    public function testPropertyCompanyIds()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cors_origins"
+     */
+    public function testPropertyCorsOrigins()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "previous_key_expires_at"
+     */
+    public function testPropertyPreviousKeyExpiresAt()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

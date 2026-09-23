@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhookApi
+ * SubkeyApi
  * PHP version 8.1
  *
  * @category Class
@@ -44,14 +44,14 @@ use Invoicetronic\HeaderSelector;
 use Invoicetronic\ObjectSerializer;
 
 /**
- * WebhookApi Class Doc Comment
+ * SubkeyApi Class Doc Comment
  *
  * @category Class
  * @package  Invoicetronic
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class WebhookApi
+class SubkeyApi
 {
     /**
      * @var ClientInterface
@@ -75,25 +75,22 @@ class WebhookApi
 
     /** @var string[] $contentTypes **/
     public const contentTypes = [
-        'webhookGet' => [
+        'subkeyGet' => [
             'application/json',
         ],
-        'webhookIdDelete' => [
+        'subkeyIdDelete' => [
             'application/json',
         ],
-        'webhookIdGet' => [
+        'subkeyIdGet' => [
             'application/json',
         ],
-        'webhookPost' => [
+        'subkeyIdRollPost' => [
             'application/json',
         ],
-        'webhookPut' => [
+        'subkeyPost' => [
             'application/json',
         ],
-        'webhookhistoryGet' => [
-            'application/json',
-        ],
-        'webhookhistoryIdGet' => [
+        'subkeyPut' => [
             'application/json',
         ],
     ];
@@ -145,52 +142,46 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookGet
+     * Operation subkeyGet
      *
-     * List webhooks
+     * List restricted keys
      *
-     * @param  int|null $company_id Company id (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  string|null $description description (optional)
-     * @param  bool|null $enabled enabled (optional)
-     * @param  string|null $events events (optional)
-     * @param  string|null $url url (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookGet'] to see the possible values for this operation
+     * @param  int|null $company_id Company id (optional)
+     * @param  bool|null $active Active keys only (true) or inactive only (false). (optional)
+     * @param  string|null $q Human-readable label: free-text search. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook[]
+     * @return \Invoicetronic\Model\SubKey[]|\Invoicetronic\Model\ProblemDetails
      */
-    public function webhookGet($company_id = null, $page = 1, $page_size = 100, $sort = null, $description = null, $enabled = null, $events = null, $url = null, string $contentType = self::contentTypes['webhookGet'][0])
+    public function subkeyGet($page = 1, $page_size = 100, $company_id = null, $active = null, $q = null, string $contentType = self::contentTypes['subkeyGet'][0])
     {
-        list($response) = $this->webhookGetWithHttpInfo($company_id, $page, $page_size, $sort, $description, $enabled, $events, $url, $contentType);
+        list($response) = $this->subkeyGetWithHttpInfo($page, $page_size, $company_id, $active, $q, $contentType);
         return $response;
     }
 
     /**
-     * Operation webhookGetWithHttpInfo
+     * Operation subkeyGetWithHttpInfo
      *
-     * List webhooks
+     * List restricted keys
      *
-     * @param  int|null $company_id Company id (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  string|null $description (optional)
-     * @param  bool|null $enabled (optional)
-     * @param  string|null $events (optional)
-     * @param  string|null $url (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookGet'] to see the possible values for this operation
+     * @param  int|null $company_id Company id (optional)
+     * @param  bool|null $active Active keys only (true) or inactive only (false). (optional)
+     * @param  string|null $q Human-readable label: free-text search. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\SubKey[]|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function webhookGetWithHttpInfo($company_id = null, $page = 1, $page_size = 100, $sort = null, $description = null, $enabled = null, $events = null, $url = null, string $contentType = self::contentTypes['webhookGet'][0])
+    public function subkeyGetWithHttpInfo($page = 1, $page_size = 100, $company_id = null, $active = null, $q = null, string $contentType = self::contentTypes['subkeyGet'][0])
     {
-        $request = $this->webhookGetRequest($company_id, $page, $page_size, $sort, $description, $enabled, $events, $url, $contentType);
+        $request = $this->subkeyGetRequest($page, $page_size, $company_id, $active, $q, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -218,7 +209,13 @@ class WebhookApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Invoicetronic\Model\WebHook[]',
+                        '\Invoicetronic\Model\SubKey[]',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Invoicetronic\Model\ProblemDetails',
                         $request,
                         $response,
                     );
@@ -240,7 +237,7 @@ class WebhookApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Invoicetronic\Model\WebHook[]',
+                '\Invoicetronic\Model\SubKey[]',
                 $request,
                 $response,
             );
@@ -249,7 +246,15 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Invoicetronic\Model\WebHook[]',
+                        '\Invoicetronic\Model\SubKey[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -262,26 +267,23 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookGetAsync
+     * Operation subkeyGetAsync
      *
-     * List webhooks
+     * List restricted keys
      *
-     * @param  int|null $company_id Company id (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  string|null $description (optional)
-     * @param  bool|null $enabled (optional)
-     * @param  string|null $events (optional)
-     * @param  string|null $url (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookGet'] to see the possible values for this operation
+     * @param  int|null $company_id Company id (optional)
+     * @param  bool|null $active Active keys only (true) or inactive only (false). (optional)
+     * @param  string|null $q Human-readable label: free-text search. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookGetAsync($company_id = null, $page = 1, $page_size = 100, $sort = null, $description = null, $enabled = null, $events = null, $url = null, string $contentType = self::contentTypes['webhookGet'][0])
+    public function subkeyGetAsync($page = 1, $page_size = 100, $company_id = null, $active = null, $q = null, string $contentType = self::contentTypes['subkeyGet'][0])
     {
-        return $this->webhookGetAsyncWithHttpInfo($company_id, $page, $page_size, $sort, $description, $enabled, $events, $url, $contentType)
+        return $this->subkeyGetAsyncWithHttpInfo($page, $page_size, $company_id, $active, $q, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -290,27 +292,24 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookGetAsyncWithHttpInfo
+     * Operation subkeyGetAsyncWithHttpInfo
      *
-     * List webhooks
+     * List restricted keys
      *
-     * @param  int|null $company_id Company id (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  string|null $description (optional)
-     * @param  bool|null $enabled (optional)
-     * @param  string|null $events (optional)
-     * @param  string|null $url (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookGet'] to see the possible values for this operation
+     * @param  int|null $company_id Company id (optional)
+     * @param  bool|null $active Active keys only (true) or inactive only (false). (optional)
+     * @param  string|null $q Human-readable label: free-text search. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookGetAsyncWithHttpInfo($company_id = null, $page = 1, $page_size = 100, $sort = null, $description = null, $enabled = null, $events = null, $url = null, string $contentType = self::contentTypes['webhookGet'][0])
+    public function subkeyGetAsyncWithHttpInfo($page = 1, $page_size = 100, $company_id = null, $active = null, $q = null, string $contentType = self::contentTypes['subkeyGet'][0])
     {
-        $returnType = '\Invoicetronic\Model\WebHook[]';
-        $request = $this->webhookGetRequest($company_id, $page, $page_size, $sort, $description, $enabled, $events, $url, $contentType);
+        $returnType = '\Invoicetronic\Model\SubKey[]';
+        $request = $this->subkeyGetRequest($page, $page_size, $company_id, $active, $q, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -349,22 +348,19 @@ class WebhookApi
     }
 
     /**
-     * Create request for operation 'webhookGet'
+     * Create request for operation 'subkeyGet'
      *
-     * @param  int|null $company_id Company id (optional)
      * @param  int|null $page Page number. (optional, default to 1)
      * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  string|null $description (optional)
-     * @param  bool|null $enabled (optional)
-     * @param  string|null $events (optional)
-     * @param  string|null $url (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookGet'] to see the possible values for this operation
+     * @param  int|null $company_id Company id (optional)
+     * @param  bool|null $active Active keys only (true) or inactive only (false). (optional)
+     * @param  string|null $q Human-readable label: free-text search. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function webhookGetRequest($company_id = null, $page = 1, $page_size = 100, $sort = null, $description = null, $enabled = null, $events = null, $url = null, string $contentType = self::contentTypes['webhookGet'][0])
+    public function subkeyGetRequest($page = 1, $page_size = 100, $company_id = null, $active = null, $q = null, string $contentType = self::contentTypes['subkeyGet'][0])
     {
 
 
@@ -373,25 +369,13 @@ class WebhookApi
 
 
 
-
-
-
-        $resourcePath = '/webhook';
+        $resourcePath = '/subkey';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
 
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $company_id,
-            'company_id', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $page,
@@ -412,26 +396,17 @@ class WebhookApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'string', // openApiType
+            $company_id,
+            'company_id', // param base name
+            'integer', // openApiType
             'form', // style
             true, // explode
             false // required
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $description,
-            'description', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $enabled,
-            'enabled', // param base name
+            $active,
+            'active', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
@@ -439,17 +414,8 @@ class WebhookApi
         ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $events,
-            'events', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $url,
-            'url', // param base name
+            $q,
+            'q', // param base name
             'string', // openApiType
             'form', // style
             true, // explode
@@ -460,7 +426,7 @@ class WebhookApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json', 'application/problem+json', ],
             $contentType,
             $multipart
         );
@@ -517,38 +483,38 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookIdDelete
+     * Operation subkeyIdDelete
      *
-     * Delete a webhook by id
+     * Delete a restricted key
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdDelete'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook
+     * @return \Invoicetronic\Model\SubKey|\Invoicetronic\Model\ProblemDetails
      */
-    public function webhookIdDelete($id, string $contentType = self::contentTypes['webhookIdDelete'][0])
+    public function subkeyIdDelete($id, string $contentType = self::contentTypes['subkeyIdDelete'][0])
     {
-        list($response) = $this->webhookIdDeleteWithHttpInfo($id, $contentType);
+        list($response) = $this->subkeyIdDeleteWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation webhookIdDeleteWithHttpInfo
+     * Operation subkeyIdDeleteWithHttpInfo
      *
-     * Delete a webhook by id
+     * Delete a restricted key
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdDelete'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\SubKey|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function webhookIdDeleteWithHttpInfo($id, string $contentType = self::contentTypes['webhookIdDelete'][0])
+    public function subkeyIdDeleteWithHttpInfo($id, string $contentType = self::contentTypes['subkeyIdDelete'][0])
     {
-        $request = $this->webhookIdDeleteRequest($id, $contentType);
+        $request = $this->subkeyIdDeleteRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -576,7 +542,13 @@ class WebhookApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Invoicetronic\Model\WebHook',
+                        '\Invoicetronic\Model\SubKey',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Invoicetronic\Model\ProblemDetails',
                         $request,
                         $response,
                     );
@@ -598,7 +570,7 @@ class WebhookApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Invoicetronic\Model\WebHook',
+                '\Invoicetronic\Model\SubKey',
                 $request,
                 $response,
             );
@@ -607,7 +579,15 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Invoicetronic\Model\WebHook',
+                        '\Invoicetronic\Model\SubKey',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -620,19 +600,19 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookIdDeleteAsync
+     * Operation subkeyIdDeleteAsync
      *
-     * Delete a webhook by id
+     * Delete a restricted key
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookIdDeleteAsync($id, string $contentType = self::contentTypes['webhookIdDelete'][0])
+    public function subkeyIdDeleteAsync($id, string $contentType = self::contentTypes['subkeyIdDelete'][0])
     {
-        return $this->webhookIdDeleteAsyncWithHttpInfo($id, $contentType)
+        return $this->subkeyIdDeleteAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -641,20 +621,20 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookIdDeleteAsyncWithHttpInfo
+     * Operation subkeyIdDeleteAsyncWithHttpInfo
      *
-     * Delete a webhook by id
+     * Delete a restricted key
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookIdDeleteAsyncWithHttpInfo($id, string $contentType = self::contentTypes['webhookIdDelete'][0])
+    public function subkeyIdDeleteAsyncWithHttpInfo($id, string $contentType = self::contentTypes['subkeyIdDelete'][0])
     {
-        $returnType = '\Invoicetronic\Model\WebHook';
-        $request = $this->webhookIdDeleteRequest($id, $contentType);
+        $returnType = '\Invoicetronic\Model\SubKey';
+        $request = $this->subkeyIdDeleteRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -693,26 +673,26 @@ class WebhookApi
     }
 
     /**
-     * Create request for operation 'webhookIdDelete'
+     * Create request for operation 'subkeyIdDelete'
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdDelete'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdDelete'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function webhookIdDeleteRequest($id, string $contentType = self::contentTypes['webhookIdDelete'][0])
+    public function subkeyIdDeleteRequest($id, string $contentType = self::contentTypes['subkeyIdDelete'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling webhookIdDelete'
+                'Missing the required parameter $id when calling subkeyIdDelete'
             );
         }
 
 
-        $resourcePath = '/webhook/{id}';
+        $resourcePath = '/subkey/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -732,7 +712,7 @@ class WebhookApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json', 'application/problem+json', ],
             $contentType,
             $multipart
         );
@@ -789,38 +769,38 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookIdGet
+     * Operation subkeyIdGet
      *
-     * Get a webhook by id
+     * Get a restricted key by id
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook
+     * @return \Invoicetronic\Model\SubKey|\Invoicetronic\Model\ProblemDetails
      */
-    public function webhookIdGet($id, string $contentType = self::contentTypes['webhookIdGet'][0])
+    public function subkeyIdGet($id, string $contentType = self::contentTypes['subkeyIdGet'][0])
     {
-        list($response) = $this->webhookIdGetWithHttpInfo($id, $contentType);
+        list($response) = $this->subkeyIdGetWithHttpInfo($id, $contentType);
         return $response;
     }
 
     /**
-     * Operation webhookIdGetWithHttpInfo
+     * Operation subkeyIdGetWithHttpInfo
      *
-     * Get a webhook by id
+     * Get a restricted key by id
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdGet'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\SubKey|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function webhookIdGetWithHttpInfo($id, string $contentType = self::contentTypes['webhookIdGet'][0])
+    public function subkeyIdGetWithHttpInfo($id, string $contentType = self::contentTypes['subkeyIdGet'][0])
     {
-        $request = $this->webhookIdGetRequest($id, $contentType);
+        $request = $this->subkeyIdGetRequest($id, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -848,7 +828,13 @@ class WebhookApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Invoicetronic\Model\WebHook',
+                        '\Invoicetronic\Model\SubKey',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Invoicetronic\Model\ProblemDetails',
                         $request,
                         $response,
                     );
@@ -870,7 +856,7 @@ class WebhookApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Invoicetronic\Model\WebHook',
+                '\Invoicetronic\Model\SubKey',
                 $request,
                 $response,
             );
@@ -879,7 +865,15 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Invoicetronic\Model\WebHook',
+                        '\Invoicetronic\Model\SubKey',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemDetails',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -892,19 +886,19 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookIdGetAsync
+     * Operation subkeyIdGetAsync
      *
-     * Get a webhook by id
+     * Get a restricted key by id
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookIdGetAsync($id, string $contentType = self::contentTypes['webhookIdGet'][0])
+    public function subkeyIdGetAsync($id, string $contentType = self::contentTypes['subkeyIdGet'][0])
     {
-        return $this->webhookIdGetAsyncWithHttpInfo($id, $contentType)
+        return $this->subkeyIdGetAsyncWithHttpInfo($id, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -913,20 +907,20 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookIdGetAsyncWithHttpInfo
+     * Operation subkeyIdGetAsyncWithHttpInfo
      *
-     * Get a webhook by id
+     * Get a restricted key by id
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['webhookIdGet'][0])
+    public function subkeyIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['subkeyIdGet'][0])
     {
-        $returnType = '\Invoicetronic\Model\WebHook';
-        $request = $this->webhookIdGetRequest($id, $contentType);
+        $returnType = '\Invoicetronic\Model\SubKey';
+        $request = $this->subkeyIdGetRequest($id, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -965,26 +959,26 @@ class WebhookApi
     }
 
     /**
-     * Create request for operation 'webhookIdGet'
+     * Create request for operation 'subkeyIdGet'
      *
      * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookIdGet'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdGet'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function webhookIdGetRequest($id, string $contentType = self::contentTypes['webhookIdGet'][0])
+    public function subkeyIdGetRequest($id, string $contentType = self::contentTypes['subkeyIdGet'][0])
     {
 
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling webhookIdGet'
+                'Missing the required parameter $id when calling subkeyIdGet'
             );
         }
 
 
-        $resourcePath = '/webhook/{id}';
+        $resourcePath = '/subkey/{id}';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1004,7 +998,7 @@ class WebhookApi
 
 
         $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
+            ['application/json', 'application/problem+json', ],
             $contentType,
             $multipart
         );
@@ -1061,38 +1055,40 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookPost
+     * Operation subkeyIdRollPost
      *
-     * Add a webhook
+     * Roll the secrets of a restricted key
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPost'] to see the possible values for this operation
+     * @param  int $id Item id (required)
+     * @param  int|null $expires_in_hours Hours the replaced secrets keep working, from 1 to 168. When omitted, they stop working at once. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdRollPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemDetails|\Invoicetronic\Model\ProblemDetails
+     * @return \Invoicetronic\Model\SubKeyWithSecrets|\Invoicetronic\Model\ProblemDetails
      */
-    public function webhookPost($web_hook, string $contentType = self::contentTypes['webhookPost'][0])
+    public function subkeyIdRollPost($id, $expires_in_hours = null, string $contentType = self::contentTypes['subkeyIdRollPost'][0])
     {
-        list($response) = $this->webhookPostWithHttpInfo($web_hook, $contentType);
+        list($response) = $this->subkeyIdRollPostWithHttpInfo($id, $expires_in_hours, $contentType);
         return $response;
     }
 
     /**
-     * Operation webhookPostWithHttpInfo
+     * Operation subkeyIdRollPostWithHttpInfo
      *
-     * Add a webhook
+     * Roll the secrets of a restricted key
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPost'] to see the possible values for this operation
+     * @param  int $id Item id (required)
+     * @param  int|null $expires_in_hours Hours the replaced secrets keep working, from 1 to 168. When omitted, they stop working at once. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdRollPost'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemDetails|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\SubKeyWithSecrets|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function webhookPostWithHttpInfo($web_hook, string $contentType = self::contentTypes['webhookPost'][0])
+    public function subkeyIdRollPostWithHttpInfo($id, $expires_in_hours = null, string $contentType = self::contentTypes['subkeyIdRollPost'][0])
     {
-        $request = $this->webhookPostRequest($web_hook, $contentType);
+        $request = $this->subkeyIdRollPostRequest($id, $expires_in_hours, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1118,19 +1114,13 @@ class WebhookApi
 
 
             switch($statusCode) {
-                case 201:
+                case 200:
                     return $this->handleResponseWithDataType(
-                        '\Invoicetronic\Model\WebHook',
+                        '\Invoicetronic\Model\SubKeyWithSecrets',
                         $request,
                         $response,
                     );
                 case 403:
-                    return $this->handleResponseWithDataType(
-                        '\Invoicetronic\Model\ProblemDetails',
-                        $request,
-                        $response,
-                    );
-                case 422:
                     return $this->handleResponseWithDataType(
                         '\Invoicetronic\Model\ProblemDetails',
                         $request,
@@ -1154,29 +1144,21 @@ class WebhookApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Invoicetronic\Model\WebHook',
+                '\Invoicetronic\Model\SubKeyWithSecrets',
                 $request,
                 $response,
             );
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 201:
+                case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Invoicetronic\Model\WebHook',
+                        '\Invoicetronic\Model\SubKeyWithSecrets',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     throw $e;
                 case 403:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Invoicetronic\Model\ProblemDetails',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-                case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Invoicetronic\Model\ProblemDetails',
@@ -1192,19 +1174,20 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookPostAsync
+     * Operation subkeyIdRollPostAsync
      *
-     * Add a webhook
+     * Roll the secrets of a restricted key
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPost'] to see the possible values for this operation
+     * @param  int $id Item id (required)
+     * @param  int|null $expires_in_hours Hours the replaced secrets keep working, from 1 to 168. When omitted, they stop working at once. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdRollPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookPostAsync($web_hook, string $contentType = self::contentTypes['webhookPost'][0])
+    public function subkeyIdRollPostAsync($id, $expires_in_hours = null, string $contentType = self::contentTypes['subkeyIdRollPost'][0])
     {
-        return $this->webhookPostAsyncWithHttpInfo($web_hook, $contentType)
+        return $this->subkeyIdRollPostAsyncWithHttpInfo($id, $expires_in_hours, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1213,20 +1196,21 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookPostAsyncWithHttpInfo
+     * Operation subkeyIdRollPostAsyncWithHttpInfo
      *
-     * Add a webhook
+     * Roll the secrets of a restricted key
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPost'] to see the possible values for this operation
+     * @param  int $id Item id (required)
+     * @param  int|null $expires_in_hours Hours the replaced secrets keep working, from 1 to 168. When omitted, they stop working at once. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdRollPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookPostAsyncWithHttpInfo($web_hook, string $contentType = self::contentTypes['webhookPost'][0])
+    public function subkeyIdRollPostAsyncWithHttpInfo($id, $expires_in_hours = null, string $contentType = self::contentTypes['subkeyIdRollPost'][0])
     {
-        $returnType = '\Invoicetronic\Model\WebHook';
-        $request = $this->webhookPostRequest($web_hook, $contentType);
+        $returnType = '\Invoicetronic\Model\SubKeyWithSecrets';
+        $request = $this->subkeyIdRollPostRequest($id, $expires_in_hours, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1265,26 +1249,323 @@ class WebhookApi
     }
 
     /**
-     * Create request for operation 'webhookPost'
+     * Create request for operation 'subkeyIdRollPost'
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPost'] to see the possible values for this operation
+     * @param  int $id Item id (required)
+     * @param  int|null $expires_in_hours Hours the replaced secrets keep working, from 1 to 168. When omitted, they stop working at once. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyIdRollPost'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function webhookPostRequest($web_hook, string $contentType = self::contentTypes['webhookPost'][0])
+    public function subkeyIdRollPostRequest($id, $expires_in_hours = null, string $contentType = self::contentTypes['subkeyIdRollPost'][0])
     {
 
-        // verify the required parameter 'web_hook' is set
-        if ($web_hook === null || (is_array($web_hook) && count($web_hook) === 0)) {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $web_hook when calling webhookPost'
+                'Missing the required parameter $id when calling subkeyIdRollPost'
             );
         }
 
 
-        $resourcePath = '/webhook';
+
+        $resourcePath = '/subkey/{id}/roll';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $expires_in_hours,
+            'expires_in_hours', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', 'application/problem+json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation subkeyPost
+     *
+     * Add a restricted key
+     *
+     * @param  \Invoicetronic\Model\SubKeyRequest $sub_key_request sub_key_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \Invoicetronic\Model\SubKeyWithSecrets|\Invoicetronic\Model\ProblemDetails
+     */
+    public function subkeyPost($sub_key_request, string $contentType = self::contentTypes['subkeyPost'][0])
+    {
+        list($response) = $this->subkeyPostWithHttpInfo($sub_key_request, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation subkeyPostWithHttpInfo
+     *
+     * Add a restricted key
+     *
+     * @param  \Invoicetronic\Model\SubKeyRequest $sub_key_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPost'] to see the possible values for this operation
+     *
+     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \Invoicetronic\Model\SubKeyWithSecrets|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function subkeyPostWithHttpInfo($sub_key_request, string $contentType = self::contentTypes['subkeyPost'][0])
+    {
+        $request = $this->subkeyPostRequest($sub_key_request, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\Invoicetronic\Model\SubKeyWithSecrets',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\Invoicetronic\Model\ProblemDetails',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\Invoicetronic\Model\SubKeyWithSecrets',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\SubKeyWithSecrets',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Invoicetronic\Model\ProblemDetails',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation subkeyPostAsync
+     *
+     * Add a restricted key
+     *
+     * @param  \Invoicetronic\Model\SubKeyRequest $sub_key_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function subkeyPostAsync($sub_key_request, string $contentType = self::contentTypes['subkeyPost'][0])
+    {
+        return $this->subkeyPostAsyncWithHttpInfo($sub_key_request, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation subkeyPostAsyncWithHttpInfo
+     *
+     * Add a restricted key
+     *
+     * @param  \Invoicetronic\Model\SubKeyRequest $sub_key_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function subkeyPostAsyncWithHttpInfo($sub_key_request, string $contentType = self::contentTypes['subkeyPost'][0])
+    {
+        $returnType = '\Invoicetronic\Model\SubKeyWithSecrets';
+        $request = $this->subkeyPostRequest($sub_key_request, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'subkeyPost'
+     *
+     * @param  \Invoicetronic\Model\SubKeyRequest $sub_key_request (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPost'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function subkeyPostRequest($sub_key_request, string $contentType = self::contentTypes['subkeyPost'][0])
+    {
+
+        // verify the required parameter 'sub_key_request' is set
+        if ($sub_key_request === null || (is_array($sub_key_request) && count($sub_key_request) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $sub_key_request when calling subkeyPost'
+            );
+        }
+
+
+        $resourcePath = '/subkey';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1302,12 +1583,12 @@ class WebhookApi
         );
 
         // for model (json/xml)
-        if (isset($web_hook)) {
+        if (isset($sub_key_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($web_hook));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sub_key_request));
             } else {
-                $httpBody = $web_hook;
+                $httpBody = $sub_key_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1360,38 +1641,38 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookPut
+     * Operation subkeyPut
      *
-     * Update a webhook
+     * Update a restricted key
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPut'] to see the possible values for this operation
+     * @param  \Invoicetronic\Model\SubKeyUpdate $sub_key_update sub_key_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPut'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemDetails|\Invoicetronic\Model\ProblemDetails
+     * @return \Invoicetronic\Model\SubKey|\Invoicetronic\Model\ProblemDetails|\Invoicetronic\Model\ProblemDetails
      */
-    public function webhookPut($web_hook, string $contentType = self::contentTypes['webhookPut'][0])
+    public function subkeyPut($sub_key_update, string $contentType = self::contentTypes['subkeyPut'][0])
     {
-        list($response) = $this->webhookPutWithHttpInfo($web_hook, $contentType);
+        list($response) = $this->subkeyPutWithHttpInfo($sub_key_update, $contentType);
         return $response;
     }
 
     /**
-     * Operation webhookPutWithHttpInfo
+     * Operation subkeyPutWithHttpInfo
      *
-     * Update a webhook
+     * Update a restricted key
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPut'] to see the possible values for this operation
+     * @param  \Invoicetronic\Model\SubKeyUpdate $sub_key_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPut'] to see the possible values for this operation
      *
      * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHook|\Invoicetronic\Model\ProblemDetails|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Invoicetronic\Model\SubKey|\Invoicetronic\Model\ProblemDetails|\Invoicetronic\Model\ProblemDetails, HTTP status code, HTTP response headers (array of strings)
      */
-    public function webhookPutWithHttpInfo($web_hook, string $contentType = self::contentTypes['webhookPut'][0])
+    public function subkeyPutWithHttpInfo($sub_key_update, string $contentType = self::contentTypes['subkeyPut'][0])
     {
-        $request = $this->webhookPutRequest($web_hook, $contentType);
+        $request = $this->subkeyPutRequest($sub_key_update, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1419,7 +1700,7 @@ class WebhookApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Invoicetronic\Model\WebHook',
+                        '\Invoicetronic\Model\SubKey',
                         $request,
                         $response,
                     );
@@ -1453,7 +1734,7 @@ class WebhookApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Invoicetronic\Model\WebHook',
+                '\Invoicetronic\Model\SubKey',
                 $request,
                 $response,
             );
@@ -1462,7 +1743,7 @@ class WebhookApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Invoicetronic\Model\WebHook',
+                        '\Invoicetronic\Model\SubKey',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1491,19 +1772,19 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookPutAsync
+     * Operation subkeyPutAsync
      *
-     * Update a webhook
+     * Update a restricted key
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPut'] to see the possible values for this operation
+     * @param  \Invoicetronic\Model\SubKeyUpdate $sub_key_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookPutAsync($web_hook, string $contentType = self::contentTypes['webhookPut'][0])
+    public function subkeyPutAsync($sub_key_update, string $contentType = self::contentTypes['subkeyPut'][0])
     {
-        return $this->webhookPutAsyncWithHttpInfo($web_hook, $contentType)
+        return $this->subkeyPutAsyncWithHttpInfo($sub_key_update, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1512,20 +1793,20 @@ class WebhookApi
     }
 
     /**
-     * Operation webhookPutAsyncWithHttpInfo
+     * Operation subkeyPutAsyncWithHttpInfo
      *
-     * Update a webhook
+     * Update a restricted key
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPut'] to see the possible values for this operation
+     * @param  \Invoicetronic\Model\SubKeyUpdate $sub_key_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function webhookPutAsyncWithHttpInfo($web_hook, string $contentType = self::contentTypes['webhookPut'][0])
+    public function subkeyPutAsyncWithHttpInfo($sub_key_update, string $contentType = self::contentTypes['subkeyPut'][0])
     {
-        $returnType = '\Invoicetronic\Model\WebHook';
-        $request = $this->webhookPutRequest($web_hook, $contentType);
+        $returnType = '\Invoicetronic\Model\SubKey';
+        $request = $this->subkeyPutRequest($sub_key_update, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1564,26 +1845,26 @@ class WebhookApi
     }
 
     /**
-     * Create request for operation 'webhookPut'
+     * Create request for operation 'subkeyPut'
      *
-     * @param  \Invoicetronic\Model\WebHook $web_hook (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookPut'] to see the possible values for this operation
+     * @param  \Invoicetronic\Model\SubKeyUpdate $sub_key_update (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['subkeyPut'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function webhookPutRequest($web_hook, string $contentType = self::contentTypes['webhookPut'][0])
+    public function subkeyPutRequest($sub_key_update, string $contentType = self::contentTypes['subkeyPut'][0])
     {
 
-        // verify the required parameter 'web_hook' is set
-        if ($web_hook === null || (is_array($web_hook) && count($web_hook) === 0)) {
+        // verify the required parameter 'sub_key_update' is set
+        if ($sub_key_update === null || (is_array($sub_key_update) && count($sub_key_update) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $web_hook when calling webhookPut'
+                'Missing the required parameter $sub_key_update when calling subkeyPut'
             );
         }
 
 
-        $resourcePath = '/webhook';
+        $resourcePath = '/subkey';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -1601,12 +1882,12 @@ class WebhookApi
         );
 
         // for model (json/xml)
-        if (isset($web_hook)) {
+        if (isset($sub_key_update)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($web_hook));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sub_key_update));
             } else {
-                $httpBody = $web_hook;
+                $httpBody = $sub_key_update;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1652,590 +1933,6 @@ class WebhookApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'PUT',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation webhookhistoryGet
-     *
-     * List webhook history items
-     *
-     * @param  int|null $page Page number. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  int|null $webhook_id WebHook id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
-     *
-     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHookHistory[]
-     */
-    public function webhookhistoryGet($page = 1, $page_size = 100, $sort = null, $webhook_id = null, string $contentType = self::contentTypes['webhookhistoryGet'][0])
-    {
-        list($response) = $this->webhookhistoryGetWithHttpInfo($page, $page_size, $sort, $webhook_id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation webhookhistoryGetWithHttpInfo
-     *
-     * List webhook history items
-     *
-     * @param  int|null $page Page number. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  int|null $webhook_id WebHook id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
-     *
-     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHookHistory[], HTTP status code, HTTP response headers (array of strings)
-     */
-    public function webhookhistoryGetWithHttpInfo($page = 1, $page_size = 100, $sort = null, $webhook_id = null, string $contentType = self::contentTypes['webhookhistoryGet'][0])
-    {
-        $request = $this->webhookhistoryGetRequest($page, $page_size, $sort, $webhook_id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Invoicetronic\Model\WebHookHistory[]',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Invoicetronic\Model\WebHookHistory[]',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Invoicetronic\Model\WebHookHistory[]',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation webhookhistoryGetAsync
-     *
-     * List webhook history items
-     *
-     * @param  int|null $page Page number. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  int|null $webhook_id WebHook id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function webhookhistoryGetAsync($page = 1, $page_size = 100, $sort = null, $webhook_id = null, string $contentType = self::contentTypes['webhookhistoryGet'][0])
-    {
-        return $this->webhookhistoryGetAsyncWithHttpInfo($page, $page_size, $sort, $webhook_id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation webhookhistoryGetAsyncWithHttpInfo
-     *
-     * List webhook history items
-     *
-     * @param  int|null $page Page number. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  int|null $webhook_id WebHook id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function webhookhistoryGetAsyncWithHttpInfo($page = 1, $page_size = 100, $sort = null, $webhook_id = null, string $contentType = self::contentTypes['webhookhistoryGet'][0])
-    {
-        $returnType = '\Invoicetronic\Model\WebHookHistory[]';
-        $request = $this->webhookhistoryGetRequest($page, $page_size, $sort, $webhook_id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'webhookhistoryGet'
-     *
-     * @param  int|null $page Page number. (optional, default to 1)
-     * @param  int|null $page_size Items per page. Cannot be greater than 200. (optional, default to 100)
-     * @param  string|null $sort Sort by field. Prefix with &#39;-&#39; for descending order. (optional)
-     * @param  int|null $webhook_id WebHook id (optional)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function webhookhistoryGetRequest($page = 1, $page_size = 100, $sort = null, $webhook_id = null, string $contentType = self::contentTypes['webhookhistoryGet'][0])
-    {
-
-
-
-
-
-
-        $resourcePath = '/webhookhistory';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page,
-            'page', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $page_size,
-            'page_size', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $sort,
-            'sort', // param base name
-            'string', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-        // query params
-        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
-            $webhook_id,
-            'webhook_id', // param base name
-            'integer', // openApiType
-            'form', // style
-            true, // explode
-            false // required
-        ) ?? []);
-
-
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
-            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation webhookhistoryIdGet
-     *
-     * Get a webhook history item by id
-     *
-     * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryIdGet'] to see the possible values for this operation
-     *
-     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return \Invoicetronic\Model\WebHookHistory
-     */
-    public function webhookhistoryIdGet($id, string $contentType = self::contentTypes['webhookhistoryIdGet'][0])
-    {
-        list($response) = $this->webhookhistoryIdGetWithHttpInfo($id, $contentType);
-        return $response;
-    }
-
-    /**
-     * Operation webhookhistoryIdGetWithHttpInfo
-     *
-     * Get a webhook history item by id
-     *
-     * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryIdGet'] to see the possible values for this operation
-     *
-     * @throws \Invoicetronic\ApiException on non-2xx response or if the response body is not in the expected format
-     * @throws \InvalidArgumentException
-     * @return array of \Invoicetronic\Model\WebHookHistory, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function webhookhistoryIdGetWithHttpInfo($id, string $contentType = self::contentTypes['webhookhistoryIdGet'][0])
-    {
-        $request = $this->webhookhistoryIdGetRequest($id, $contentType);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
-                );
-            } catch (ConnectException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    (int) $e->getCode(),
-                    null,
-                    null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-
-            switch($statusCode) {
-                case 200:
-                    return $this->handleResponseWithDataType(
-                        '\Invoicetronic\Model\WebHookHistory',
-                        $request,
-                        $response,
-                    );
-            }
-
-            
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        (string) $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    (string) $response->getBody()
-                );
-            }
-
-            return $this->handleResponseWithDataType(
-                '\Invoicetronic\Model\WebHookHistory',
-                $request,
-                $response,
-            );
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Invoicetronic\Model\WebHookHistory',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    throw $e;
-            }
-        
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation webhookhistoryIdGetAsync
-     *
-     * Get a webhook history item by id
-     *
-     * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryIdGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function webhookhistoryIdGetAsync($id, string $contentType = self::contentTypes['webhookhistoryIdGet'][0])
-    {
-        return $this->webhookhistoryIdGetAsyncWithHttpInfo($id, $contentType)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation webhookhistoryIdGetAsyncWithHttpInfo
-     *
-     * Get a webhook history item by id
-     *
-     * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryIdGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function webhookhistoryIdGetAsyncWithHttpInfo($id, string $contentType = self::contentTypes['webhookhistoryIdGet'][0])
-    {
-        $returnType = '\Invoicetronic\Model\WebHookHistory';
-        $request = $this->webhookhistoryIdGetRequest($id, $contentType);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    if ($returnType === '\SplFileObject') {
-                        $content = $response->getBody(); //stream goes to serializer
-                    } else {
-                        $content = (string) $response->getBody();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        (string) $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'webhookhistoryIdGet'
-     *
-     * @param  int $id Item id (required)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['webhookhistoryIdGet'] to see the possible values for this operation
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    public function webhookhistoryIdGetRequest($id, string $contentType = self::contentTypes['webhookhistoryIdGet'][0])
-    {
-
-        // verify the required parameter 'id' is set
-        if ($id === null || (is_array($id) && count($id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $id when calling webhookhistoryIdGet'
-            );
-        }
-
-
-        $resourcePath = '/webhookhistory/{id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // path params
-        if ($id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'id' . '}',
-                ObjectSerializer::toPathValue($id),
-                $resourcePath
-            );
-        }
-
-
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
-
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
-        }
-
-        // this endpoint requires HTTP basic authentication
-        if (!empty($this->config->getUsername()) || !(empty($this->config->getPassword()))) {
-            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
-        return new Request(
-            'GET',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

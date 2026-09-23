@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentDataTest
+ * PermissionsTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace Invoicetronic\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * DocumentDataTest Class Doc Comment
+ * PermissionsTest Class Doc Comment
  *
  * @category    Class
- * @description DocumentData
+ * @description Permissions of a restricted key, per resource. A missing property means no access to that resource. Each permission cannot exceed the one of the main key the restricted key belongs to.
  * @package     Invoicetronic
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class DocumentDataTest extends TestCase
+class PermissionsTest extends TestCase
 {
 
     /**
@@ -72,27 +72,90 @@ class DocumentDataTest extends TestCase
     }
 
     /**
-     * Test "DocumentData"
+     * Test "Permissions"
      */
-    public function testDocumentData()
+    public function testPermissions()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "number"
+     * Test attribute "company"
      */
-    public function testPropertyNumber()
+    public function testPropertyCompany()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "date"
+     * Test attribute "send"
      */
-    public function testPropertyDate()
+    public function testPropertySend()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "receive"
+     */
+    public function testPropertyReceive()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "webhook"
+     */
+    public function testPropertyWebhook()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "update"
+     */
+    public function testPropertyUpdate()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "log"
+     */
+    public function testPropertyLog()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "webhookhistory"
+     */
+    public function testPropertyWebhookhistory()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "export"
+     */
+    public function testPropertyExport()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
