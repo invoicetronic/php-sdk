@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **created** | **\DateTime** | Creation date. It is set automatically. | [optional] [readonly]
 **version** | **int** | Row version, for optimistic concurrency. It is set automatically. | [optional] [readonly]
 **user_id** | **int** | User id. It is set automatically based on the authenticated user. | [optional] [readonly]
-**vat** | **string** | Vat number. Must include the country code. |
-**fiscal_code** | **string** | Fiscal code. In most cases it&#39;s the same as the vat number. |
+**vat** | **string** | Vat number. Must include the country code. Required when fiscal_code is missing; omit it for entities that only have a fiscal code, such as non-profit organizations. | [optional]
+**fiscal_code** | **string** | Fiscal code. In most cases it&#39;s the same as the vat number. When missing, it is derived from the vat number. | [optional]
 **name** | **string** | Name |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

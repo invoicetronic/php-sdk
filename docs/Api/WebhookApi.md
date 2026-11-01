@@ -23,7 +23,7 @@ webhookGet($company_id, $page, $page_size, $sort, $description, $enabled, $event
 
 List webhooks
 
-Retrieve a paginated list of webhooks. Results can be filtered by company, description, enabled status, events, and URL.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
+Retrieve a paginated list of webhooks. Results can be filtered by company, description, enabled status, events, and URL.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `Id` in the payload (webhook payloads are PascalCase) to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
 
 ### Example
 
@@ -85,7 +85,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -99,7 +99,7 @@ webhookIdDelete($id): \Invoicetronic\Model\WebHook
 
 Delete a webhook by id
 
-Delete a webhook subscription by its internal id.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
+Delete a webhook subscription by its internal id.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `Id` in the payload (webhook payloads are PascalCase) to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
 
 ### Example
 
@@ -147,7 +147,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -161,7 +161,7 @@ webhookIdGet($id): \Invoicetronic\Model\WebHook
 
 Get a webhook by id
 
-Retrieve a webhook by its internal id.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
+Retrieve a webhook by its internal id.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `Id` in the payload (webhook payloads are PascalCase) to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
 
 ### Example
 
@@ -223,7 +223,7 @@ webhookPost($web_hook): \Invoicetronic\Model\WebHook
 
 Add a webhook
 
-Create a new webhook subscription.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
+Create a new webhook subscription.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `Id` in the payload (webhook payloads are PascalCase) to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
 
 ### Example
 
@@ -285,7 +285,7 @@ webhookPut($web_hook): \Invoicetronic\Model\WebHook
 
 Update a webhook
 
-Update an existing webhook subscription.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `id` in the payload to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
+Update an existing webhook subscription.  **Webhooks** allow you to receive notifications to an external service when specific events occur, such as invoice creation or status updates. You can subscribe to specific events and receive a notification when they occur.  You can also manage webhooks via the [Dashboard](https://dashboard.invoicetronic.com).  Failed deliveries (any non-2xx response except `410 Gone`, or a network error or timeout) are retried up to 7 times, about 1 minute, 5 minutes, 30 minutes, 2 hours, 6 hours, 12 hours and 24 hours after the previous attempt: 8 attempts over about 45 hours. Delivery is therefore *at least once*: use the event `Id` in the payload (webhook payloads are PascalCase) to discard duplicates. Each request carries an `Invoicetronic-Delivery-Attempt` header with the attempt number. Responding with `410 Gone` disables the webhook and stops the retries.  A webhook that fails continuously for 7 days (no successful delivery in between) is automatically disabled (`enabled` set to `false`) and the account owner is notified by email. To resume deliveries, set `enabled` back to `true` from the Dashboard or via `PATCH /webhook/{id}`.  For more information, see the **[Webhooks documentation page](https://invoicetronic.com/en/docs/webhooks/)**.
 
 ### Example
 
@@ -401,7 +401,7 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: `application/json`
+- **Accept**: `application/json`, `application/problem+json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
